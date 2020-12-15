@@ -1,18 +1,18 @@
-import { kStringMaxLength } from 'buffer';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from '../components/Container';
 import { Layout } from '../components/Layout';
+import { usersUrl } from '../constants';
 
 type User = { id: number; username: string; email: string };
 
 type Users = User[];
 
-export function Home() {
+export function UserListPage() {
   const [users, setUsers] = useState<Users>([]);
 
   useEffect(() => {
-    fetch('https://5e6736691937020016fed762.mockapi.io/users')
+    fetch(usersUrl)
       .then((res) => res.json())
       .then((result) => {
         setUsers(
@@ -29,13 +29,14 @@ export function Home() {
     <Layout title="Home">
       <Container>
         <h1>User List</h1>
+        <Link to="/user/create">新規作成</Link>
+
         <table>
           <thead>
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Username</th>
               <th scope="col">Email</th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -44,9 +45,6 @@ export function Home() {
                 <td>{user.id}</td>
                 <td>{user.username}</td>
                 <td>{user.email}</td>
-                <td>
-                  <Link to="/user/:id">詳細</Link>
-                </td>
               </tr>
             ))}
           </tbody>

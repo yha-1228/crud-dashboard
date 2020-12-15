@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home } from './pages/Home';
+import { UserListPage } from './pages/UserListPage';
+import { UserCreatePage } from './pages/UserCreatePage';
 import './styles/normalize.css';
 import './styles/constants.css';
 import './styles/base.css';
@@ -10,8 +11,11 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
-          <Home />
+        <Route path="/user-list">
+          <UserListPage />
+        </Route>
+        <Route path="/user/create">
+          <UserCreatePage />
         </Route>
       </Switch>
     </Router>
