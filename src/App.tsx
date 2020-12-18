@@ -6,16 +6,24 @@ import './styles/normalize.css';
 import './styles/constants.css';
 import './styles/base.css';
 import './styles/utils.css';
+import { UserEditPage } from './pages/UserEditPage';
+import { HomePage } from './pages/HomePage';
 
 export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/user-list">
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+        <Route path="/users" exact>
           <UserListPage />
         </Route>
-        <Route path="/user/create">
+        <Route path="/users/create">
           <UserCreatePage />
+        </Route>
+        <Route path="/users/:id">
+          <UserEditPage />
         </Route>
       </Switch>
     </Router>

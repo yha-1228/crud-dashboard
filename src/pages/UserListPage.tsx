@@ -4,9 +4,9 @@ import { Container } from '../components/Container';
 import { Layout } from '../components/Layout';
 import { usersUrl } from '../constants';
 
-type User = { id: number; username: string; email: string };
+export type User = { id: number; username: string; email: string };
 
-type Users = User[];
+export type Users = User[];
 
 export function UserListPage() {
   const [users, setUsers] = useState<Users>([]);
@@ -29,7 +29,7 @@ export function UserListPage() {
     <Layout title="Home">
       <Container>
         <h1>User List</h1>
-        <Link to="/user/create">新規作成</Link>
+        <Link to="/users/create">新規作成</Link>
 
         <table>
           <thead>
@@ -37,6 +37,7 @@ export function UserListPage() {
               <th scope="col">ID</th>
               <th scope="col">Username</th>
               <th scope="col">Email</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -45,6 +46,9 @@ export function UserListPage() {
                 <td>{user.id}</td>
                 <td>{user.username}</td>
                 <td>{user.email}</td>
+                <td>
+                  <Link to={`/users/${user.id}`}>編集</Link>
+                </td>
               </tr>
             ))}
           </tbody>

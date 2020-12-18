@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { Container } from '../components/Container';
 import { Layout } from '../components/Layout';
 import { usersUrl } from '../constants';
 
-type Values = { username: string; email: string };
+type Id = { id: string };
 
-export function UserCreatePage() {
+type Values = { id: string | number; username: string; email: string };
+
+export function UserEditPage() {
+  let { id } = useParams<Id>();
+
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [values, setValues] = useState<Values>({ username: '', email: '' });
+  const [values, setValues] = useState<Values>({ id: '', username: '', email: '' });
   const history = useHistory();
 
   const handleChange = (event: React.ChangeEvent<any>) => {
@@ -18,26 +22,37 @@ export function UserCreatePage() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const data = { username: values.username, email: values.email };
+    const data = { id: Number(id), username: values.username, email: values.email };
+
+    console.log(data);
 
     setIsSubmitting(true);
 
-    fetch(usersUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        setIsSubmitting(false);
-        history.push('/users');
-      });
+    // fetch(`${usersUrl}/${id}`, {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then(() => {
+    //     setIsSubmitting(false);
+    //     history.push('/user-list');
+    //   });
   };
 
+  useEffect(() => {
+    fetch(`${usersUrl}/${id}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setValues({ id: Number(result.id), username: result.username, email: result.email });
+      });
+  }, [id]);
+
   return (
-    <Layout title="新規作成">
+    <Layout title="編集">
       <Container>
-        <h1>新規作成</h1>
+        <h1>編集</h1>
+
         <form onSubmit={handleSubmit} noValidate>
           <div>
             <div>
@@ -71,7 +86,7 @@ export function UserCreatePage() {
 
           <div>
             <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? '送信中...' : '新規登録'}
+              {isSubmitting ? '送信中...' : '更新'}
             </button>
           </div>
         </form>
