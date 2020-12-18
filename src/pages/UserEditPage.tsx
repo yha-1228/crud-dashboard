@@ -24,20 +24,18 @@ export function UserEditPage() {
 
     const data = { id: Number(id), username: values.username, email: values.email };
 
-    console.log(data);
-
     setIsSubmitting(true);
 
-    // fetch(`${usersUrl}/${id}`, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then(() => {
-    //     setIsSubmitting(false);
-    //     history.push('/user-list');
-    //   });
+    fetch(`${usersUrl}/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setIsSubmitting(false);
+        history.push('/user-list');
+      });
   };
 
   useEffect(() => {
