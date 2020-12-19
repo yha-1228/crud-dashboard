@@ -1,4 +1,3 @@
-import CircularProgress from '@material-ui/core/CircularProgress';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
@@ -6,7 +5,6 @@ import { Container } from '../components/Container';
 import { Layout } from '../components/Layout';
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../components/Table';
 import { usersUrl, wait } from '../constants';
-import { circularProgressColor } from '../mui-config';
 
 export type User = { id: number; username: string; email: string };
 
@@ -14,7 +12,7 @@ export type Users = User[];
 
 export function UserListPage() {
   const [users, setUsers] = useState<Users>([]);
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [, setIsLoaded] = useState<boolean>(false);
   const [isDeleteing, setIsDeleteing] = useState<boolean>(false);
 
   const deleteUser = (user: User) => {
