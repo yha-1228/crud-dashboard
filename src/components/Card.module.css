@@ -1,0 +1,14 @@
+.base {
+  width: 300px;
+  border: 1px solid #000;
+}
+
+.primary {
+  composes: base;
+  border: 1px solid var(--color-primary);
+}
+
+.warn {
+  composes: base;
+  border: 1px solid red;
+}

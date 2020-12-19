@@ -1,12 +1,12 @@
 import classnames from 'classnames';
-import './Table.css';
+import './Tables.css';
 
 export function TableWrapper({ children }: { children: React.ReactNode }) {
   return <div className="TableWrapper">{children}</div>;
 }
 
-export function Table({ width, ...other }: JSX.IntrinsicElements['table'] & { width?: any }) {
-  return <table className="Table" style={{ width: width }} {...other} />;
+export function Table({ ...other }: JSX.IntrinsicElements['table']) {
+  return <table className="Table" {...other} />;
 }
 
 export function TableHead({ ...other }: JSX.IntrinsicElements['thead']) {
