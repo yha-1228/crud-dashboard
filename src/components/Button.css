@@ -1,0 +1,13 @@
+.Button {
+  padding: 6px 12px;
+  border: 0;
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
+}
+.Button:hover {
+  background-color: var(--color-primary-dark);
+}
+.Button:disabled {
+  background-color: var(--color-gray-400);
+}

@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '../components/Button';
 import { Container } from '../components/Container';
 import { Layout } from '../components/Layout';
-import { usersUrl } from '../constants';
+import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../components/Table';
+import { usersUrl, wait } from '../constants';
+import { circularProgressColor } from '../mui-config';
 
 export type User = { id: number; username: string; email: string };
 
@@ -10,19 +14,38 @@ export type Users = User[];
 
 export function UserListPage() {
   const [users, setUsers] = useState<Users>([]);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [isDeleteing, setIsDeleteing] = useState<boolean>(false);
 
-  useEffect(() => {
+  const deleteUser = (user: User) => {
+    setIsDeleteing(true);
+    fetch(`${usersUrl}/${user.id}`, { method: 'DELETE' })
+      .then((res) => res.json())
+      .then(() => {
+        loadUsers();
+        setIsDeleteing(false);
+      });
+  };
+
+  const loadUsers = () => {
     fetch(usersUrl)
       .then((res) => res.json())
       .then((result) => {
-        setUsers(
-          result.map((v: User) => ({
-            id: Number(v.id),
-            username: String(v.username),
-            email: String(v.email),
-          }))
-        );
+        wait(2000).then(() => {
+          setIsLoaded(true);
+          setUsers(
+            result.map((v: User) => ({
+              id: Number(v.id),
+              username: String(v.username),
+              email: String(v.email),
+            }))
+          );
+        });
       });
+  };
+
+  useEffect(() => {
+    loadUsers();
   }, []);
 
   return (
@@ -31,28 +54,43 @@ export function UserListPage() {
         <h1>User List</h1>
         <Link to="/users/create">新規作成</Link>
 
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Username</th>
-              <th scope="col">Email</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-                <td>
-                  <Link to={`/users/${user.id}`}>編集</Link>
-                </td>
+        <TableWrapper>
+          <Table width="100%">
+            <TableHead>
+              <tr>
+                <TableHeader align="left" scope="col">
+                  ID
+                </TableHeader>
+                <TableHeader align="left" scope="col">
+                  Username
+                </TableHeader>
+                <TableHeader align="left" scope="col">
+                  Email
+                </TableHeader>
+                <TableHeader align="left" scope="col"></TableHeader>
+                <TableHeader align="left" scope="col"></TableHeader>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </TableHead>
+
+            <TableBody>
+              {users.map((user) => (
+                <tr key={user.id}>
+                  <TableData>{user.id}</TableData>
+                  <TableData>{user.username}</TableData>
+                  <TableData>{user.email}</TableData>
+                  <TableData>
+                    <Link to={`/users/${user.id}`}>編集</Link>
+                  </TableData>
+                  <TableData>
+                    <Button type="button" onClick={() => deleteUser(user)} disabled={isDeleteing}>
+                      削除
+                    </Button>
+                  </TableData>
+                </tr>
+              ))}
+            </TableBody>
+          </Table>
+        </TableWrapper>
       </Container>
     </Layout>
   );

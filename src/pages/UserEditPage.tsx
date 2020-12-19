@@ -34,7 +34,7 @@ export function UserEditPage() {
       .then((res) => res.json())
       .then(() => {
         setIsSubmitting(false);
-        history.push('/user-list');
+        history.push('/users');
       });
   };
 
