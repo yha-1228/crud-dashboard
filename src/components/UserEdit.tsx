@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { usersUrl } from '../constants';
+import { UserTableForm } from './UserTableForm';
 
 type Values = { id: string | number; username: string; email: string };
 
@@ -43,38 +44,13 @@ export function UserEdit({ id }: { id: string }) {
   return (
     <>
       <h1>編集</h1>
-
-      <form onSubmit={handleSubmit} noValidate>
-        <div>
-          <div>
-            <label htmlFor="username">username</label>
-          </div>
-          <div>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              onChange={handleChange}
-              value={values.username}
-            />
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <label htmlFor="email">email</label>
-          </div>
-          <div>
-            <input type="email" name="email" id="email" onChange={handleChange} value={values.email} />
-          </div>
-        </div>
-
-        <div>
-          <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? '送信中...' : '更新'}
-          </button>
-        </div>
-      </form>
+      <UserTableForm
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+        values={values}
+        isSubmitting={isSubmitting}
+        submitButtonText="更新"
+      />
     </>
   );
 }

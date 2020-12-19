@@ -26,7 +26,7 @@ export function UserList() {
     fetch(usersUrl)
       .then((res) => res.json())
       .then((result) => {
-        wait(2000).then(() => {
+        wait(700).then(() => {
           setIsLoaded(true);
           setUsers(
             result.map((v: User) => ({

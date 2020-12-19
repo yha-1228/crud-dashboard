@@ -24,8 +24,10 @@
   padding: 12px 24px;
   font-weight: normal;
   color: var(--color-gray-500);
+  white-space: nowrap;
 }
 
 .TableData {
   padding: 12px 24px;
+  white-space: nowrap;
 }
