@@ -21,12 +21,12 @@ export function TableHeader({
   align,
   ...other
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
-  return <th className={classnames('TableHeader', `text-${align}`)} {...other} />;
+  return <th className={classnames('TableHeader', align && `text-${align}`)} {...other} />;
 }
 
 export function TableData({
   align,
   ...other
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
-  return <td className={classnames('TableData', `text-${align}`)} {...other} />;
+  return <td className={classnames('TableData', align && `text-${align}`)} {...other} />;
 }

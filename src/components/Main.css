@@ -1,4 +1,4 @@
 .Main {
   background-color: var(--color-gray-50);
-  width: 100%;
+  flex: 1 1 auto;
 }
