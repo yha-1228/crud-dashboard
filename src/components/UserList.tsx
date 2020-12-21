@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../components/Tables';
-import { usersUrl, wait } from '../constants';
+import { deleteData, getData, usersUrl, wait } from '../constants';
 
 export type User = { id: number; username: string; email: string };
 
@@ -14,28 +14,24 @@ export function UserList() {
 
   const deleteUser = (user: User) => {
     setIsLoaded(false);
-    fetch(`${usersUrl}/${user.id}`, { method: 'DELETE' })
-      .then((res) => res.json())
-      .then(() => {
-        loadUsers();
-      });
+    deleteData(`${usersUrl}/${user.id}`).then(() => {
+      loadUsers();
+    });
   };
 
   const loadUsers = () => {
-    fetch(usersUrl)
-      .then((res) => res.json())
-      .then((result) => {
-        wait(700).then(() => {
-          setIsLoaded(true);
-          setUsers(
-            result.map((v: User) => ({
-              id: Number(v.id),
-              username: String(v.username),
-              email: String(v.email),
-            }))
-          );
-        });
+    getData(usersUrl).then((result) => {
+      wait(500).then(() => {
+        setIsLoaded(true);
+        setUsers(
+          result.map((v: User) => ({
+            id: Number(v.id),
+            username: String(v.username),
+            email: String(v.email),
+          }))
+        );
       });
+    });
   };
 
   useEffect(() => {

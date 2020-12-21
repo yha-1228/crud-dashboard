@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { usersUrl } from '../constants';
+import { postData, usersUrl } from '../constants';
 import { UserTableForm } from './UserTableForm';
 
 type Values = { username: string; email: string };
@@ -21,16 +21,10 @@ export function UserCreate() {
 
     setIsSubmitting(true);
 
-    fetch(usersUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        setIsSubmitting(false);
-        history.push('/users');
-      });
+    postData(usersUrl, data).then(() => {
+      setIsSubmitting(false);
+      history.push('/users');
+    });
   };
 
   return (

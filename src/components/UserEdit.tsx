@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { usersUrl } from '../constants';
+import { getData, putData, usersUrl } from '../constants';
 import { UserTableForm } from './UserTableForm';
 import isEqual from 'lodash/isEqual';
 
@@ -29,25 +29,17 @@ export function UserEdit({ id }: { id: string }) {
 
     setIsSubmitting(true);
 
-    fetch(`${usersUrl}/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        setIsSubmitting(false);
-        history.push('/users');
-      });
+    putData(`${usersUrl}/${id}`, data).then(() => {
+      setIsSubmitting(false);
+      history.push('/users');
+    });
   };
 
   useEffect(() => {
-    fetch(`${usersUrl}/${id}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setLoadedValues({ id: Number(result.id), username: result.username, email: result.email });
-        setValues({ id: Number(result.id), username: result.username, email: result.email });
-      });
+    getData(`${usersUrl}/${id}`).then((result) => {
+      setLoadedValues({ id: Number(result.id), username: result.username, email: result.email });
+      setValues({ id: Number(result.id), username: result.username, email: result.email });
+    });
   }, [id]);
 
   return (
