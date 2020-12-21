@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { Container } from '../components/Container';
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../components/Tables';
 import { usersUrl, wait } from '../constants';
 
