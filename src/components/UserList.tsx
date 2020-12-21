@@ -15,27 +15,21 @@ export function UserList() {
   const deleteUser = (user: User) => {
     setIsLoaded(false);
     deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsers();
+      loadUsers(0, 10);
     });
   };
 
-  const loadUsers = () => {
-    getData(usersUrl).then((result) => {
-      wait(500).then(() => {
+  const loadUsers = (start: number, limit: number) => {
+    getData(`${usersUrl}/?_start=${start}&_limit=${limit}`).then((result) => {
+      wait(600).then(() => {
         setIsLoaded(true);
-        setUsers(
-          result.map((v: User) => ({
-            id: Number(v.id),
-            username: String(v.username),
-            email: String(v.email),
-          }))
-        );
+        setUsers(result);
       });
     });
   };
 
   useEffect(() => {
-    loadUsers();
+    loadUsers(0, 10);
   }, []);
 
   return (
