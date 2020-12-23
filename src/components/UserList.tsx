@@ -15,13 +15,13 @@ export function UserList() {
   const deleteUser = (user: User) => {
     setIsLoaded(false);
     deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsers(0, 10);
+      loadUsers({ start: 0, limit: 10 });
     });
   };
 
-  const loadUsers = (start: number, limit: number) => {
+  const loadUsers = ({ start, limit }: { start: number; limit: number }) => {
     getData(`${usersUrl}/?_start=${start}&_limit=${limit}`).then((result) => {
-      wait(600).then(() => {
+      wait(1200).then(() => {
         setIsLoaded(true);
         setUsers(result);
       });
@@ -29,16 +29,16 @@ export function UserList() {
   };
 
   useEffect(() => {
-    loadUsers(0, 10);
+    loadUsers({ start: 0, limit: 10 });
   }, []);
 
   return (
     <>
       <h1>User List</h1>
-      <Link to="/users/create">新規作成</Link>
+      <Link to="/users/create">Add</Link>
 
       {!isLoaded ? (
-        <div>読み込み中...</div>
+        <div>Loading...</div>
       ) : (
         <TableWrapper>
           <Table>
@@ -65,11 +65,11 @@ export function UserList() {
                   <TableData>{user.username}</TableData>
                   <TableData>{user.email}</TableData>
                   <TableData>
-                    <Link to={`/users/${user.id}`}>編集</Link>
+                    <Link to={`/users/${user.id}`}>Edit</Link>
                   </TableData>
                   <TableData>
                     <Button type="button" onClick={() => deleteUser(user)} disabled={!isLoaded}>
-                      削除
+                      Delete
                     </Button>
                   </TableData>
                 </tr>

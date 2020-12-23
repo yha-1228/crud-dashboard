@@ -3,7 +3,6 @@
   border-radius: 4px;
   overflow: hidden;
   background-color: white;
-  /* max-height: 50vh; */
 }
 
 .Table {
@@ -23,13 +22,13 @@
 }
 
 .TableHeader {
-  padding: 12px 24px;
+  padding: 8px 24px;
   font-weight: normal;
   color: var(--color-gray-500);
   white-space: nowrap;
 }
 
 .TableData {
-  padding: 12px 24px;
+  padding: 8px 24px;
   white-space: nowrap;
 }
