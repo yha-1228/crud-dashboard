@@ -1,6 +1,8 @@
 .Sidebar {
-  background-color: var(--color-primary);
+  border: 1px solid yellow;
+  background-color: var(--color-gray-800);
   flex-grow: 0;
   flex-shrink: 0;
   width: 240px;
+  height: 100vh;
 }
