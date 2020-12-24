@@ -1,0 +1,13 @@
+.ReactPaginate__container {
+  border: 1px solid #000;
+  /* display: inline-block; */
+}
+
+.ReactPaginate__page {
+  border: 1px solid #000;
+  display: inline-block;
+}
+
+.ReactPaginate__page--active {
+  border: 4px solid #000;
+}
