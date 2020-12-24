@@ -17,13 +17,16 @@ export function UserList() {
   const [totalCount, setTotalCount] = useState<number>(0);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [offset, setOffset] = useState<number>(0);
-  const [pageCount, setPageCount] = useState<number>(10);
 
   const deleteUser = (user: User) => {
     setIsLoaded(false);
     deleteData(`${usersUrl}/${user.id}`).then(() => {
       loadUsersFromServer({ offset: offset, limit: LIMIT });
     });
+  };
+
+  const getPageCount = (totalCount: number, limit: number) => {
+    return Math.ceil(totalCount / limit);
   };
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
@@ -42,15 +45,15 @@ export function UserList() {
   };
 
   useEffect(() => {
-    loadUsersFromServer({ offset: offset, limit: LIMIT });
-  }, [offset]);
-
-  useEffect(() => {
-    loadUsersFromServer({ offset: offset, limit: LIMIT });
     getData(usersUrl).then((result) => {
       setTotalCount(result.length);
     });
+    loadUsersFromServer({ offset: offset, limit: LIMIT });
   }, []);
+
+  useEffect(() => {
+    loadUsersFromServer({ offset: offset, limit: LIMIT });
+  }, [offset]);
 
   return (
     <>
@@ -64,7 +67,7 @@ export function UserList() {
           <ReactPaginate
             previousLabel="&lt;"
             nextLabel="&gt;"
-            pageCount={10}
+            pageCount={getPageCount(totalCount, LIMIT)}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
             onPageChange={handlePageClick}
@@ -76,7 +79,7 @@ export function UserList() {
             nextClassName="ReactPaginate__page"
             nextLinkClassName="ReactPaginate__page-link"
             breakClassName="ReactPaginate__page"
-            activeClassName="ReactPaginate__page--active"
+            activeLinkClassName="ReactPaginate__page-link--active"
           />
 
           <TableWrapper>

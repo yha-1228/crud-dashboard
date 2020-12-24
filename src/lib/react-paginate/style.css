@@ -13,16 +13,17 @@
 .ReactPaginate__page-link {
   display: block;
   border-radius: 9999px;
+  transition: background-color 0.2s ease-out;
   outline: none;
 }
 .ReactPaginate__page-link:hover {
   background-color: var(--color-gray-200);
 }
 
-.ReactPaginate__page--active a {
+.ReactPaginate__page-link--active {
   background-color: var(--color-primary);
   color: white;
 }
-.ReactPaginate__page--active a:hover {
+.ReactPaginate__page-link--active:hover {
   background-color: var(--color-primary-dark);
 }

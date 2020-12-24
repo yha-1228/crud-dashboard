@@ -2,7 +2,7 @@ const faker = require('faker');
 
 module.exports = () => {
   const db = { users: [] };
-  const size = 950;
+  const size = 105;
 
   for (let index = 1; index <= size; index++) {
     const item = {
