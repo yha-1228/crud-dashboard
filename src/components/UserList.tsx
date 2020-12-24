@@ -28,7 +28,7 @@ export function UserList() {
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     getData(`${usersUrl}/?_start=${offset}&_limit=${limit}`).then((result) => {
-      wait(1200).then(() => {
+      wait(700).then(() => {
         setIsLoaded(true);
         setUsers(result);
       });
@@ -62,14 +62,20 @@ export function UserList() {
       ) : (
         <div>
           <ReactPaginate
-            previousLabel="previous"
-            nextLabel="next"
+            previousLabel="&lt;"
+            nextLabel="&gt;"
             pageCount={10}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
             onPageChange={handlePageClick}
             containerClassName="ReactPaginate__container"
             pageClassName="ReactPaginate__page"
+            pageLinkClassName="ReactPaginate__page-link"
+            previousClassName="ReactPaginate__page"
+            previousLinkClassName="ReactPaginate__page-link"
+            nextClassName="ReactPaginate__page"
+            nextLinkClassName="ReactPaginate__page-link"
+            breakClassName="ReactPaginate__page"
             activeClassName="ReactPaginate__page--active"
           />
 

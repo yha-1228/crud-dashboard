@@ -1,13 +1,28 @@
 .ReactPaginate__container {
-  border: 1px solid #000;
-  /* display: inline-block; */
+  padding: 0;
 }
 
 .ReactPaginate__page {
-  border: 1px solid #000;
+  text-align: center;
+  width: 48px;
+  line-height: 48px;
   display: inline-block;
+  cursor: pointer;
 }
 
-.ReactPaginate__page--active {
-  border: 4px solid #000;
+.ReactPaginate__page-link {
+  display: block;
+  border-radius: 9999px;
+  outline: none;
+}
+.ReactPaginate__page-link:hover {
+  background-color: var(--color-gray-200);
+}
+
+.ReactPaginate__page--active a {
+  background-color: var(--color-primary);
+  color: white;
+}
+.ReactPaginate__page--active a:hover {
+  background-color: var(--color-primary-dark);
 }
