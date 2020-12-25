@@ -5,6 +5,9 @@ import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } fro
 import { deleteData, getData, usersUrl, wait } from '../constants';
 import ReactPaginate from 'react-paginate';
 import '../lib/react-paginate/style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const LIMIT = 10;
 
@@ -65,8 +68,8 @@ export function UserList() {
       ) : (
         <div>
           <ReactPaginate
-            previousLabel="&lt;"
-            nextLabel="&gt;"
+            previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
+            nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
             pageCount={getPageCount(totalCount, LIMIT)}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}

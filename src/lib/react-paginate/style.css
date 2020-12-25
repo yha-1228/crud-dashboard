@@ -4,16 +4,19 @@
 
 .ReactPaginate__page {
   text-align: center;
-  width: 48px;
-  line-height: 48px;
   display: inline-block;
   cursor: pointer;
+  padding-right: 6px;
 }
 
 .ReactPaginate__page-link {
   display: block;
+  width: 32px;
+  line-height: 32px;
   border-radius: 9999px;
-  transition: background-color 0.2s ease-out;
+  color: var(--color-gray-400);
+  font-weight: bold;
+  transition: background-color 0.1s ease-out;
   outline: none;
 }
 .ReactPaginate__page-link:hover {

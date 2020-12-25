@@ -9,6 +9,11 @@ import './styles/utils.css';
 import { UserEditPage } from './pages/UserEditPage';
 import { HomePage } from './pages/HomePage';
 
+// fa
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
+
 export default function App() {
   return (
     <Router>
