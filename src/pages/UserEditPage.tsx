@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Container } from '../components/Container';
+import { Container } from '../components/shared/Container';
 import { Layout } from '../components/Layout';
 import { UserEdit } from '../components/UserEdit';
 

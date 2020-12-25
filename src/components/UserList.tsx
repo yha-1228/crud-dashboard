@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../components/Button';
-import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../components/Tables';
+import { Button } from './shared/Button';
+import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Tables';
 import { deleteData, getData, usersUrl, wait } from '../constants';
 import ReactPaginate from 'react-paginate';
 import '../lib/react-paginate/style.css';

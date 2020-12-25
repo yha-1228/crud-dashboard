@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '../components/Container';
+import { Container } from '../components/shared/Container';
 import { Layout } from '../components/Layout';
 import { UserList } from '../components/UserList';
 
