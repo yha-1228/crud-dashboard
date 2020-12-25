@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Main } from './Main';
+import { Container } from './shared/Container';
 import { Sidebar } from './Sidebar';
 import { TwoColumn } from './TwoColumn';
 
@@ -14,7 +15,9 @@ export function Layout({ title, children }: Props) {
       </Helmet>
 
       <TwoColumn>
-        <Sidebar></Sidebar>
+        <Sidebar>
+          <Container>{/* TODO: */}</Container>
+        </Sidebar>
         <Main>{children}</Main>
       </TwoColumn>
     </>

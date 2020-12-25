@@ -1,6 +1,6 @@
 .TableWrapper {
   border: 1px solid var(--color-gray-200);
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
   background-color: white;
 }

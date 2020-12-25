@@ -38,13 +38,15 @@ export function UserList() {
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     setIsPageLoaded(false);
-    getData(`${usersUrl}/?_start=${offset}&_limit=${limit}`).then((result) => {
-      wait(700).then(() => {
-        setIsLoaded(true);
-        setIsPageLoaded(true);
-        setUsers(result);
-      });
-    });
+    getData(`${usersUrl}/?_sort=username&_order=asc&_start=${offset}&_limit=${limit}`).then(
+      (result) => {
+        wait(700).then(() => {
+          setIsLoaded(true);
+          setIsPageLoaded(true);
+          setUsers(result);
+        });
+      }
+    );
   };
 
   const handlePageClick = (data: any) => {
@@ -66,7 +68,9 @@ export function UserList() {
 
   return (
     <>
-      <div style={{ border: `3px solid ${!isPageLoaded ? 'blue' : 'transparent'}` }}>
+      <div
+        style={{ borderTop: `3px solid ${!isPageLoaded ? 'var(--color-primary)' : 'transparent'}` }}
+      >
         <div className="flex justify-between items-center ">
           <h1>User List</h1>
           <LinkButton variant="primary" to="/users/create">
