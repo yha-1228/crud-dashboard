@@ -1,5 +1,4 @@
 .Sidebar {
-  border: 1px solid blue;
   background-color: var(--color-gray-800);
   flex-grow: 0;
   flex-shrink: 0;

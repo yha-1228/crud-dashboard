@@ -1,4 +1,4 @@
-.Button {
+.LinkButton {
   display: inline-block;
   line-height: 1.5;
   background-color: var(--color-gray-200);
@@ -10,20 +10,23 @@
   border-radius: 0.25rem;
   transition: color 0.15s ease-out, background-color 0.15s ease-out;
   cursor: pointer;
+
+  /* Add */
+  text-decoration: none;
 }
-.Button:hover {
+.LinkButton:hover {
   background-color: var(--color-gray-300);
 }
 
-.Button--small {
+.LinkButton--small {
   padding: 0.2rem 0.5rem;
   font-size: 14px;
 }
 
-.Button--primary {
+.LinkButton--primary {
   background-color: var(--color-primary);
   color: white;
 }
-.Button--primary:hover {
+.LinkButton--primary:hover {
   background-color: var(--color-primary-dark);
 }
