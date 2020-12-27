@@ -62,10 +62,6 @@ export function UserList() {
     loadUsersFromServer({ offset: offset, limit: LIMIT })
   }, [offset])
 
-  // useEffect(() => {
-  //   loadUsersFromServer({ offset: offset, limit: LIMIT })
-  // }, [offset])
-
   return (
     <>
       <div
