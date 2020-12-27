@@ -1,8 +1,9 @@
 .TableWrapper {
   border: 1px solid var(--color-gray-200);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   background-color: white;
+  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.12);
 }
 
 .Table {
@@ -11,26 +12,26 @@
 }
 
 .TableHead > * {
-  border-bottom: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--color-gray-100);
 }
 
 .TableBody > * {
-  border-bottom: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--color-gray-100);
 }
 .TableBody > *:last-child {
   border-bottom: none;
 }
 
 .TableHeader {
-  padding: 8px 12px;
-  font-weight: normal;
+  padding: 10px 24px;
+  font-weight: bold;
   font-size: 14px;
-  color: var(--color-gray-500);
+  color: var(--color-gray-400);
   white-space: nowrap;
 }
 
 .TableData {
-  padding: 8px 12px;
+  padding: 10px 24px;
   font-size: 14px;
   white-space: nowrap;
 }

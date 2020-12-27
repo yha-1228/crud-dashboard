@@ -1,11 +1,11 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Main } from './Main';
-import { Container } from './shared/Container';
-import { Sidebar } from './Sidebar';
-import { TwoColumn } from './TwoColumn';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { Main } from '../Main'
+import { Container } from '../shared/Container'
+import { Sidebar } from './Sidebar'
+import { TwoColumn } from './TwoColumn'
 
-type Props = { title: string; children: React.ReactNode };
+type Props = { title: string; children: React.ReactNode }
 
 export function Layout({ title, children }: Props) {
   return (
@@ -21,5 +21,5 @@ export function Layout({ title, children }: Props) {
         <Main>{children}</Main>
       </TwoColumn>
     </>
-  );
+  )
 }

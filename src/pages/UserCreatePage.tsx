@@ -1,7 +1,7 @@
-import React from 'react';
-import { Container } from '../components/shared/Container';
-import { Layout } from '../components/Layout';
-import { UserCreate } from '../components/UserCreate';
+import React from 'react'
+import { Container } from '../components/shared/Container'
+import { Layout } from '../components/layouts/Layout'
+import { UserCreate } from '../components/UserCreate'
 
 export function UserCreatePage() {
   return (
@@ -10,5 +10,5 @@ export function UserCreatePage() {
         <UserCreate />
       </Container>
     </Layout>
-  );
+  )
 }

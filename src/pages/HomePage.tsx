@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container } from '../components/shared/Container';
-import { Layout } from '../components/Layout';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Container } from '../components/shared/Container'
+import { Layout } from '../components/layouts/Layout'
 
 export function HomePage() {
   return (
@@ -169,5 +169,5 @@ export function HomePage() {
         </div>
       </Container>
     </Layout>
-  );
+  )
 }
