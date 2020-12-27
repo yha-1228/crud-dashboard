@@ -1,17 +1,19 @@
-import classnames from 'classnames';
-import './Button.css';
+import classnames from 'classnames'
+import { ComponentPropsWithoutRef } from 'react'
+import './Button.css'
 
-export function Button(
-  props: JSX.IntrinsicElements['button'] & { size?: string; variant?: string }
-) {
+type Props = ComponentPropsWithoutRef<'button'> & {
+  size?: string
+  variant?: string
+  href?: string
+}
+
+export function Button({ size, variant, href, ...other }: Props) {
   return (
     <button
-      className={classnames(
-        'Button',
-        props.size && `Button--${props.size}`,
-        props.variant && `Button--${props.variant}`
-      )}
-      {...props}
+      role="button"
+      className={classnames('Button', size && `Button--${size}`, variant && `Button--${variant}`)}
+      {...other}
     />
-  );
+  )
 }
