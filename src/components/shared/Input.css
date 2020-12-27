@@ -1,0 +1,17 @@
+.Input {
+  padding: 0 8px;
+  line-height: 32px;
+  -webkit-appearance: none;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  background-color: var(--color-gray-200);
+  outline: none;
+  transition: border 0.2s ease-out;
+}
+.Input:hover,
+.Input:active {
+  border: 2px solid var(--color-gray-500);
+}
+.Input:focus {
+  border: 2px solid var(--color-primary);
+}

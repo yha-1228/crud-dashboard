@@ -1,70 +1,70 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from './shared/Button';
-import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Tables';
-import { deleteData, getData, usersUrl, wait } from '../constants';
-import ReactPaginate from 'react-paginate';
-import '../lib/react-paginate/style.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { LinkButton } from './shared/LinkButton';
+import React, { useEffect, useState } from 'react'
+import { Button } from './shared/Button'
+import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Tables'
+import { deleteData, getData, usersUrl, wait } from '../constants'
+import ReactPaginate from 'react-paginate'
+import '../lib/react-paginate/style.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { LinkButton } from './shared/LinkButton'
 
-const LIMIT = 10;
+const LIMIT = 10
 
-export type User = { id: number; username: string; email: string };
+export type User = { id: number; username: string; email: string }
 
-export type Users = User[];
+export type Users = User[]
 
 export function UserList() {
-  const [users, setUsers] = useState<Users>([]);
-  const [totalCount, setTotalCount] = useState<number>(0);
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false);
-  const [offset, setOffset] = useState<number>(0);
+  const [users, setUsers] = useState<Users>([])
+  const [totalCount, setTotalCount] = useState<number>(0)
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false)
+  const [offset, setOffset] = useState<number>(0)
 
   const deleteUser = (user: User) => {
-    setIsLoaded(false);
+    setIsLoaded(false)
     deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsersFromServer({ offset: offset, limit: LIMIT });
-    });
-  };
+      loadUsersFromServer({ offset: offset, limit: LIMIT })
+    })
+  }
 
   const getPageCount = (totalCount: number, limit: number) => {
-    return Math.ceil(totalCount / limit);
-  };
+    return Math.ceil(totalCount / limit)
+  }
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
-    setIsPageLoaded(false);
+    setIsPageLoaded(false)
     getData(`${usersUrl}/?_sort=username&_order=asc&_start=${offset}&_limit=${limit}`).then(
       (result) => {
         wait(700).then(() => {
-          setIsLoaded(true);
-          setIsPageLoaded(true);
-          setUsers(result);
-        });
+          setIsLoaded(true)
+          setIsPageLoaded(true)
+          setUsers(result)
+        })
       }
-    );
-  };
+    )
+  }
 
   const handlePageClick = (data: any) => {
-    const selected = data.selected;
-    const offset = Math.ceil(selected * 10);
-    setOffset(offset);
-  };
+    const selected = data.selected
+    const offset = Math.ceil(selected * 10)
+    setOffset(offset)
+  }
 
   useEffect(() => {
     getData(usersUrl).then((result) => {
-      setTotalCount(result.length);
-    });
-    loadUsersFromServer({ offset: offset, limit: LIMIT });
-  }, []);
+      setTotalCount(result.length)
+    })
+    loadUsersFromServer({ offset: offset, limit: LIMIT })
+  }, [offset])
 
-  useEffect(() => {
-    loadUsersFromServer({ offset: offset, limit: LIMIT });
-  }, [offset]);
+  // useEffect(() => {
+  //   loadUsersFromServer({ offset: offset, limit: LIMIT })
+  // }, [offset])
 
   return (
     <>
@@ -151,5 +151,5 @@ export function UserList() {
         )}
       </div>
     </>
-  );
+  )
 }

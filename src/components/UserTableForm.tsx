@@ -1,37 +1,71 @@
-type Props = {
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  onChange: (event: React.ChangeEvent<any>) => void;
-  values: { username: string; email: string };
-  isSubmitting: boolean;
-  submitButtonText: string;
-};
+import React from 'react'
+import { Button } from './shared/Button'
+import { FiledBlock } from './shared/FiledBlock'
+import { Input } from './shared/Input'
+import './UserTableForm.css'
 
-export function UserTableForm({ onSubmit, onChange, values, isSubmitting, submitButtonText }: Props) {
+type Props = {
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  onChange: (event: React.ChangeEvent<any>) => void
+  values: { username: string; email: string }
+  isSubmitting: boolean
+  submitButtonText: string
+}
+
+export function UserTableForm({
+  onSubmit,
+  onChange,
+  values,
+  isSubmitting,
+  submitButtonText,
+}: Props) {
   return (
     <form onSubmit={onSubmit} noValidate>
-      <div>
-        <div>
-          <label htmlFor="username">username</label>
-        </div>
-        <div>
-          <input type="text" name="username" id="username" onChange={onChange} value={values.username} />
-        </div>
+      <div className="UserTableForm__row">
+        <FiledBlock
+          label={
+            <label htmlFor="username">
+              <h3>Username</h3>
+            </label>
+          }
+          input={
+            <Input
+              type="text"
+              name="username"
+              id="username"
+              onChange={onChange}
+              value={values.username}
+              width={250}
+            />
+          }
+        />
+      </div>
+
+      <div className="UserTableForm__row">
+        <FiledBlock
+          label={
+            <label htmlFor="email">
+              <h3>Email</h3>
+            </label>
+          }
+          input={
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              onChange={onChange}
+              value={values.email}
+              width={250}
+            />
+          }
+        />
       </div>
 
       <div>
-        <div>
-          <label htmlFor="email">email</label>
-        </div>
-        <div>
-          <input type="email" name="email" id="email" onChange={onChange} value={values.email} />
-        </div>
-      </div>
-
-      <div>
-        <button type="submit" disabled={isSubmitting}>
+        <Button variant="primary" type="submit" disabled={isSubmitting}>
           {isSubmitting ? '送信中...' : submitButtonText}
-        </button>
+        </Button>
       </div>
     </form>
-  );
+  )
 }

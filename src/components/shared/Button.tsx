@@ -11,7 +11,6 @@ type Props = ComponentPropsWithoutRef<'button'> & {
 export function Button({ size, variant, href, ...other }: Props) {
   return (
     <button
-      role="button"
       className={classnames('Button', size && `Button--${size}`, variant && `Button--${variant}`)}
       {...other}
     />
