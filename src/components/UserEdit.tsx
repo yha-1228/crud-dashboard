@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { getData, putData, usersUrl } from '../constants'
+import { MainHeader } from './layouts/Headers'
+import { MainContentArea } from './layouts/MainContentArea'
+import { MainHeading } from './shared/Headings'
 import { UserTableForm } from './UserTableForm'
 
 type Values = {
@@ -58,14 +61,19 @@ export function UserEdit({ id }: { id: string }) {
 
   return (
     <>
-      <h1>Edit</h1>
-      <UserTableForm
-        onSubmit={handleSubmit}
-        onChange={handleChange}
-        values={values}
-        isSubmitting={isSubmitting}
-        submitButtonText="Update"
-      />
+      <MainHeader>
+        <MainHeading>Edit</MainHeading>
+      </MainHeader>
+
+      <MainContentArea>
+        <UserTableForm
+          onSubmit={handleSubmit}
+          onChange={handleChange}
+          values={values}
+          isSubmitting={isSubmitting}
+          submitButtonText="Update"
+        />
+      </MainContentArea>
     </>
   )
 }

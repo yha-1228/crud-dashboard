@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { postData, usersUrl } from '../constants'
+import { MainHeader } from './layouts/Headers'
+import { MainContentArea } from './layouts/MainContentArea'
+import { MainHeading } from './shared/Headings'
 import { UserTableForm } from './UserTableForm'
 
 type Values = {
@@ -39,14 +42,19 @@ export function UserCreate() {
 
   return (
     <>
-      <h1>Add</h1>
-      <UserTableForm
-        onSubmit={handleSubmit}
-        onChange={handleChange}
-        values={values}
-        isSubmitting={isSubmitting}
-        submitButtonText="Add"
-      />
+      <MainHeader>
+        <MainHeading>Add</MainHeading>
+      </MainHeader>
+
+      <MainContentArea>
+        <UserTableForm
+          onSubmit={handleSubmit}
+          onChange={handleChange}
+          values={values}
+          isSubmitting={isSubmitting}
+          submitButtonText="Add"
+        />
+      </MainContentArea>
     </>
   )
 }
