@@ -71,7 +71,7 @@ export function UserList() {
           )}
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="UserList__UserTableTopNavgation">
           <h1>Users</h1>
 
           <LinkButton variant="primary" to="/users/create">

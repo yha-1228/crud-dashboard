@@ -4,6 +4,12 @@
   margin-left: -32px;
 }
 
+.UserList__UserTableTopNavgation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .UserList__circularProgressContainer {
   display: flex;
   align-items: center;
