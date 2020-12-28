@@ -65,7 +65,7 @@ export function UserTableForm({
         <FiledBlock
           label={
             <label htmlFor="password">
-              <h3>Email</h3>
+              <h3>Password</h3>
             </label>
           }
           input={
@@ -85,7 +85,7 @@ export function UserTableForm({
         <FiledBlock
           label={
             <label htmlFor="country">
-              <h3>Email</h3>
+              <h3>Country</h3>
             </label>
           }
           input={
@@ -103,7 +103,7 @@ export function UserTableForm({
 
       <div>
         <Button variant="primary" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? '送信中...' : submitButtonText}
+          {isSubmitting ? 'Loading...' : submitButtonText}
         </Button>
       </div>
     </form>
