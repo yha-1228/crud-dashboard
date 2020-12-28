@@ -11,6 +11,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { LinkButton } from './shared/LinkButton'
+import { LinearProgress } from '@material-ui/core'
+import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 
 const LIMIT = 10
 
@@ -64,9 +66,12 @@ export function UserList() {
 
   return (
     <>
-      <div
-        style={{ borderTop: `3px solid ${!isPageLoaded ? 'var(--color-primary)' : 'transparent'}` }}
-      >
+      <div>
+        {!isPageLoaded && (
+          <MuiThemeProvider>
+            <LinearProgress color="primary" />
+          </MuiThemeProvider>
+        )}
         <div className="flex justify-between items-center ">
           <h1>User List</h1>
           <LinkButton variant="primary" to="/users/create">
