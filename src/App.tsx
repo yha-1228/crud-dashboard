@@ -1,18 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { UserListPage } from './pages/UserListPage';
-import { UserCreatePage } from './pages/UserCreatePage';
-import './styles/normalize.css';
-import './styles/constants.css';
-import './styles/base.css';
-import './styles/utils.css';
-import { UserEditPage } from './pages/UserEditPage';
-import { HomePage } from './pages/HomePage';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { UserListPage } from './pages/UserListPage'
+import { UserCreatePage } from './pages/UserCreatePage'
+import './styles/normalize.css'
+import './styles/constants.css'
+import './styles/base.css'
+import './styles/utils.css'
+import { UserEditPage } from './pages/UserEditPage'
+import { HomePage } from './pages/HomePage'
 
 // fa
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-config.autoAddCss = false;
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 
 export default function App() {
   return (
@@ -21,6 +21,7 @@ export default function App() {
         <Route path="/" exact>
           <HomePage />
         </Route>
+
         <Route path="/users" exact>
           <UserListPage />
         </Route>
@@ -30,7 +31,19 @@ export default function App() {
         <Route path="/users/:id">
           <UserEditPage />
         </Route>
+
+        <Route path="/invoices" exact>
+          This page is not completed.
+        </Route>
+
+        <Route path="/configs" exact>
+          This page is not completed.
+        </Route>
+
+        <Route path="/site-setting" exact>
+          This page is not completed.
+        </Route>
       </Switch>
     </Router>
-  );
+  )
 }

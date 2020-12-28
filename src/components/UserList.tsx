@@ -88,64 +88,66 @@ export function UserList() {
           </Box>
         ) : (
           <div>
-            <TableWrapper>
-              <Box height={4}>
-                {!isPageLoaded && (
-                  <MuiThemeProvider>
-                    <LinearProgress color="primary" />
-                  </MuiThemeProvider>
-                )}
-              </Box>
+            <Box marginBottom={24}>
+              <TableWrapper>
+                <Box height={4}>
+                  {!isPageLoaded && (
+                    <MuiThemeProvider>
+                      <LinearProgress color="primary" />
+                    </MuiThemeProvider>
+                  )}
+                </Box>
 
-              <Table>
-                <TableHead>
-                  <tr>
-                    <TableHeader align="left" scope="col">
-                      ID
-                    </TableHeader>
-                    <TableHeader align="left" scope="col">
-                      Username
-                    </TableHeader>
-                    <TableHeader align="left" scope="col">
-                      Email
-                    </TableHeader>
-                    <TableHeader align="left" scope="col">
-                      Country
-                    </TableHeader>
-                    <TableHeader align="left" scope="col"></TableHeader>
-                    <TableHeader align="left" scope="col"></TableHeader>
-                  </tr>
-                </TableHead>
-
-                <TableBody>
-                  {users.map((user) => (
-                    <tr key={user.id}>
-                      <TableData>{user.id}</TableData>
-                      <TableData>{user.username}</TableData>
-                      <TableData>{user.email}</TableData>
-                      <TableData>{user.country}</TableData>
-                      <TableData>
-                        <LinkButton size="small" to={`/users/${user.id}`}>
-                          <FontAwesomeIcon icon={faEdit} />
-                          &nbsp;&nbsp;Edit
-                        </LinkButton>
-                      </TableData>
-                      <TableData>
-                        <Button
-                          size="small"
-                          type="button"
-                          onClick={() => deleteUser(user)}
-                          disabled={!isLoaded}
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                          &nbsp;&nbsp;Delete
-                        </Button>
-                      </TableData>
+                <Table>
+                  <TableHead>
+                    <tr>
+                      <TableHeader align="left" scope="col">
+                        ID
+                      </TableHeader>
+                      <TableHeader align="left" scope="col">
+                        Username
+                      </TableHeader>
+                      <TableHeader align="left" scope="col">
+                        Email
+                      </TableHeader>
+                      <TableHeader align="left" scope="col">
+                        Country
+                      </TableHeader>
+                      <TableHeader align="left" scope="col"></TableHeader>
+                      <TableHeader align="left" scope="col"></TableHeader>
                     </tr>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableWrapper>
+                  </TableHead>
+
+                  <TableBody>
+                    {users.map((user) => (
+                      <tr key={user.id}>
+                        <TableData>{user.id}</TableData>
+                        <TableData>{user.username}</TableData>
+                        <TableData>{user.email}</TableData>
+                        <TableData>{user.country}</TableData>
+                        <TableData>
+                          <LinkButton size="small" to={`/users/${user.id}`}>
+                            <FontAwesomeIcon icon={faEdit} />
+                            &nbsp;&nbsp;Edit
+                          </LinkButton>
+                        </TableData>
+                        <TableData>
+                          <Button
+                            size="small"
+                            type="button"
+                            onClick={() => deleteUser(user)}
+                            disabled={!isLoaded}
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
+                            &nbsp;&nbsp;Delete
+                          </Button>
+                        </TableData>
+                      </tr>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableWrapper>
+            </Box>
 
             <Box display="flex" justifyContent="space-between" alignItems="center">
               <Box>

@@ -5,6 +5,8 @@ import { Sidebar } from './Sidebar'
 import { TwoColumn } from './TwoColumn'
 import { SidebarHeading } from '../shared/Headings'
 import { SidebarHeader } from './Headers'
+import { SidebarContentArea } from './SidebarContentArea'
+import { Navgation } from '../Navgation'
 
 type Props = { title: string; children: React.ReactNode }
 
@@ -19,14 +21,12 @@ export function Layout({ title, children }: Props) {
         sidebar={
           <Sidebar>
             <SidebarHeader>
-              <SidebarHeading>Sidebar</SidebarHeading>
+              <SidebarHeading>Sample App</SidebarHeading>
             </SidebarHeader>
-            <ul>
-              <li>Users</li>
-              <li>Invoices</li>
-              <li>Configs</li>
-              <li>Site setting</li>
-            </ul>
+
+            <SidebarContentArea>
+              <Navgation />
+            </SidebarContentArea>
           </Sidebar>
         }
         main={<Main>{children}</Main>}
