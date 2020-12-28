@@ -18,6 +18,7 @@ import { User, Users } from '../types'
 import { Box } from './layouts/Box'
 import { MainHeading } from './shared/Headings'
 import { MainHeader } from './layouts/MainHeader'
+import { MainContentArea } from './layouts/MainContentArea'
 
 const LIMIT = 10
 
@@ -74,12 +75,7 @@ export function UserList() {
         </LinkButton>
       </MainHeader>
 
-      <Box
-        height={'100% - 64px'}
-        paddingRight={32}
-        paddingLeft={32}
-        backgroundColor="var(--color-gray-50)"
-      >
+      <MainContentArea>
         {!isLoaded ? (
           <Box
             display="flex"
@@ -174,7 +170,7 @@ export function UserList() {
             />
           </div>
         )}
-      </Box>
+      </MainContentArea>
     </>
   )
 }
