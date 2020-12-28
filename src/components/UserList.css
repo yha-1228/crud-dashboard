@@ -8,3 +8,9 @@
   padding-top: 120px;
   text-align: center;
 }
+
+.UserList__circularProgressLoadingText {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--color-gray-400);
+}
