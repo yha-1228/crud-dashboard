@@ -1,8 +1,8 @@
-export function TwoColumn({ left, right }: { left: React.ReactNode; right: React.ReactNode }) {
+export function TwoColumn({ sidebar, main }: { sidebar: React.ReactNode; main: React.ReactNode }) {
   return (
     <div className="flex h-screen">
-      {left}
-      {right}
+      {sidebar}
+      {main}
     </div>
   )
 }

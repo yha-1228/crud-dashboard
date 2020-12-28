@@ -5,7 +5,8 @@ import { Container } from './Container'
 import { Sidebar } from './Sidebar'
 import { TwoColumn } from './TwoColumn'
 import { Box } from './Box'
-import { Button } from '../shared/Button'
+import { SidebarHeader } from './SidebarHeader'
+import { SidebarHeading } from '../shared/Headings'
 
 type Props = { title: string; children: React.ReactNode }
 
@@ -17,31 +18,14 @@ export function Layout({ title, children }: Props) {
       </Helmet>
 
       <TwoColumn
-        left={
+        sidebar={
           <Sidebar>
-            <Container>
-              <Box paddingTop={16} paddingBottom={16}>
-                <div>
-                  <div>Lorem, ipsum.</div>
-                  <div>Lorem, ipsum.</div>
-                  <div>Lorem, ipsum.</div>
-                  <div>Lorem, ipsum.</div>
-                  <div>Lorem, ipsum.</div>
-                  <div>
-                    <Button>Button</Button>
-                  </div>
-                  <div>
-                    <Button variant="primary">Button</Button>
-                  </div>
-                  <div>
-                    <Button variant="primary-bright">Button</Button>
-                  </div>
-                </div>
-              </Box>
-            </Container>
+            <SidebarHeader>
+              <SidebarHeading>Sidebar</SidebarHeading>
+            </SidebarHeader>
           </Sidebar>
         }
-        right={<Main>{children}</Main>}
+        main={<Main>{children}</Main>}
       />
     </>
   )

@@ -1,27 +1,55 @@
-export const usersUrl = 'http://localhost:3001/users';
+export const usersUrl = 'http://localhost:3001/users'
 
-export const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+export const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-export const getData = (url: string) => {
-  return fetch(url).then((res) => res.json());
-};
+// export const getData = (url: string) => {
+//   return fetch(url).then((res) => res.json());
+// };
 
-export const postData = (url: string, data: { [key: string]: any }) => {
-  return fetch(url, {
+// export const postData = (url: string, data: { [key: string]: any }) => {
+//   return fetch(url, {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(data),
+//   }).then((res) => res.json());
+// };
+
+// export const putData = (url: string, data: { [key: string]: any }) => {
+//   return fetch(url, {
+//     method: 'PUT',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(data),
+//   }).then((res) => res.json());
+// };
+
+// export const deleteData = (url: string) => {
+//   return fetch(url, { method: 'DELETE' }).then((res) => res.json());
+// };
+
+export const getData = async (url: string) => {
+  const res = await fetch(url)
+  return await res.json()
+}
+
+export const postData = async (url: string, data: { [key: string]: any }) => {
+  const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
-  }).then((res) => res.json());
-};
+  })
+  return await res.json()
+}
 
-export const putData = (url: string, data: { [key: string]: any }) => {
-  return fetch(url, {
+export const putData = async (url: string, data: { [key: string]: any }) => {
+  const res = await fetch(url, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
-  }).then((res) => res.json());
-};
+  })
+  return await res.json()
+}
 
-export const deleteData = (url: string) => {
-  return fetch(url, { method: 'DELETE' }).then((res) => res.json());
-};
+export const deleteData = async (url: string) => {
+  const res = await fetch(url, { method: 'DELETE' })
+  return await res.json()
+}

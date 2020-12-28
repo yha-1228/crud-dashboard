@@ -1,3 +1,5 @@
+import { isWidthDown } from '@material-ui/core'
+
 type Props = {
   children?: React.ReactNode
   display?: 'block' | 'inline-block'
@@ -11,6 +13,9 @@ type Props = {
   marginLeft?: any
   marginTop?: any
   marginBottom?: any
+  width?: any
+  height?: any
+  backgroundColor?: any
 }
 
 export function Box({
@@ -26,6 +31,9 @@ export function Box({
   marginLeft,
   marginTop,
   marginBottom,
+  width,
+  height,
+  backgroundColor,
 }: Props) {
   return (
     <div
@@ -41,6 +49,9 @@ export function Box({
         marginLeft: marginLeft,
         marginTop: marginTop,
         marginBottom: marginBottom,
+        width: width,
+        height: height,
+        backgroundColor: backgroundColor,
       }}
     >
       {children}
