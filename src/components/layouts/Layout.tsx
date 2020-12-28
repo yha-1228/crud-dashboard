@@ -21,6 +21,12 @@ export function Layout({ title, children }: Props) {
             <SidebarHeader>
               <SidebarHeading>Sidebar</SidebarHeading>
             </SidebarHeader>
+            <ul>
+              <li>Users</li>
+              <li>Invoices</li>
+              <li>Configs</li>
+              <li>Site setting</li>
+            </ul>
           </Sidebar>
         }
         main={<Main>{children}</Main>}
