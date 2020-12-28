@@ -11,8 +11,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { LinkButton } from './shared/LinkButton'
-import { LinearProgress } from '@material-ui/core'
+import { CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
+import './UserList.css'
 
 const LIMIT = 10
 
@@ -67,12 +68,15 @@ export function UserList() {
   return (
     <>
       <div>
-        {!isPageLoaded && (
-          <MuiThemeProvider>
-            <LinearProgress color="primary" />
-          </MuiThemeProvider>
-        )}
-        <div className="flex justify-between items-center ">
+        <div className="UserList__linearProgressContainer">
+          {!isPageLoaded && (
+            <MuiThemeProvider>
+              <LinearProgress color="primary" />
+            </MuiThemeProvider>
+          )}
+        </div>
+
+        <div className="flex justify-between items-center">
           <h1>User List</h1>
           <LinkButton variant="primary" to="/users/create">
             <FontAwesomeIcon icon={faPlus} />
@@ -81,7 +85,11 @@ export function UserList() {
         </div>
 
         {!isLoaded ? (
-          <div>Loading...</div>
+          <div style={{ textAlign: 'center', paddingTop: 80 }}>
+            <MuiThemeProvider>
+              <CircularProgress />
+            </MuiThemeProvider>
+          </div>
         ) : (
           <div>
             <TableWrapper>
