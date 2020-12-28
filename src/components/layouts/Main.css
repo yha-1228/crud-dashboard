@@ -2,5 +2,4 @@
   flex: 1 1 auto;
   max-height: 100vh;
   overflow-y: scroll;
-  background-color: var(--color-gray-50);
 }

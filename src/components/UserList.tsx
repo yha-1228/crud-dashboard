@@ -75,13 +75,19 @@ export function UserList() {
         </Box>
 
         {!isLoaded ? (
-          <div className="UserList__circularProgressContainer">
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            paddingTop={100}
+            textAlign="center"
+          >
             <MuiThemeProvider>
               <CircularProgress />
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
               <span className="UserList__circularProgressLoadingText">Loading...</span>
             </MuiThemeProvider>
-          </div>
+          </Box>
         ) : (
           <div>
             <TableWrapper>
