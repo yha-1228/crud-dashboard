@@ -1,8 +1,8 @@
-import { isWidthDown } from '@material-ui/core'
-
 type Props = {
   children?: React.ReactNode
-  display?: 'block' | 'inline-block'
+  display?: 'block' | 'inline-block' | 'flex'
+  alignItems?: any
+  justifyContent?: any
   padding?: any
   paddingRight?: any
   paddingLeft?: any
@@ -21,6 +21,8 @@ type Props = {
 export function Box({
   children,
   display,
+  alignItems,
+  justifyContent,
   padding,
   paddingRight,
   paddingLeft,
@@ -39,6 +41,8 @@ export function Box({
     <div
       style={{
         display: display,
+        alignItems: alignItems,
+        justifyContent: justifyContent,
         padding: padding,
         paddingRight: paddingRight,
         paddingLeft: paddingLeft,

@@ -15,6 +15,7 @@ import { LinkButton } from './shared/LinkButton'
 import { CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import { User, Users } from '../types'
+import { Box } from './layouts/Box'
 
 const LIMIT = 10
 
@@ -62,7 +63,7 @@ export function UserList() {
 
   return (
     <>
-      <div>
+      <Box paddingRight={24} paddingLeft={24}>
         <div className="UserList__linearProgressContainer">
           {!isPageLoaded && (
             <MuiThemeProvider>
@@ -79,6 +80,15 @@ export function UserList() {
             &nbsp;&nbsp;Add
           </LinkButton>
         </div>
+
+        {/* <div className="UserList__UserTableTopNavgation">
+          <h1>Users</h1>
+
+          <LinkButton variant="primary" to="/users/create">
+            <FontAwesomeIcon icon={faPlus} />
+            &nbsp;&nbsp;Add
+          </LinkButton>
+        </div> */}
 
         {!isLoaded ? (
           <div className="UserList__circularProgressContainer">
@@ -160,7 +170,7 @@ export function UserList() {
             />
           </div>
         )}
-      </div>
+      </Box>
     </>
   )
 }
