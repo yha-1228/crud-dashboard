@@ -72,7 +72,8 @@ export function UserList() {
         </div>
 
         <div className="flex justify-between items-center">
-          <h1>User List</h1>
+          <h1>Users</h1>
+
           <LinkButton variant="primary" to="/users/create">
             <FontAwesomeIcon icon={faPlus} />
             &nbsp;&nbsp;Add
