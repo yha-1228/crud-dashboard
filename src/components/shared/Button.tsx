@@ -5,10 +5,9 @@ import './Button.css'
 type Props = ComponentPropsWithoutRef<'button'> & {
   size?: string
   variant?: string
-  href?: string
 }
 
-export function Button({ size, variant, href, ...other }: Props) {
+export function Button({ size, variant, ...other }: Props) {
   return (
     <button
       className={classnames('Button', size && `Button--${size}`, variant && `Button--${variant}`)}
