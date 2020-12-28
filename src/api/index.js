@@ -10,7 +10,7 @@ module.exports = () => {
       username: faker.internet.userName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
-      country: faker.address.counrtry(),
+      country: faker.address.country(),
     }
 
     db.users.push(item)

@@ -101,9 +101,6 @@ export function UserList() {
                       Email
                     </TableHeader>
                     <TableHeader align="left" scope="col">
-                      Password
-                    </TableHeader>
-                    <TableHeader align="left" scope="col">
                       Country
                     </TableHeader>
                     <TableHeader align="left" scope="col"></TableHeader>
@@ -117,7 +114,6 @@ export function UserList() {
                       <TableData>{user.id}</TableData>
                       <TableData>{user.username}</TableData>
                       <TableData>{user.email}</TableData>
-                      <TableData>{user.password}</TableData>
                       <TableData>{user.country}</TableData>
                       <TableData>
                         <LinkButton size="small" to={`/users/${user.id}`}>
