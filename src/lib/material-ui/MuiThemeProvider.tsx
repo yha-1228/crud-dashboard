@@ -1,5 +1,5 @@
 import React from 'react'
-import { createMuiTheme, rgbToHex, ThemeProvider } from '@material-ui/core'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 
 const theme = createMuiTheme({
   palette: {

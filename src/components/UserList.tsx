@@ -14,12 +14,9 @@ import { LinkButton } from './shared/LinkButton'
 import { CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import './UserList.css'
+import { User, Users } from '../types'
 
 const LIMIT = 10
-
-export type User = { id: number; username: string; email: string }
-
-export type Users = User[]
 
 export function UserList() {
   const [users, setUsers] = useState<Users>([])
