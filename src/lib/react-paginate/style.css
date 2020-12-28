@@ -3,30 +3,32 @@
 }
 
 .ReactPaginate__page {
-  text-align: center;
   display: inline-block;
-  cursor: pointer;
   padding-right: 6px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .ReactPaginate__page-link {
   display: block;
   width: 32px;
-  line-height: 32px;
-  border-radius: 9999px;
-  color: var(--color-gray-400);
   font-weight: bold;
-  transition: background-color 0.1s ease-out;
+  line-height: 32px;
+  color: var(--color-gray-400);
+  border-radius: 9999px;
   outline: none;
+  transition: background-color 0.1s ease-out;
 }
+
 .ReactPaginate__page-link:hover {
   background-color: var(--color-gray-200);
 }
 
 .ReactPaginate__page-link--active {
-  background-color: var(--color-primary);
   color: white;
+  background-color: var(--color-primary);
 }
+
 .ReactPaginate__page-link--active:hover {
   background-color: var(--color-primary-dark);
 }

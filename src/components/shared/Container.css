@@ -1,9 +1,9 @@
 .Container {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2rem;
   padding-right: 2rem;
+  padding-left: 2rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media (min-width: 640px) {
@@ -11,19 +11,21 @@
     max-width: 640px;
   }
 }
+
 @media (min-width: 768px) {
   .Container {
     max-width: 768px;
   }
 }
+
 @media (min-width: 1024px) {
   .Container {
     max-width: 1024px;
   }
 }
+
 @media (min-width: 1280px) {
   .Container {
-    /* max-width: 1100px; */
     max-width: 1280px;
   }
 }

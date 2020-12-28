@@ -24,6 +24,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "stylelint": "npx stylelint 'src/**/*.{css,less,sass,scss}'",
+    "stylelint:fix": "npx stylelint --fix 'src/**/*.{css,less,sass,scss}'",
     "mock": "npx json-server --watch src/api/index.js --port 3001",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -58,6 +60,11 @@
     "@types/react-helmet": "^6.1.0",
     "@types/react-paginate": "^6.2.1",
     "@types/react-router-dom": "^5.1.6",
-    "json-server": "^0.16.3"
+    "json-server": "^0.16.3",
+    "stylelint": "^13.8.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recess-order": "^2.3.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0"
   }
 }

@@ -1,10 +1,10 @@
 .UserList__linearProgressContainer {
   height: 4px;
-  margin-left: -32px;
   margin-right: -32px;
+  margin-left: -32px;
 }
 
 .UserList__circularProgressContainer {
-  text-align: center;
   padding-top: 120px;
+  text-align: center;
 }
