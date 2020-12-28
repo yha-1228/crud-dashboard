@@ -1,0 +1,4 @@
+.MainContentArea {
+  height: calc(100vh - 64px);
+  background-color: yellow;
+}

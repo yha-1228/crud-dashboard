@@ -17,6 +17,7 @@ import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import { User, Users } from '../types'
 import { Box } from './layouts/Box'
 import { MainHeading } from './shared/Headings'
+import { MainHeader } from './layouts/MainHeader'
 
 const LIMIT = 10
 
@@ -64,16 +65,21 @@ export function UserList() {
 
   return (
     <>
-      <Box paddingRight={32} paddingLeft={32}>
-        <Box display="flex" alignItems="center" justifyContent="space-between" height={64}>
-          <MainHeading>Users</MainHeading>
+      <MainHeader>
+        <MainHeading>Users</MainHeading>
 
-          <LinkButton variant="primary" to="/users/create">
-            <FontAwesomeIcon icon={faPlus} />
-            &nbsp;&nbsp;Add
-          </LinkButton>
-        </Box>
+        <LinkButton variant="primary" to="/users/create">
+          <FontAwesomeIcon icon={faPlus} />
+          &nbsp;&nbsp;Add
+        </LinkButton>
+      </MainHeader>
 
+      <Box
+        height={'100% - 64px'}
+        paddingRight={32}
+        paddingLeft={32}
+        backgroundColor="var(--color-gray-50)"
+      >
         {!isLoaded ? (
           <Box
             display="flex"
