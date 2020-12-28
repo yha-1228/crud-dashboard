@@ -4,6 +4,7 @@
   height: 64px;
   padding-right: 24px;
   padding-left: 24px;
+  background-color: var(--color-primary-light);
 }
 
 .MainHeader {
