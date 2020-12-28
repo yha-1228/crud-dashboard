@@ -1,6 +1,6 @@
 import React from 'react'
+import { MainHeader } from '../components/layouts/Headers'
 import { Layout } from '../components/layouts/Layout'
-import { MainHeader } from '../components/layouts/MainHeader'
 import { MainHeading } from '../components/shared/Headings'
 
 export function HomePage() {

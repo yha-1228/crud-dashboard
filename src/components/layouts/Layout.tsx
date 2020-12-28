@@ -1,12 +1,10 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Main } from './Main'
-import { Container } from './Container'
 import { Sidebar } from './Sidebar'
 import { TwoColumn } from './TwoColumn'
-import { Box } from './Box'
-import { SidebarHeader } from './SidebarHeader'
 import { SidebarHeading } from '../shared/Headings'
+import { SidebarHeader } from './Headers'
 
 type Props = { title: string; children: React.ReactNode }
 

@@ -1,25 +1,4 @@
-.UserList__linearProgressContainer {
-  height: 4px;
-  margin-right: -32px;
-  margin-left: -32px;
-}
-
-.UserList__UserTableTopNavgation {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 92px;
-}
-
-.UserList__circularProgressContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 120px;
-  text-align: center;
-}
-
 .UserList__circularProgressLoadingText {
-  font-size: 24px;
+  font-size: 20px;
   color: var(--color-primary);
 }

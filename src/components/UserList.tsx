@@ -17,8 +17,8 @@ import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import { User, Users } from '../types'
 import { Box } from './layouts/Box'
 import { MainHeading } from './shared/Headings'
-import { MainHeader } from './layouts/MainHeader'
 import { MainContentArea } from './layouts/MainContentArea'
+import { MainHeader } from './layouts/Headers'
 
 const LIMIT = 10
 
@@ -44,7 +44,7 @@ export function UserList() {
     setIsPageLoaded(false)
     getData(`${usersUrl}/?_start=${offset}&_limit=${limit}`).then((result) => {
       wait(700).then(() => {
-        setIsLoaded(true)
+        // setIsLoaded(true)
         setIsPageLoaded(true)
         setUsers(result)
       })
@@ -77,18 +77,14 @@ export function UserList() {
 
       <MainContentArea>
         {!isLoaded ? (
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            paddingTop={100}
-            textAlign="center"
-          >
-            <MuiThemeProvider>
-              <CircularProgress />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
-              <span className="UserList__circularProgressLoadingText">Loading...</span>
-            </MuiThemeProvider>
+          <Box paddingTop={100} textAlign="center">
+            <div>
+              <MuiThemeProvider>
+                <CircularProgress />
+              </MuiThemeProvider>
+
+              <p className="UserList__circularProgressLoadingText">Loading...</p>
+            </div>
           </Box>
         ) : (
           <div>
