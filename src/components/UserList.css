@@ -20,7 +20,6 @@
 }
 
 .UserList__circularProgressLoadingText {
-  font-size: 32px;
-  font-weight: bold;
-  color: var(--color-gray-400);
+  font-size: 24px;
+  color: var(--color-primary);
 }
