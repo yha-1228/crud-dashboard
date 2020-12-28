@@ -40,10 +40,8 @@ export function UserList() {
     setIsPageLoaded(false)
     getData(`${usersUrl}/?_start=${offset}&_limit=${limit}`).then((result) => {
       wait(700).then(() => {
-        // setIsLoaded(true)
-        setIsLoaded(false)
-        // setIsPageLoaded(true)
-        setIsPageLoaded(false)
+        setIsLoaded(true)
+        setIsPageLoaded(true)
         setUsers(result)
       })
     })
@@ -83,13 +81,11 @@ export function UserList() {
 
         {!isLoaded ? (
           <div className="UserList__circularProgressContainer">
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <MuiThemeProvider>
-                <CircularProgress />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
-                <span className="UserList__circularProgressLoadingText">Loading...</span>
-              </MuiThemeProvider>
-            </div>
+            <MuiThemeProvider>
+              <CircularProgress />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
+              <span className="UserList__circularProgressLoadingText">Loading...</span>
+            </MuiThemeProvider>
           </div>
         ) : (
           <div>
