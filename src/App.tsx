@@ -12,6 +12,9 @@ import { HomePage } from './pages/HomePage'
 // fa
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import { InvoicesPage } from './pages/InvoicesPage'
+import { ConfigsPage } from './pages/ConfigsPage'
+import { SiteSettingPage } from './pages/SiteSettingPage'
 config.autoAddCss = false
 
 export default function App() {
@@ -33,15 +36,15 @@ export default function App() {
         </Route>
 
         <Route path="/invoices" exact>
-          This page is not completed.
+          <InvoicesPage />
         </Route>
 
         <Route path="/configs" exact>
-          This page is not completed.
+          <ConfigsPage />
         </Route>
 
         <Route path="/site-setting" exact>
-          This page is not completed.
+          <SiteSettingPage />
         </Route>
       </Switch>
     </Router>
