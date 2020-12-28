@@ -3,11 +3,23 @@ import { useHistory } from 'react-router-dom'
 import { getData, putData, usersUrl } from '../constants'
 import { UserTableForm } from './UserTableForm'
 
-type Values = { id: string | number; username: string; email: string }
+type Values = {
+  id: string | number
+  username: string
+  email: string
+  password: string
+  country: string
+}
 
 export function UserEdit({ id }: { id: string }) {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
-  const [values, setValues] = useState<Values>({ id: '', username: '', email: '' })
+  const [values, setValues] = useState<Values>({
+    id: '',
+    username: '',
+    email: '',
+    password: '',
+    country: '',
+  })
   const history = useHistory()
 
   const handleChange = (event: React.ChangeEvent<any>) => {
@@ -29,7 +41,13 @@ export function UserEdit({ id }: { id: string }) {
 
   useEffect(() => {
     getData(`${usersUrl}/${id}`).then((result) => {
-      setValues({ id: Number(result.id), username: result.username, email: result.email })
+      setValues({
+        id: Number(result.id),
+        username: result.username,
+        email: result.email,
+        password: result.password,
+        country: result.country,
+      })
     })
   }, [id])
 

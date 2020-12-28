@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import '../lib/react-paginate/style.css'
+import './UserList.css'
 import { Button } from './shared/Button'
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Tables'
 import { deleteData, getData, usersUrl, wait } from '../constants'
 import ReactPaginate from 'react-paginate'
-import '../lib/react-paginate/style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +14,6 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { LinkButton } from './shared/LinkButton'
 import { CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
-import './UserList.css'
 import { User, Users } from '../types'
 
 const LIMIT = 10
@@ -100,6 +100,12 @@ export function UserList() {
                     <TableHeader align="left" scope="col">
                       Email
                     </TableHeader>
+                    <TableHeader align="left" scope="col">
+                      Password
+                    </TableHeader>
+                    <TableHeader align="left" scope="col">
+                      Country
+                    </TableHeader>
                     <TableHeader align="left" scope="col"></TableHeader>
                     <TableHeader align="left" scope="col"></TableHeader>
                   </tr>
@@ -111,6 +117,8 @@ export function UserList() {
                       <TableData>{user.id}</TableData>
                       <TableData>{user.username}</TableData>
                       <TableData>{user.email}</TableData>
+                      <TableData>{user.password}</TableData>
+                      <TableData>{user.country}</TableData>
                       <TableData>
                         <LinkButton size="small" to={`/users/${user.id}`}>
                           <FontAwesomeIcon icon={faEdit} />

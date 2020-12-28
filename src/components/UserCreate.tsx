@@ -3,11 +3,21 @@ import { useHistory } from 'react-router-dom'
 import { postData, usersUrl } from '../constants'
 import { UserTableForm } from './UserTableForm'
 
-type Values = { username: string; email: string }
+type Values = {
+  username: string
+  email: string
+  password: string
+  country: string
+}
 
 export function UserCreate() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
-  const [values, setValues] = useState<Values>({ username: '', email: '' })
+  const [values, setValues] = useState<Values>({
+    username: '',
+    email: '',
+    password: '',
+    country: '',
+  })
   const history = useHistory()
 
   const handleChange = (event: React.ChangeEvent<any>) => {
@@ -29,7 +39,7 @@ export function UserCreate() {
 
   return (
     <>
-      <h1>Create</h1>
+      <h1>Add</h1>
       <UserTableForm
         onSubmit={handleSubmit}
         onChange={handleChange}

@@ -7,7 +7,7 @@ import './UserTableForm.css'
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   onChange: (event: React.ChangeEvent<any>) => void
-  values: { username: string; email: string }
+  values: { username: string; email: string; password: string; country: string }
   isSubmitting: boolean
   submitButtonText: string
 }
@@ -55,6 +55,46 @@ export function UserTableForm({
               id="email"
               onChange={onChange}
               value={values.email}
+              width={250}
+            />
+          }
+        />
+      </div>
+
+      <div className="UserTableForm__row">
+        <FiledBlock
+          label={
+            <label htmlFor="password">
+              <h3>Email</h3>
+            </label>
+          }
+          input={
+            <Input
+              type="password"
+              name="password"
+              id="password"
+              onChange={onChange}
+              value={values.password}
+              width={250}
+            />
+          }
+        />
+      </div>
+
+      <div className="UserTableForm__row">
+        <FiledBlock
+          label={
+            <label htmlFor="country">
+              <h3>Email</h3>
+            </label>
+          }
+          input={
+            <Input
+              type="text"
+              name="country"
+              id="country"
+              onChange={onChange}
+              value={values.country}
               width={250}
             />
           }
