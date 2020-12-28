@@ -1,3 +1,8 @@
-export function TwoColumn({ children }: { children: React.ReactNode }) {
-  return <div className="flex h-screen">{children}</div>;
+export function TwoColumn({ left, right }: { left: React.ReactNode; right: React.ReactNode }) {
+  return (
+    <div className="flex h-screen">
+      {left}
+      {right}
+    </div>
+  )
 }

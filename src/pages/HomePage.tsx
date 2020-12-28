@@ -1,171 +1,172 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container } from '../components/shared/Container'
+import { Container } from '../components/layouts/Container'
 import { Layout } from '../components/layouts/Layout'
+import { HeadingLv1 } from '../components/shared/Headings'
 
 export function HomePage() {
   return (
     <Layout title="Home">
       <Container>
-        <h1>Home</h1>
+        <HeadingLv1>Home</HeadingLv1>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/users">ユーザー一覧</Link>
+          <Link to="/users">Users</Link>
         </div>
       </Container>
     </Layout>

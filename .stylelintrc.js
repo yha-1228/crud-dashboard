@@ -5,7 +5,7 @@ module.exports = {
     'stylelint-config-prettier',
   ],
   plugins: ['stylelint-order'],
-  ignoreFiles: ['**/node_modules/**', '**/normalize.css'],
+  ignoreFiles: ['**/node_modules/**', '**/normalize.css', 'src/**/*.tsx'],
   rules: {
     'string-quotes': 'single',
   },

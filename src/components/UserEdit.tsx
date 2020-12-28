@@ -64,7 +64,7 @@ export function UserEdit({ id }: { id: string }) {
         onChange={handleChange}
         values={values}
         isSubmitting={isSubmitting}
-        submitButtonText="更新"
+        submitButtonText="Update"
       />
     </>
   )

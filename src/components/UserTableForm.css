@@ -1,3 +1,12 @@
 .UserTableForm__row {
   margin-bottom: 24px;
 }
+
+.UserTableButton__row {
+  margin-bottom: 24px;
+}
+
+.UserTableButton__wrapper {
+  display: inline-block;
+  padding-right: 16px;
+}

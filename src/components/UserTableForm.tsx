@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from './shared/Button'
 import { FiledBlock } from './shared/FiledBlock'
 import { Input } from './shared/Input'
+import { LinkButton } from './shared/LinkButton'
 import './UserTableForm.css'
 
 type Props = {
@@ -101,10 +102,18 @@ export function UserTableForm({
         />
       </div>
 
-      <div>
-        <Button variant="primary" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Loading...' : submitButtonText}
-        </Button>
+      <div className="UserTableButton__row">
+        <div className="UserTableButton__wrapper">
+          <Button variant="primary" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Loading...' : submitButtonText}
+          </Button>
+        </div>
+
+        <div className="UserTableButton__wrapper">
+          <LinkButton to="/users" variant="secondary">
+            Cancel
+          </LinkButton>
+        </div>
       </div>
     </form>
   )
