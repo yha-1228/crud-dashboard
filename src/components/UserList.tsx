@@ -15,6 +15,7 @@ import { LinkButton } from './shared/LinkButton'
 import { CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import { User, Users } from '../types'
+import { HeadingLv1 } from './shared/Headings'
 
 const LIMIT = 10
 
@@ -72,7 +73,7 @@ export function UserList() {
         </div>
 
         <div className="UserList__UserTableTopNavgation">
-          <h1>Users</h1>
+          <HeadingLv1>Users</HeadingLv1>
 
           <LinkButton variant="primary" to="/users/create">
             <FontAwesomeIcon icon={faPlus} />
