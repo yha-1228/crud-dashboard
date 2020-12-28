@@ -4,7 +4,6 @@ import { getData, putData, usersUrl } from '../constants'
 import { UserTableForm } from './UserTableForm'
 
 type Values = {
-  // id: string | number
   username: string
   email: string
   password: string
@@ -14,7 +13,6 @@ type Values = {
 export function UserEdit({ id }: { id: string }) {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [values, setValues] = useState<Values>({
-    // id: '',
     username: '',
     email: '',
     password: '',
@@ -39,18 +37,17 @@ export function UserEdit({ id }: { id: string }) {
 
     console.log(data)
 
-    // setIsSubmitting(true)
+    setIsSubmitting(true)
 
-    // putData(`${usersUrl}/${id}`, data).then(() => {
-    //   setIsSubmitting(false)
-    //   history.push('/users')
-    // })
+    putData(`${usersUrl}/${id}`, data).then(() => {
+      setIsSubmitting(false)
+      history.push('/users')
+    })
   }
 
   useEffect(() => {
     getData(`${usersUrl}/${id}`).then((result) => {
       setValues({
-        // id: Number(result.id),
         username: result.username,
         email: result.email,
         password: result.password,
