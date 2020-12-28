@@ -41,15 +41,13 @@ export function UserList() {
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     setIsPageLoaded(false)
-    getData(`${usersUrl}/?_sort=username&_order=asc&_start=${offset}&_limit=${limit}`).then(
-      (result) => {
-        wait(700).then(() => {
-          setIsLoaded(true)
-          setIsPageLoaded(true)
-          setUsers(result)
-        })
-      }
-    )
+    getData(`${usersUrl}/?_start=${offset}&_limit=${limit}`).then((result) => {
+      wait(700).then(() => {
+        setIsLoaded(true)
+        setIsPageLoaded(true)
+        setUsers(result)
+      })
+    })
   }
 
   const handlePageClick = (data: any) => {
@@ -85,7 +83,7 @@ export function UserList() {
         </div>
 
         {!isLoaded ? (
-          <div style={{ textAlign: 'center', paddingTop: 80 }}>
+          <div className="UserList__circularProgressContainer">
             <MuiThemeProvider>
               <CircularProgress />
             </MuiThemeProvider>
