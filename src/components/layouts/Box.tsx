@@ -1,6 +1,7 @@
 type Props = {
   children?: React.ReactNode
   display?: 'block' | 'inline-block' | 'flex'
+  textAlign?: 'left' | 'center' | 'right'
   alignItems?: any
   justifyContent?: any
   padding?: any
@@ -21,6 +22,7 @@ type Props = {
 export function Box({
   children,
   display,
+  textAlign,
   alignItems,
   justifyContent,
   padding,
@@ -41,6 +43,7 @@ export function Box({
     <div
       style={{
         display: display,
+        textAlign: textAlign,
         alignItems: alignItems,
         justifyContent: justifyContent,
         padding: padding,

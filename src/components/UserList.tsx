@@ -16,6 +16,7 @@ import { CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import { User, Users } from '../types'
 import { Box } from './layouts/Box'
+import { MainHeading } from './shared/Headings'
 
 const LIMIT = 10
 
@@ -63,32 +64,15 @@ export function UserList() {
 
   return (
     <>
-      <Box paddingRight={24} paddingLeft={24}>
-        <div className="UserList__linearProgressContainer">
-          {!isPageLoaded && (
-            <MuiThemeProvider>
-              <LinearProgress color="primary" />
-            </MuiThemeProvider>
-          )}
-        </div>
-
-        <div className="UserList__UserTableTopNavgation">
-          <h1>Users</h1>
+      <Box paddingRight={32} paddingLeft={32}>
+        <Box display="flex" alignItems="center" justifyContent="space-between" height={64}>
+          <MainHeading>Users</MainHeading>
 
           <LinkButton variant="primary" to="/users/create">
             <FontAwesomeIcon icon={faPlus} />
             &nbsp;&nbsp;Add
           </LinkButton>
-        </div>
-
-        {/* <div className="UserList__UserTableTopNavgation">
-          <h1>Users</h1>
-
-          <LinkButton variant="primary" to="/users/create">
-            <FontAwesomeIcon icon={faPlus} />
-            &nbsp;&nbsp;Add
-          </LinkButton>
-        </div> */}
+        </Box>
 
         {!isLoaded ? (
           <div className="UserList__circularProgressContainer">
@@ -101,6 +85,14 @@ export function UserList() {
         ) : (
           <div>
             <TableWrapper>
+              <Box height={4}>
+                {!isPageLoaded && (
+                  <MuiThemeProvider>
+                    <LinearProgress color="primary" />
+                  </MuiThemeProvider>
+                )}
+              </Box>
+
               <Table>
                 <TableHead>
                   <tr>
