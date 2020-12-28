@@ -147,23 +147,34 @@ export function UserList() {
               </Table>
             </TableWrapper>
 
-            <ReactPaginate
-              previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
-              nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
-              pageCount={getPageCount(totalCount, LIMIT)}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
-              onPageChange={handlePageClick}
-              containerClassName="ReactPaginate__container"
-              pageClassName="ReactPaginate__page"
-              pageLinkClassName="ReactPaginate__page-link"
-              previousClassName="ReactPaginate__page"
-              previousLinkClassName="ReactPaginate__page-link"
-              nextClassName="ReactPaginate__page"
-              nextLinkClassName="ReactPaginate__page-link"
-              breakClassName="ReactPaginate__page"
-              activeLinkClassName="ReactPaginate__page-link--active"
-            />
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+              <Box>
+                <ReactPaginate
+                  previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
+                  nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
+                  pageCount={getPageCount(totalCount, LIMIT)}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={handlePageClick}
+                  containerClassName="ReactPaginate__container"
+                  pageClassName="ReactPaginate__page"
+                  pageLinkClassName="ReactPaginate__page-link"
+                  previousClassName="ReactPaginate__page"
+                  previousLinkClassName="ReactPaginate__page-link"
+                  nextClassName="ReactPaginate__page"
+                  nextLinkClassName="ReactPaginate__page-link"
+                  breakClassName="ReactPaginate__page"
+                  breakLinkClassName="ReactPaginate__page-link"
+                  activeLinkClassName="ReactPaginate__page-link--active"
+                />
+              </Box>
+
+              <Box>
+                <span className="UserList__rows-count-notification-text">
+                  {offset + 1} - {offset + LIMIT} / {totalCount}
+                </span>
+              </Box>
+            </Box>
           </div>
         )}
       </MainContentArea>
