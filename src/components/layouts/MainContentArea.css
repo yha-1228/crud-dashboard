@@ -1,6 +1,6 @@
 .MainContentArea {
   height: calc(100vh - 64px);
-  padding-top: 24px;
+  padding-top: calc(24px + 64px);
   padding-right: 32px;
   padding-left: 32px;
   background-color: var(--color-gray-50);
