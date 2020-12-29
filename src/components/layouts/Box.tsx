@@ -17,6 +17,7 @@ type Props = {
   width?: any
   height?: any
   backgroundColor?: any
+  position?: any
 }
 
 export function Box({
@@ -38,6 +39,7 @@ export function Box({
   width,
   height,
   backgroundColor,
+  position,
 }: Props) {
   return (
     <div
@@ -59,6 +61,7 @@ export function Box({
         width: width,
         height: height,
         backgroundColor: backgroundColor,
+        position: position,
       }}
     >
       {children}

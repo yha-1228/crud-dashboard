@@ -4,7 +4,7 @@ import { UserList } from '../components/UserList'
 
 export function UserListPage() {
   return (
-    <Layout title="Home">
+    <Layout title="Users">
       <UserList />
     </Layout>
   )
