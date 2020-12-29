@@ -8,9 +8,11 @@
 }
 
 .MainHeader {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: calc(100% - 240px);
   height: 64px;
   padding-right: 32px;
   padding-left: 32px;
