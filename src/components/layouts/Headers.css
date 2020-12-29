@@ -1,6 +1,8 @@
 .SidebarHeader {
+  position: fixed;
   display: flex;
   align-items: center;
+  width: 240px;
   height: 64px;
   padding-right: 24px;
   padding-left: 24px;
