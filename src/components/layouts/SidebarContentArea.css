@@ -1,6 +1,7 @@
 .SidebarContentArea {
-  height: 100vh;
-  padding-top: calc(24px + 64px);
+  height: calc(100vh - 64px);
+  padding-top: 24px;
   padding-right: 24px;
   padding-left: 24px;
+  overflow-y: scroll;
 }
