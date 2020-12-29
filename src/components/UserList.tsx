@@ -82,7 +82,6 @@ export function UserList() {
               <MuiThemeProvider>
                 <CircularProgress />
               </MuiThemeProvider>
-
               <p className="UserList__circularProgressLoadingText">Loading...</p>
             </div>
           </Box>

@@ -1,6 +1,6 @@
 .UserList__circularProgressLoadingText {
   font-size: 20px;
-  color: var(--color-primary);
+  color: var(--color-gray-500);
 }
 
 .UserList__rows-count-notification-text {
