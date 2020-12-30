@@ -1,9 +1,10 @@
+import { Box } from '@material-ui/core'
 import React from 'react'
 import { Button } from './shared/Button'
 import { FiledBlock } from './shared/FiledBlock'
 import { Input } from './shared/Input'
 import { LinkButton } from './shared/LinkButton'
-import './UserTableForm.css'
+import './UserCreateForm.css'
 
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
@@ -13,7 +14,7 @@ type Props = {
   submitButtonText: string
 }
 
-export function UserTableForm({
+export function UserCreateForm({
   onSubmit,
   onChange,
   values,
@@ -22,7 +23,7 @@ export function UserTableForm({
 }: Props) {
   return (
     <form onSubmit={onSubmit} noValidate>
-      <div className="UserTableForm__row">
+      <Box mb="24px">
         <FiledBlock
           label={
             <label htmlFor="username">
@@ -40,9 +41,9 @@ export function UserTableForm({
             />
           }
         />
-      </div>
+      </Box>
 
-      <div className="UserTableForm__row">
+      <Box mb="24px">
         <FiledBlock
           label={
             <label htmlFor="email">
@@ -60,9 +61,9 @@ export function UserTableForm({
             />
           }
         />
-      </div>
+      </Box>
 
-      <div className="UserTableForm__row">
+      <Box mb="24px">
         <FiledBlock
           label={
             <label htmlFor="password">
@@ -80,9 +81,9 @@ export function UserTableForm({
             />
           }
         />
-      </div>
+      </Box>
 
-      <div className="UserTableForm__row">
+      <Box mb="24px">
         <FiledBlock
           label={
             <label htmlFor="country">
@@ -100,21 +101,21 @@ export function UserTableForm({
             />
           }
         />
-      </div>
+      </Box>
 
-      <div className="UserTableButton__row">
-        <div className="UserTableButton__wrapper">
+      <Box mb="24px">
+        <Box display="inline-block" pr="16px">
           <Button variant="primary" type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Loading...' : submitButtonText}
           </Button>
-        </div>
+        </Box>
 
-        <div className="UserTableButton__wrapper">
+        <Box display="inline-block" pr="16px">
           <LinkButton to="/users" variant="secondary">
             Cancel
           </LinkButton>
-        </div>
-      </div>
+        </Box>
+      </Box>
     </form>
   )
 }

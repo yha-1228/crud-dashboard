@@ -1,9 +1,9 @@
 import { ComponentPropsWithoutRef } from 'react'
 import './Headings.css'
 
-type Props = ComponentPropsWithoutRef<'h1'> & { children: React.ReactNode }
+type MainHeadingProps = ComponentPropsWithoutRef<'h1'> & { children: React.ReactNode }
 
-export function MainHeading({ children, ...other }: Props) {
+export function MainHeading({ children, ...other }: MainHeadingProps) {
   return (
     <h1 className="MainHeading" {...other}>
       {children}
@@ -11,7 +11,9 @@ export function MainHeading({ children, ...other }: Props) {
   )
 }
 
-export function SidebarHeading({ children, ...other }: Props) {
+type SidebarHeadingProps = ComponentPropsWithoutRef<'h2'> & { children: React.ReactNode }
+
+export function SidebarHeading({ children, ...other }: SidebarHeadingProps) {
   return (
     <h2 className="SidebarHeading" {...other}>
       {children}

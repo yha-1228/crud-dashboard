@@ -4,7 +4,7 @@ import { postData, usersUrl } from '../constants'
 import { MainHeader } from './layouts/Headers'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeading } from './shared/Headings'
-import { UserTableForm } from './UserTableForm'
+import { UserCreateForm } from './UserCreateForm'
 
 type Values = {
   username: string
@@ -47,7 +47,7 @@ export function UserCreate() {
       </MainHeader>
 
       <MainContentArea>
-        <UserTableForm
+        <UserCreateForm
           onSubmit={handleSubmit}
           onChange={handleChange}
           values={values}
