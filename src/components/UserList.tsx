@@ -12,10 +12,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { LinkButton } from './shared/LinkButton'
-import { CircularProgress, LinearProgress } from '@material-ui/core'
+import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import { User, Users } from '../types'
-import { Box } from './layouts/Box'
 import { MainHeading } from './shared/Headings'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeader } from './layouts/Headers'
@@ -77,7 +76,7 @@ export function UserList() {
 
       <MainContentArea>
         {!isLoaded ? (
-          <Box paddingTop={100} textAlign="center">
+          <Box pt={6} textAlign="center">
             <div>
               <MuiThemeProvider>
                 <CircularProgress />
@@ -87,7 +86,7 @@ export function UserList() {
           </Box>
         ) : (
           <div>
-            <Box marginBottom={24}>
+            <Box marginBottom="24px">
               <TableWrapper>
                 <Box height={4}>
                   {!isPageLoaded && (
@@ -149,7 +148,7 @@ export function UserList() {
             </Box>
 
             <Box display="flex" justifyContent="space-between" alignItems="center">
-              <Box>
+              <div>
                 <ReactPaginate
                   previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                   nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
@@ -168,13 +167,13 @@ export function UserList() {
                   breakLinkClassName="ReactPaginate__page-link"
                   activeLinkClassName="ReactPaginate__page-link--active"
                 />
-              </Box>
+              </div>
 
-              <Box>
+              <div>
                 <span className="UserList__rows-count-notification-text">
                   {offset + 1} - {offset + LIMIT} / {totalCount}
                 </span>
-              </Box>
+              </div>
             </Box>
           </div>
         )}
