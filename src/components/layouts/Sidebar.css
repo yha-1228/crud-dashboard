@@ -1,7 +1,0 @@
-.Sidebar {
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: 240px;
-  height: 100vh;
-  background-color: var(--color-primary);
-}
