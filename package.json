@@ -40,14 +40,18 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "> 1% in JP",
+      "last 2 versions",
+      "ie >= 11",
+      "ios_saf >= 8",
+      "Android >= 4.4"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "> 1% in JP",
+      "last 2 versions",
+      "ie >= 11",
+      "ios_saf >= 8",
+      "Android >= 4.4"
     ]
   },
   "devDependencies": {
