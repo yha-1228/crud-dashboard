@@ -30,10 +30,9 @@ export function UserCreate() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const data = { username: values.username, email: values.email }
+    const data = { ...values }
 
     setIsSubmitting(true)
-
     postData(usersUrl, data).then(() => {
       setIsSubmitting(false)
       history.push('/users')
