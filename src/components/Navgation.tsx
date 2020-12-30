@@ -3,13 +3,19 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './Navgation.css'
 
-// const testArray = [...Array(50)].map((_, i) => i)
+function NavItem({ children }: { children: React.ReactNode }) {
+  return (
+    <Box component="li" mr="-24px" ml="-24px" lineHeight="40px">
+      {children}
+    </Box>
+  )
+}
 
 export function Navgation() {
   return (
     <nav>
       <ul>
-        <li className="Navgation__item">
+        <NavItem>
           <NavLink
             className="Navgation__link"
             activeClassName="Navgation__link--active"
@@ -18,9 +24,9 @@ export function Navgation() {
           >
             Home
           </NavLink>
-        </li>
+        </NavItem>
 
-        <li className="Navgation__item">
+        <NavItem>
           <NavLink
             className="Navgation__link"
             activeClassName="Navgation__link--active"
@@ -28,9 +34,9 @@ export function Navgation() {
           >
             Users
           </NavLink>
-        </li>
+        </NavItem>
 
-        <li className="Navgation__item">
+        <NavItem>
           <NavLink
             className="Navgation__link"
             activeClassName="Navgation__link--active"
@@ -39,9 +45,9 @@ export function Navgation() {
           >
             Invoices
           </NavLink>
-        </li>
+        </NavItem>
 
-        <li className="Navgation__item">
+        <NavItem>
           <NavLink
             className="Navgation__link"
             activeClassName="Navgation__link--active"
@@ -50,9 +56,9 @@ export function Navgation() {
           >
             Configs
           </NavLink>
-        </li>
+        </NavItem>
 
-        <li className="Navgation__item">
+        <NavItem>
           <NavLink
             className="Navgation__link"
             activeClassName="Navgation__link--active"
@@ -61,21 +67,7 @@ export function Navgation() {
           >
             Site setting
           </NavLink>
-        </li>
-
-        {/* test */}
-        {/* {testArray.map((_, i) => (
-          <li className="Navgation__item" key={i}>
-            <NavLink
-              className="Navgation__link"
-              activeClassName="Navgation__link--active"
-              to="/site-setting"
-              exact
-            >
-              Dummy item {i}
-            </NavLink>
-          </li>
-        ))} */}
+        </NavItem>
       </ul>
     </nav>
   )
