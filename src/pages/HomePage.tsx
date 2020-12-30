@@ -11,7 +11,13 @@ export function HomePage() {
         <MainHeading>Home</MainHeading>
       </MainHeader>
 
-      <MainContentArea>Home page</MainContentArea>
+      <MainContentArea>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quas minima ad mollitia
+          odio quam excepturi minus dolores repudiandae eius, sint porro non autem iure dicta
+          praesentium recusandae vero. Beatae?
+        </p>
+      </MainContentArea>
     </Layout>
   )
 }
