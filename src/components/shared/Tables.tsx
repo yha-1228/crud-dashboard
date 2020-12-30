@@ -1,8 +1,19 @@
+import { Box } from '@material-ui/core'
 import classnames from 'classnames'
+import React from 'react'
 import './Tables.css'
 
 export function TableWrapper({ children }: { children: React.ReactNode }) {
-  return <div className="TableWrapper">{children}</div>
+  return (
+    <Box
+      overflow="hidden"
+      bgcolor="white"
+      border="1px solid var(--color-gray-200)"
+      borderRadius="6px"
+    >
+      {children}
+    </Box>
+  )
 }
 
 export function Table({ ...other }: JSX.IntrinsicElements['table']) {
