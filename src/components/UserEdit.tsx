@@ -4,7 +4,7 @@ import { getData, putData, usersUrl } from '../constants'
 import { MainHeader } from './layouts/Headers'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeading } from './shared/Headings'
-import { UserCreateForm } from './UserCreateForm'
+import { UserEditForm } from './UserEditForm'
 
 type Values = {
   username: string
@@ -48,6 +48,10 @@ export function UserEdit({ id }: { id: string }) {
     })
   }
 
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    console.log('object')
+  }
+
   useEffect(() => {
     getData(`${usersUrl}/${id}`).then((result) => {
       setValues({
@@ -66,12 +70,15 @@ export function UserEdit({ id }: { id: string }) {
       </MainHeader>
 
       <MainContentArea>
-        <UserCreateForm
+        <UserEditForm
           onSubmit={handleSubmit}
           onChange={handleChange}
           values={values}
           isSubmitting={isSubmitting}
           submitButtonText="Update"
+          isDeleteing={false}
+          deleteButtonText="Delete"
+          onDeleteClick={handleDelete}
         />
       </MainContentArea>
     </>

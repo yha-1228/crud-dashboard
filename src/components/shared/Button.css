@@ -40,3 +40,12 @@
   color: var(--color-primary-dark);
   background-color: var(--color-primary-lighter);
 }
+
+.Button--warning {
+  color: white;
+  background-color: var(--color-warning);
+}
+
+.Button--warning:hover {
+  background-color: var(--color-warning-dark);
+}
