@@ -1,9 +1,33 @@
-import './Headers.css'
+import React from 'react'
+import { Box } from '@material-ui/core'
 
 export function SidebarHeader({ children }: { children: React.ReactNode }) {
-  return <div className="SidebarHeader">{children}</div>
+  return (
+    <Box
+      display="flex"
+      alignItems="center"
+      height="64px"
+      pr="24px"
+      pl="24px"
+      bgcolor="var(--color-primary-light)"
+    >
+      {children}
+    </Box>
+  )
 }
 
 export function MainHeader({ children }: { children: React.ReactNode }) {
-  return <div className="MainHeader">{children}</div>
+  return (
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+      height="64px"
+      pr="32px"
+      pl="32px"
+      bgcolor="white"
+    >
+      {children}
+    </Box>
+  )
 }
