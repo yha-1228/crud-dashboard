@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { getData, putData, usersUrl } from '../constants'
+import { deleteData, getData, putData, usersUrl, wait } from '../constants'
 import { MainHeader } from './layouts/Headers'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeading } from './shared/Headings'
@@ -15,6 +15,7 @@ type Values = {
 
 export function UserEdit({ id }: { id: string }) {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const [isDeleteing, setIsDeleteing] = useState<boolean>(false)
   const [values, setValues] = useState<Values>({
     username: '',
     email: '',
@@ -48,8 +49,15 @@ export function UserEdit({ id }: { id: string }) {
     })
   }
 
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log('object')
+  const handleDelete = () => {
+    const confirm = window.confirm('Delete user?')
+    if (!confirm) return
+
+    setIsDeleteing(true)
+    deleteData(`${usersUrl}/${id}`).then(() => {
+      setIsDeleteing(false)
+      history.push('/users')
+    })
   }
 
   useEffect(() => {
@@ -76,7 +84,7 @@ export function UserEdit({ id }: { id: string }) {
           values={values}
           isSubmitting={isSubmitting}
           submitButtonText="Update"
-          isDeleteing={false}
+          isDeleteing={isDeleteing}
           deleteButtonText="Delete"
           onDeleteClick={handleDelete}
         />
