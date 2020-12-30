@@ -10,6 +10,14 @@ import { Box } from '@material-ui/core'
 
 type Props = { title: string; children: React.ReactNode }
 
+function TwoColumnWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <Box display="flex" height="100vh">
+      {children}
+    </Box>
+  )
+}
+
 export function Layout({ title, children }: Props) {
   return (
     <>
@@ -17,7 +25,7 @@ export function Layout({ title, children }: Props) {
         <title>{title}</title>
       </Helmet>
 
-      <Box display="flex" height="100vh">
+      <TwoColumnWrapper>
         <Sidebar>
           <SidebarHeader>
             <SidebarHeading>Sample App</SidebarHeading>
@@ -29,7 +37,7 @@ export function Layout({ title, children }: Props) {
         </Sidebar>
 
         <Main>{children}</Main>
-      </Box>
+      </TwoColumnWrapper>
     </>
   )
 }
