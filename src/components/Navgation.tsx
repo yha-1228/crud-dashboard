@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './Navgation.css'
 
-const testArray = [...Array(50)].map((_, i) => i)
+// const testArray = [...Array(50)].map((_, i) => i)
 
 export function Navgation() {
   return (
@@ -12,11 +12,23 @@ export function Navgation() {
           <NavLink
             className="Navgation__link"
             activeClassName="Navgation__link--active"
+            to="/"
+            exact
+          >
+            Home
+          </NavLink>
+        </li>
+
+        <li className="Navgation__item">
+          <NavLink
+            className="Navgation__link"
+            activeClassName="Navgation__link--active"
             to="/users"
           >
             Users
           </NavLink>
         </li>
+
         <li className="Navgation__item">
           <NavLink
             className="Navgation__link"
@@ -27,6 +39,7 @@ export function Navgation() {
             Invoices
           </NavLink>
         </li>
+
         <li className="Navgation__item">
           <NavLink
             className="Navgation__link"
@@ -37,6 +50,7 @@ export function Navgation() {
             Configs
           </NavLink>
         </li>
+
         <li className="Navgation__item">
           <NavLink
             className="Navgation__link"
