@@ -31,13 +31,7 @@ export function UserEdit({ id }: { id: string }) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const data = {
-      id: Number(id),
-      username: values.username,
-      password: values.password,
-      email: values.email,
-      country: values.country,
-    }
+    const data = { id: Number(id), ...values }
 
     setIsSubmitting(true)
     putData(`${usersUrl}/${id}`, data).then(() => {
