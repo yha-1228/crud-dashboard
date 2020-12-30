@@ -43,7 +43,7 @@ export function UserList() {
     setIsPageLoaded(false)
     getData(`${usersUrl}/?_start=${offset}&_limit=${limit}`).then((result) => {
       wait(1400).then(() => {
-        setIsLoaded(true)
+        // setIsLoaded(true)
         setIsPageLoaded(true)
         setUsers(result)
       })
@@ -79,7 +79,7 @@ export function UserList() {
           <Box pt={6} textAlign="center">
             <div>
               <MuiThemeProvider>
-                <CircularProgress />
+                <CircularProgress size={30} thickness={5} />
               </MuiThemeProvider>
               <p className="UserList__circularProgressLoadingText">Loading...</p>
             </div>
