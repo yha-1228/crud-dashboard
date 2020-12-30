@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { deleteData, getData, putData, usersUrl, wait } from '../constants'
+import { deleteData, getData, putData, usersUrl } from '../constants'
 import { MainHeader } from './layouts/MainHeader'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeading } from './shared/Headings'
@@ -39,10 +39,7 @@ export function UserEdit({ id }: { id: string }) {
       country: values.country,
     }
 
-    console.log(data)
-
     setIsSubmitting(true)
-
     putData(`${usersUrl}/${id}`, data).then(() => {
       setIsSubmitting(false)
       history.push('/users')
