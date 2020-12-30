@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { postData, usersUrl } from '../constants'
-import { MainHeader } from './layouts/Headers'
+import { MainHeader } from './layouts/MainHeader'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeading } from './shared/Headings'
 import { UserCreateForm } from './UserCreateForm'

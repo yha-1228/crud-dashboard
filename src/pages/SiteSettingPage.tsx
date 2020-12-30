@@ -1,5 +1,5 @@
 import React from 'react'
-import { MainHeader } from '../components/layouts/Headers'
+import { MainHeader } from '../components/layouts/MainHeader'
 import { Layout } from '../components/layouts/Layout'
 import { MainContentArea } from '../components/layouts/MainContentArea'
 import { MainHeading } from '../components/shared/Headings'

@@ -17,7 +17,7 @@ import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import { User, Users } from '../types'
 import { MainHeading } from './shared/Headings'
 import { MainContentArea } from './layouts/MainContentArea'
-import { MainHeader } from './layouts/Headers'
+import { MainHeader } from './layouts/MainHeader'
 
 const LIMIT = 10
 
