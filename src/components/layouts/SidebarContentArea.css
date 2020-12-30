@@ -3,5 +3,27 @@
   padding-top: 24px;
   padding-right: 24px;
   padding-left: 24px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overscroll-behavior-y: none;
+}
+
+.SidebarContentArea::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  padding-left: 4px;
+}
+
+.SidebarContentArea::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.SidebarContentArea::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+.SidebarContentArea::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.SidebarContentArea::-webkit-scrollbar-thumb:active {
+  background-color: rgba(255, 255, 255, 0.6);
 }

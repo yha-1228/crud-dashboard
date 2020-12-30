@@ -49,8 +49,8 @@ export function Navgation() {
         </li>
 
         {/* test */}
-        {testArray.map((_, i) => (
-          <li className="Navgation__item">
+        {/* {testArray.map((_, i) => (
+          <li className="Navgation__item" key={i}>
             <NavLink
               className="Navgation__link"
               activeClassName="Navgation__link--active"
@@ -60,7 +60,7 @@ export function Navgation() {
               Dummy item {i}
             </NavLink>
           </li>
-        ))}
+        ))} */}
       </ul>
     </nav>
   )
