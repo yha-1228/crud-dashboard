@@ -3,7 +3,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './Navgation.css'
 
-const items = [
+const navItems = [
   { title: 'Home', to: '/', exact: true },
   { title: 'Users', to: '/users', exact: false },
   { title: 'Invoices', to: '/invoices', exact: true },
@@ -23,15 +23,15 @@ export function Navgation() {
   return (
     <nav>
       <ul>
-        {items.map((item, index) => (
+        {navItems.map((navItem, index) => (
           <NavItem key={index}>
             <NavLink
               className="Navgation__link"
               activeClassName="Navgation__link--active"
-              to={item.to}
-              exact={item.exact}
+              to={navItem.to}
+              exact={navItem.exact}
             >
-              {item.title}
+              {navItem.title}
             </NavLink>
           </NavItem>
         ))}
