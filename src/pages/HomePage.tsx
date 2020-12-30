@@ -5,6 +5,7 @@ import { MainContentArea } from '../components/layouts/MainContentArea'
 import { MainHeading } from '../components/shared/Headings'
 
 import styles from './HomePage.module.css'
+import './HomePage.css'
 
 export function HomePage() {
   return (
@@ -21,6 +22,8 @@ export function HomePage() {
         </p>
 
         <div className={styles.base}>base style</div>
+        <div className={styles.warning}>warning style</div>
+        <div className="HomePage_base">base style (not modules)</div>
       </MainContentArea>
     </Layout>
   )
