@@ -4,7 +4,6 @@ import { Button } from './shared/Button'
 import { FiledBlock } from './shared/FiledBlock'
 import { Input } from './shared/Input'
 import { LinkButton } from './shared/LinkButton'
-import './UserCreateForm.css'
 
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
