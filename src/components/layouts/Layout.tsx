@@ -8,8 +8,6 @@ import { SidebarContentArea } from './SidebarContentArea'
 import { Navgation } from '../Navgation'
 import { Box } from '@material-ui/core'
 
-type Props = { title: string; children: React.ReactNode }
-
 function TwoColumnWrapper({ children }: { children: React.ReactNode }) {
   return (
     <Box display="flex" height="100vh">
@@ -18,7 +16,7 @@ function TwoColumnWrapper({ children }: { children: React.ReactNode }) {
   )
 }
 
-export function Layout({ title, children }: Props) {
+export function Layout({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <>
       <Helmet>
