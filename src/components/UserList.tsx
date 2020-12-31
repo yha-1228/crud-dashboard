@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../lib/react-paginate/style.css'
+import reactPaginateStyles from '../lib/react-paginate/ReactPaginate.module.css'
 import styles from './UserList.module.css'
 import { Button } from './shared/Button'
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Tables'
@@ -154,16 +154,16 @@ export function UserList({ perPage }: { perPage: number }) {
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
                   onPageChange={handlePageClick}
-                  containerClassName="ReactPaginate__container"
-                  pageClassName="ReactPaginate__page"
-                  pageLinkClassName="ReactPaginate__page-link"
-                  previousClassName="ReactPaginate__page"
-                  previousLinkClassName="ReactPaginate__page-link"
-                  nextClassName="ReactPaginate__page"
-                  nextLinkClassName="ReactPaginate__page-link"
-                  breakClassName="ReactPaginate__page"
-                  breakLinkClassName="ReactPaginate__page-link"
-                  activeLinkClassName="ReactPaginate__page-link--active"
+                  containerClassName={reactPaginateStyles.container}
+                  pageClassName={reactPaginateStyles.page}
+                  pageLinkClassName={reactPaginateStyles.pageLink}
+                  previousClassName={reactPaginateStyles.page}
+                  previousLinkClassName={reactPaginateStyles.pageLink}
+                  nextClassName={reactPaginateStyles.page}
+                  nextLinkClassName={reactPaginateStyles.pageLink}
+                  breakClassName={reactPaginateStyles.page}
+                  breakLinkClassName={reactPaginateStyles.pageLink}
+                  activeLinkClassName={reactPaginateStyles.pageLink_active}
                 />
               </div>
 
