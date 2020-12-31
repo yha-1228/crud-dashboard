@@ -53,12 +53,8 @@ export function UserEdit({ id }: { id: string }) {
 
   useEffect(() => {
     getData(`${usersUrl}/${id}`).then((result) => {
-      setValues({
-        username: result.username,
-        email: result.email,
-        password: result.password,
-        country: result.country,
-      })
+      const { id, ...other } = result
+      setValues({ ...other })
     })
   }, [id])
 
