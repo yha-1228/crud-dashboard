@@ -2,8 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import './styles/normalize.css'
-import './styles/constants.css'
-import './styles/base.css'
+import './styles/global.css'
 import './styles/utils.css'
 
 // Pages
