@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core'
 import classnames from 'classnames'
 import React from 'react'
-import styles from './Tables.module.css'
+import styles from './Table.module.css'
 
 export function TableWrapper({ children }: { children: React.ReactNode }) {
   return (
