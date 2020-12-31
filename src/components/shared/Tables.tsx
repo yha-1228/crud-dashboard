@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core'
 import classnames from 'classnames'
 import React from 'react'
-import './Tables.css'
+import styles from './Tables.module.css'
 
 export function TableWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -17,27 +17,27 @@ export function TableWrapper({ children }: { children: React.ReactNode }) {
 }
 
 export function Table({ ...other }: JSX.IntrinsicElements['table']) {
-  return <table className="Table" {...other} />
+  return <table className={styles.table} {...other} />
 }
 
 export function TableHead({ ...other }: JSX.IntrinsicElements['thead']) {
-  return <thead className="TableHead" {...other} />
+  return <thead className={styles.tableHead} {...other} />
 }
 
 export function TableBody({ ...other }: JSX.IntrinsicElements['tbody']) {
-  return <tbody className="TableBody" {...other} />
+  return <tbody className={styles.tableBody} {...other} />
 }
 
 export function TableHeader({
   align,
   ...other
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
-  return <th className={classnames('TableHeader', align && `text-${align}`)} {...other} />
+  return <th className={classnames(styles.tableHeader, align && `text-${align}`)} {...other} />
 }
 
 export function TableData({
   align,
   ...other
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
-  return <td className={classnames('TableData', align && `text-${align}`)} {...other} />
+  return <td className={classnames(styles.tableData, align && `text-${align}`)} {...other} />
 }

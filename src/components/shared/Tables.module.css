@@ -1,21 +1,21 @@
-.Table {
+.table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.TableHead > * {
+.tableHead > * {
   border-bottom: 1px solid var(--color-gray-100);
 }
 
-.TableBody > * {
+.tableBody > * {
   border-bottom: 1px solid var(--color-gray-100);
 }
 
-.TableBody > *:last-child {
+.tableBody > *:last-child {
   border-bottom: none;
 }
 
-.TableHeader {
+.tableHeader {
   padding: 10px 24px;
   font-size: 14px;
   font-weight: bold;
@@ -23,7 +23,7 @@
   white-space: nowrap;
 }
 
-.TableData {
+.tableData {
   padding: 10px 24px;
   font-size: 14px;
   white-space: nowrap;
