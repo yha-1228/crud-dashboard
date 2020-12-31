@@ -19,9 +19,7 @@ import { MainHeading } from './shared/Headings'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeader } from './layouts/MainHeader'
 
-const LIMIT: number = 10
-
-export function UserList() {
+export function UserList({ perPage }: { perPage: number }) {
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
@@ -31,7 +29,7 @@ export function UserList() {
   const deleteUser = (user: User) => {
     setIsLoaded(false)
     deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsersFromServer({ offset: offset, limit: LIMIT })
+      loadUsersFromServer({ offset: offset, limit: perPage })
     })
   }
 
@@ -52,7 +50,7 @@ export function UserList() {
 
   const handlePageClick = (data: any) => {
     const selected = data.selected
-    const offset = Math.ceil(selected * LIMIT)
+    const offset = Math.ceil(selected * perPage)
     setOffset(offset)
   }
 
@@ -60,8 +58,8 @@ export function UserList() {
     getData(usersUrl).then((result) => {
       setTotalCount(result.length)
     })
-    loadUsersFromServer({ offset: offset, limit: LIMIT })
-  }, [offset])
+    loadUsersFromServer({ offset: offset, limit: perPage })
+  }, [offset, perPage])
 
   return (
     <>
@@ -152,7 +150,7 @@ export function UserList() {
                 <ReactPaginate
                   previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                   nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
-                  pageCount={getPageCount(totalCount, LIMIT)}
+                  pageCount={getPageCount(totalCount, perPage)}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
                   onPageChange={handlePageClick}
@@ -171,7 +169,7 @@ export function UserList() {
 
               <div>
                 <span className="UserList__rows-count-notification-text">
-                  {offset + 1} - {offset + LIMIT} / {totalCount}
+                  {offset + 1} - {offset + perPage} / {totalCount}
                 </span>
               </div>
             </Box>

@@ -5,7 +5,7 @@ import { UserList } from '../components/UserList'
 export function UserListPage() {
   return (
     <Layout title="Users">
-      <UserList />
+      <UserList perPage={10} />
     </Layout>
   )
 }
