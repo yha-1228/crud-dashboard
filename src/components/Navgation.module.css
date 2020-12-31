@@ -1,19 +1,19 @@
-.Navgation__link {
+.link {
   display: block;
   padding-left: calc(24px - 4px);
   color: white;
   text-decoration: none;
   border-left: 4px solid transparent;
 }
-.Navgation__link:hover {
+.link:hover {
   margin-right: -10px;
   background-color: var(--color-primary-dark);
 }
-.Navgation__link--active {
+.link_active {
   font-weight: bold;
   border-left: 4px solid white;
 }
-.Navgation__link--active:hover {
+.link_active:hover {
   background-color: var(--color-primary-dark);
   border-left: 4px solid white;
 }

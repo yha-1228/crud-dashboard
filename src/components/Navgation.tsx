@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './Navgation.css'
+import styles from './Navgation.module.css'
 
 const navItems = [
   { title: 'Home', to: '/', exact: true },
@@ -26,8 +26,8 @@ export function Navgation() {
         {navItems.map((navItem, index) => (
           <NavItem key={index}>
             <NavLink
-              className="Navgation__link"
-              activeClassName="Navgation__link--active"
+              className={styles.link}
+              activeClassName={styles.link_active}
               to={navItem.to}
               exact={navItem.exact}
             >

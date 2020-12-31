@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../lib/react-paginate/style.css'
-import './UserList.css'
+import styles from './UserList.module.css'
 import { Button } from './shared/Button'
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Tables'
 import { deleteData, getData, usersUrl, wait } from '../constants'
@@ -79,7 +79,7 @@ export function UserList({ perPage }: { perPage: number }) {
               <MuiThemeProvider>
                 <CircularProgress size={30} thickness={5} />
               </MuiThemeProvider>
-              <p className="UserList__circularProgressLoadingText">Loading...</p>
+              <p className={styles.circularProgressLoadingText}>Loading...</p>
             </div>
           </Box>
         ) : (
@@ -168,7 +168,7 @@ export function UserList({ perPage }: { perPage: number }) {
               </div>
 
               <div>
-                <span className="UserList__rows-count-notification-text">
+                <span className={styles.rowsCountNotificationText}>
                   {offset + 1} - {offset + perPage} / {totalCount}
                 </span>
               </div>
