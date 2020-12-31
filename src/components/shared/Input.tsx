@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react'
-import './Input.css'
+import styles from './Input.module.css'
 
 export function Input(props: ComponentPropsWithoutRef<'input'> & { width?: any }) {
-  return <input className="Input" {...props} style={{ width: props.width }} />
+  return <input className={styles.base} {...props} style={{ width: props.width }} />
 }

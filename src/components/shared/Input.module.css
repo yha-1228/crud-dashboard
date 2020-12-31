@@ -1,19 +1,19 @@
-.Input {
+.base {
   padding: 0 8px;
   line-height: 32px;
   background-color: var(--color-gray-200);
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 3px;
   outline: none;
   transition: border 0.2s ease-out;
   -webkit-appearance: none;
 }
 
-.Input:hover,
-.Input:active {
-  border: 1px solid var(--color-gray-300);
+.base:hover,
+.base:active {
+  border: 2px solid var(--color-gray-300);
 }
 
-.Input:focus {
-  border: 1px solid var(--color-primary);
+.base:focus {
+  border: 2px solid var(--color-primary);
 }
