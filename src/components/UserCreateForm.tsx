@@ -1,9 +1,8 @@
 import { Box } from '@material-ui/core'
 import React from 'react'
-import { Button } from './shared/Button'
-import { FiledBlock } from './shared/FiledBlock'
+import { Button, LinkButton } from './shared/Button'
+import { FormControl } from './shared/FiledBlock'
 import { Input } from './shared/Input'
-import { LinkButton } from './shared/LinkButton'
 
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
@@ -23,7 +22,7 @@ export function UserCreateForm({
   return (
     <form onSubmit={onSubmit} noValidate>
       <Box mb="24px">
-        <FiledBlock
+        <FormControl
           label={
             <label htmlFor="username">
               <h3>Username</h3>
@@ -43,7 +42,7 @@ export function UserCreateForm({
       </Box>
 
       <Box mb="24px">
-        <FiledBlock
+        <FormControl
           label={
             <label htmlFor="email">
               <h3>Email</h3>
@@ -63,7 +62,7 @@ export function UserCreateForm({
       </Box>
 
       <Box mb="24px">
-        <FiledBlock
+        <FormControl
           label={
             <label htmlFor="password">
               <h3>Password</h3>
@@ -83,7 +82,7 @@ export function UserCreateForm({
       </Box>
 
       <Box mb="24px">
-        <FiledBlock
+        <FormControl
           label={
             <label htmlFor="country">
               <h3>Country</h3>
@@ -110,9 +109,7 @@ export function UserCreateForm({
         </Box>
 
         <Box display="inline-block" pr="16px">
-          <LinkButton to="/users" variant="secondary">
-            Cancel
-          </LinkButton>
+          <LinkButton to="/users">Cancel</LinkButton>
         </Box>
       </Box>
     </form>
