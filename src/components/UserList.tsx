@@ -19,7 +19,7 @@ import { MainHeading } from './shared/Headings'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeader } from './layouts/MainHeader'
 
-const LIMIT = 10
+const LIMIT: number = 10
 
 export function UserList() {
   const [users, setUsers] = useState<Users>([])
@@ -52,7 +52,7 @@ export function UserList() {
 
   const handlePageClick = (data: any) => {
     const selected = data.selected
-    const offset = Math.ceil(selected * 10)
+    const offset = Math.ceil(selected * LIMIT)
     setOffset(offset)
   }
 
