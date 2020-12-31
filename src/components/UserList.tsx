@@ -83,7 +83,7 @@ export function UserList({ perPage }: { perPage: number }) {
             </div>
           </Box>
         ) : (
-          <div>
+          <>
             <Box marginBottom="24px">
               <TableWrapper>
                 <Box height={4}>
@@ -173,7 +173,7 @@ export function UserList({ perPage }: { perPage: number }) {
                 </span>
               </div>
             </Box>
-          </div>
+          </>
         )}
       </MainContentArea>
     </>
