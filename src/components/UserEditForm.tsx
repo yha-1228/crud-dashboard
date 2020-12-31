@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core'
 import React from 'react'
 import { Button, LinkButton } from './shared/Button'
-import { FormControl } from './shared/FiledBlock'
+import { FormControl } from './shared/FormControl'
 import { Input } from './shared/Input'
 
 type Props = {
