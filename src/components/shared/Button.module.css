@@ -10,10 +10,15 @@
   background-color: var(--color-gray-200);
   border: 1px solid transparent;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-out, background-color 0.15s ease-out;
+  outline: none;
+  transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
 }
 .base:hover {
   background-color: var(--color-gray-300);
+}
+.base:active,
+.base:focus {
+  box-shadow: 0 0 0 2px var(--color-gray-900);
 }
 
 .small {
@@ -24,9 +29,6 @@
 .primary {
   color: white;
   background-color: var(--color-primary);
-}
-.primary:hover {
-  background-color: var(--color-primary-dark);
 }
 
 .primaryBright {
