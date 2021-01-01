@@ -100,9 +100,7 @@ export function UserList() {
   return (
     <>
       <MainHeader>
-        <MainHeading>
-          Users selectedPage={selectedPage} offset={offset}
-        </MainHeading>
+        <MainHeading>Users</MainHeading>
 
         <LinkButton variant="primary" to="/users/create">
           <FontAwesomeIcon icon={faPlus} />
