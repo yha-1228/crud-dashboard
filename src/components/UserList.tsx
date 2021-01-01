@@ -19,7 +19,7 @@ import { MainHeading } from './shared/Heading'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeader } from './layouts/MainHeader'
 
-export function UserList({ perPage }: { perPage: number }) {
+export function UserList() {
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
@@ -32,7 +32,7 @@ export function UserList({ perPage }: { perPage: number }) {
   const deleteUser = (user: User) => {
     setIsLoaded(false)
     deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: perPage })
+      loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: limit })
     })
   }
 
@@ -84,7 +84,7 @@ export function UserList({ perPage }: { perPage: number }) {
 
   const handlePageClick = (data: any) => {
     const selected = data.selected
-    const offset = Math.ceil(selected * perPage)
+    const offset = Math.ceil(selected * limit)
     setOffset(offset)
   }
 
@@ -92,8 +92,8 @@ export function UserList({ perPage }: { perPage: number }) {
     getData(usersUrl).then((result) => {
       setTotalCount(result.length)
     })
-    loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: perPage })
-  }, [isSort, sortBy, offset, perPage])
+    loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: limit })
+  }, [isSort, sortBy, offset, limit])
 
   return (
     <>
@@ -202,7 +202,7 @@ export function UserList({ perPage }: { perPage: number }) {
                 <ReactPaginate
                   previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                   nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
-                  pageCount={getPageCount(totalCount, perPage)}
+                  pageCount={getPageCount(totalCount, limit)}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
                   onPageChange={handlePageClick}
@@ -221,7 +221,7 @@ export function UserList({ perPage }: { perPage: number }) {
 
               <div>
                 <span className={styles.rowsCountNotificationText}>
-                  {offset + 1} - {offset + perPage} / {totalCount}
+                  {offset + 1} - {offset + limit} / {totalCount}
                 </span>
               </div>
             </Box>
