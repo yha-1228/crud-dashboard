@@ -4,6 +4,7 @@ export type User = {
   email: string
   password: string
   country: string
+  createdAt: string
 }
 
 export type Users = User[]

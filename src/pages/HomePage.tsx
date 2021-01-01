@@ -12,11 +12,9 @@ export function HomePage() {
       </MainHeader>
 
       <MainContentArea>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quas minima ad mollitia
-          odio quam excepturi minus dolores repudiandae eius, sint porro non autem iure dicta
-          praesentium recusandae vero. Beatae?
-        </p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus blanditiis corporis
+        fuga! Aspernatur minima vero corporis deleniti! Necessitatibus, eveniet ullam. Provident
+        fuga reiciendis tempore porro ea vero, quidem recusandae temporibus?
       </MainContentArea>
     </Layout>
   )
