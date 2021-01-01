@@ -26,7 +26,7 @@ export function Layout({ title, children }: { title: string; children: React.Rea
       <TwoColumnWrapper>
         <Sidebar>
           <SidebarHeader>
-            <SidebarHeading>Sample App</SidebarHeading>
+            <SidebarHeading>Dashboard</SidebarHeading>
           </SidebarHeader>
 
           <SidebarContentArea>
