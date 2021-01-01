@@ -11,10 +11,10 @@ export function FormGroup({
   formText?: React.ReactNode
 }) {
   return (
-    <>
+    <div>
       <Box mb="8px">{formLabel}</Box>
       <div>{formInput}</div>
       <Box fontSize="12px">{formText}</Box>
-    </>
+    </div>
   )
 }

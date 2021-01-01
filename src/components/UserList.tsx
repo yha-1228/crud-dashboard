@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import reactPaginateStyles from '../lib/react-paginate/ReactPaginate.module.css'
 import styles from './UserList.module.css'
 import { Button, LinkButton } from './shared/Button'
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Table'
@@ -74,16 +73,13 @@ export function UserList({ perPage }: { perPage: number }) {
       <MainContentArea>
         {!isLoaded ? (
           <Box pt={6} textAlign="center">
-            <div>
-              <MuiThemeProvider>
-                <CircularProgress size={30} thickness={5} />
-              </MuiThemeProvider>
-              <p className={styles.circularProgressLoadingText}>Loading...</p>
-            </div>
+            <MuiThemeProvider>
+              <CircularProgress size={30} thickness={5} />
+            </MuiThemeProvider>
           </Box>
         ) : (
           <>
-            <Box marginBottom="24px">
+            <Box mb="24px">
               <TableWrapper>
                 <Box height={4}>
                   {!isPageLoaded && (
@@ -153,16 +149,16 @@ export function UserList({ perPage }: { perPage: number }) {
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
                   onPageChange={handlePageClick}
-                  containerClassName={reactPaginateStyles.container}
-                  pageClassName={reactPaginateStyles.page}
-                  pageLinkClassName={reactPaginateStyles.pageLink}
-                  previousClassName={reactPaginateStyles.page}
-                  previousLinkClassName={reactPaginateStyles.pageLink}
-                  nextClassName={reactPaginateStyles.page}
-                  nextLinkClassName={reactPaginateStyles.pageLink}
-                  breakClassName={reactPaginateStyles.page}
-                  breakLinkClassName={reactPaginateStyles.pageLink}
-                  activeLinkClassName={reactPaginateStyles.pageLink_active}
+                  containerClassName={styles.ReactPaginate__container}
+                  pageClassName={styles.ReactPaginate__page}
+                  pageLinkClassName={styles.ReactPaginate__pageLink}
+                  previousClassName={styles.ReactPaginate__page}
+                  previousLinkClassName={styles.ReactPaginate__pageLink}
+                  nextClassName={styles.ReactPaginate__page}
+                  nextLinkClassName={styles.ReactPaginate__pageLink}
+                  breakClassName={styles.ReactPaginate__page}
+                  breakLinkClassName={styles.ReactPaginate__pageLink}
+                  activeLinkClassName={styles.ReactPaginate__pageLink_active}
                 />
               </div>
 
