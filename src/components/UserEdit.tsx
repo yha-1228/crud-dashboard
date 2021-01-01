@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { deleteData, getData, putData, usersUrl } from '../constants'
 import { MainHeader } from './layouts/MainHeader'
 import { MainContentArea } from './layouts/MainContentArea'
-import { MainHeading } from './shared/Headings'
+import { MainHeading } from './shared/Heading'
 import { UserEditForm } from './UserEditForm'
 
 type Values = {

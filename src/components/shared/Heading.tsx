@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react'
-import styles from './Headings.module.css'
+import styles from './Heading.module.css'
 
 type MainHeadingProps = ComponentPropsWithoutRef<'h1'> & { children: React.ReactNode }
 

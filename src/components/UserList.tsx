@@ -13,7 +13,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import { User, Users } from '../types'
-import { MainHeading } from './shared/Headings'
+import { MainHeading } from './shared/Heading'
 import { MainContentArea } from './layouts/MainContentArea'
 import { MainHeader } from './layouts/MainHeader'
 
