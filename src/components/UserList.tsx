@@ -24,10 +24,16 @@ export function UserList() {
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false)
+
+  // offset, limit
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(10)
+
+  // sort
   const [isSort, setIsSort] = useState<boolean>(false)
   const [sortBy, setSortBy] = useState<string>('')
+
+  // 選択中のページをステートに同期させる
   const [selectedPage, setSelectedPage] = useState<number>(0)
 
   const deleteUser = (user: User) => {
@@ -220,6 +226,22 @@ export function UserList() {
                   breakLinkClassName={styles.ReactPaginate__pageLink}
                   activeLinkClassName={styles.ReactPaginate__pageLink_active}
                 />
+              </div>
+
+              <div>
+                <Box display="inline-block" pr="8px">
+                  Rows per page:
+                </Box>
+                <Box display="inline-block">
+                  <select value={limit} onChange={(event) => setLimit(Number(event.target.value))}>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                </Box>
               </div>
 
               <div>
