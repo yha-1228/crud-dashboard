@@ -60,7 +60,7 @@ export function Navgation() {
             >
               {navItem.icon ? (
                 <div>
-                  <Box display="inline-block" pr="12px">
+                  <Box display="inline-block" width="32px">
                     {navItem.icon}
                   </Box>
                   <Box display="inline-block">{navItem.title}</Box>
