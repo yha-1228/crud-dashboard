@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './UserList.module.css'
 import { Button, LinkButton } from './shared/Button'
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Table'
@@ -25,11 +25,14 @@ export function UserList({ perPage }: { perPage: number }) {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false)
   const [offset, setOffset] = useState<number>(0)
+  const [limit, setLimit] = useState<number>(10)
+  const [isSort, setIsSort] = useState<boolean>(false)
+  const [sortBy, setSortBy] = useState<string>('')
 
   const deleteUser = (user: User) => {
     setIsLoaded(false)
     deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsersFromServer({ offset: offset, limit: perPage })
+      loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: perPage })
     })
   }
 
@@ -37,10 +40,28 @@ export function UserList({ perPage }: { perPage: number }) {
     return Math.ceil(totalCount / limit)
   }
 
-  const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
+  const loadUsersFromServer = ({
+    isSort,
+    sortBy,
+    offset,
+    limit,
+  }: {
+    isSort: boolean
+    sortBy: string
+    offset: number
+    limit: number
+  }) => {
     setIsPageLoaded(false)
 
-    const params = { _start: offset.toString(), _limit: limit.toString() }
+    let params: { [key: string]: string } = {
+      _start: offset.toString(),
+      _limit: limit.toString(),
+    }
+
+    if (isSort) {
+      params = { ...params, _sort: sortBy }
+    }
+
     const urlSearchParams = new URLSearchParams(params)
 
     getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
@@ -71,8 +92,8 @@ export function UserList({ perPage }: { perPage: number }) {
     getData(usersUrl).then((result) => {
       setTotalCount(result.length)
     })
-    loadUsersFromServer({ offset: offset, limit: perPage })
-  }, [offset, perPage])
+    loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: perPage })
+  }, [isSort, sortBy, offset, perPage])
 
   return (
     <>
@@ -110,14 +131,35 @@ export function UserList({ perPage }: { perPage: number }) {
                       <TableHeader align="left" scope="col">
                         ID
                       </TableHeader>
-                      <TableHeader align="left" scope="col">
-                        Username
+                      <TableHeader
+                        align="left"
+                        scope="col"
+                        onClick={() => {
+                          setIsSort(!isSort)
+                          setSortBy('username')
+                        }}
+                      >
+                        Username {isSort && sortBy === 'username' && '↑'}
                       </TableHeader>
-                      <TableHeader align="left" scope="col">
-                        Email
+                      <TableHeader
+                        align="left"
+                        scope="col"
+                        onClick={() => {
+                          setIsSort(!isSort)
+                          setSortBy('email')
+                        }}
+                      >
+                        Email {isSort && sortBy === 'email' && '↑'}
                       </TableHeader>
-                      <TableHeader align="left" scope="col">
-                        Country
+                      <TableHeader
+                        align="left"
+                        scope="col"
+                        onClick={() => {
+                          setIsSort(!isSort)
+                          setSortBy('country')
+                        }}
+                      >
+                        Country {isSort && sortBy === 'country' && '↑'}
                       </TableHeader>
                       <TableHeader align="left" scope="col"></TableHeader>
                       <TableHeader align="left" scope="col"></TableHeader>
