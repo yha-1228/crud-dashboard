@@ -30,6 +30,9 @@
   color: white;
   background-color: var(--color-primary);
 }
+.primary:hover {
+  background-color: var(--color-primary-dark);
+}
 
 .primaryBright {
   color: var(--color-primary);
