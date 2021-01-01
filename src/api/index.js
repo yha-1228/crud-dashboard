@@ -11,6 +11,8 @@ module.exports = () => {
       email: faker.internet.email(),
       password: faker.internet.password(),
       country: faker.address.country(),
+      isMember: faker.random.boolean(),
+      createdAt: faker.date.past(),
     }
 
     db.users.push(item)
