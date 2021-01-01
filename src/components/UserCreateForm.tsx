@@ -2,7 +2,7 @@ import { Box } from '@material-ui/core'
 import React from 'react'
 import { Button, LinkButton } from './shared/Button'
 import { FormGroup } from './shared/FormGroup'
-import { Input } from './shared/Input'
+import { FormInput } from './shared/FormInput'
 
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
@@ -23,13 +23,13 @@ export function UserCreateForm({
     <form onSubmit={onSubmit} noValidate>
       <Box mb="24px">
         <FormGroup
-          label={
+          formLabel={
             <label htmlFor="username">
               <h3>Username</h3>
             </label>
           }
-          input={
-            <Input
+          formInput={
+            <FormInput
               type="text"
               name="username"
               id="username"
@@ -43,13 +43,13 @@ export function UserCreateForm({
 
       <Box mb="24px">
         <FormGroup
-          label={
+          formLabel={
             <label htmlFor="email">
               <h3>Email</h3>
             </label>
           }
-          input={
-            <Input
+          formInput={
+            <FormInput
               type="email"
               name="email"
               id="email"
@@ -63,13 +63,13 @@ export function UserCreateForm({
 
       <Box mb="24px">
         <FormGroup
-          label={
+          formLabel={
             <label htmlFor="password">
               <h3>Password</h3>
             </label>
           }
-          input={
-            <Input
+          formInput={
+            <FormInput
               type="password"
               name="password"
               id="password"
@@ -83,13 +83,13 @@ export function UserCreateForm({
 
       <Box mb="24px">
         <FormGroup
-          label={
+          formLabel={
             <label htmlFor="country">
               <h3>Country</h3>
             </label>
           }
-          input={
-            <Input
+          formInput={
+            <FormInput
               type="text"
               name="country"
               id="country"
