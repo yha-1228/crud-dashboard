@@ -40,7 +40,7 @@ export function UserList({ perPage }: { perPage: number }) {
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     setIsPageLoaded(false)
     getData(`${usersUrl}/?_start=${offset}&_limit=${limit}`).then((result) => {
-      wait(1400).then(() => {
+      wait(500).then(() => {
         setIsLoaded(true)
         setIsPageLoaded(true)
 
