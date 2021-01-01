@@ -11,6 +11,7 @@ import {
   faPlus,
   faEdit,
   faTrash,
+  faSortAmountUpAlt,
 } from '@fortawesome/free-solid-svg-icons'
 import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
@@ -147,7 +148,10 @@ export function UserList() {
                           setSortBy('username')
                         }}
                       >
-                        Username {isSort && sortBy === 'username' && '↑'}
+                        Username{' '}
+                        {isSort && sortBy === 'username' && (
+                          <FontAwesomeIcon icon={faSortAmountUpAlt} />
+                        )}
                       </TableHeader>
                       <TableHeader
                         align="left"
@@ -157,7 +161,10 @@ export function UserList() {
                           setSortBy('email')
                         }}
                       >
-                        Email {isSort && sortBy === 'email' && '↑'}
+                        Email{' '}
+                        {isSort && sortBy === 'email' && (
+                          <FontAwesomeIcon icon={faSortAmountUpAlt} />
+                        )}
                       </TableHeader>
                       <TableHeader
                         align="left"
@@ -167,7 +174,10 @@ export function UserList() {
                           setSortBy('country')
                         }}
                       >
-                        Country {isSort && sortBy === 'country' && '↑'}
+                        Country{' '}
+                        {isSort && sortBy === 'country' && (
+                          <FontAwesomeIcon icon={faSortAmountUpAlt} />
+                        )}
                       </TableHeader>
                       <TableHeader align="left" scope="col"></TableHeader>
                       <TableHeader align="left" scope="col"></TableHeader>
