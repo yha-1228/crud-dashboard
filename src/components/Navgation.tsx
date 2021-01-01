@@ -3,13 +3,33 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './Navgation.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faFileInvoice, faHome, faSlidersH, faUser } from '@fortawesome/free-solid-svg-icons'
 
 const navItems = [
-  { icon: null, title: 'Home', to: '/', exact: true },
-  { icon: null, title: 'Users', to: '/users', exact: false },
-  { icon: null, title: 'Invoices', to: '/invoices', exact: true },
-  { icon: null, title: 'Configs', to: '/configs', exact: true },
+  {
+    icon: <FontAwesomeIcon icon={faHome} />,
+    title: 'Home',
+    to: '/',
+    exact: true,
+  },
+  {
+    icon: <FontAwesomeIcon icon={faUser} />,
+    title: 'Users',
+    to: '/users',
+    exact: false,
+  },
+  {
+    icon: <FontAwesomeIcon icon={faFileInvoice} />,
+    title: 'Invoices',
+    to: '/invoices',
+    exact: true,
+  },
+  {
+    icon: <FontAwesomeIcon icon={faSlidersH} />,
+    title: 'Configs',
+    to: '/configs',
+    exact: true,
+  },
   {
     icon: <FontAwesomeIcon icon={faCog} />,
     title: 'Site setting',
@@ -40,7 +60,7 @@ export function Navgation() {
             >
               {navItem.icon ? (
                 <div>
-                  <Box display="inline-block" pr="6px">
+                  <Box display="inline-block" pr="12px">
                     {navItem.icon}
                   </Box>
                   <Box display="inline-block">{navItem.title}</Box>
