@@ -28,6 +28,7 @@ export function UserList() {
   const [limit, setLimit] = useState<number>(10)
   const [isSort, setIsSort] = useState<boolean>(false)
   const [sortBy, setSortBy] = useState<string>('')
+  const [selectedPage, setSelectedPage] = useState<number>(0)
 
   const deleteUser = (user: User) => {
     setIsLoaded(false)
@@ -65,7 +66,7 @@ export function UserList() {
     const urlSearchParams = new URLSearchParams(params)
 
     getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
-      wait(500).then(() => {
+      wait(2000).then(() => {
         setIsLoaded(true)
         setIsPageLoaded(true)
 
@@ -85,6 +86,7 @@ export function UserList() {
   const handlePageClick = (data: any) => {
     const selected = data.selected
     const offset = Math.ceil(selected * limit)
+    setSelectedPage(selected)
     setOffset(offset)
   }
 
@@ -98,7 +100,9 @@ export function UserList() {
   return (
     <>
       <MainHeader>
-        <MainHeading>Users</MainHeading>
+        <MainHeading>
+          Users selectedPage={selectedPage} offset={offset}
+        </MainHeading>
 
         <LinkButton variant="primary" to="/users/create">
           <FontAwesomeIcon icon={faPlus} />
@@ -200,11 +204,12 @@ export function UserList() {
             <Box display="flex" justifyContent="space-between" alignItems="center">
               <div>
                 <ReactPaginate
+                  initialPage={selectedPage}
                   previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                   nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
                   pageCount={getPageCount(totalCount, limit)}
                   marginPagesDisplayed={2}
-                  pageRangeDisplayed={5}
+                  pageRangeDisplayed={7}
                   onPageChange={handlePageClick}
                   containerClassName={styles.ReactPaginate__container}
                   pageClassName={styles.ReactPaginate__page}
