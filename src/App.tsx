@@ -1,8 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+// global styles
+import './styles/colors.css'
 import './styles/normalize.css'
-import './styles/global.css'
+import './styles/base.css'
 import './styles/utils.css'
 
 // Pages
