@@ -5,11 +5,13 @@ import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } fro
 import { deleteData, getData, usersUrl, wait } from '../constants'
 import ReactPaginate from 'react-paginate'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import {
+  faChevronLeft,
+  faChevronRight,
+  faPlus,
+  faEdit,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons'
 import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
 import { User, Users } from '../types'
@@ -41,7 +43,16 @@ export function UserList({ perPage }: { perPage: number }) {
       wait(1400).then(() => {
         setIsLoaded(true)
         setIsPageLoaded(true)
-        setUsers(result)
+
+        const users = result.map((item: any) => ({
+          id: item.id,
+          username: item.username,
+          email: item.email,
+          password: item.password,
+          country: item.country,
+        }))
+
+        setUsers(users)
       })
     })
   }
