@@ -9,7 +9,7 @@ export function SidebarHeader({ children }: { children: React.ReactNode }) {
       height="64px"
       pr="24px"
       pl="24px"
-      bgcolor="var(--color-primary-light)"
+      bgcolor="var(--color-primary-dark)"
     >
       {children}
     </Box>
