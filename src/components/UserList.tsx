@@ -40,9 +40,10 @@ export function UserList({ perPage }: { perPage: number }) {
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     setIsPageLoaded(false)
 
-    const url = `${usersUrl}/?_start=${offset}&_limit=${limit}`
+    const params = { _start: offset.toString(), _limit: limit.toString() }
+    const urlSearchParams = new URLSearchParams(params)
 
-    getData(url).then((result) => {
+    getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
       wait(500).then(() => {
         setIsLoaded(true)
         setIsPageLoaded(true)
