@@ -38,14 +38,12 @@ export function UserList() {
   const [selectedPage, setSelectedPage] = useState<number>(0)
 
   const deleteUser = (user: User) => {
+    const isConfirm = window.confirm(`Delete ${user.username}?`)
+    if (!isConfirm) return
+
     setIsLoaded(false)
     deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsersFromServer({
-        isSort: isSort,
-        sortBy: sortBy,
-        offset: offset,
-        limit: limit,
-      })
+      loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: limit })
     })
   }
 
