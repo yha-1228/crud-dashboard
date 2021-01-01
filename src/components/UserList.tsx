@@ -40,7 +40,12 @@ export function UserList() {
   const deleteUser = (user: User) => {
     setIsLoaded(false)
     deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: limit })
+      loadUsersFromServer({
+        isSort: isSort,
+        sortBy: sortBy,
+        offset: offset,
+        limit: limit,
+      })
     })
   }
 
