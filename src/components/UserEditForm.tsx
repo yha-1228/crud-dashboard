@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core'
 import React from 'react'
 import { Button, LinkButton } from './shared/Button'
-import { FormControl } from './shared/FormControl'
+import { FormGroup } from './shared/FormGroup'
 import { Input } from './shared/Input'
 
 type Props = {
@@ -28,7 +28,7 @@ export function UserEditForm({
   return (
     <form onSubmit={onSubmit} noValidate>
       <Box mb="24px">
-        <FormControl
+        <FormGroup
           label={
             <label htmlFor="username">
               <h3>Username</h3>
@@ -48,7 +48,7 @@ export function UserEditForm({
       </Box>
 
       <Box mb="24px">
-        <FormControl
+        <FormGroup
           label={
             <label htmlFor="email">
               <h3>Email</h3>
@@ -68,7 +68,7 @@ export function UserEditForm({
       </Box>
 
       <Box mb="24px">
-        <FormControl
+        <FormGroup
           label={
             <label htmlFor="password">
               <h3>Password</h3>
@@ -88,7 +88,7 @@ export function UserEditForm({
       </Box>
 
       <Box mb="24px">
-        <FormControl
+        <FormGroup
           label={
             <label htmlFor="country">
               <h3>Country</h3>
