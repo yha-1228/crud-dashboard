@@ -229,11 +229,16 @@ export function UserList() {
               </div>
 
               <div>
-                <Box display="inline-block" pr="8px">
+                <Box className={styles.selectLimit} display="inline-block" pr="8px">
                   Rows per page:
                 </Box>
                 <Box display="inline-block">
-                  <select value={limit} onChange={(event) => setLimit(Number(event.target.value))}>
+                  <select
+                    className={styles.selectLimit}
+                    value={limit}
+                    onChange={(event) => setLimit(Number(event.target.value))}
+                  >
+                    <option value="6">6</option>
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
