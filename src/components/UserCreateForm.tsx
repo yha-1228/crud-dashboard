@@ -23,67 +23,59 @@ export function UserCreateForm({
   return (
     <form onSubmit={onSubmit} noValidate>
       <Box mb="24px">
-        <FormGroup
-          formLabel={<FormLabel htmlFor="username">Username</FormLabel>}
-          formInput={
-            <FormInput
-              type="text"
-              name="username"
-              id="username"
-              onChange={onChange}
-              value={values.username}
-              width={250}
-            />
-          }
-        />
+        <FormGroup>
+          <FormLabel htmlFor="username">Username</FormLabel>
+          <FormInput
+            type="text"
+            name="username"
+            id="username"
+            onChange={onChange}
+            value={values.username}
+            width={250}
+          />
+        </FormGroup>
       </Box>
 
       <Box mb="24px">
-        <FormGroup
-          formLabel={<FormLabel htmlFor="email">Email</FormLabel>}
-          formInput={
-            <FormInput
-              type="email"
-              name="email"
-              id="email"
-              onChange={onChange}
-              value={values.email}
-              width={250}
-            />
-          }
-        />
+        <FormGroup>
+          <FormLabel htmlFor="email">Email</FormLabel>
+          <FormInput
+            type="email"
+            name="email"
+            id="email"
+            onChange={onChange}
+            value={values.email}
+            width={250}
+          />
+        </FormGroup>
       </Box>
 
       <Box mb="24px">
-        <FormGroup
-          formLabel={<FormLabel htmlFor="password">Password</FormLabel>}
-          formInput={
-            <FormInput
-              type="password"
-              name="password"
-              id="password"
-              onChange={onChange}
-              value={values.password}
-              width={250}
-            />
-          }
-        />
+        <FormGroup>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <FormInput
+            type="password"
+            name="password"
+            id="password"
+            onChange={onChange}
+            value={values.password}
+            width={250}
+          />
+        </FormGroup>
       </Box>
 
       <Box mb="24px">
-        <FormGroup
-          formLabel={<FormLabel htmlFor="country">Country</FormLabel>}
-          formInput={
-            <FormInput
-              type="text"
-              name="country"
-              id="country"
-              onChange={onChange}
-              value={values.country}
-              width={250}
-            />
-          }
-        />
+        <FormGroup>
+          <FormLabel htmlFor="country">Country</FormLabel>
+          <FormInput
+            type="text"
+            name="country"
+            id="country"
+            onChange={onChange}
+            value={values.country}
+            width={250}
+          />
+        </FormGroup>
       </Box>
 
       <Box mb="24px">
