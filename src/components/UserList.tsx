@@ -1,5 +1,4 @@
-import dayjs from 'dayjs'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './UserList.module.css'
 import { Button, LinkButton } from './shared/Button'
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Table'
@@ -40,7 +39,10 @@ export function UserList({ perPage }: { perPage: number }) {
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     setIsPageLoaded(false)
-    getData(`${usersUrl}/?_start=${offset}&_limit=${limit}`).then((result) => {
+
+    const url = `${usersUrl}/?_start=${offset}&_limit=${limit}`
+
+    getData(url).then((result) => {
       wait(500).then(() => {
         setIsLoaded(true)
         setIsPageLoaded(true)

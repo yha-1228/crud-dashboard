@@ -21,6 +21,10 @@
   font-weight: bold;
   color: var(--color-gray-400);
   white-space: nowrap;
+  cursor: pointer;
+}
+.tableHeader:hover {
+  color: var(--color-gray-700);
 }
 
 .tableData {
