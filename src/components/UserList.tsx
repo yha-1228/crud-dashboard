@@ -47,6 +47,7 @@ export function UserList() {
     })
   }
 
+  // React Pagenateのページリンクを最大まで表示するために、最大データ数の取得が必要
   const getPageCount = (totalCount: number, limit: number) => {
     return Math.ceil(totalCount / limit)
   }
