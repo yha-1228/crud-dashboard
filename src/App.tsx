@@ -21,35 +21,25 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
+const routes = [
+  { path: '/', exact: true, component: <HomePage /> },
+  { path: '/users', exact: true, component: <UserListPage /> },
+  { path: '/users/create', exact: true, component: <UserCreatePage /> },
+  { path: '/users/:id', exact: true, component: <UserEditPage /> },
+  { path: '/invoices', exact: true, component: <InvoicesPage /> },
+  { path: '/configs', exact: true, component: <ConfigsPage /> },
+  { path: '/site-setting', exact: true, component: <SiteSettingPage /> },
+]
+
 export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-
-        <Route path="/users" exact>
-          <UserListPage />
-        </Route>
-        <Route path="/users/create">
-          <UserCreatePage />
-        </Route>
-        <Route path="/users/:id">
-          <UserEditPage />
-        </Route>
-
-        <Route path="/invoices" exact>
-          <InvoicesPage />
-        </Route>
-
-        <Route path="/configs" exact>
-          <ConfigsPage />
-        </Route>
-
-        <Route path="/site-setting" exact>
-          <SiteSettingPage />
-        </Route>
+        {routes.map((route, index) => (
+          <Route key={index} path={route.path} exact={route.exact}>
+            {route.component}
+          </Route>
+        ))}
       </Switch>
     </Router>
   )
