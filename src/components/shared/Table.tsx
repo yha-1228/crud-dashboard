@@ -9,6 +9,7 @@ export function TableWrapper({ children }: { children: React.ReactNode }) {
       bgcolor="white"
       border="1px solid var(--color-gray-200)"
       borderRadius="6px"
+      boxShadow="0 5px 10px rgba(154,160,185,0.05), 0 15px 40px rgba(166,173,201,0.2)"
     >
       {children}
     </Box>
