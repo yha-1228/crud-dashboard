@@ -1,5 +1,4 @@
 import { Box } from '@material-ui/core'
-import classnames from 'classnames'
 import React from 'react'
 import styles from './Table.module.css'
 
