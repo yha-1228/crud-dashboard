@@ -32,12 +32,12 @@ export function TableHeader({
   align,
   ...other
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
-  return <th className={classnames(styles.tableHeader, align && `text-${align}`)} {...other} />
+  return <th className={styles.tableHeader} style={{ textAlign: align }} {...other} />
 }
 
 export function TableData({
   align,
   ...other
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
-  return <td className={classnames(styles.tableData, align && `text-${align}`)} {...other} />
+  return <td className={styles.tableData} style={{ textAlign: align }} {...other} />
 }
