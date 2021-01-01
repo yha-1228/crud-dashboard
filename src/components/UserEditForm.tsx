@@ -3,6 +3,7 @@ import React from 'react'
 import { Button, LinkButton } from './shared/Button'
 import { FormGroup } from './shared/FormGroup'
 import { FormInput } from './shared/FormInput'
+import { FormLabel } from './shared/FormLabel'
 
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
@@ -29,11 +30,7 @@ export function UserEditForm({
     <form onSubmit={onSubmit} noValidate>
       <Box mb="24px">
         <FormGroup
-          formLabel={
-            <label htmlFor="username">
-              <h3>Username</h3>
-            </label>
-          }
+          formLabel={<FormLabel htmlFor="username">Username</FormLabel>}
           formInput={
             <FormInput
               type="text"
@@ -49,11 +46,7 @@ export function UserEditForm({
 
       <Box mb="24px">
         <FormGroup
-          formLabel={
-            <label htmlFor="email">
-              <h3>Email</h3>
-            </label>
-          }
+          formLabel={<FormLabel htmlFor="email">Email</FormLabel>}
           formInput={
             <FormInput
               type="email"
@@ -69,11 +62,7 @@ export function UserEditForm({
 
       <Box mb="24px">
         <FormGroup
-          formLabel={
-            <label htmlFor="password">
-              <h3>Password</h3>
-            </label>
-          }
+          formLabel={<FormLabel htmlFor="password">Password</FormLabel>}
           formInput={
             <FormInput
               type="password"
@@ -89,11 +78,7 @@ export function UserEditForm({
 
       <Box mb="24px">
         <FormGroup
-          formLabel={
-            <label htmlFor="country">
-              <h3>Country</h3>
-            </label>
-          }
+          formLabel={<FormLabel htmlFor="country">Country</FormLabel>}
           formInput={
             <FormInput
               type="text"
