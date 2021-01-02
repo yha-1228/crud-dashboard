@@ -77,7 +77,7 @@ export function UserList() {
     const urlSearchParams = new URLSearchParams(params)
 
     getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
-      wait(2000).then(() => {
+      wait(700).then(() => {
         setIsLoaded(true)
         setIsPageLoaded(true)
 
@@ -148,8 +148,13 @@ export function UserList() {
                         align="left"
                         scope="col"
                         onClick={() => {
-                          setIsSort(!isSort)
-                          setSortBy('username')
+                          if (isSort && sortBy === 'username') {
+                            setIsSort(false)
+                            setSortBy('')
+                          } else {
+                            setIsSort(true)
+                            setSortBy('username')
+                          }
                         }}
                       >
                         Username{' '}
@@ -161,8 +166,13 @@ export function UserList() {
                         align="left"
                         scope="col"
                         onClick={() => {
-                          setIsSort(!isSort)
-                          setSortBy('email')
+                          if (isSort && sortBy === 'email') {
+                            setIsSort(false)
+                            setSortBy('')
+                          } else {
+                            setIsSort(true)
+                            setSortBy('email')
+                          }
                         }}
                       >
                         Email{' '}
@@ -174,8 +184,13 @@ export function UserList() {
                         align="left"
                         scope="col"
                         onClick={() => {
-                          setIsSort(!isSort)
-                          setSortBy('country')
+                          if (isSort && sortBy === 'country') {
+                            setIsSort(false)
+                            setSortBy('')
+                          } else {
+                            setIsSort(true)
+                            setSortBy('country')
+                          }
                         }}
                       >
                         Country{' '}
