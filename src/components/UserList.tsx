@@ -237,7 +237,6 @@ export function UserList() {
             <Box display="flex" justifyContent="space-between" alignItems="center">
               <div>
                 <ReactPaginate
-                  // initialPage={selectedPage}
                   forcePage={selectedPage}
                   previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                   nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
