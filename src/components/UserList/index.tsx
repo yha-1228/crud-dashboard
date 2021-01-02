@@ -15,6 +15,24 @@ export function UserList() {
   const [sortKey, setSortKey] = useState<string>('')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('')
 
+  // Add
+  const [allUsers, setAllUsers] = useState<Users>([])
+
+  // Add
+  const loadAllUsersFromServer = () => {
+    getData(usersUrl).then((result) => {
+      const allUsers = result.map((item: any) => ({
+        id: item.id,
+        username: item.username,
+        email: item.email,
+        password: item.password,
+        country: item.country,
+      }))
+      setAllUsers(allUsers)
+      setTotalCount(allUsers.length)
+    })
+  }
+
   const loadUsersFromServer = ({
     isSort,
     sortKey,
@@ -109,9 +127,7 @@ export function UserList() {
   }
 
   useEffect(() => {
-    getData(usersUrl).then((result) => {
-      setTotalCount(result.length)
-    })
+    loadAllUsersFromServer()
     loadUsersFromServer({
       isSort: isSort,
       sortKey: sortKey,

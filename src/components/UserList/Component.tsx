@@ -200,14 +200,48 @@ export function Component(props: Props) {
               </div>
 
               <div>
+                <span>totalCount: {totalCount}</span>
+
+                <hr />
+
                 <span className={styles.rowsCountNotificationText}>
                   {`${offset + 1} - ${Math.min(offset + limit, totalCount)} / ${totalCount}`}
                 </span>
+
+                <hr />
+
+                <RowsCountText
+                  isPageLoaded={isPageLoaded}
+                  offset={offset}
+                  limit={limit}
+                  totalCount={totalCount}
+                />
               </div>
             </Box>
           </>
         )}
       </MainContentArea>
+    </>
+  )
+}
+
+type RowsCountTextProps = {
+  isPageLoaded: boolean
+  offset: number
+  limit: number
+  totalCount: number
+}
+
+function RowsCountText({ isPageLoaded, offset, limit, totalCount }: RowsCountTextProps) {
+  return (
+    <>
+      {isPageLoaded ? (
+        <span className={styles.rowsCountNotificationText}>
+          {`${offset + 1} - ${Math.min(offset + limit, totalCount)} / ${totalCount}`}
+        </span>
+      ) : (
+        <span></span>
+      )}
     </>
   )
 }
