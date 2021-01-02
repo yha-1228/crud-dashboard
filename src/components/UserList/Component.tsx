@@ -38,7 +38,7 @@ type Props = {
   onLimitSelecterChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-export function UserTable(props: Props) {
+export function Component(props: Props) {
   const {
     users,
     totalCount,
