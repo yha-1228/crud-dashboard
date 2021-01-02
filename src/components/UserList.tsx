@@ -12,8 +12,6 @@ import {
   faEdit,
   faTrash,
   faSortAmountUp,
-  faSortAmountDown,
-  faArrowLeft,
   faArrowUp,
   faArrowDown,
 } from '@fortawesome/free-solid-svg-icons'
@@ -198,17 +196,29 @@ export function UserList() {
                         align="left"
                         scope="col"
                         onClick={() => {
-                          if (isSort && sortKey === 'email') {
-                            setIsSort(false)
-                            setSortKey('')
-                          } else {
+                          if (!isSort || !(isSort && sortKey === 'email')) {
                             setIsSort(true)
                             setSortKey('email')
+                            setSortOrder('asc')
+                            return
+                          }
+                          if (isSort && sortKey === 'email' && sortOrder === 'asc') {
+                            setSortOrder('desc')
+                            return
+                          }
+                          if (isSort && sortKey === 'email' && sortOrder === 'desc') {
+                            setIsSort(false)
+                            return
                           }
                         }}
                       >
                         Email{' '}
-                        {isSort && sortKey === 'email' && <FontAwesomeIcon icon={faSortAmountUp} />}
+                        {isSort && sortKey === 'email' && sortOrder === 'asc' && (
+                          <FontAwesomeIcon icon={faArrowUp} />
+                        )}
+                        {isSort && sortKey === 'email' && sortOrder === 'desc' && (
+                          <FontAwesomeIcon icon={faArrowDown} />
+                        )}
                       </TableHeader>
                       <TableHeader align="left" scope="col"></TableHeader>
                       <TableHeader align="left" scope="col"></TableHeader>
