@@ -150,7 +150,7 @@ export function UserList() {
           <>
             <Box mb="24px">
               <TableWrapper>
-                <Box height={4} bgcolor="transparent">
+                <Box height={4}>
                   {!isPageLoaded && (
                     <MuiThemeProvider>
                       <LinearProgress color="primary" />
