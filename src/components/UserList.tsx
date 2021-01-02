@@ -101,6 +101,12 @@ export function UserList() {
     setOffset(offset)
   }
 
+  const handleLimitSelecterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedPage(0)
+    setOffset(0)
+    setLimit(Number(event.target.value))
+  }
+
   useEffect(() => {
     getData(usersUrl).then((result) => {
       setTotalCount(result.length)
@@ -258,18 +264,14 @@ export function UserList() {
               </div>
 
               <div>
-                <Box className={styles.selectLimit} display="inline-block" pr="8px">
+                <Box display="inline-block" pr="8px" fontSize="12px" color="var(--color-gray-500)">
                   Rows per page:
                 </Box>
                 <Box display="inline-block">
                   <select
                     className={styles.selectLimit}
                     value={limit}
-                    onChange={(event) => {
-                      setSelectedPage(0)
-                      setOffset(0)
-                      setLimit(Number(event.target.value))
-                    }}
+                    onChange={handleLimitSelecterChange}
                   >
                     <option value="5">5</option>
                     <option value="10">10</option>

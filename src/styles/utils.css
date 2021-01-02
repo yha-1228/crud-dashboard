@@ -70,6 +70,6 @@
   height: 100vh;
 }
 
-.bgred {
-  background-color: red;
+.hidden {
+  display: none;
 }
