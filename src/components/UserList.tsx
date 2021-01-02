@@ -13,6 +13,9 @@ import {
   faTrash,
   faSortAmountUp,
   faSortAmountDown,
+  faArrowLeft,
+  faArrowUp,
+  faArrowDown,
 } from '@fortawesome/free-solid-svg-icons'
 import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
@@ -84,7 +87,7 @@ export function UserList() {
     const urlSearchParams = new URLSearchParams(params)
 
     getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
-      wait(700).then(() => {
+      wait(1200).then(() => {
         setIsLoaded(true)
         setIsPageLoaded(true)
 
@@ -142,14 +145,14 @@ export function UserList() {
         {!isLoaded ? (
           <Box pt={6} textAlign="center">
             <MuiThemeProvider>
-              <CircularProgress size={30} thickness={5} />
+              <CircularProgress size={32} thickness={5} />
             </MuiThemeProvider>
           </Box>
         ) : (
           <>
             <Box mb="24px">
               <TableWrapper>
-                <Box height={4}>
+                <Box height={4} bgcolor="transparent">
                   {!isPageLoaded && (
                     <MuiThemeProvider>
                       <LinearProgress color="primary" />
@@ -170,6 +173,7 @@ export function UserList() {
                           if (!isSort || !(isSort && sortKey === 'username')) {
                             setIsSort(true)
                             setSortKey('username')
+                            setSortOrder('asc')
                             return
                           }
                           if (isSort && sortKey === 'username' && sortOrder === 'asc') {
@@ -184,10 +188,10 @@ export function UserList() {
                       >
                         Username{' '}
                         {isSort && sortKey === 'username' && sortOrder === 'asc' && (
-                          <FontAwesomeIcon icon={faSortAmountUp} />
+                          <FontAwesomeIcon icon={faArrowUp} />
                         )}
                         {isSort && sortKey === 'username' && sortOrder === 'desc' && (
-                          <FontAwesomeIcon icon={faSortAmountDown} />
+                          <FontAwesomeIcon icon={faArrowDown} />
                         )}
                       </TableHeader>
                       <TableHeader
@@ -206,24 +210,6 @@ export function UserList() {
                         Email{' '}
                         {isSort && sortKey === 'email' && <FontAwesomeIcon icon={faSortAmountUp} />}
                       </TableHeader>
-                      <TableHeader
-                        align="left"
-                        scope="col"
-                        onClick={() => {
-                          if (isSort && sortKey === 'country') {
-                            setIsSort(false)
-                            setSortKey('')
-                          } else {
-                            setIsSort(true)
-                            setSortKey('country')
-                          }
-                        }}
-                      >
-                        Country{' '}
-                        {isSort && sortKey === 'country' && (
-                          <FontAwesomeIcon icon={faSortAmountUp} />
-                        )}
-                      </TableHeader>
                       <TableHeader align="left" scope="col"></TableHeader>
                       <TableHeader align="left" scope="col"></TableHeader>
                     </tr>
@@ -235,7 +221,6 @@ export function UserList() {
                         <TableData>{user.id}</TableData>
                         <TableData>{user.username}</TableData>
                         <TableData>{user.email}</TableData>
-                        <TableData>{user.country}</TableData>
                         <TableData>
                           <LinkButton size="small" to={`/users/${user.id}`}>
                             <FontAwesomeIcon icon={faEdit} />

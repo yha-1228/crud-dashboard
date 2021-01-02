@@ -18,13 +18,13 @@
 .tableHeader {
   padding: 10px 24px;
   font-size: 14px;
-  font-weight: bold;
   color: var(--color-gray-400);
   white-space: nowrap;
   cursor: pointer;
+  transition: color 0.2s ease-out;
 }
 .tableHeader:hover {
-  color: var(--color-gray-700);
+  color: var(--color-primary);
 }
 
 .tableData {
