@@ -1,154 +1,60 @@
-import React, { useEffect, useState } from 'react'
-import styles from './UserList.module.css'
-import { Button, LinkButton } from './shared/Button'
-import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from './shared/Table'
-import { deleteData, getData, usersUrl, wait } from '../constants'
-import ReactPaginate from 'react-paginate'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+  faArrowDown,
+  faArrowUp,
   faChevronLeft,
   faChevronRight,
-  faPlus,
   faEdit,
+  faPlus,
   faTrash,
-  faArrowUp,
-  faArrowDown,
 } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
-import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
-import { Users } from '../types'
-import { MainHeading } from './shared/Heading'
-import { MainContentArea } from './layouts/MainContentArea'
-import { MainHeader } from './layouts/MainHeader'
+import React from 'react'
+import ReactPaginate from 'react-paginate'
+import { getPageCount } from '../../constants'
+import { MuiThemeProvider } from '../../lib/material-ui/MuiThemeProvider'
+import { Users } from '../../types'
+import { MainContentArea } from '../layouts/MainContentArea'
+import { MainHeader } from '../layouts/MainHeader'
+import { Button, LinkButton } from '../shared/Button'
+import { MainHeading } from '../shared/Heading'
+import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../shared/Table'
+import styles from './style.module.css'
 
-export function UserList() {
-  const [users, setUsers] = useState<Users>([])
-  const [totalCount, setTotalCount] = useState<number>(0)
-  const [isLoaded, setIsLoaded] = useState<boolean>(false)
-  const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false)
+type Props = {
+  users: Users
+  totalCount: number
+  isLoaded: boolean
+  isPageLoaded: boolean
+  offset: number
+  limit: number
+  isSort: boolean
+  sortKey: string
+  sortOrder: 'asc' | 'desc' | ''
+  selectedPage: number
+  onTableHeaderClick: (event: React.MouseEvent<any>) => void
+  onDeleteClick: (event: React.MouseEvent<any>) => void
+  onPageClick: (data: any) => void
+  onLimitSelecterChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
+}
 
-  // offset, limit
-  const [offset, setOffset] = useState<number>(0)
-  const [limit, setLimit] = useState<number>(10)
-
-  // sort
-  const [isSort, setIsSort] = useState<boolean>(false)
-  const [sortKey, setSortKey] = useState<string>('')
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('')
-
-  // 選択中のページをステートに同期させる
-  const [selectedPage, setSelectedPage] = useState<number>(0)
-
-  // React Pagenateのページリンクを最大まで表示するために、最大データ数の取得が必要
-  const getPageCount = (totalCount: number, limit: number) => {
-    return Math.ceil(totalCount / limit)
-  }
-
-  const loadUsersFromServer = ({
+export function Presentation(props: Props) {
+  const {
+    users,
+    totalCount,
+    isLoaded,
+    isPageLoaded,
+    offset,
+    limit,
     isSort,
     sortKey,
     sortOrder,
-    offset,
-    limit,
-  }: {
-    isSort: boolean
-    sortKey: string
-    sortOrder: 'asc' | 'desc' | ''
-    offset: number
-    limit: number
-  }) => {
-    setIsPageLoaded(false)
-
-    let params: { [key: string]: string } = { _start: offset.toString(), _limit: limit.toString() }
-
-    if (isSort) {
-      params = { ...params, _sort: sortKey, _order: sortOrder }
-    }
-
-    const urlSearchParams = new URLSearchParams(params)
-
-    getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
-      wait(1200).then(() => {
-        setIsLoaded(true)
-        setIsPageLoaded(true)
-
-        const users = result.map((item: any) => ({
-          id: item.id,
-          username: item.username,
-          email: item.email,
-          password: item.password,
-          country: item.country,
-        }))
-
-        setUsers(users)
-      })
-    })
-  }
-
-  const handleTableHeaderClick = (event: React.MouseEvent<any>) => {
-    const header = event.currentTarget.dataset.header as string
-
-    if (!isSort || !(isSort && sortKey === header)) {
-      setIsSort(true)
-      setSortKey(header)
-      setSortOrder('asc')
-      return
-    }
-
-    if (isSort && sortKey === header && sortOrder === 'asc') {
-      setSortOrder('desc')
-      return
-    }
-
-    if (isSort && sortKey === header && sortOrder === 'desc') {
-      setIsSort(false)
-      return
-    }
-  }
-
-  const handleDeleteClick = (event: React.MouseEvent<any>) => {
-    const { id, username } = event.currentTarget.dataset
-
-    const isConfirm = window.confirm(`Delete ${username}?`)
-    if (!isConfirm) return
-
-    setIsLoaded(false)
-    deleteData(`${usersUrl}/${id}`).then(() => {
-      loadUsersFromServer({
-        isSort: isSort,
-        sortKey: sortKey,
-        sortOrder: sortOrder,
-        offset: offset,
-        limit: limit,
-      })
-    })
-  }
-
-  const handlePageClick = (data: any) => {
-    const selected = data.selected
-    const offset = Math.ceil(selected * limit)
-    setSelectedPage(selected)
-    setOffset(offset)
-  }
-
-  const handleLimitSelecterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedPage(0)
-    setOffset(0)
-    setLimit(Number(event.target.value))
-  }
-
-  useEffect(() => {
-    getData(usersUrl).then((result) => {
-      setTotalCount(result.length)
-    })
-    loadUsersFromServer({
-      isSort: isSort,
-      sortKey: sortKey,
-      sortOrder: sortOrder,
-      offset: offset,
-      limit: limit,
-    })
-  }, [isSort, sortKey, sortOrder, offset, limit])
+    selectedPage,
+    onTableHeaderClick,
+    onDeleteClick,
+    onPageClick,
+    onLimitSelecterChange,
+  } = props
 
   return (
     <>
@@ -190,7 +96,7 @@ export function UserList() {
                         align="left"
                         scope="col"
                         data-header="username"
-                        onClick={handleTableHeaderClick}
+                        onClick={onTableHeaderClick}
                       >
                         Username{' '}
                         {isSort && sortKey === 'username' && sortOrder === 'asc' && (
@@ -204,7 +110,7 @@ export function UserList() {
                         align="left"
                         scope="col"
                         data-header="email"
-                        onClick={handleTableHeaderClick}
+                        onClick={onTableHeaderClick}
                       >
                         Email{' '}
                         {isSort && sortKey === 'email' && sortOrder === 'asc' && (
@@ -237,7 +143,7 @@ export function UserList() {
                             type="button"
                             data-id={user.id}
                             data-username={user.username}
-                            onClick={handleDeleteClick}
+                            onClick={onDeleteClick}
                             disabled={!isLoaded}
                           >
                             <FontAwesomeIcon icon={faTrash} />
@@ -260,7 +166,7 @@ export function UserList() {
                   pageCount={getPageCount(totalCount, limit)}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={7}
-                  onPageChange={handlePageClick}
+                  onPageChange={onPageClick}
                   containerClassName={styles.ReactPaginate__container}
                   pageClassName={styles.ReactPaginate__page}
                   pageLinkClassName={styles.ReactPaginate__pageLink}
@@ -282,9 +188,9 @@ export function UserList() {
                   <select
                     className={styles.selectLimit}
                     value={limit}
-                    onChange={handleLimitSelecterChange}
+                    onChange={onLimitSelecterChange}
                   >
-                    {[5, 10, 20, 30, 40, 50, 100].map((value) => (
+                    {[5, 8, 10, 20, 30, 50, 100].map((value) => (
                       <option key={value} value={value}>
                         {value}
                       </option>
