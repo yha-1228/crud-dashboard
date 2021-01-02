@@ -13,15 +13,18 @@ import React from 'react'
 import ReactPaginate from 'react-paginate'
 import { getPageCount } from '../../constants'
 import { MuiThemeProvider } from '../../lib/material-ui/MuiThemeProvider'
-import { Users } from '../../types'
+import { User, Users } from '../../types'
 import { MainContentArea } from '../layouts/MainContentArea'
 import { MainHeader } from '../layouts/MainHeader'
 import { Button, LinkButton } from '../shared/Button'
 import { MainHeading } from '../shared/Heading'
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../shared/Table'
 import styles from './style.module.css'
+import _isEqual from 'lodash/isEqual'
+import { getEndUser, getStartUser, getUserRowNumber } from './functions'
 
 type Props = {
+  allUsers: Users
   users: Users
   totalCount: number
   isLoaded: boolean
@@ -40,6 +43,7 @@ type Props = {
 
 export function Component(props: Props) {
   const {
+    allUsers,
     users,
     totalCount,
     isLoaded,
@@ -200,48 +204,30 @@ export function Component(props: Props) {
               </div>
 
               <div>
-                <span>totalCount: {totalCount}</span>
-
-                <hr />
-
                 <span className={styles.rowsCountNotificationText}>
-                  {`${offset + 1} - ${Math.min(offset + limit, totalCount)} / ${totalCount}`}
+                  {`${getUserRowNumber(
+                    allUsers,
+                    getStartUser(allUsers, users)
+                  )} - ${getUserRowNumber(allUsers, getEndUser(allUsers, users))} / ${totalCount}`}
                 </span>
-
-                <hr />
-
-                <RowsCountText
-                  isPageLoaded={isPageLoaded}
-                  offset={offset}
-                  limit={limit}
-                  totalCount={totalCount}
-                />
               </div>
             </Box>
+
+            {/* DEBUG AREA */}
+            {/* <Box p="8px" border="2px solid black">
+              <div>
+                startUser num=
+                {getUserRowNumber(allUsers, getStartUser(allUsers, users))}
+              </div>
+
+              <div>
+                endUser num=
+                {getUserRowNumber(allUsers, getEndUser(allUsers, users))}
+              </div>
+            </Box> */}
           </>
         )}
       </MainContentArea>
-    </>
-  )
-}
-
-type RowsCountTextProps = {
-  isPageLoaded: boolean
-  offset: number
-  limit: number
-  totalCount: number
-}
-
-function RowsCountText({ isPageLoaded, offset, limit, totalCount }: RowsCountTextProps) {
-  return (
-    <>
-      {isPageLoaded ? (
-        <span className={styles.rowsCountNotificationText}>
-          {`${offset + 1} - ${Math.min(offset + limit, totalCount)} / ${totalCount}`}
-        </span>
-      ) : (
-        <span></span>
-      )}
     </>
   )
 }

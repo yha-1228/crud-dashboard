@@ -139,6 +139,7 @@ export function UserList() {
 
   return (
     <Component
+      allUsers={allUsers}
       users={users}
       totalCount={totalCount}
       isLoaded={isLoaded}
