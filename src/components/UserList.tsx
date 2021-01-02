@@ -238,6 +238,7 @@ export function UserList() {
               <div>
                 <ReactPaginate
                   initialPage={selectedPage}
+                  forcePage={selectedPage}
                   previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                   nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
                   pageCount={getPageCount(totalCount, limit)}
@@ -265,7 +266,11 @@ export function UserList() {
                   <select
                     className={styles.selectLimit}
                     value={limit}
-                    onChange={(event) => setLimit(Number(event.target.value))}
+                    onChange={(event) => {
+                      setSelectedPage(0)
+                      setOffset(0)
+                      setLimit(Number(event.target.value))
+                    }}
                   >
                     <option value="5">5</option>
                     <option value="10">10</option>
