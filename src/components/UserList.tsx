@@ -253,12 +253,16 @@ export function UserList() {
                   containerClassName={styles.ReactPaginate__container}
                   pageClassName={styles.ReactPaginate__page}
                   pageLinkClassName={styles.ReactPaginate__pageLink}
+                  // pageClassName={'hidden'}
+                  // pageLinkClassName={'hidden'}
                   previousClassName={styles.ReactPaginate__page}
                   previousLinkClassName={styles.ReactPaginate__pageLink}
                   nextClassName={styles.ReactPaginate__page}
                   nextLinkClassName={styles.ReactPaginate__pageLink}
                   breakClassName={styles.ReactPaginate__page}
                   breakLinkClassName={styles.ReactPaginate__pageLink}
+                  // breakClassName={'hidden'}
+                  // breakLinkClassName={'hidden'}
                   activeLinkClassName={styles.ReactPaginate__pageLink_active}
                 />
               </div>
@@ -287,7 +291,7 @@ export function UserList() {
 
               <div>
                 <span className={styles.rowsCountNotificationText}>
-                  {offset + 1} - {offset + limit} / {totalCount}
+                  {offset + 1} - {Math.min(offset + limit, totalCount)} / {totalCount}
                 </span>
               </div>
             </Box>
