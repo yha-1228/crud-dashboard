@@ -43,7 +43,3 @@
   color: var(--color-gray-500);
   cursor: pointer;
 }
-
-.tableHead_sorted {
-  color: var(--color-primary);
-}
