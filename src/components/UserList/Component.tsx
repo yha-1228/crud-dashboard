@@ -13,14 +13,13 @@ import React from 'react'
 import ReactPaginate from 'react-paginate'
 import { getPageCount } from '../../constants'
 import { MuiThemeProvider } from '../../lib/material-ui/MuiThemeProvider'
-import { User, Users } from '../../types'
+import { Users } from '../../types'
 import { MainContentArea } from '../layouts/MainContentArea'
 import { MainHeader } from '../layouts/MainHeader'
 import { Button, LinkButton } from '../shared/Button'
 import { MainHeading } from '../shared/Heading'
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../shared/Table'
 import styles from './style.module.css'
-import _isEqual from 'lodash/isEqual'
 import { getEndUser, getStartUser, getUserRowNumber } from './functions'
 
 type Props = {
@@ -48,7 +47,6 @@ export function Component(props: Props) {
     totalCount,
     isLoaded,
     isPageLoaded,
-    offset,
     limit,
     isSort,
     sortKey,
