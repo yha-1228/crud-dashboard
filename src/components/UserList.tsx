@@ -11,7 +11,7 @@ import {
   faPlus,
   faEdit,
   faTrash,
-  faSortAmountUpAlt,
+  faSortAmountUp,
 } from '@fortawesome/free-solid-svg-icons'
 import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
@@ -165,7 +165,7 @@ export function UserList() {
                       >
                         Username{' '}
                         {isSort && sortBy === 'username' && (
-                          <FontAwesomeIcon icon={faSortAmountUpAlt} />
+                          <FontAwesomeIcon icon={faSortAmountUp} />
                         )}
                       </TableHeader>
                       <TableHeader
@@ -182,9 +182,7 @@ export function UserList() {
                         }}
                       >
                         Email{' '}
-                        {isSort && sortBy === 'email' && (
-                          <FontAwesomeIcon icon={faSortAmountUpAlt} />
-                        )}
+                        {isSort && sortBy === 'email' && <FontAwesomeIcon icon={faSortAmountUp} />}
                       </TableHeader>
                       <TableHeader
                         align="left"
@@ -201,7 +199,7 @@ export function UserList() {
                       >
                         Country{' '}
                         {isSort && sortBy === 'country' && (
-                          <FontAwesomeIcon icon={faSortAmountUpAlt} />
+                          <FontAwesomeIcon icon={faSortAmountUp} />
                         )}
                       </TableHeader>
                       <TableHeader align="left" scope="col"></TableHeader>
@@ -277,21 +275,18 @@ export function UserList() {
                     value={limit}
                     onChange={handleLimitSelecterChange}
                   >
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="200">200</option>
+                    {[5, 10, 20, 30, 40, 50, 100].map((value) => (
+                      <option key={value} value={value}>
+                        {value}
+                      </option>
+                    ))}
                   </select>
                 </Box>
               </div>
 
               <div>
                 <span className={styles.rowsCountNotificationText}>
-                  {offset + 1} - {Math.min(offset + limit, totalCount)} / {totalCount}
+                  {`${offset + 1} - ${Math.min(offset + limit, totalCount)} / ${totalCount}`}
                 </span>
               </div>
             </Box>
