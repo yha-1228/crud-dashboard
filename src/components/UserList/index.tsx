@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { deleteData, getData, usersUrl, wait } from '../../constants'
 import { Users } from '../../types'
-import { Presentation } from './Presentation'
+import { UserTable } from './UserTable'
 
 export function UserList() {
   const [users, setUsers] = useState<Users>([])
@@ -122,7 +122,7 @@ export function UserList() {
   }, [isSort, sortKey, sortOrder, offset, limit])
 
   return (
-    <Presentation
+    <UserTable
       users={users}
       totalCount={totalCount}
       isLoaded={isLoaded}
