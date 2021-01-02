@@ -11,7 +11,6 @@ import {
   faPlus,
   faEdit,
   faTrash,
-  faSortAmountUp,
   faArrowUp,
   faArrowDown,
 } from '@fortawesome/free-solid-svg-icons'
@@ -102,6 +101,27 @@ export function UserList() {
     })
   }
 
+  const handleTableHeaderClick = (event: React.MouseEvent<any>) => {
+    const header = event.currentTarget.dataset.header as string
+
+    if (!isSort || !(isSort && sortKey === header)) {
+      setIsSort(true)
+      setSortKey(header)
+      setSortOrder('asc')
+      return
+    }
+
+    if (isSort && sortKey === header && sortOrder === 'asc') {
+      setSortOrder('desc')
+      return
+    }
+
+    if (isSort && sortKey === header && sortOrder === 'desc') {
+      setIsSort(false)
+      return
+    }
+  }
+
   const handlePageClick = (data: any) => {
     const selected = data.selected
     const offset = Math.ceil(selected * limit)
@@ -167,22 +187,8 @@ export function UserList() {
                       <TableHeader
                         align="left"
                         scope="col"
-                        onClick={() => {
-                          if (!isSort || !(isSort && sortKey === 'username')) {
-                            setIsSort(true)
-                            setSortKey('username')
-                            setSortOrder('asc')
-                            return
-                          }
-                          if (isSort && sortKey === 'username' && sortOrder === 'asc') {
-                            setSortOrder('desc')
-                            return
-                          }
-                          if (isSort && sortKey === 'username' && sortOrder === 'desc') {
-                            setIsSort(false)
-                            return
-                          }
-                        }}
+                        data-header="username"
+                        onClick={handleTableHeaderClick}
                       >
                         Username{' '}
                         {isSort && sortKey === 'username' && sortOrder === 'asc' && (
@@ -195,22 +201,8 @@ export function UserList() {
                       <TableHeader
                         align="left"
                         scope="col"
-                        onClick={() => {
-                          if (!isSort || !(isSort && sortKey === 'email')) {
-                            setIsSort(true)
-                            setSortKey('email')
-                            setSortOrder('asc')
-                            return
-                          }
-                          if (isSort && sortKey === 'email' && sortOrder === 'asc') {
-                            setSortOrder('desc')
-                            return
-                          }
-                          if (isSort && sortKey === 'email' && sortOrder === 'desc') {
-                            setIsSort(false)
-                            return
-                          }
-                        }}
+                        data-header="email"
+                        onClick={handleTableHeaderClick}
                       >
                         Email{' '}
                         {isSort && sortKey === 'email' && sortOrder === 'asc' && (
