@@ -12,6 +12,7 @@ import {
   faEdit,
   faTrash,
   faSortAmountUp,
+  faSortAmountDown,
 } from '@fortawesome/free-solid-svg-icons'
 import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
 import { MuiThemeProvider } from '../lib/material-ui/MuiThemeProvider'
@@ -32,7 +33,8 @@ export function UserList() {
 
   // sort
   const [isSort, setIsSort] = useState<boolean>(false)
-  const [sortBy, setSortBy] = useState<string>('')
+  const [sortKey, setSortKey] = useState<string>('')
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('')
 
   // 選択中のページをステートに同期させる
   const [selectedPage, setSelectedPage] = useState<number>(0)
@@ -43,7 +45,13 @@ export function UserList() {
 
     setIsLoaded(false)
     deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: limit })
+      loadUsersFromServer({
+        isSort: isSort,
+        sortKey: sortKey,
+        sortOrder: sortOrder,
+        offset: offset,
+        limit: limit,
+      })
     })
   }
 
@@ -54,24 +62,23 @@ export function UserList() {
 
   const loadUsersFromServer = ({
     isSort,
-    sortBy,
+    sortKey,
+    sortOrder,
     offset,
     limit,
   }: {
     isSort: boolean
-    sortBy: string
+    sortKey: string
+    sortOrder: 'asc' | 'desc' | ''
     offset: number
     limit: number
   }) => {
     setIsPageLoaded(false)
 
-    let params: { [key: string]: string } = {
-      _start: offset.toString(),
-      _limit: limit.toString(),
-    }
+    let params: { [key: string]: string } = { _start: offset.toString(), _limit: limit.toString() }
 
     if (isSort) {
-      params = { ...params, _sort: sortBy }
+      params = { ...params, _sort: sortKey, _order: sortOrder }
     }
 
     const urlSearchParams = new URLSearchParams(params)
@@ -111,8 +118,14 @@ export function UserList() {
     getData(usersUrl).then((result) => {
       setTotalCount(result.length)
     })
-    loadUsersFromServer({ isSort: isSort, sortBy: sortBy, offset: offset, limit: limit })
-  }, [isSort, sortBy, offset, limit])
+    loadUsersFromServer({
+      isSort: isSort,
+      sortKey: sortKey,
+      sortOrder: sortOrder,
+      offset: offset,
+      limit: limit,
+    })
+  }, [isSort, sortKey, sortOrder, offset, limit])
 
   return (
     <>
@@ -154,51 +167,60 @@ export function UserList() {
                         align="left"
                         scope="col"
                         onClick={() => {
-                          if (isSort && sortBy === 'username') {
-                            setIsSort(false)
-                            setSortBy('')
-                          } else {
+                          if (!isSort || !(isSort && sortKey === 'username')) {
                             setIsSort(true)
-                            setSortBy('username')
+                            setSortKey('username')
+                            return
+                          }
+                          if (isSort && sortKey === 'username' && sortOrder === 'asc') {
+                            setSortOrder('desc')
+                            return
+                          }
+                          if (isSort && sortKey === 'username' && sortOrder === 'desc') {
+                            setIsSort(false)
+                            return
                           }
                         }}
                       >
                         Username{' '}
-                        {isSort && sortBy === 'username' && (
+                        {isSort && sortKey === 'username' && sortOrder === 'asc' && (
                           <FontAwesomeIcon icon={faSortAmountUp} />
+                        )}
+                        {isSort && sortKey === 'username' && sortOrder === 'desc' && (
+                          <FontAwesomeIcon icon={faSortAmountDown} />
                         )}
                       </TableHeader>
                       <TableHeader
                         align="left"
                         scope="col"
                         onClick={() => {
-                          if (isSort && sortBy === 'email') {
+                          if (isSort && sortKey === 'email') {
                             setIsSort(false)
-                            setSortBy('')
+                            setSortKey('')
                           } else {
                             setIsSort(true)
-                            setSortBy('email')
+                            setSortKey('email')
                           }
                         }}
                       >
                         Email{' '}
-                        {isSort && sortBy === 'email' && <FontAwesomeIcon icon={faSortAmountUp} />}
+                        {isSort && sortKey === 'email' && <FontAwesomeIcon icon={faSortAmountUp} />}
                       </TableHeader>
                       <TableHeader
                         align="left"
                         scope="col"
                         onClick={() => {
-                          if (isSort && sortBy === 'country') {
+                          if (isSort && sortKey === 'country') {
                             setIsSort(false)
-                            setSortBy('')
+                            setSortKey('')
                           } else {
                             setIsSort(true)
-                            setSortBy('country')
+                            setSortKey('country')
                           }
                         }}
                       >
                         Country{' '}
-                        {isSort && sortBy === 'country' && (
+                        {isSort && sortKey === 'country' && (
                           <FontAwesomeIcon icon={faSortAmountUp} />
                         )}
                       </TableHeader>
@@ -251,16 +273,12 @@ export function UserList() {
                   containerClassName={styles.ReactPaginate__container}
                   pageClassName={styles.ReactPaginate__page}
                   pageLinkClassName={styles.ReactPaginate__pageLink}
-                  // pageClassName={'hidden'}
-                  // pageLinkClassName={'hidden'}
                   previousClassName={styles.ReactPaginate__page}
                   previousLinkClassName={styles.ReactPaginate__pageLink}
                   nextClassName={styles.ReactPaginate__page}
                   nextLinkClassName={styles.ReactPaginate__pageLink}
                   breakClassName={styles.ReactPaginate__page}
                   breakLinkClassName={styles.ReactPaginate__pageLink}
-                  // breakClassName={'hidden'}
-                  // breakLinkClassName={'hidden'}
                   activeLinkClassName={styles.ReactPaginate__pageLink_active}
                 />
               </div>
