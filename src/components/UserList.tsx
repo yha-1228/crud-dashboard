@@ -39,22 +39,6 @@ export function UserList() {
   // 選択中のページをステートに同期させる
   const [selectedPage, setSelectedPage] = useState<number>(0)
 
-  const deleteUser = (user: User) => {
-    const isConfirm = window.confirm(`Delete ${user.username}?`)
-    if (!isConfirm) return
-
-    setIsLoaded(false)
-    deleteData(`${usersUrl}/${user.id}`).then(() => {
-      loadUsersFromServer({
-        isSort: isSort,
-        sortKey: sortKey,
-        sortOrder: sortOrder,
-        offset: offset,
-        limit: limit,
-      })
-    })
-  }
-
   // React Pagenateのページリンクを最大まで表示するために、最大データ数の取得が必要
   const getPageCount = (totalCount: number, limit: number) => {
     return Math.ceil(totalCount / limit)
@@ -120,6 +104,24 @@ export function UserList() {
       setIsSort(false)
       return
     }
+  }
+
+  const handleDeleteClick = (event: React.MouseEvent<any>) => {
+    const { id, username } = event.currentTarget.dataset
+
+    const isConfirm = window.confirm(`Delete ${username}?`)
+    if (!isConfirm) return
+
+    setIsLoaded(false)
+    deleteData(`${usersUrl}/${id}`).then(() => {
+      loadUsersFromServer({
+        isSort: isSort,
+        sortKey: sortKey,
+        sortOrder: sortOrder,
+        offset: offset,
+        limit: limit,
+      })
+    })
   }
 
   const handlePageClick = (data: any) => {
@@ -233,7 +235,9 @@ export function UserList() {
                           <Button
                             size="small"
                             type="button"
-                            onClick={() => deleteUser(user)}
+                            data-id={user.id}
+                            data-username={user.username}
+                            onClick={handleDeleteClick}
                             disabled={!isLoaded}
                           >
                             <FontAwesomeIcon icon={faTrash} />
