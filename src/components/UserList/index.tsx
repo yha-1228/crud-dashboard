@@ -4,6 +4,7 @@ import { Users } from '../../types'
 import { Component } from './Component'
 
 export function UserList() {
+  const [allUsers, setAllUsers] = useState<Users>([])
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
@@ -15,10 +16,6 @@ export function UserList() {
   const [sortKey, setSortKey] = useState<string>('')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('')
 
-  // Add
-  const [allUsers, setAllUsers] = useState<Users>([])
-
-  // Add
   const loadAllUsersFromServer = () => {
     getData(usersUrl).then((result) => {
       const allUsers = result.map((item: any) => ({
