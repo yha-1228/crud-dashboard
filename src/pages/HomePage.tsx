@@ -3,6 +3,7 @@ import { MainHeader } from '../components/layouts/MainHeader'
 import { Layout } from '../components/layouts/Layout'
 import { MainContentArea } from '../components/layouts/MainContentArea'
 import { MainHeading } from '../components/shared/Heading'
+import { Button, LinkButton } from '../components/shared/Button'
 
 export function HomePage() {
   return (
