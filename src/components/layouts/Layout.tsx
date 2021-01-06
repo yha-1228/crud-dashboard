@@ -1,5 +1,6 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+// import { Helmet } from 'react-helmet'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { Main } from './Main'
 import { Sidebar } from './Sidebar'
 import { SidebarHeading } from '../shared/Heading'
@@ -19,23 +20,25 @@ function TwoColumnWrapper({ children }: { children: React.ReactNode }) {
 export function Layout({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>{title}</title>
+        </Helmet>
 
-      <TwoColumnWrapper>
-        <Sidebar>
-          <SidebarHeader>
-            <SidebarHeading>Dashboard</SidebarHeading>
-          </SidebarHeader>
+        <TwoColumnWrapper>
+          <Sidebar>
+            <SidebarHeader>
+              <SidebarHeading>Dashboard</SidebarHeading>
+            </SidebarHeader>
 
-          <SidebarContentArea>
-            <Navgation />
-          </SidebarContentArea>
-        </Sidebar>
+            <SidebarContentArea>
+              <Navgation />
+            </SidebarContentArea>
+          </Sidebar>
 
-        <Main>{children}</Main>
-      </TwoColumnWrapper>
+          <Main>{children}</Main>
+        </TwoColumnWrapper>
+      </HelmetProvider>
     </>
   )
 }

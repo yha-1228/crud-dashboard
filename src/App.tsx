@@ -17,9 +17,9 @@ import { UserListPage } from './pages/UserListPage'
 import { UserCreatePage } from './pages/UserCreatePage'
 
 // Font Awesome
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-config.autoAddCss = false
+// import { config } from '@fortawesome/fontawesome-svg-core'
+// import '@fortawesome/fontawesome-svg-core/styles.css'
+// config.autoAddCss = false
 
 const routes = [
   { path: '/', exact: true, component: <HomePage /> },
