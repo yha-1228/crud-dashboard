@@ -30,8 +30,8 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        {routes.map((route, index) => (
-          <Route key={index} path={route.path} exact={route.exact}>
+        {routes.map((route, i) => (
+          <Route key={i} path={route.path} exact={route.exact}>
             {route.component}
           </Route>
         ))}

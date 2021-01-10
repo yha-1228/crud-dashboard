@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { deleteData, getData, usersUrl, wait } from '../../constants'
+import { usersUrl } from '../../constants'
+import { deleteData, getData, wait } from '../../functions'
 import { Users } from '../../types'
 import { Component } from './Component'
 

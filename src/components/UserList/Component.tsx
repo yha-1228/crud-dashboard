@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
 import React from 'react'
 import ReactPaginate from 'react-paginate'
-import { getPageCount } from '../../constants'
 import { MuiThemeProvider } from '../../lib/material-ui/MuiThemeProvider'
 import { Users } from '../../types'
 import { MainContentArea } from '../layouts/MainContentArea'
@@ -21,6 +20,7 @@ import { MainHeading } from '../shared/Heading'
 import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../shared/Table'
 import styles from './style.module.css'
 import { getEndUser, getStartUser, getUserRowNumber } from './functions'
+import { getPageCount } from '../../functions'
 
 type Props = {
   allUsers: Users
