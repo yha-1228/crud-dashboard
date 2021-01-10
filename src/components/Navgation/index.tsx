@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from './Navgation.module.css'
+import styles from './style.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faFileInvoice, faHome, faSlidersH, faUser } from '@fortawesome/free-solid-svg-icons'
 
