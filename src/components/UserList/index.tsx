@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { usersUrl } from '../../constants'
-import { deleteData, getData, wait } from '../../functions'
+import { deleteData, getData, sleep } from '../../functions'
 import { Users } from '../../types'
 import { Component } from './Component'
 
@@ -55,7 +55,7 @@ export function UserList() {
     const urlSearchParams = new URLSearchParams(params)
 
     getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
-      wait(1200).then(() => {
+      sleep(1200).then(() => {
         setIsLoaded(true)
         setIsPageLoaded(true)
 
