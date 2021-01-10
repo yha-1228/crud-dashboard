@@ -8,7 +8,7 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Box, CircularProgress, LinearProgress } from '@material-ui/core'
+// import { Box, LinearProgress } from '@material-ui/core'
 import React from 'react'
 import ReactPaginate from 'react-paginate'
 import { MuiThemeProvider } from '../../lib/material-ui/MuiThemeProvider'
@@ -21,6 +21,9 @@ import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table'
 import styles from './style.module.css'
 import { getEndUser, getStartUser, getUserRowNumber } from './functions'
 import { getPageCount } from '../../functions'
+import { Spinner } from '../shared/Spinner'
+import Box from '@material-ui/core/Box'
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 type Props = {
   allUsers: Users
@@ -72,9 +75,7 @@ export function Component(props: Props) {
       <MainContentArea>
         {!isLoaded ? (
           <Box pt={6} textAlign="center">
-            <MuiThemeProvider>
-              <CircularProgress size={32} thickness={5} />
-            </MuiThemeProvider>
+            <Spinner />
           </Box>
         ) : (
           <>
