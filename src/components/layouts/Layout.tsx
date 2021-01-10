@@ -6,7 +6,7 @@ import { SidebarHeading } from '../shared/Heading'
 import { SidebarHeader } from './SidebarHeader'
 import { SidebarContentArea } from './SidebarContentArea'
 import { Navgation } from '../Navgation/'
-import { Box } from '@material-ui/core'
+import Box from '@material-ui/core/Box'
 
 function TwoColumnWrapper({ children }: { children: React.ReactNode }) {
   return (

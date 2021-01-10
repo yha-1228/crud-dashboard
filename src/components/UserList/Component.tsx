@@ -8,7 +8,6 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { Box, LinearProgress } from '@material-ui/core'
 import React from 'react'
 import ReactPaginate from 'react-paginate'
 import { MuiThemeProvider } from '../../lib/material-ui/MuiThemeProvider'
