@@ -72,7 +72,7 @@ export function UserList() {
     })
   }
 
-  const handleTableHeaderClick = (event: React.MouseEvent<any>) => {
+  const handleThClick = (event: React.MouseEvent<any>) => {
     const header = event.currentTarget.dataset.header as string
 
     // no sort
@@ -151,7 +151,7 @@ export function UserList() {
       sortKey={sortKey}
       sortOrder={sortOrder}
       selectedPage={selectedPage}
-      onTableHeaderClick={handleTableHeaderClick}
+      onTableHeaderClick={handleThClick}
       onDeleteClick={handleDeleteClick}
       onPageClick={handlePageClick}
       onLimitSelecterChange={handleLimitSelecterChange}
