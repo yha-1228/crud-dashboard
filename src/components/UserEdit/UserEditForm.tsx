@@ -1,9 +1,9 @@
 import { Box } from '@material-ui/core'
 import React from 'react'
-import { Button, LinkButton } from './shared/Button'
-import { FormGroup } from './shared/FormGroup'
-import { FormInput } from './shared/FormInput'
-import { FormLabel } from './shared/FormLabel'
+import { Button, LinkButton } from '../shared/Button'
+import { FormGroup } from '../shared/FormGroup'
+import { FormInput } from '../shared/FormInput'
+import { FormLabel } from '../shared/FormLabel'
 
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
@@ -11,14 +11,20 @@ type Props = {
   values: { username: string; email: string; password: string; country: string }
   isSubmitting: boolean
   submitButtonText: string
+  isDeleteing: boolean
+  deleteButtonText: string
+  onDeleteClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-export function UserCreateForm({
+export function UserEditForm({
   onSubmit,
   onChange,
   values,
   isSubmitting,
   submitButtonText,
+  isDeleteing,
+  deleteButtonText,
+  onDeleteClick,
 }: Props) {
   return (
     <form onSubmit={onSubmit} noValidate>
@@ -82,6 +88,12 @@ export function UserCreateForm({
         <Box display="inline-block" pr="16px">
           <Button variant="primary" type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Loading...' : submitButtonText}
+          </Button>
+        </Box>
+
+        <Box display="inline-block" pr="16px">
+          <Button variant="warning" type="button" onClick={onDeleteClick} disabled={isDeleteing}>
+            {isDeleteing ? 'Loading...' : deleteButtonText}
           </Button>
         </Box>
 

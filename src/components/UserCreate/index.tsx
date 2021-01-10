@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { usersUrl } from '../constants'
-import { MainHeader } from './layouts/MainHeader'
-import { MainContentArea } from './layouts/MainContentArea'
-import { MainHeading } from './shared/Heading'
+import { usersUrl } from '../../constants'
+import { MainHeader } from '../layouts/MainHeader'
+import { MainContentArea } from '../layouts/MainContentArea'
+import { MainHeading } from '../shared/Heading'
 import { UserCreateForm } from './UserCreateForm'
-import { postData } from '../functions'
+import { postData } from '../../functions'
 
 type Values = {
   username: string

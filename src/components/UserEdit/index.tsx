@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { usersUrl } from '../constants'
-import { MainHeader } from './layouts/MainHeader'
-import { MainContentArea } from './layouts/MainContentArea'
-import { MainHeading } from './shared/Heading'
+import { usersUrl } from '../../constants'
+import { MainHeader } from '../layouts/MainHeader'
+import { MainContentArea } from '../layouts/MainContentArea'
+import { MainHeading } from '../shared/Heading'
 import { UserEditForm } from './UserEditForm'
-import { deleteData, getData, putData } from '../functions'
+import { deleteData, getData, putData } from '../../functions'
 
 type Values = {
   username: string
