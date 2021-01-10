@@ -17,7 +17,7 @@ import { MainContentArea } from '../layouts/MainContentArea'
 import { MainHeader } from '../layouts/MainHeader'
 import { Button, LinkButton } from '../shared/Button'
 import { MainHeading } from '../shared/Heading'
-import { Table, TableBody, TableData, TableHead, TableHeader, TableWrapper } from '../shared/Table'
+import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table'
 import styles from './style.module.css'
 import { getEndUser, getStartUser, getUserRowNumber } from './functions'
 import { getPageCount } from '../../functions'
@@ -79,7 +79,7 @@ export function Component(props: Props) {
         ) : (
           <>
             <Box mb="24px">
-              <TableWrapper>
+              <TableContainer>
                 <Box height={4}>
                   {!isPageLoaded && (
                     <MuiThemeProvider>
@@ -89,12 +89,12 @@ export function Component(props: Props) {
                 </Box>
 
                 <Table>
-                  <TableHead>
+                  <Thead>
                     <tr>
-                      <TableHeader align="left" scope="col">
+                      <Th align="left" scope="col">
                         ID
-                      </TableHeader>
-                      <TableHeader
+                      </Th>
+                      <Th
                         align="left"
                         scope="col"
                         data-header="username"
@@ -107,13 +107,8 @@ export function Component(props: Props) {
                         {isSort && sortKey === 'username' && sortOrder === 'desc' && (
                           <FontAwesomeIcon icon={faArrowDown} />
                         )}
-                      </TableHeader>
-                      <TableHeader
-                        align="left"
-                        scope="col"
-                        data-header="email"
-                        onClick={onTableHeaderClick}
-                      >
+                      </Th>
+                      <Th align="left" scope="col" data-header="email" onClick={onTableHeaderClick}>
                         Email{' '}
                         {isSort && sortKey === 'email' && sortOrder === 'asc' && (
                           <FontAwesomeIcon icon={faArrowUp} />
@@ -121,25 +116,25 @@ export function Component(props: Props) {
                         {isSort && sortKey === 'email' && sortOrder === 'desc' && (
                           <FontAwesomeIcon icon={faArrowDown} />
                         )}
-                      </TableHeader>
-                      <TableHeader align="left" scope="col"></TableHeader>
-                      <TableHeader align="left" scope="col"></TableHeader>
+                      </Th>
+                      <Th align="left" scope="col"></Th>
+                      <Th align="left" scope="col"></Th>
                     </tr>
-                  </TableHead>
+                  </Thead>
 
-                  <TableBody>
+                  <Tbody>
                     {users.map((user) => (
                       <tr key={user.id}>
-                        <TableData>{user.id}</TableData>
-                        <TableData>{user.username}</TableData>
-                        <TableData>{user.email}</TableData>
-                        <TableData>
+                        <Td>{user.id}</Td>
+                        <Td>{user.username}</Td>
+                        <Td>{user.email}</Td>
+                        <Td>
                           <LinkButton size="small" to={`/users/${user.id}`}>
                             <FontAwesomeIcon icon={faEdit} />
                             &nbsp;&nbsp;Edit
                           </LinkButton>
-                        </TableData>
-                        <TableData>
+                        </Td>
+                        <Td>
                           <Button
                             size="small"
                             type="button"
@@ -151,12 +146,12 @@ export function Component(props: Props) {
                             <FontAwesomeIcon icon={faTrash} />
                             &nbsp;&nbsp;Delete
                           </Button>
-                        </TableData>
+                        </Td>
                       </tr>
                     ))}
-                  </TableBody>
+                  </Tbody>
                 </Table>
-              </TableWrapper>
+              </TableContainer>
             </Box>
 
             <Box display="flex" justifyContent="space-between" alignItems="center">
