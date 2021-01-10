@@ -75,6 +75,7 @@ export function UserList() {
   const handleTableHeaderClick = (event: React.MouseEvent<any>) => {
     const header = event.currentTarget.dataset.header as string
 
+    // no sort
     if (!isSort || !(isSort && sortKey === header)) {
       setIsSort(true)
       setSortKey(header)
@@ -82,11 +83,13 @@ export function UserList() {
       return
     }
 
+    // asc sort
     if (isSort && sortKey === header && sortOrder === 'asc') {
       setSortOrder('desc')
       return
     }
 
+    // desc sort
     if (isSort && sortKey === header && sortOrder === 'desc') {
       setIsSort(false)
       return
