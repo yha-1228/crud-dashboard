@@ -50,8 +50,8 @@ export function Navgation() {
   return (
     <nav>
       <ul>
-        {navItems.map((navItem, index) => (
-          <NavItem key={index}>
+        {navItems.map((navItem, i) => (
+          <NavItem key={i}>
             <NavLink
               className={styles.link}
               activeClassName={styles.link_active}
