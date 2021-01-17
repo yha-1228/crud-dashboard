@@ -1,7 +1,7 @@
 import React from 'react'
-import { MainHeader } from '../components/layouts/MainHeader'
-import { Layout } from '../components/layouts/Layout'
-import { MainContentArea } from '../components/layouts/MainContentArea'
+import { MainHeader } from '../components/Layout/MainHeader'
+import { Layout } from '../components/Layout/Layout'
+import { MainContentArea } from '../components/Layout/MainContentArea'
 import { MainHeading } from '../components/shared/Heading'
 
 export function HomePage() {

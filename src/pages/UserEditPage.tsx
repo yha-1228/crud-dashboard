@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Layout } from '../components/layouts/Layout'
+import { Layout } from '../components/Layout/Layout'
 import { UserEdit } from '../components/UserEdit'
 
 type Id = { id: string }
