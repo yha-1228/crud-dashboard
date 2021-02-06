@@ -6,9 +6,7 @@ type Props = {
   children: React.ReactNode[]
 }
 
-export function Stack({ direction, spaceing, children }: Props) {
-  const style = direction === "horizontal" ? 
-  
+export function VStack({ spaceing, children }: Props) {
   return (
     <div
       className={css`
@@ -17,6 +15,23 @@ export function Stack({ direction, spaceing, children }: Props) {
         }
         & > *:last-child {
           margin-bottom: 0;
+        }
+      `}
+    >
+      {children}
+    </div>
+  )
+}
+
+export function HStack({ spaceing, children }: Props) {
+  return (
+    <div
+      className={css`
+        & > * {
+          margin-right: ${spaceing}px;
+        }
+        & > *:last-child {
+          margin-right: 0;
         }
       `}
     >
