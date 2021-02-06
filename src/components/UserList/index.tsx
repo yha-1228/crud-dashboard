@@ -4,6 +4,8 @@ import { deleteData, getData, sleep } from '../../functions'
 import { Users } from '../../types'
 import { Component } from './Component'
 
+// TODO: stateをひとまとめにする
+
 export function UserList() {
   const [allUsers, setAllUsers] = useState<Users>([])
   const [users, setUsers] = useState<Users>([])
