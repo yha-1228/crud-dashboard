@@ -4,6 +4,7 @@ import { deleteData, getData, sleep } from '../../functions'
 import { Users } from '../../types'
 import { Component } from './Component'
 
+// TODO: tableのwidth, heightをはみださないよう記述する
 // TODO: stateをひとまとめにする
 
 export function UserList() {
