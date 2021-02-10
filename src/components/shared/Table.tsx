@@ -50,9 +50,9 @@ export function Tbody({ ...other }: JSX.IntrinsicElements['tbody']) {
     <tbody
       className={css({
         borderBottom: '1px solid var(--color-gray-100)',
-        // '&:last-child': {
-        // borderBottom: 'none',
-        // },
+        '&: > *last-child': {
+          borderBottom: 'none',
+        },
       })}
       // className={css`
       //   & {

@@ -17,13 +17,13 @@ import { UserListPage } from './pages/UserListPage'
 import { UserCreatePage } from './pages/UserCreatePage'
 
 const routes = [
-  { path: '/', exact: true, component: <HomePage /> },
-  { path: '/users', exact: true, component: <UserListPage /> },
-  { path: '/users/create', exact: true, component: <UserCreatePage /> },
-  { path: '/users/:id', exact: true, component: <UserEditPage /> },
-  { path: '/invoices', exact: true, component: <InvoicesPage /> },
-  { path: '/configs', exact: true, component: <ConfigsPage /> },
-  { path: '/site-setting', exact: true, component: <SiteSettingPage /> },
+  { path: '/', exact: true, component: () => <HomePage /> },
+  { path: '/users', exact: true, component: () => <UserListPage /> },
+  { path: '/users/create', exact: true, component: () => <UserCreatePage /> },
+  { path: '/users/:id', exact: true, component: () => <UserEditPage /> },
+  { path: '/invoices', exact: true, component: () => <InvoicesPage /> },
+  { path: '/configs', exact: true, component: () => <ConfigsPage /> },
+  { path: '/site-setting', exact: true, component: () => <SiteSettingPage /> },
 ]
 
 export default function App() {
@@ -31,9 +31,7 @@ export default function App() {
     <Router>
       <Switch>
         {routes.map((route, i) => (
-          <Route key={i} path={route.path} exact={route.exact}>
-            {route.component}
-          </Route>
+          <Route key={i} {...route} />
         ))}
       </Switch>
     </Router>
