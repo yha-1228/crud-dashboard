@@ -59,7 +59,7 @@ export function UserList() {
     })
   }
 
-  const handleThClick = (event: React.MouseEvent<any>) => {
+  const onTableHeaderClick = (event: React.MouseEvent<any>) => {
     const header = event.currentTarget.dataset.header as string
 
     // no sort
@@ -83,7 +83,7 @@ export function UserList() {
     }
   }
 
-  const handleDeleteClick = (event: React.MouseEvent<any>) => {
+  const onDeleteClick = (event: React.MouseEvent<any>) => {
     const { id, username } = event.currentTarget.dataset
 
     const isConfirm = window.confirm(`Delete ${username}?`)
@@ -101,14 +101,14 @@ export function UserList() {
     })
   }
 
-  const handlePageClick = (data: any) => {
+  const onPageClick = (data: any) => {
     const selected = data.selected
     const offset = Math.ceil(selected * limit)
     setSelectedPage(selected)
     setOffset(offset)
   }
 
-  const handleLimitSelecterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const onLimitSelecterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedPage(0)
     setOffset(0)
     setLimit(Number(event.target.value))
@@ -138,10 +138,10 @@ export function UserList() {
       sortKey={sortKey}
       sortOrder={sortOrder}
       selectedPage={selectedPage}
-      onTableHeaderClick={handleThClick}
-      onDeleteClick={handleDeleteClick}
-      onPageClick={handlePageClick}
-      onLimitSelecterChange={handleLimitSelecterChange}
+      onTableHeaderClick={onTableHeaderClick}
+      onDeleteClick={onDeleteClick}
+      onPageClick={onPageClick}
+      onLimitSelecterChange={onLimitSelecterChange}
     />
   )
 }
