@@ -1,5 +1,6 @@
 import { css } from '@emotion/css'
 import Box from '@material-ui/core/Box'
+import classnames from 'classnames'
 import React from 'react'
 import styles from './Table.module.css'
 
@@ -47,14 +48,20 @@ export function Thead({ ...other }: JSX.IntrinsicElements['thead']) {
 export function Tbody({ ...other }: JSX.IntrinsicElements['tbody']) {
   return (
     <tbody
-      className={css`
-        & {
-          border-bottom: 1px solid var(--color-gray-100);
-          & > *:last-child {
-            border-bottom: none;
-          }
-        }
-      `}
+      className={css({
+        borderBottom: '1px solid var(--color-gray-100)',
+        // '&:last-child': {
+        // borderBottom: 'none',
+        // },
+      })}
+      // className={css`
+      //   & {
+      //     border-bottom: 1px solid var(--color-gray-100);
+      //     &:last-child {
+      //       border-bottom: none;
+      //     }
+      //   }
+      // `}
       // className={styles.tableBody}
       {...other}
     />
@@ -65,12 +72,36 @@ export function Th({
   align,
   ...other
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
-  return <th className={styles.tableHeader} style={{ textAlign: align }} {...other} />
+  return (
+    <th
+      className={classnames(
+        styles.tableHeader,
+        css`
+          & {
+            text-align: ${align};
+          }
+        `
+      )}
+      {...other}
+    />
+  )
 }
 
 export function Td({
   align,
   ...other
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
-  return <td className={styles.tableData} style={{ textAlign: align }} {...other} />
+  return (
+    <td
+      className={classnames(
+        styles.tableData,
+        css`
+          & {
+            text-align: ${align};
+          }
+        `
+      )}
+      {...other}
+    />
+  )
 }

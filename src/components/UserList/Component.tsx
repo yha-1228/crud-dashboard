@@ -205,19 +205,6 @@ export function Component(props: Props) {
                 </span>
               </div>
             </Box>
-
-            {/* DEBUG AREA */}
-            {/* <Box p="8px" border="2px solid black">
-              <div>
-                startUser num=
-                {getUserRowNumber(allUsers, getStartUser(allUsers, users))}
-              </div>
-
-              <div>
-                endUser num=
-                {getUserRowNumber(allUsers, getEndUser(allUsers, users))}
-              </div>
-            </Box> */}
           </>
         )}
       </MainContentArea>
