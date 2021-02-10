@@ -21,6 +21,7 @@ import { getEndUser, getStartUser, getUserRowNumber } from './functions'
 import { getPageCount } from '../../functions'
 import { Spinner } from '../shared/Spinner'
 import Box from '@material-ui/core/Box'
+import { css } from '@emotion/css'
 
 type Props = {
   allUsers: Users
@@ -155,16 +156,16 @@ export function Component(props: Props) {
                   previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                   nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
                   // styles
-                  containerClassName={styles.ReactPaginate__container}
-                  pageClassName={styles.ReactPaginate__page}
-                  pageLinkClassName={styles.ReactPaginate__pageLink}
-                  previousClassName={styles.ReactPaginate__page}
-                  previousLinkClassName={styles.ReactPaginate__pageLink}
-                  nextClassName={styles.ReactPaginate__page}
-                  nextLinkClassName={styles.ReactPaginate__pageLink}
-                  breakClassName={styles.ReactPaginate__page}
-                  breakLinkClassName={styles.ReactPaginate__pageLink}
-                  activeLinkClassName={styles.ReactPaginate__pageLink_active}
+                  containerClassName={styles.reactPaginate__container}
+                  pageClassName={styles.reactPaginate__page}
+                  pageLinkClassName={styles.reactPaginate__pageLink}
+                  previousClassName={styles.reactPaginate__page}
+                  previousLinkClassName={styles.reactPaginate__pageLink}
+                  nextClassName={styles.reactPaginate__page}
+                  nextLinkClassName={styles.reactPaginate__pageLink}
+                  breakClassName={styles.reactPaginate__page}
+                  breakLinkClassName={styles.reactPaginate__pageLink}
+                  activeLinkClassName={styles.reactPaginate__pageLink_active}
                 />
               </div>
 
@@ -174,7 +175,13 @@ export function Component(props: Props) {
                 </Box>
                 <Box display="inline-block">
                   <select
-                    className={styles.selectLimit}
+                    className={css`
+                      & {
+                        font-size: 12px;
+                        color: var(--color-gray-500);
+                        cursor: pointer;
+                      }
+                    `}
                     value={limit}
                     onChange={onLimitSelecterChange}
                   >
@@ -188,7 +195,14 @@ export function Component(props: Props) {
               </div>
 
               <div>
-                <span className={styles.rowsCountNotificationText}>
+                <span
+                  className={css`
+                    & {
+                      font-size: 12px;
+                      color: var(--color-gray-500);
+                    }
+                  `}
+                >
                   {`${getUserRowNumber(
                     allUsers,
                     getStartUser(allUsers, users)
