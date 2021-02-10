@@ -4,14 +4,11 @@ module.exports = () => {
   const size = 887
 
   const db = {
-    users: {
-      meta: { totalCount: size },
-      result: [],
-    },
+    users: [],
   }
 
   for (let index = 1; index <= size; index++) {
-    db.users.result.push({
+    db.users.push({
       id: index,
       username: faker.internet.userName(),
       email: faker.internet.email(),
