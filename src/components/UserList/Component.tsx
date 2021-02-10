@@ -53,7 +53,7 @@ export function Component(props: Props) {
     selectedPage,
     onTableHeaderClick,
     onDeleteClick,
-    onPageClick,
+    onPageClick: onPageChange,
     onLimitSelecterChange,
   } = props
 
@@ -149,7 +149,7 @@ export function Component(props: Props) {
                   // logics
                   forcePage={selectedPage}
                   pageCount={getPageCount(totalCount, limit)}
-                  onPageChange={onPageClick}
+                  onPageChange={onPageChange}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={7}
                   // labels
