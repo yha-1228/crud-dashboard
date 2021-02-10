@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 
 // global styles
 import './styles/colors.css'
@@ -28,12 +29,14 @@ const routes = [
 
 export default function App() {
   return (
-    <Router>
-      <Switch>
-        {routes.map((route, i) => (
-          <Route key={i} {...route} />
-        ))}
-      </Switch>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <Switch>
+          {routes.map((route, i) => (
+            <Route key={i} {...route} />
+          ))}
+        </Switch>
+      </Router>
+    </HelmetProvider>
   )
 }

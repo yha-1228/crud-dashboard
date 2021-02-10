@@ -19,25 +19,23 @@ function TwoColumnWrapper({ children }: { children: React.ReactNode }) {
 export function Layout({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <>
-      <HelmetProvider>
-        <Helmet>
-          <title>{title}</title>
-        </Helmet>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
 
-        <TwoColumnWrapper>
-          <Sidebar>
-            <SidebarHeader>
-              <SidebarHeading>Dashboard</SidebarHeading>
-            </SidebarHeader>
+      <TwoColumnWrapper>
+        <Sidebar>
+          <SidebarHeader>
+            <SidebarHeading>Dashboard</SidebarHeading>
+          </SidebarHeader>
 
-            <SidebarContentArea>
-              <Navgation />
-            </SidebarContentArea>
-          </Sidebar>
+          <SidebarContentArea>
+            <Navgation />
+          </SidebarContentArea>
+        </Sidebar>
 
-          <Main>{children}</Main>
-        </TwoColumnWrapper>
-      </HelmetProvider>
+        <Main>{children}</Main>
+      </TwoColumnWrapper>
     </>
   )
 }
