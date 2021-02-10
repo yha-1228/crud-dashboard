@@ -6,14 +6,19 @@ import { SidebarHeading } from '../shared/Heading'
 import { SidebarHeader } from './SidebarHeader'
 import { SidebarContentArea } from './SidebarContentArea'
 import { Navgation } from '../Navgation'
-import Box from '@material-ui/core/Box'
 import siteConfig from '../../siteConfig'
+import { css } from '@emotion/css'
 
 function TwoColumnWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <Box display="flex" height="100vh">
+    <div
+      className={css({
+        display: 'flex',
+        height: '100vh',
+      })}
+    >
       {children}
-    </Box>
+    </div>
   )
 }
 
