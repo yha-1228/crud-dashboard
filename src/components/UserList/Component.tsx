@@ -10,7 +10,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import ReactPaginate from 'react-paginate'
-import { MuiThemeProvider } from '../../lib/material-ui/MuiThemeProvider'
 import { Users } from '../../types'
 import { MainContentArea } from '../Layout/MainContentArea'
 import { MainHeader } from '../Layout/MainHeader'
@@ -22,14 +21,12 @@ import { getEndUser, getStartUser, getUserRowNumber } from './functions'
 import { getPageCount } from '../../functions'
 import { Spinner } from '../shared/Spinner'
 import Box from '@material-ui/core/Box'
-import LinearProgress from '@material-ui/core/LinearProgress'
 
 type Props = {
   allUsers: Users
   users: Users
   totalCount: number
   isLoaded: boolean
-  isPageLoaded: boolean
   offset: number
   limit: number
   isSort: boolean
@@ -48,7 +45,6 @@ export function Component(props: Props) {
     users,
     totalCount,
     isLoaded,
-    isPageLoaded,
     limit,
     isSort,
     sortKey,
@@ -80,14 +76,6 @@ export function Component(props: Props) {
           <>
             <Box mb="24px">
               <TableContainer>
-                <Box height={4}>
-                  {!isPageLoaded && (
-                    <MuiThemeProvider>
-                      <LinearProgress color="primary" />
-                    </MuiThemeProvider>
-                  )}
-                </Box>
-
                 <Table>
                   <Thead>
                     <tr>

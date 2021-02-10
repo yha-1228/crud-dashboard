@@ -13,7 +13,6 @@ export function UserList() {
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
-  const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false)
   const [selectedPage, setSelectedPage] = useState<number>(0)
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(10)
@@ -41,7 +40,7 @@ export function UserList() {
     offset: number
     limit: number
   }) => {
-    setIsPageLoaded(false)
+    setIsLoaded(false)
 
     let params: { [key: string]: string } = { _start: offset.toString(), _limit: limit.toString() }
 
@@ -54,7 +53,6 @@ export function UserList() {
     getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
       sleep(1200).then(() => {
         setIsLoaded(true)
-        setIsPageLoaded(true)
         const users = result.map(mapUsersDataFromApi)
         setUsers(users)
       })
@@ -134,7 +132,6 @@ export function UserList() {
       users={users}
       totalCount={totalCount}
       isLoaded={isLoaded}
-      isPageLoaded={isPageLoaded}
       offset={offset}
       limit={limit}
       isSort={isSort}

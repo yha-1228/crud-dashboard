@@ -1,11 +1,15 @@
 import React from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { MuiThemeProvider } from '../../lib/material-ui/MuiThemeProvider'
+import { makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles({
+  root: {
+    color: 'var(--color-primary)',
+  },
+})
 
 export function Spinner() {
-  return (
-    <MuiThemeProvider>
-      <CircularProgress size={45} thickness={3} />
-    </MuiThemeProvider>
-  )
+  const classes = useStyles()
+
+  return <CircularProgress size={35} thickness={4} className={classes.root} />
 }
