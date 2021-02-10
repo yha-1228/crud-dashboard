@@ -1,6 +1,6 @@
 import React from 'react'
 import { MainHeader } from '../components/Layout/MainHeader'
-import { Layout } from '../components/Layout/Layout'
+import { Layout } from '../components/Layout'
 import { MainContentArea } from '../components/Layout/MainContentArea'
 import { MainHeading } from '../components/shared/Heading'
 
