@@ -71,22 +71,20 @@ export function Th({
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
   return (
     <th
-      className={classnames(
-        css`
-          & {
-            padding: 10px 24px;
-            font-size: 14px;
-            color: var(--color-gray-400);
-            white-space: nowrap;
-            cursor: pointer;
-            transition: color 0.2s ease-out;
-            text-align: ${align};
-            &:hover {
-              color: var(--color-primary);
-            }
+      className={css`
+        & {
+          padding: 10px 24px;
+          font-size: 14px;
+          color: var(--color-gray-400);
+          white-space: nowrap;
+          cursor: pointer;
+          transition: color 0.2s ease-out;
+          text-align: ${align};
+          &:hover {
+            color: var(--color-primary);
           }
-        `
-      )}
+        }
+      `}
       {...other}
     />
   )
@@ -98,16 +96,14 @@ export function Td({
 }: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
   return (
     <td
-      className={classnames(
-        css`
-          & {
-            padding: 10px 24px;
-            font-size: 14px;
-            white-space: nowrap;
-            text-align: ${align};
-          }
-        `
-      )}
+      className={css`
+        & {
+          padding: 10px 24px;
+          font-size: 14px;
+          white-space: nowrap;
+          text-align: ${align};
+        }
+      `}
       {...other}
     />
   )
