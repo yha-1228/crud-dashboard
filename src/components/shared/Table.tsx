@@ -2,7 +2,6 @@ import { css } from '@emotion/css'
 import Box from '@material-ui/core/Box'
 import classnames from 'classnames'
 import React from 'react'
-import styles from './Table.module.css'
 
 export function TableContainer({ children }: { children: React.ReactNode }) {
   return (
@@ -48,21 +47,16 @@ export function Thead({ ...other }: JSX.IntrinsicElements['thead']) {
 export function Tbody({ ...other }: JSX.IntrinsicElements['tbody']) {
   return (
     <tbody
-      className={css({
-        borderBottom: '1px solid var(--color-gray-100)',
-        '&: > *last-child': {
-          borderBottom: 'none',
-        },
-      })}
-      // className={css`
-      //   & {
-      //     border-bottom: 1px solid var(--color-gray-100);
-      //     &:last-child {
-      //       border-bottom: none;
-      //     }
-      //   }
-      // `}
-      // className={styles.tableBody}
+      className={css`
+        & {
+          & > * {
+            border-bottom: 1px solid var(--color-gray-100);
+          }
+          & > *:last-child {
+            border-bottom: none;
+          }
+        }
+      `}
       {...other}
     />
   )
@@ -75,10 +69,18 @@ export function Th({
   return (
     <th
       className={classnames(
-        styles.tableHeader,
         css`
           & {
+            padding: 10px 24px;
+            font-size: 14px;
+            color: var(--color-gray-400);
+            white-space: nowrap;
+            cursor: pointer;
+            transition: color 0.2s ease-out;
             text-align: ${align};
+            &:hover {
+              color: var(--color-primary);
+            }
           }
         `
       )}
@@ -94,9 +96,11 @@ export function Td({
   return (
     <td
       className={classnames(
-        styles.tableData,
         css`
           & {
+            padding: 10px 24px;
+            font-size: 14px;
+            white-space: nowrap;
             text-align: ${align};
           }
         `
