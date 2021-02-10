@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/css'
-import classnames from 'classnames'
 
 export function TableContainer({ children }: { children: React.ReactNode }) {
   return (
