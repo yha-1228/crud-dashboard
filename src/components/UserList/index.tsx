@@ -3,6 +3,7 @@ import { usersUrl } from '../../constants'
 import { deleteData, getData, sleep } from '../../functions'
 import { Users } from '../../types'
 import { Component } from './Component'
+import { mapUsersDataFromApi } from './functions'
 
 // TODO: tableのwidth, heightをはみださないよう記述する
 // TODO: stateをひとまとめにする
@@ -22,14 +23,7 @@ export function UserList() {
 
   const loadAllUsersFromServer = () => {
     getData(usersUrl).then((result) => {
-      const allUsers = result.map((item: any) => ({
-        id: item.id,
-        username: item.username,
-        email: item.email,
-        password: item.password,
-        country: item.country,
-      }))
-      setAllUsers(allUsers)
+      setAllUsers(result.map(mapUsersDataFromApi))
       setTotalCount(allUsers.length)
     })
   }
@@ -61,15 +55,7 @@ export function UserList() {
       sleep(1200).then(() => {
         setIsLoaded(true)
         setIsPageLoaded(true)
-
-        const users = result.map((item: any) => ({
-          id: item.id,
-          username: item.username,
-          email: item.email,
-          password: item.password,
-          country: item.country,
-        }))
-
+        const users = result.map(mapUsersDataFromApi)
         setUsers(users)
       })
     })
@@ -139,6 +125,7 @@ export function UserList() {
       offset: offset,
       limit: limit,
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSort, sortKey, sortOrder, offset, limit])
 
   return (
