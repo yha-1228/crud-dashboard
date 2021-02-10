@@ -157,13 +157,16 @@ export function Component(props: Props) {
             <Box display="flex" justifyContent="space-between" alignItems="center">
               <div>
                 <ReactPaginate
+                  // logics
                   forcePage={selectedPage}
+                  onPageChange={onPageClick}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={7}
+                  // labels
                   previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                   nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
                   pageCount={getPageCount(totalCount, limit)}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={7}
-                  onPageChange={onPageClick}
+                  // styles
                   containerClassName={styles.ReactPaginate__container}
                   pageClassName={styles.ReactPaginate__page}
                   pageLinkClassName={styles.ReactPaginate__pageLink}
