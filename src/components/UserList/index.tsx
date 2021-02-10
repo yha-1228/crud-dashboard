@@ -101,7 +101,7 @@ export function UserList() {
     })
   }
 
-  const onPageClick = (data: any) => {
+  const onPageChange = (data: any) => {
     const selected = data.selected
     const offset = Math.ceil(selected * limit)
     setSelectedPage(selected)
@@ -140,7 +140,7 @@ export function UserList() {
       selectedPage={selectedPage}
       onTableHeaderClick={onTableHeaderClick}
       onDeleteClick={onDeleteClick}
-      onPageClick={onPageClick}
+      onPageChange={onPageChange}
       onLimitSelecterChange={onLimitSelecterChange}
     />
   )

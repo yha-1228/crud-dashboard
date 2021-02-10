@@ -36,7 +36,7 @@ type Props = {
   selectedPage: number
   onTableHeaderClick: (event: React.MouseEvent<any>) => void
   onDeleteClick: (event: React.MouseEvent<any>) => void
-  onPageClick: (data: any) => void
+  onPageChange: (data: any) => void
   onLimitSelecterChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
@@ -53,7 +53,7 @@ export function Component(props: Props) {
     selectedPage,
     onTableHeaderClick,
     onDeleteClick,
-    onPageClick: onPageChange,
+    onPageChange,
     onLimitSelecterChange,
   } = props
 
