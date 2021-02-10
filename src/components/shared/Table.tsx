@@ -1,19 +1,22 @@
-import { css } from '@emotion/css'
-import Box from '@material-ui/core/Box'
-import classnames from 'classnames'
 import React from 'react'
+import { css } from '@emotion/css'
+import classnames from 'classnames'
 
 export function TableContainer({ children }: { children: React.ReactNode }) {
   return (
-    <Box
-      overflow="hidden"
-      bgcolor="white"
-      border="1px solid var(--color-gray-200)"
-      borderRadius="6px"
-      boxShadow="0 5px 10px rgba(154,160,185,0.05), 0 15px 40px rgba(166,173,201,0.2)"
+    <div
+      className={css`
+        & {
+          overflow: hidden;
+          background-color: white;
+          border: 1px solid var(--color-gray-200);
+          border-radius: 5px;
+          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+        }
+      `}
     >
       {children}
-    </Box>
+    </div>
   )
 }
 
