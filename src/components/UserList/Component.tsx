@@ -159,13 +159,13 @@ export function Component(props: Props) {
                 <ReactPaginate
                   // logics
                   forcePage={selectedPage}
+                  pageCount={getPageCount(totalCount, limit)}
                   onPageChange={onPageClick}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={7}
                   // labels
                   previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                   nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
-                  pageCount={getPageCount(totalCount, limit)}
                   // styles
                   containerClassName={styles.ReactPaginate__container}
                   pageClassName={styles.ReactPaginate__page}
