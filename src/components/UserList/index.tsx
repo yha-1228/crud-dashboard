@@ -91,13 +91,7 @@ export function UserList() {
 
     setIsLoaded(false)
     deleteData(`${usersUrl}/${id}`).then(() => {
-      loadUsersFromServer({
-        isSort: isSort,
-        sortKey: sortKey,
-        sortOrder: sortOrder,
-        offset: offset,
-        limit: limit,
-      })
+      loadUsersFromServer({ isSort, sortKey, sortOrder, offset, limit })
     })
   }
 
@@ -116,13 +110,7 @@ export function UserList() {
 
   useEffect(() => {
     loadAllUsersFromServer()
-    loadUsersFromServer({
-      isSort: isSort,
-      sortKey: sortKey,
-      sortOrder: sortOrder,
-      offset: offset,
-      limit: limit,
-    })
+    loadUsersFromServer({ isSort, sortKey, sortOrder, offset, limit })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSort, sortKey, sortOrder, offset, limit])
 
