@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet, HelmetProvider } from 'react-helmet-async'
+import { Helmet } from 'react-helmet-async'
 import { Main } from './Main'
 import { Sidebar } from './Sidebar'
 import { SidebarHeading } from '../shared/Heading'
@@ -7,6 +7,7 @@ import { SidebarHeader } from './SidebarHeader'
 import { SidebarContentArea } from './SidebarContentArea'
 import { Navgation } from '../Navgation'
 import Box from '@material-ui/core/Box'
+import siteConfig from '../../siteConfig'
 
 function TwoColumnWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -26,7 +27,7 @@ export function Layout({ title, children }: { title: string; children: React.Rea
       <TwoColumnWrapper>
         <Sidebar>
           <SidebarHeader>
-            <SidebarHeading>Dashboard</SidebarHeading>
+            <SidebarHeading>{siteConfig.title}</SidebarHeading>
           </SidebarHeader>
 
           <SidebarContentArea>
