@@ -112,7 +112,7 @@ export function UserList() {
     loadAllUsersFromServer()
     loadUsersFromServer({ isSort, sortKey, sortOrder, offset, limit })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSort, sortKey, sortOrder, offset, limit])
+  }, [isSort, limit, offset, sortKey, sortOrder, selectedPage])
 
   return (
     <Component
