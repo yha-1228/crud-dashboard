@@ -1,11 +1,21 @@
+import { css } from '@emotion/css'
 import { ComponentPropsWithoutRef } from 'react'
-import styles from './Heading.module.css'
 
 type MainHeadingProps = ComponentPropsWithoutRef<'h1'> & { children: React.ReactNode }
 
 export function MainHeading({ children, ...other }: MainHeadingProps) {
   return (
-    <h1 className={styles.main} {...other}>
+    <h1
+      className={css`
+        & {
+          padding: 0;
+          margin: 0;
+          font-size: 24px;
+          font-weight: bold;
+        }
+      `}
+      {...other}
+    >
       {children}
     </h1>
   )
@@ -15,7 +25,18 @@ type SidebarHeadingProps = ComponentPropsWithoutRef<'h2'> & { children: React.Re
 
 export function SidebarHeading({ children, ...other }: SidebarHeadingProps) {
   return (
-    <h2 className={styles.sidebar} {...other}>
+    <h2
+      className={css`
+        & {
+          padding: 0;
+          margin: 0;
+          font-size: 24px;
+          font-weight: bold;
+          color: white;
+        }
+      `}
+      {...other}
+    >
       {children}
     </h2>
   )
