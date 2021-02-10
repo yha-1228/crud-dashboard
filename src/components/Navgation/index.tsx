@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from './style.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faFileInvoice, faHome, faSlidersH, faUser } from '@fortawesome/free-solid-svg-icons'
 import Box from '@material-ui/core/Box'
+import { css } from '@emotion/css'
 
 const navItems = [
   {
@@ -53,8 +53,30 @@ export function Navgation() {
         {navItems.map((navItem, i) => (
           <NavItem key={i}>
             <NavLink
-              className={styles.link}
-              activeClassName={styles.link_active}
+              className={css`
+                & {
+                  display: block;
+                  padding-left: calc(24px - 4px);
+                  color: white;
+                  text-decoration: none;
+                  border-left: 4px solid transparent;
+
+                  &:hover {
+                    margin-right: -10px;
+                    background-color: var(--color-primary-dark);
+                  }
+                }
+              `}
+              activeClassName={css`
+                & {
+                  font-weight: bold;
+                  border-left: 4px solid white;
+                  &:hover {
+                    background-color: var(--color-primary-dark);
+                    border-left: 4px solid white;
+                  }
+                }
+              `}
               to={navItem.to}
               exact={navItem.exact}
             >
