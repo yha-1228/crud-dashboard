@@ -12,7 +12,8 @@ export function Main({ children }: { children: React.ReactNode }) {
       <div
         className={css({
           height: '100vh',
-          overflowY: 'scroll',
+          width: 'calc(100vw - 240px)',
+          overflow: 'scroll',
         })}
       >
         {children}
