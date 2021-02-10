@@ -1,3 +1,4 @@
+import { css } from '@emotion/css'
 import Box from '@material-ui/core/Box'
 import React from 'react'
 import styles from './Table.module.css'
@@ -17,15 +18,47 @@ export function TableContainer({ children }: { children: React.ReactNode }) {
 }
 
 export function Table({ ...other }: JSX.IntrinsicElements['table']) {
-  return <table className={styles.table} {...other} />
+  return (
+    <table
+      className={css`
+        & {
+          width: 100%;
+          border-collapse: collapse;
+        }
+      `}
+      {...other}
+    />
+  )
 }
 
 export function Thead({ ...other }: JSX.IntrinsicElements['thead']) {
-  return <thead className={styles.tableHead} {...other} />
+  return (
+    <thead
+      className={css`
+        & {
+          border-bottom: 1px solid var(--color-gray-100);
+        }
+      `}
+      {...other}
+    />
+  )
 }
 
 export function Tbody({ ...other }: JSX.IntrinsicElements['tbody']) {
-  return <tbody className={styles.tableBody} {...other} />
+  return (
+    <tbody
+      className={css`
+        & {
+          border-bottom: 1px solid var(--color-gray-100);
+          & > *:last-child {
+            border-bottom: none;
+          }
+        }
+      `}
+      // className={styles.tableBody}
+      {...other}
+    />
+  )
 }
 
 export function Th({
