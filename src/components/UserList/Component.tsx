@@ -24,7 +24,6 @@ import { css } from '@emotion/css'
 import { HStack, VStack } from '../shared/Stack'
 
 type Props = {
-  allUsers: Users
   users: Users
   totalCount: number
   isLoaded: boolean
@@ -42,7 +41,6 @@ type Props = {
 
 export function Component(props: Props) {
   const {
-    allUsers,
     users,
     totalCount,
     isLoaded,
@@ -141,31 +139,35 @@ export function Component(props: Props) {
               </Table>
             </TableContainer>
 
-            <Box display="flex" justifyContent="space-between" alignItems="center">
-              <div>
-                <ReactPaginate
-                  // logics
-                  forcePage={selectedPage}
-                  pageCount={Math.ceil(totalCount / limit)}
-                  onPageChange={onPageChange}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={7}
-                  // labels
-                  previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
-                  nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
-                  // styles
-                  containerClassName={styles.reactPaginate__container}
-                  pageClassName={styles.reactPaginate__page}
-                  pageLinkClassName={styles.reactPaginate__pageLink}
-                  previousClassName={styles.reactPaginate__page}
-                  previousLinkClassName={styles.reactPaginate__pageLink}
-                  nextClassName={styles.reactPaginate__page}
-                  nextLinkClassName={styles.reactPaginate__pageLink}
-                  breakClassName={styles.reactPaginate__page}
-                  breakLinkClassName={styles.reactPaginate__pageLink}
-                  activeLinkClassName={styles.reactPaginate__pageLink_active}
-                />
-              </div>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              height="40px"
+              border="2px solid red"
+            >
+              <ReactPaginate
+                // logics
+                forcePage={selectedPage}
+                pageCount={Math.ceil(totalCount / limit)}
+                onPageChange={onPageChange}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={7}
+                // labels
+                previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
+                nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
+                // styles
+                containerClassName={styles.reactPaginate__container}
+                pageClassName={styles.reactPaginate__page}
+                pageLinkClassName={styles.reactPaginate__pageLink}
+                previousClassName={styles.reactPaginate__page}
+                previousLinkClassName={styles.reactPaginate__pageLink}
+                nextClassName={styles.reactPaginate__page}
+                nextLinkClassName={styles.reactPaginate__pageLink}
+                breakClassName={styles.reactPaginate__page}
+                breakLinkClassName={styles.reactPaginate__pageLink}
+                activeLinkClassName={styles.reactPaginate__pageLink_active}
+              />
 
               <HStack spaceing={8}>
                 <Box display="inline-block" pr="8px" fontSize="12px" color="var(--color-gray-500)">
@@ -199,10 +201,11 @@ export function Component(props: Props) {
                     color: 'var(--color-gray-500)',
                   })}
                 >
-                  {`${getUserRowNumber(
+                  調整中...
+                  {/* {`${getUserRowNumber(
                     allUsers,
                     getStartUser(allUsers, users)
-                  )} - ${getUserRowNumber(allUsers, getEndUser(allUsers, users))} / ${totalCount}`}
+                  )} - ${getUserRowNumber(allUsers, getEndUser(allUsers, users))} / ${totalCount}`} */}
                 </span>
               </div>
             </Box>

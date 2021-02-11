@@ -118,30 +118,20 @@ export function UserList() {
   }, [isSort, sortKey, sortOrder, offset, limit, selectedPage])
 
   return (
-    <>
-      {JSON.stringify(isLoaded)}
-      <hr />
-      {totalCount}
-      <hr />
-      {limit}
-      <hr />
-      {Math.ceil(totalCount / limit)}
-      {/* <Component
-        allUsers={allUsers}
-        users={users}
-        totalCount={totalCount}
-        isLoaded={isLoaded}
-        offset={offset}
-        limit={limit}
-        isSort={isSort}
-        sortKey={sortKey}
-        sortOrder={sortOrder}
-        selectedPage={selectedPage}
-        onTableHeaderClick={onTableHeaderClick}
-        onDeleteClick={onDeleteClick}
-        onPageChange={onPageChange}
-        onLimitSelecterChange={onLimitSelecterChange}
-      /> */}
-    </>
+    <Component
+      users={users}
+      totalCount={totalCount}
+      isLoaded={isLoaded}
+      offset={offset}
+      limit={limit}
+      isSort={isSort}
+      sortKey={sortKey}
+      sortOrder={sortOrder}
+      selectedPage={selectedPage}
+      onTableHeaderClick={onTableHeaderClick}
+      onDeleteClick={onDeleteClick}
+      onPageChange={onPageChange}
+      onLimitSelecterChange={onLimitSelecterChange}
+    />
   )
 }
