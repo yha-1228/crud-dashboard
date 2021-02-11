@@ -52,8 +52,7 @@ export function UserList() {
     const selectedHeaderText = event.currentTarget.dataset.header as string
 
     // no sort
-    // if (!sort.active || !(sort.active && sort.key === header)) {
-    if (!sort.active) {
+    if (!sort.active || !(sort.active && sort.key === selectedHeaderText)) {
       setSort({ active: true, key: selectedHeaderText, order: 'asc' })
       return
     }
