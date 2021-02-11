@@ -13,7 +13,7 @@ export function UserList() {
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
-  const [selectedPage, setSelectedPage] = useState<number>(0)
+  const [selectedPage, setSelectedPage] = useState<number>(1)
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(10)
   const [isSort, setIsSort] = useState<boolean>(false)
@@ -97,9 +97,8 @@ export function UserList() {
 
   const onPageChange = (data: any) => {
     const selected = data.selected
-    const offset = Math.ceil(selected * limit)
     setSelectedPage(selected)
-    setOffset(offset)
+    setOffset(Math.ceil(selected * limit))
   }
 
   const onLimitSelecterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -111,25 +110,36 @@ export function UserList() {
   useEffect(() => {
     loadAllUsersFromServer()
     loadUsersFromServer({ isSort, sortKey, sortOrder, offset, limit })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSort, limit, offset, sortKey, sortOrder, selectedPage])
+  }, [])
+
+  useEffect(() => {
+    loadAllUsersFromServer()
+    loadUsersFromServer({ isSort, sortKey, sortOrder, offset, limit })
+  }, [isSort, sortKey, sortOrder, offset, limit, selectedPage])
 
   return (
-    <Component
-      allUsers={allUsers}
-      users={users}
-      totalCount={totalCount}
-      isLoaded={isLoaded}
-      offset={offset}
-      limit={limit}
-      isSort={isSort}
-      sortKey={sortKey}
-      sortOrder={sortOrder}
-      selectedPage={selectedPage}
-      onTableHeaderClick={onTableHeaderClick}
-      onDeleteClick={onDeleteClick}
-      onPageChange={onPageChange}
-      onLimitSelecterChange={onLimitSelecterChange}
-    />
+    <>
+      {totalCount}
+      <hr />
+      {limit}
+      <hr />
+      {Math.ceil(totalCount / limit)}
+      {/* <Component
+        allUsers={allUsers}
+        users={users}
+        totalCount={totalCount}
+        isLoaded={isLoaded}
+        offset={offset}
+        limit={limit}
+        isSort={isSort}
+        sortKey={sortKey}
+        sortOrder={sortOrder}
+        selectedPage={selectedPage}
+        onTableHeaderClick={onTableHeaderClick}
+        onDeleteClick={onDeleteClick}
+        onPageChange={onPageChange}
+        onLimitSelecterChange={onLimitSelecterChange}
+      /> */}
+    </>
   )
 }
