@@ -6,13 +6,17 @@ import { MainHeading } from '../components/shared/Heading'
 import { usersUrl } from '../constants'
 
 export function HomePage() {
-  const [state, setState] = useState(null)
+  const [users, setUsers] = useState(null)
+  const [totalCount, setTotalCount] = useState(0)
 
   useEffect(() => {
     fetch(usersUrl)
-      .then((res) => res.json())
+      .then((res) => {
+        console.log(res)
+        return res.json()
+      })
       .then((result) => {
-        setState(result)
+        setUsers(result)
       })
   }, [])
 
@@ -22,12 +26,8 @@ export function HomePage() {
         <MainHeading>Home</MainHeading>
       </MainHeader>
 
-      <div>{JSON.stringify(state)}</div>
-
       <MainContentArea>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus blanditiis corporis
-        fuga! Aspernatur minima vero corporis deleniti! Necessitatibus, eveniet ullam. Provident
-        fuga reiciendis tempore porro ea vero, quidem recusandae temporibus?
+        <div>{JSON.stringify(users)}</div>
       </MainContentArea>
     </Layout>
   )
