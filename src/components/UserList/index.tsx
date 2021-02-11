@@ -52,14 +52,6 @@ export function UserList() {
         const users = result.map(mapUsersDataFromApi)
         setUsers(users)
       })
-
-    // getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
-    //   sleep(1200).then(() => {
-    //     setIsLoaded(true)
-    //     const users = result.map(mapUsersDataFromApi)
-    //     setUsers(users)
-    //   })
-    // })
   }
 
   const onTableHeaderClick = (event: React.MouseEvent<any>) => {

@@ -72,7 +72,7 @@ export function Component(props: Props) {
             <Spinner />
           </Box>
         ) : (
-          <VStack spaceing={24}>
+          <div style={{ height: 300, border: '2px solid #eb425e', overflowY: 'scroll' }}>
             <TableContainer>
               <Table>
                 <Thead>
@@ -143,8 +143,8 @@ export function Component(props: Props) {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              height="40px"
-              border="2px solid red"
+              height="64px"
+              border="2px solid #48ff00"
             >
               <ReactPaginate
                 // logics
@@ -209,7 +209,7 @@ export function Component(props: Props) {
                 </span>
               </div>
             </Box>
-          </VStack>
+          </div>
         )}
       </MainContentArea>
     </>
