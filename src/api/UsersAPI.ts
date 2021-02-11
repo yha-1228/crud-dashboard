@@ -1,6 +1,6 @@
 import { usersUrl } from '../constants'
 
-export const UsersAPI = {
+const UsersAPI = {
   get: () => {
     return fetch(usersUrl)
   },
@@ -10,3 +10,5 @@ export const UsersAPI = {
     return fetch(`${usersUrl}?${urlSearchParams}`)
   },
 }
+
+export default UsersAPI

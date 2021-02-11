@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { UsersAPI } from '../../api/UsersAPI'
+import UsersAPI from '../../api/UsersAPI'
 import { usersUrl } from '../../constants'
 import { deleteData, sleep } from '../../functions'
 import { Users } from '../../types'
