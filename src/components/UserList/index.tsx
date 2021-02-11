@@ -49,23 +49,24 @@ export function UserList() {
   }
 
   const onTableHeaderClick = (event: React.MouseEvent<any>) => {
-    const header = event.currentTarget.dataset.header as string
+    const selectedHeaderText = event.currentTarget.dataset.header as string
 
     // no sort
-    if (!sort.active || !(sort.active && sort.key === header)) {
-      setSort({ active: true, key: header, order: 'asc' })
+    // if (!sort.active || !(sort.active && sort.key === header)) {
+    if (!sort.active) {
+      setSort({ active: true, key: selectedHeaderText, order: 'asc' })
       return
     }
 
     // asc sort
-    if (sort.active && sort.key === header && sort.order === 'asc') {
+    if (sort.active && sort.key === selectedHeaderText && sort.order === 'asc') {
       setSort({ ...sort, order: 'desc' })
       return
     }
 
     // desc sort
-    if (sort.active && sort.key === header && sort.order === 'desc') {
-      setSort({ ...sort, active: false })
+    if (sort.active && sort.key === selectedHeaderText && sort.order === 'desc') {
+      setSort({ active: false, key: null, order: null })
       return
     }
   }
