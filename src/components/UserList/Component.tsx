@@ -78,7 +78,7 @@ export function Component(props: Props) {
               overflowY: 'scroll',
             }}
           >
-            <div>
+            <div style={{ display: 'block' }}>
               totalCount: {totalCount}
               <hr />
               pageCount: {pageCount}
@@ -88,6 +88,12 @@ export function Component(props: Props) {
               offset: {offset}
               <hr />
               limit: {limit}
+              <hr />
+              currentPage: {currentPageIndex + 1}
+              <hr />
+              startRowNumber: {offset + 1}
+              <hr />
+              endRowNumber: {offset + limit}
             </div>
             <hr />
 
