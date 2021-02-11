@@ -28,6 +28,7 @@ type Props = {
   isLoaded: boolean
   totalCount: number
   pageCount: number
+  currentPageIndex: number
   offset: number
   limit: number
   sort: Sort
@@ -43,6 +44,7 @@ export function Component(props: Props) {
     totalCount,
     isLoaded,
     pageCount,
+    currentPageIndex,
     offset,
     limit,
     sort,
@@ -81,7 +83,11 @@ export function Component(props: Props) {
               <hr />
               pageCount: {pageCount}
               <hr />
+              currentPageIndex: {currentPageIndex}
+              <hr />
               offset: {offset}
+              <hr />
+              limit: {limit}
             </div>
             <hr />
 
@@ -160,7 +166,7 @@ export function Component(props: Props) {
             >
               <ReactPaginate
                 // logics
-                // forcePage={currentPageIndex}
+                forcePage={currentPageIndex}
                 pageCount={pageCount}
                 onPageChange={onPageChange}
                 marginPagesDisplayed={2}

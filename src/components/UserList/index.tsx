@@ -12,6 +12,7 @@ export function UserList() {
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [pageCount, setPageCount] = useState<number>(0)
+  const [currentPageIndex, setCurrentPageIndex] = useState<number>(0)
 
   // API params
   const [offset, setOffset] = useState<number>(0)
@@ -91,6 +92,7 @@ export function UserList() {
 
   const onPageChange = (data: { selected: number }) => {
     const { selected } = data
+    setCurrentPageIndex(selected)
     setOffset(Math.ceil(selected * limit))
   }
 
@@ -109,6 +111,7 @@ export function UserList() {
       isLoaded={isLoaded}
       totalCount={totalCount}
       pageCount={pageCount}
+      currentPageIndex={currentPageIndex}
       offset={offset}
       limit={limit}
       sort={sort}
