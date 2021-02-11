@@ -98,6 +98,7 @@ export function UserList() {
 
   const onLimitSelecterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setOffset(0)
+    setCurrentPageIndex(0)
     setLimit(Number(event.target.value))
   }
 
