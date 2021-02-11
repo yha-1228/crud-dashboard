@@ -34,11 +34,9 @@ export function UserList() {
   }) => {
     setIsLoaded(false)
 
-    let params: { [key: string]: string } = { _start: offset.toString(), _limit: limit.toString() }
-
-    if (isSort) {
-      params = { ...params, _sort: sortKey, _order: sortOrder }
-    }
+    const paginateParams = { _start: offset.toString(), _limit: limit.toString() }
+    const sortParams = { _sort: sortKey, _order: sortOrder }
+    const params = isSort ? { ...paginateParams, ...sortParams } : paginateParams
 
     UsersAPI.getWithParams(params)
       .then((res) => {

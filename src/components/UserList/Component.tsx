@@ -68,7 +68,7 @@ export function Component(props: Props) {
 
       <MainContentArea>
         {!isLoaded ? (
-          <Box pt={6} textAlign="center">
+          <Box pt="72px" textAlign="center">
             <Spinner />
           </Box>
         ) : (
