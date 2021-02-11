@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { UsersAPI } from '../../api/UsersAPI'
 import { usersUrl } from '../../constants'
-import { deleteData, getData, sleep } from '../../functions'
+import { deleteData, sleep } from '../../functions'
 import { Users } from '../../types'
 import { Component } from './Component'
 import { mapUsersDataFromApi } from './functions'
-
-// TODO: tableのwidth, heightをはみださないよう記述する
-// TODO: stateをひとまとめにする
 
 export function UserList() {
   const [users, setUsers] = useState<Users>([])
