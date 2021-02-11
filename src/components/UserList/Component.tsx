@@ -76,7 +76,13 @@ export function Component(props: Props) {
               overflowY: 'scroll',
             }}
           >
-            {JSON.stringify(sort)}
+            <div>
+              totalCount: {totalCount}
+              <hr />
+              pageCount: {pageCount}
+              <hr />
+              offset: {offset}
+            </div>
             <hr />
 
             <TableContainer>
@@ -205,13 +211,7 @@ export function Component(props: Props) {
                   fontSize: 12,
                   color: 'var(--color-gray-500)',
                 })}
-              >
-                currentPageStartNumber: {offset + 1},
-                <hr />
-                {/* currentPageEndNumber: {offset + 1} */}
-                <hr />
-                totalCount: {totalCount}
-              </div>
+              ></div>
             </Box>
           </div>
         )}

@@ -35,6 +35,9 @@ export function UserList() {
 
     UsersAPI.getWithParams(params)
       .then((res) => {
+        if (!res.ok) {
+          throw new Error(`${res.status} ${res.statusText}`)
+        }
         const totalCount = Number(res.headers.get('X-Total-Count'))
         setTotalCount(totalCount)
         setPageCount(Math.ceil(totalCount / limit))
@@ -46,7 +49,7 @@ export function UserList() {
         setUsers(result.map(mapUsersDataFromApi))
       })
       .catch((error) => {
-        console.log('error :>> ', error)
+        console.log('error :>> ', error.message)
       })
   }
 
