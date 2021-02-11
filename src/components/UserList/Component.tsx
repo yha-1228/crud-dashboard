@@ -194,12 +194,10 @@ export function Component(props: Props) {
 
               <div>
                 <span
-                  className={css`
-                    & {
-                      font-size: 12px;
-                      color: var(--color-gray-500);
-                    }
-                  `}
+                  className={css({
+                    fontSize: 12,
+                    color: 'var(--color-gray-500)',
+                  })}
                 >
                   {`${getUserRowNumber(
                     allUsers,
