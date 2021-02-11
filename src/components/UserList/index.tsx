@@ -11,7 +11,7 @@ export function UserList() {
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
-  const [currentPageIndex, setCurrendPageIndex] = useState<number>(0)
+  const [pageCount, setPageCount] = useState<number>(0)
 
   // API params
   const [offset, setOffset] = useState<number>(0)
@@ -37,6 +37,7 @@ export function UserList() {
       .then((res) => {
         const totalCount = Number(res.headers.get('X-Total-Count'))
         setTotalCount(totalCount)
+        setPageCount(Math.ceil(totalCount / limit))
         return res.json()
       })
       .then(async (result) => {
@@ -44,6 +45,9 @@ export function UserList() {
         setIsLoaded(true)
         const users = result.map(mapUsersDataFromApi)
         setUsers(users)
+      })
+      .catch((error) => {
+        console.log('error :>> ', error)
       })
   }
 
@@ -77,6 +81,7 @@ export function UserList() {
     if (!isConfirm) return
 
     setIsLoaded(false)
+
     UsersAPI.deleteById(id).then(() => {
       loadUsersFromServer({ sort, offset, limit })
     })
@@ -84,29 +89,27 @@ export function UserList() {
 
   const onPageChange = (data: { selected: number }) => {
     const { selected } = data
-    setCurrendPageIndex(selected)
     setOffset(Math.ceil(selected * limit))
   }
 
   const onLimitSelecterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setCurrendPageIndex(0)
     setOffset(0)
     setLimit(Number(event.target.value))
   }
 
   useEffect(() => {
     loadUsersFromServer({ sort, offset, limit })
-  }, [sort, offset, limit, currentPageIndex])
+  }, [sort, offset, limit])
 
   return (
     <Component
       users={users}
-      totalCount={totalCount}
       isLoaded={isLoaded}
+      totalCount={totalCount}
+      pageCount={pageCount}
       offset={offset}
       limit={limit}
       sort={sort}
-      currentPageIndex={currentPageIndex}
       onTableHeaderClick={onTableHeaderClick}
       onDeleteClick={onDeleteClick}
       onPageChange={onPageChange}

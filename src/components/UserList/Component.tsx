@@ -25,12 +25,12 @@ import { Sort } from '.'
 
 type Props = {
   users: Users
-  totalCount: number
   isLoaded: boolean
+  totalCount: number
+  pageCount: number
   offset: number
   limit: number
   sort: Sort
-  currentPageIndex: number
   onTableHeaderClick: (event: React.MouseEvent<any>) => void
   onDeleteClick: (event: React.MouseEvent<any>) => void
   onPageChange: (data: any) => void
@@ -42,9 +42,10 @@ export function Component(props: Props) {
     users,
     totalCount,
     isLoaded,
+    pageCount,
+    offset,
     limit,
     sort,
-    currentPageIndex,
     onTableHeaderClick,
     onDeleteClick,
     onPageChange,
@@ -153,8 +154,8 @@ export function Component(props: Props) {
             >
               <ReactPaginate
                 // logics
-                forcePage={currentPageIndex}
-                pageCount={Math.ceil(totalCount / limit)}
+                // forcePage={currentPageIndex}
+                pageCount={pageCount}
                 onPageChange={onPageChange}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={7}
@@ -199,15 +200,17 @@ export function Component(props: Props) {
                 </Box>
               </HStack>
 
-              <div>
-                <span
-                  className={css({
-                    fontSize: 12,
-                    color: 'var(--color-gray-500)',
-                  })}
-                >
-                  調整中...
-                </span>
+              <div
+                className={css({
+                  fontSize: 12,
+                  color: 'var(--color-gray-500)',
+                })}
+              >
+                currentPageStartNumber: {offset + 1},
+                <hr />
+                {/* currentPageEndNumber: {offset + 1} */}
+                <hr />
+                totalCount: {totalCount}
               </div>
             </Box>
           </div>
