@@ -21,7 +21,7 @@ import { getEndUser, getStartUser, getUserRowNumber } from './functions'
 import { Spinner } from '../shared/Spinner'
 import Box from '@material-ui/core/Box'
 import { css } from '@emotion/css'
-import { HStack } from '../shared/Stack'
+import { HStack, VStack } from '../shared/Stack'
 
 type Props = {
   allUsers: Users
@@ -74,74 +74,72 @@ export function Component(props: Props) {
             <Spinner />
           </Box>
         ) : (
-          <>
-            <Box mb="24px">
-              <TableContainer>
-                <Table>
-                  <Thead>
-                    <tr>
-                      <Th align="left" scope="col">
-                        ID
-                      </Th>
-                      <Th
-                        align="left"
-                        scope="col"
-                        data-header="username"
-                        onClick={onTableHeaderClick}
-                      >
-                        Username{' '}
-                        {isSort && sortKey === 'username' && sortOrder === 'asc' && (
-                          <FontAwesomeIcon icon={faArrowUp} />
-                        )}
-                        {isSort && sortKey === 'username' && sortOrder === 'desc' && (
-                          <FontAwesomeIcon icon={faArrowDown} />
-                        )}
-                      </Th>
-                      <Th align="left" scope="col" data-header="email" onClick={onTableHeaderClick}>
-                        Email{' '}
-                        {isSort && sortKey === 'email' && sortOrder === 'asc' && (
-                          <FontAwesomeIcon icon={faArrowUp} />
-                        )}
-                        {isSort && sortKey === 'email' && sortOrder === 'desc' && (
-                          <FontAwesomeIcon icon={faArrowDown} />
-                        )}
-                      </Th>
-                      <Th align="left" scope="col"></Th>
-                      <Th align="left" scope="col"></Th>
-                    </tr>
-                  </Thead>
+          <VStack spaceing={24}>
+            <TableContainer>
+              <Table>
+                <Thead>
+                  <tr>
+                    <Th align="left" scope="col">
+                      ID
+                    </Th>
+                    <Th
+                      align="left"
+                      scope="col"
+                      data-header="username"
+                      onClick={onTableHeaderClick}
+                    >
+                      Username{' '}
+                      {isSort && sortKey === 'username' && sortOrder === 'asc' && (
+                        <FontAwesomeIcon icon={faArrowUp} />
+                      )}
+                      {isSort && sortKey === 'username' && sortOrder === 'desc' && (
+                        <FontAwesomeIcon icon={faArrowDown} />
+                      )}
+                    </Th>
+                    <Th align="left" scope="col" data-header="email" onClick={onTableHeaderClick}>
+                      Email{' '}
+                      {isSort && sortKey === 'email' && sortOrder === 'asc' && (
+                        <FontAwesomeIcon icon={faArrowUp} />
+                      )}
+                      {isSort && sortKey === 'email' && sortOrder === 'desc' && (
+                        <FontAwesomeIcon icon={faArrowDown} />
+                      )}
+                    </Th>
+                    <Th align="left" scope="col"></Th>
+                    <Th align="left" scope="col"></Th>
+                  </tr>
+                </Thead>
 
-                  <Tbody>
-                    {users.map((user) => (
-                      <tr key={user.id}>
-                        <Td>{user.id}</Td>
-                        <Td>{user.username}</Td>
-                        <Td>{user.email}</Td>
-                        <Td>
-                          <LinkButton size="small" to={`/users/${user.id}`}>
-                            <FontAwesomeIcon icon={faEdit} />
-                            &nbsp;&nbsp;Edit
-                          </LinkButton>
-                        </Td>
-                        <Td>
-                          <Button
-                            size="small"
-                            type="button"
-                            data-id={user.id}
-                            data-username={user.username}
-                            onClick={onDeleteClick}
-                            disabled={!isLoaded}
-                          >
-                            <FontAwesomeIcon icon={faTrash} />
-                            &nbsp;&nbsp;Delete
-                          </Button>
-                        </Td>
-                      </tr>
-                    ))}
-                  </Tbody>
-                </Table>
-              </TableContainer>
-            </Box>
+                <Tbody>
+                  {users.map((user) => (
+                    <tr key={user.id}>
+                      <Td>{user.id}</Td>
+                      <Td>{user.username}</Td>
+                      <Td>{user.email}</Td>
+                      <Td>
+                        <LinkButton size="small" to={`/users/${user.id}`}>
+                          <FontAwesomeIcon icon={faEdit} />
+                          &nbsp;&nbsp;Edit
+                        </LinkButton>
+                      </Td>
+                      <Td>
+                        <Button
+                          size="small"
+                          type="button"
+                          data-id={user.id}
+                          data-username={user.username}
+                          onClick={onDeleteClick}
+                          disabled={!isLoaded}
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                          &nbsp;&nbsp;Delete
+                        </Button>
+                      </Td>
+                    </tr>
+                  ))}
+                </Tbody>
+              </Table>
+            </TableContainer>
 
             <Box display="flex" justifyContent="space-between" alignItems="center">
               <div>
@@ -210,7 +208,7 @@ export function Component(props: Props) {
                 </span>
               </div>
             </Box>
-          </>
+          </VStack>
         )}
       </MainContentArea>
     </>
