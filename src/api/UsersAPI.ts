@@ -9,6 +9,10 @@ const UsersAPI = {
     const urlSearchParams = new URLSearchParams(params)
     return fetch(`${usersUrl}?${urlSearchParams}`)
   },
+
+  delete: (id: number) => {
+    return fetch(`${usersUrl}/${id}`, { method: 'DELETE' })
+  },
 }
 
 export default UsersAPI
