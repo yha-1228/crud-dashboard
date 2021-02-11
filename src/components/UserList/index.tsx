@@ -17,8 +17,6 @@ export function UserList() {
   // API params
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(10)
-
-  // new
   const [sort, setSort] = useState<Sort>({ active: false, key: null, order: null })
 
   const loadUsersFromServer = ({
