@@ -18,10 +18,10 @@ import { MainHeading } from '../shared/Heading'
 import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table'
 import styles from './style.module.css'
 import { getEndUser, getStartUser, getUserRowNumber } from './functions'
-import { getPageCount } from '../../functions'
 import { Spinner } from '../shared/Spinner'
 import Box from '@material-ui/core/Box'
 import { css } from '@emotion/css'
+import { HStack } from '../shared/Stack'
 
 type Props = {
   allUsers: Users
@@ -169,7 +169,7 @@ export function Component(props: Props) {
                 />
               </div>
 
-              <div>
+              <HStack spaceing={8}>
                 <Box display="inline-block" pr="8px" fontSize="12px" color="var(--color-gray-500)">
                   Rows per page:
                 </Box>
@@ -192,7 +192,7 @@ export function Component(props: Props) {
                     ))}
                   </select>
                 </Box>
-              </div>
+              </HStack>
 
               <div>
                 <span
