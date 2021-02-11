@@ -6,6 +6,8 @@ import { Users } from '../../types'
 import { Component } from './Component'
 import { mapUsersDataFromApi } from './functions'
 
+export type Sort = { active: boolean; key: string | null; order: 'asc' | 'desc' | null }
+
 export function UserList() {
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
@@ -15,28 +17,24 @@ export function UserList() {
   // API params
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(10)
-  const [isSort, setIsSort] = useState<boolean>(false)
-  const [sortKey, setSortKey] = useState<string>('')
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('')
+
+  // new
+  const [sort, setSort] = useState<Sort>({ active: false, key: null, order: null })
 
   const loadUsersFromServer = ({
-    isSort,
-    sortKey,
-    sortOrder,
+    sort,
     offset,
     limit,
   }: {
-    isSort: boolean
-    sortKey: string
-    sortOrder: 'asc' | 'desc' | ''
+    sort: Sort
     offset: number
     limit: number
   }) => {
     setIsLoaded(false)
 
     const paginateParams = { _start: offset.toString(), _limit: limit.toString() }
-    const sortParams = { _sort: sortKey, _order: sortOrder }
-    const params = isSort ? { ...paginateParams, ...sortParams } : paginateParams
+    const sortParams = { _sort: sort.key, _order: sort.order }
+    const params = sort.active ? { ...paginateParams, ...sortParams } : paginateParams
 
     UsersAPI.getWithParams(params)
       .then((res) => {
@@ -56,22 +54,20 @@ export function UserList() {
     const header = event.currentTarget.dataset.header as string
 
     // no sort
-    if (!isSort || !(isSort && sortKey === header)) {
-      setIsSort(true)
-      setSortKey(header)
-      setSortOrder('asc')
+    if (!sort.active || !(sort.active && sort.key === header)) {
+      setSort({ active: true, key: header, order: 'asc' })
       return
     }
 
     // asc sort
-    if (isSort && sortKey === header && sortOrder === 'asc') {
-      setSortOrder('desc')
+    if (sort.active && sort.key === header && sort.order === 'asc') {
+      setSort({ ...sort, order: 'desc' })
       return
     }
 
     // desc sort
-    if (isSort && sortKey === header && sortOrder === 'desc') {
-      setIsSort(false)
+    if (sort.active && sort.key === header && sort.order === 'desc') {
+      setSort({ ...sort, active: false })
       return
     }
   }
@@ -84,7 +80,7 @@ export function UserList() {
 
     setIsLoaded(false)
     deleteData(`${usersUrl}/${id}`).then(() => {
-      loadUsersFromServer({ isSort, sortKey, sortOrder, offset, limit })
+      loadUsersFromServer({ sort, offset, limit })
     })
   }
 
@@ -101,8 +97,8 @@ export function UserList() {
   }
 
   useEffect(() => {
-    loadUsersFromServer({ isSort, sortKey, sortOrder, offset, limit })
-  }, [isSort, sortKey, sortOrder, offset, limit, selectedPage])
+    loadUsersFromServer({ sort, offset, limit })
+  }, [sort, offset, limit, selectedPage])
 
   return (
     <Component
@@ -111,9 +107,7 @@ export function UserList() {
       isLoaded={isLoaded}
       offset={offset}
       limit={limit}
-      isSort={isSort}
-      sortKey={sortKey}
-      sortOrder={sortOrder}
+      sort={sort}
       selectedPage={selectedPage}
       onTableHeaderClick={onTableHeaderClick}
       onDeleteClick={onDeleteClick}

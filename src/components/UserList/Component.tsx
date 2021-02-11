@@ -21,7 +21,8 @@ import { getEndUser, getStartUser, getUserRowNumber } from './functions'
 import { Spinner } from '../shared/Spinner'
 import Box from '@material-ui/core/Box'
 import { css } from '@emotion/css'
-import { HStack, VStack } from '../shared/Stack'
+import { HStack } from '../shared/Stack'
+import { Sort } from '.'
 
 type Props = {
   users: Users
@@ -29,9 +30,7 @@ type Props = {
   isLoaded: boolean
   offset: number
   limit: number
-  isSort: boolean
-  sortKey: string
-  sortOrder: 'asc' | 'desc' | ''
+  sort: Sort
   selectedPage: number
   onTableHeaderClick: (event: React.MouseEvent<any>) => void
   onDeleteClick: (event: React.MouseEvent<any>) => void
@@ -45,9 +44,7 @@ export function Component(props: Props) {
     totalCount,
     isLoaded,
     limit,
-    isSort,
-    sortKey,
-    sortOrder,
+    sort,
     selectedPage,
     onTableHeaderClick,
     onDeleteClick,
@@ -72,7 +69,16 @@ export function Component(props: Props) {
             <Spinner />
           </Box>
         ) : (
-          <div style={{ height: 300, border: '2px solid #eb425e', overflowY: 'scroll' }}>
+          <div
+            style={{
+              height: 'calc(100vh - 64px)',
+              border: '2px solid #eb425e',
+              overflowY: 'scroll',
+            }}
+          >
+            {JSON.stringify(sort)}
+            <hr />
+
             <TableContainer>
               <Table>
                 <Thead>
@@ -87,19 +93,19 @@ export function Component(props: Props) {
                       onClick={onTableHeaderClick}
                     >
                       Username{' '}
-                      {isSort && sortKey === 'username' && sortOrder === 'asc' && (
+                      {sort.active && sort.key === 'username' && sort.order === 'asc' && (
                         <FontAwesomeIcon icon={faArrowUp} />
                       )}
-                      {isSort && sortKey === 'username' && sortOrder === 'desc' && (
+                      {sort.active && sort.key === 'username' && sort.order === 'desc' && (
                         <FontAwesomeIcon icon={faArrowDown} />
                       )}
                     </Th>
                     <Th align="left" scope="col" data-header="email" onClick={onTableHeaderClick}>
                       Email{' '}
-                      {isSort && sortKey === 'email' && sortOrder === 'asc' && (
+                      {sort.active && sort.key === 'email' && sort.order === 'asc' && (
                         <FontAwesomeIcon icon={faArrowUp} />
                       )}
-                      {isSort && sortKey === 'email' && sortOrder === 'desc' && (
+                      {sort.active && sort.key === 'email' && sort.order === 'desc' && (
                         <FontAwesomeIcon icon={faArrowDown} />
                       )}
                     </Th>
