@@ -78,7 +78,7 @@ export function UserList() {
     if (!isConfirm) return
 
     setIsLoaded(false)
-    deleteData(`${usersUrl}/${id}`).then(() => {
+    UsersAPI.deleteById(id).then(() => {
       loadUsersFromServer({ sort, offset, limit })
     })
   }
