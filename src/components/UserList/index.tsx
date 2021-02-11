@@ -43,8 +43,7 @@ export function UserList() {
       .then(async (result) => {
         await sleep(800)
         setIsLoaded(true)
-        const users = result.map(mapUsersDataFromApi)
-        setUsers(users)
+        setUsers(result.map(mapUsersDataFromApi))
       })
       .catch((error) => {
         console.log('error :>> ', error)
