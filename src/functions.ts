@@ -29,8 +29,3 @@ export async function deleteData(url: string) {
   const res = await fetch(url, { method: 'DELETE' })
   return await res.json()
 }
-
-// React Pagenateのページリンクを最大まで表示するために、最大データ数の取得が必要
-export function getPageCount(totalCount: number, limit: number) {
-  return Math.ceil(totalCount / limit)
-}

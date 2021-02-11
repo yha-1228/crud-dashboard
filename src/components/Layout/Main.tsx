@@ -11,9 +11,8 @@ export function Main({ children }: { children: React.ReactNode }) {
     >
       <div
         className={css({
-          height: '100vh',
           width: 'calc(100vw - 240px)',
-          overflow: 'scroll',
+          height: '100vh',
         })}
       >
         {children}

@@ -148,7 +148,7 @@ export function Component(props: Props) {
                 <ReactPaginate
                   // logics
                   forcePage={selectedPage}
-                  pageCount={getPageCount(totalCount, limit)}
+                  pageCount={Math.ceil(totalCount / limit)}
                   onPageChange={onPageChange}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={7}
