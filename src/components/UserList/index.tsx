@@ -50,24 +50,22 @@ export function UserList() {
 
   const onTableHeaderClick = (event: React.MouseEvent<any>) => {
     const currentHeaderText = event.currentTarget.dataset.header as string
-
     const isAnotherKeySelected = !(sort.active && sort.key === currentHeaderText)
-    const isCurrentKeySelectedByAsc =
-      sort.active && sort.key === currentHeaderText && sort.order === 'asc'
-    const isCurrentKeySelectedByDesc =
-      sort.active && sort.key === currentHeaderText && sort.order === 'desc'
+    const isCurrentKeySelectedBy = (order: 'asc' | 'dsec' | null) => {
+      return sort.active && sort.key === currentHeaderText && sort.order === order
+    }
 
     if (!sort.active || isAnotherKeySelected) {
       setSort({ active: true, key: currentHeaderText, order: 'asc' })
       return
     }
 
-    if (isCurrentKeySelectedByAsc) {
+    if (isCurrentKeySelectedBy('asc')) {
       setSort({ ...sort, order: 'desc' })
       return
     }
 
-    if (isCurrentKeySelectedByDesc) {
+    if (isCurrentKeySelectedBy('dsec')) {
       setSort({ active: false, key: null, order: null })
       return
     }
