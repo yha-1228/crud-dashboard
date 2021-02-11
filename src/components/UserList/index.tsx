@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { UsersAPI } from '../../api/UsersAPI'
 import { usersUrl } from '../../constants'
 import { deleteData, getData, sleep } from '../../functions'
 import { Users } from '../../types'
@@ -9,23 +10,17 @@ import { mapUsersDataFromApi } from './functions'
 // TODO: stateをひとまとめにする
 
 export function UserList() {
-  const [allUsers, setAllUsers] = useState<Users>([])
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [selectedPage, setSelectedPage] = useState<number>(1)
+
+  // API params
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(10)
   const [isSort, setIsSort] = useState<boolean>(false)
   const [sortKey, setSortKey] = useState<string>('')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('')
-
-  const loadAllUsersFromServer = () => {
-    getData(usersUrl).then((result) => {
-      setAllUsers(result.map(mapUsersDataFromApi))
-      setTotalCount(allUsers.length)
-    })
-  }
 
   const loadUsersFromServer = ({
     isSort,
@@ -48,15 +43,26 @@ export function UserList() {
       params = { ...params, _sort: sortKey, _order: sortOrder }
     }
 
-    const urlSearchParams = new URLSearchParams(params)
-
-    getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
-      sleep(1200).then(() => {
+    UsersAPI.getWithParams(params)
+      .then((res) => {
+        const totalCount = Number(res.headers.get('X-Total-Count'))
+        setTotalCount(totalCount)
+        return res.json()
+      })
+      .then(async (result) => {
+        await sleep(700)
         setIsLoaded(true)
         const users = result.map(mapUsersDataFromApi)
         setUsers(users)
       })
-    })
+
+    // getData(`${usersUrl}?${urlSearchParams}`).then((result) => {
+    //   sleep(1200).then(() => {
+    //     setIsLoaded(true)
+    //     const users = result.map(mapUsersDataFromApi)
+    //     setUsers(users)
+    //   })
+    // })
   }
 
   const onTableHeaderClick = (event: React.MouseEvent<any>) => {
@@ -108,17 +114,13 @@ export function UserList() {
   }
 
   useEffect(() => {
-    loadAllUsersFromServer()
-    loadUsersFromServer({ isSort, sortKey, sortOrder, offset, limit })
-  }, [])
-
-  useEffect(() => {
-    loadAllUsersFromServer()
     loadUsersFromServer({ isSort, sortKey, sortOrder, offset, limit })
   }, [isSort, sortKey, sortOrder, offset, limit, selectedPage])
 
   return (
     <>
+      {JSON.stringify(isLoaded)}
+      <hr />
       {totalCount}
       <hr />
       {limit}
