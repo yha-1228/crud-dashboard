@@ -17,7 +17,6 @@ import { Button, LinkButton } from '../shared/Button'
 import { MainHeading } from '../shared/Heading'
 import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table'
 import styles from './style.module.css'
-import { getEndUser, getStartUser, getUserRowNumber } from './functions'
 import { Spinner } from '../shared/Spinner'
 import Box from '@material-ui/core/Box'
 import { css } from '@emotion/css'
@@ -31,7 +30,7 @@ type Props = {
   offset: number
   limit: number
   sort: Sort
-  selectedPage: number
+  currentPageIndex: number
   onTableHeaderClick: (event: React.MouseEvent<any>) => void
   onDeleteClick: (event: React.MouseEvent<any>) => void
   onPageChange: (data: any) => void
@@ -45,7 +44,7 @@ export function Component(props: Props) {
     isLoaded,
     limit,
     sort,
-    selectedPage,
+    currentPageIndex,
     onTableHeaderClick,
     onDeleteClick,
     onPageChange,
@@ -154,7 +153,7 @@ export function Component(props: Props) {
             >
               <ReactPaginate
                 // logics
-                forcePage={selectedPage}
+                forcePage={currentPageIndex}
                 pageCount={Math.ceil(totalCount / limit)}
                 onPageChange={onPageChange}
                 marginPagesDisplayed={2}
@@ -208,10 +207,6 @@ export function Component(props: Props) {
                   })}
                 >
                   調整中...
-                  {/* {`${getUserRowNumber(
-                    allUsers,
-                    getStartUser(allUsers, users)
-                  )} - ${getUserRowNumber(allUsers, getEndUser(allUsers, users))} / ${totalCount}`} */}
                 </span>
               </div>
             </Box>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import UsersAPI from '../../api/UsersAPI'
-import { usersUrl } from '../../constants'
-import { deleteData, sleep } from '../../functions'
+import { sleep } from '../../functions'
 import { Users } from '../../types'
 import { Component } from './Component'
 import { mapUsersDataFromApi } from './functions'
@@ -12,7 +11,7 @@ export function UserList() {
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
-  const [selectedPage, setSelectedPage] = useState<number>(1)
+  const [currentPageIndex, setCurrendPageIndex] = useState<number>(0)
 
   // API params
   const [offset, setOffset] = useState<number>(0)
@@ -41,7 +40,7 @@ export function UserList() {
         return res.json()
       })
       .then(async (result) => {
-        await sleep(700)
+        await sleep(800)
         setIsLoaded(true)
         const users = result.map(mapUsersDataFromApi)
         setUsers(users)
@@ -83,21 +82,21 @@ export function UserList() {
     })
   }
 
-  const onPageChange = (data: any) => {
-    const selected = data.selected
-    setSelectedPage(selected)
+  const onPageChange = (data: { selected: number }) => {
+    const { selected } = data
+    setCurrendPageIndex(selected)
     setOffset(Math.ceil(selected * limit))
   }
 
   const onLimitSelecterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedPage(0)
+    setCurrendPageIndex(0)
     setOffset(0)
     setLimit(Number(event.target.value))
   }
 
   useEffect(() => {
     loadUsersFromServer({ sort, offset, limit })
-  }, [sort, offset, limit, selectedPage])
+  }, [sort, offset, limit, currentPageIndex])
 
   return (
     <Component
@@ -107,7 +106,7 @@ export function UserList() {
       offset={offset}
       limit={limit}
       sort={sort}
-      selectedPage={selectedPage}
+      currentPageIndex={currentPageIndex}
       onTableHeaderClick={onTableHeaderClick}
       onDeleteClick={onDeleteClick}
       onPageChange={onPageChange}
