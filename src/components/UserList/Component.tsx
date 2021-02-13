@@ -20,7 +20,6 @@ import { Spinner } from '../shared/Spinner'
 import Box from '@material-ui/core/Box'
 import { css } from '@emotion/css'
 import { HStack } from '../shared/Stack'
-import { Sort } from '.'
 
 type Props = {
   users: Users
@@ -30,8 +29,6 @@ type Props = {
   currentPageIndex: number
   offset: number
   limit: number
-  sort: Sort
-  onTableHeaderClick: (event: React.MouseEvent<any>) => void
   onDeleteClick: (event: React.MouseEvent<any>) => void
   onPageChange: (data: any) => void
   onLimitSelecterChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
@@ -46,8 +43,6 @@ export function Component(props: Props) {
     currentPageIndex,
     offset,
     limit,
-    sort,
-    onTableHeaderClick,
     onDeleteClick,
     onPageChange,
     onLimitSelecterChange,
@@ -70,96 +65,81 @@ export function Component(props: Props) {
             <Spinner />
           </Box>
         ) : (
-          <div
-            style={{
-              height: 'calc(100vh - 64px)',
-              border: '3px solid #eb425e',
-              overflowY: 'scroll',
-            }}
-          >
-            <div style={{ display: 'none' }}>
-              totalCount: {totalCount}
-              <hr />
-              pageCount: {pageCount}
-              <hr />
-              currentPageIndex: {currentPageIndex}
-              <hr />
-              offset: {offset}
-              <hr />
-              limit: {limit}
-              <hr />
-              currentPage: {currentPageIndex + 1}
-              <hr />
-              startRowNumber: {offset + 1}
-              <hr />
-              endRowNumber: {offset + limit}
-            </div>
+          <>
+            <div
+              style={{
+                height: 'calc(100vh - 64px - 64px)',
+                border: '3px solid #eb425e',
+                overflowY: 'scroll',
+              }}
+            >
+              <div style={{ display: 'none' }}>
+                totalCount: {totalCount}
+                <hr />
+                pageCount: {pageCount}
+                <hr />
+                currentPageIndex: {currentPageIndex}
+                <hr />
+                offset: {offset}
+                <hr />
+                limit: {limit}
+                <hr />
+                currentPage: {currentPageIndex + 1}
+                <hr />
+                startRowNumber: {offset + 1}
+                <hr />
+                endRowNumber: {offset + limit}
+              </div>
 
-            <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
-              <Table>
-                <Thead>
-                  <tr>
-                    <Th align="left" scope="col">
-                      ID
-                    </Th>
-                    <Th
-                      align="left"
-                      scope="col"
-                      data-header="username"
-                      onClick={onTableHeaderClick}
-                    >
-                      Username{' '}
-                      {sort.active && sort.key === 'username' && sort.order === 'asc' && (
-                        <FontAwesomeIcon icon={faArrowUp} />
-                      )}
-                      {sort.active && sort.key === 'username' && sort.order === 'desc' && (
-                        <FontAwesomeIcon icon={faArrowDown} />
-                      )}
-                    </Th>
-                    <Th align="left" scope="col" data-header="email" onClick={onTableHeaderClick}>
-                      Email{' '}
-                      {sort.active && sort.key === 'email' && sort.order === 'asc' && (
-                        <FontAwesomeIcon icon={faArrowUp} />
-                      )}
-                      {sort.active && sort.key === 'email' && sort.order === 'desc' && (
-                        <FontAwesomeIcon icon={faArrowDown} />
-                      )}
-                    </Th>
-                    <Th align="left" scope="col"></Th>
-                    <Th align="left" scope="col"></Th>
-                  </tr>
-                </Thead>
-
-                <Tbody>
-                  {users.map((user) => (
-                    <tr key={user.id}>
-                      <Td>{user.id}</Td>
-                      <Td>{user.username}</Td>
-                      <Td>{user.email}</Td>
-                      <Td>
-                        <LinkButton size="small" to={`/users/${user.id}`}>
-                          <FontAwesomeIcon icon={faEdit} />
-                          &nbsp;&nbsp;Edit
-                        </LinkButton>
-                      </Td>
-                      <Td>
-                        <Button
-                          size="small"
-                          type="button"
-                          data-id={user.id}
-                          data-username={user.username}
-                          onClick={onDeleteClick}
-                          disabled={!isLoaded}
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                          &nbsp;&nbsp;Delete
-                        </Button>
-                      </Td>
+              <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
+                <Table>
+                  <Thead>
+                    <tr>
+                      <Th align="left" scope="col">
+                        ID
+                      </Th>
+                      <Th align="left" scope="col" data-header="username">
+                        Username
+                      </Th>
+                      <Th align="left" scope="col" data-header="email">
+                        Email
+                      </Th>
+                      <Th align="left" scope="col"></Th>
+                      <Th align="left" scope="col"></Th>
                     </tr>
-                  ))}
-                </Tbody>
-              </Table>
-            </TableContainer>
+                  </Thead>
+
+                  <Tbody>
+                    {users.map((user) => (
+                      <tr key={user.id}>
+                        <Td>{user.id}</Td>
+                        <Td>{user.username}</Td>
+                        <Td>{user.email}</Td>
+                        <Td>
+                          <LinkButton size="small" to={`/users/${user.id}`}>
+                            <FontAwesomeIcon icon={faEdit} />
+                            &nbsp;&nbsp;Edit
+                          </LinkButton>
+                        </Td>
+                        <Td>
+                          <Button
+                            size="small"
+                            type="button"
+                            data-id={user.id}
+                            data-username={user.username}
+                            onClick={onDeleteClick}
+                            disabled={!isLoaded}
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
+                            &nbsp;&nbsp;Delete
+                          </Button>
+                        </Td>
+                      </tr>
+                    ))}
+                  </Tbody>
+                </Table>
+              </TableContainer>
+            </div>
 
             <Box
               display="flex"
@@ -174,7 +154,7 @@ export function Component(props: Props) {
                 pageCount={pageCount}
                 onPageChange={onPageChange}
                 marginPagesDisplayed={2}
-                pageRangeDisplayed={7}
+                pageRangeDisplayed={4}
                 // labels
                 previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
                 nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
@@ -216,7 +196,7 @@ export function Component(props: Props) {
                 </Box>
               </HStack>
             </Box>
-          </div>
+          </>
         )}
       </Box>
     </>
