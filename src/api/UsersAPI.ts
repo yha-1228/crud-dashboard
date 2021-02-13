@@ -10,7 +10,7 @@ const UsersAPI = {
     return fetch(usersUrl)
   },
 
-  deleteById: (id: number) => {
+  deleteBy: (id: number) => {
     return fetch(`${usersUrl}/${id}`, { method: 'DELETE' })
   },
 }

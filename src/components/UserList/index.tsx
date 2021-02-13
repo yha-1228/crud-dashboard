@@ -15,7 +15,10 @@ export function UserList() {
   const [limit, setLimit] = useState<number>(20)
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
-    const params = { _start: offset.toString(), _limit: limit.toString() }
+    const params = {
+      _start: offset.toString(),
+      _limit: limit.toString(),
+    }
 
     UsersAPI.get(params)
       .then((res) => {
@@ -45,7 +48,7 @@ export function UserList() {
 
     setIsLoaded(false)
 
-    UsersAPI.deleteById(id).then(() => {
+    UsersAPI.deleteBy(id).then(() => {
       loadUsersFromServer({ offset, limit })
     })
   }
