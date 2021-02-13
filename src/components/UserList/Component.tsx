@@ -128,7 +128,6 @@ export function Component(props: Props) {
             >
               <ReactPaginate
                 // logics
-                // forcePage={currentPageIndex}
                 pageCount={pageCount}
                 onPageChange={onPageChange}
                 marginPagesDisplayed={2}
