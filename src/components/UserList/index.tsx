@@ -17,8 +17,6 @@ export function UserList() {
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     const params = { _start: offset.toString(), _limit: limit.toString() }
 
-    setIsLoaded(false)
-
     UsersAPI.getWithParams(params)
       .then((res) => {
         if (!res.ok) {
