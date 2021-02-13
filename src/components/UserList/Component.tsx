@@ -22,19 +22,11 @@ type Props = {
   limit: number
   onDeleteClick: (event: React.MouseEvent<any>) => void
   onPageChange: (data: any) => void
-  onLimitSelecterChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
+  onLimitChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 export function Component(props: Props) {
-  const {
-    users,
-    isLoaded,
-    pageCount,
-    limit,
-    onDeleteClick,
-    onPageChange,
-    onLimitSelecterChange,
-  } = props
+  const { users, isLoaded, pageCount, limit, onDeleteClick, onPageChange, onLimitChange } = props
 
   return (
     <>
@@ -135,7 +127,7 @@ export function Component(props: Props) {
                       }
                     `}
                     value={limit}
-                    onChange={onLimitSelecterChange}
+                    onChange={onLimitChange}
                   >
                     {[10, 20, 30, 50, 100].map((value) => (
                       <option key={value} value={value}>

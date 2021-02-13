@@ -54,7 +54,7 @@ export function UserList() {
     setOffset(Math.ceil(selected * limit))
   }
 
-  const onLimitSelecterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const onLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentPageIndex(0)
     setOffset(0)
     setLimit(Number(event.target.value))
@@ -75,7 +75,7 @@ export function UserList() {
       limit={limit}
       onDeleteClick={onDeleteClick}
       onPageChange={onPageChange}
-      onLimitSelecterChange={onLimitSelecterChange}
+      onLimitChange={onLimitChange}
     />
   )
 }
