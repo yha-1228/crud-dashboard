@@ -1,13 +1,13 @@
 import { usersUrl } from '../constants'
 
 const UsersAPI = {
-  get: () => {
-    return fetch(usersUrl)
-  },
+  get: (params?: { [key: string]: string }) => {
+    if (params) {
+      const urlSearchParams = new URLSearchParams(params)
+      return fetch(`${usersUrl}?${urlSearchParams}`)
+    }
 
-  getWithParams: (params: { [key: string]: string }) => {
-    const urlSearchParams = new URLSearchParams(params)
-    return fetch(`${usersUrl}?${urlSearchParams}`)
+    return fetch(usersUrl)
   },
 
   deleteById: (id: number) => {
