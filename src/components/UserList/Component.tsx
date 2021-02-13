@@ -137,7 +137,7 @@ export function Component(props: Props) {
                     value={limit}
                     onChange={onLimitSelecterChange}
                   >
-                    {[5, 8, 10, 20, 30, 50, 100].map((value) => (
+                    {[10, 20, 30, 50, 100].map((value) => (
                       <option key={value} value={value}>
                         {value}
                       </option>
