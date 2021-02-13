@@ -73,24 +73,6 @@ export function Component(props: Props) {
                 overflowY: 'scroll',
               }}
             >
-              <div style={{ display: 'none' }}>
-                totalCount: {totalCount}
-                <hr />
-                pageCount: {pageCount}
-                <hr />
-                currentPageIndex: {currentPageIndex}
-                <hr />
-                offset: {offset}
-                <hr />
-                limit: {limit}
-                <hr />
-                currentPage: {currentPageIndex + 1}
-                <hr />
-                startRowNumber: {offset + 1}
-                <hr />
-                endRowNumber: {offset + limit}
-              </div>
-
               <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
                 <Table>
                   <Thead>
@@ -146,7 +128,8 @@ export function Component(props: Props) {
               justifyContent="space-between"
               alignItems="center"
               height="64px"
-              border="2px solid #48ff00"
+              px="32px"
+              border="2px solid #bbff00"
             >
               <ReactPaginate
                 // logics

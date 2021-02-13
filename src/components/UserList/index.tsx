@@ -16,8 +16,6 @@ export function UserList() {
   const [limit, setLimit] = useState<number>(20)
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
-    setIsLoaded(false)
-
     const params = { _start: offset.toString(), _limit: limit.toString() }
 
     UsersAPI.getWithParams(params)
