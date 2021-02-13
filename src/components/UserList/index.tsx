@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import UsersAPI from '../../api/UsersAPI'
+import { sleep } from '../../functions'
 import { Users } from '../../types'
 import { Component } from './Component'
 import { mapUsersDataFromApi } from './functions'
@@ -16,6 +17,8 @@ export function UserList() {
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     const params = { _start: offset.toString(), _limit: limit.toString() }
 
+    setIsLoaded(false)
+
     UsersAPI.getWithParams(params)
       .then((res) => {
         if (!res.ok) {
@@ -27,6 +30,7 @@ export function UserList() {
         return res.json()
       })
       .then(async (result) => {
+        await sleep(1000)
         setIsLoaded(true)
         setUsers(result.map(mapUsersDataFromApi))
       })
