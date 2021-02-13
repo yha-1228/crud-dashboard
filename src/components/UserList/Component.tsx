@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import ReactPaginate from 'react-paginate'
 import { Users } from '../../types'
-import { MainContentArea } from '../Layout/MainContentArea'
 import { MainHeader } from '../Layout/MainHeader'
 import { Button, LinkButton } from '../shared/Button'
 import { MainHeading } from '../shared/Heading'
@@ -65,7 +64,7 @@ export function Component(props: Props) {
         </LinkButton>
       </MainHeader>
 
-      <MainContentArea>
+      <Box>
         {!isLoaded ? (
           <Box pt="72px" textAlign="center">
             <Spinner />
@@ -74,11 +73,11 @@ export function Component(props: Props) {
           <div
             style={{
               height: 'calc(100vh - 64px)',
-              border: '2px solid #eb425e',
+              border: '3px solid #eb425e',
               overflowY: 'scroll',
             }}
           >
-            <div style={{ display: 'block' }}>
+            <div style={{ display: 'none' }}>
               totalCount: {totalCount}
               <hr />
               pageCount: {pageCount}
@@ -95,9 +94,8 @@ export function Component(props: Props) {
               <hr />
               endRowNumber: {offset + limit}
             </div>
-            <hr />
 
-            <TableContainer>
+            <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
               <Table>
                 <Thead>
                   <tr>
@@ -217,17 +215,10 @@ export function Component(props: Props) {
                   </select>
                 </Box>
               </HStack>
-
-              <div
-                className={css({
-                  fontSize: 12,
-                  color: 'var(--color-gray-500)',
-                })}
-              ></div>
             </Box>
           </div>
         )}
-      </MainContentArea>
+      </Box>
     </>
   )
 }
