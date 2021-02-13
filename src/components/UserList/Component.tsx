@@ -33,10 +33,12 @@ export function Component(props: Props) {
       <MainHeader>
         <MainHeading>Users</MainHeading>
 
-        <LinkButton variant="primary" to="/users/create">
-          <FontAwesomeIcon icon={faPlus} />
-          &nbsp;&nbsp;Add
-        </LinkButton>
+        <Box display={isLoaded ? 'block' : 'none'}>
+          <LinkButton variant="primary" to="/users/create">
+            <FontAwesomeIcon icon={faPlus} />
+            &nbsp;&nbsp;Add
+          </LinkButton>
+        </Box>
       </MainHeader>
 
       <Box>
