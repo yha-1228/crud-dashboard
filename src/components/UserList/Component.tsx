@@ -117,13 +117,9 @@ export function Component(props: Props) {
               alignItems="center"
               height="64px"
               px="32px"
-              border="2px solid #bbff00"
+              border="2px solid #e04cfd"
             >
-              <Paginate
-                // logics
-                pageCount={pageCount}
-                onPageChange={onPageChange}
-              />
+              <Paginate pageCount={pageCount} onPageChange={onPageChange} />
 
               <HStack spaceing={8}>
                 <Box display="inline-block" pr="8px" fontSize="12px" color="var(--color-gray-500)">
