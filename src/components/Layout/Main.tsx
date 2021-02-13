@@ -13,6 +13,7 @@ export function Main({ children }: { children: React.ReactNode }) {
         className={css({
           width: 'calc(100vw - 240px)',
           height: '100vh',
+          overflowY: 'auto',
         })}
       >
         {children}
