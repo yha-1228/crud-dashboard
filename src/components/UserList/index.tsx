@@ -10,8 +10,6 @@ export function UserList() {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [pageCount, setPageCount] = useState<number>(0)
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(0)
-
-  // API params
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(20)
 
