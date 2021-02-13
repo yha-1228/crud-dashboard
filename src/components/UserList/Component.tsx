@@ -1,23 +1,16 @@
-import {
-  faChevronLeft,
-  faChevronRight,
-  faEdit,
-  faPlus,
-  faTrash,
-} from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import ReactPaginate from 'react-paginate'
 import { Users } from '../../types'
 import { MainHeader } from '../Layout/MainHeader'
 import { Button, LinkButton } from '../shared/Button'
 import { MainHeading } from '../shared/Heading'
 import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table'
-import styles from './style.module.css'
 import { Spinner } from '../shared/Spinner'
 import Box from '@material-ui/core/Box'
 import { css } from '@emotion/css'
 import { HStack } from '../shared/Stack'
+import { Paginate } from '../shared/Paginate'
 
 type Props = {
   users: Users
@@ -126,26 +119,10 @@ export function Component(props: Props) {
               px="32px"
               border="2px solid #bbff00"
             >
-              <ReactPaginate
+              <Paginate
                 // logics
                 pageCount={pageCount}
                 onPageChange={onPageChange}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={4}
-                // labels
-                previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
-                nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
-                // styles
-                containerClassName={styles.reactPaginate__container}
-                pageClassName={styles.reactPaginate__page}
-                pageLinkClassName={styles.reactPaginate__pageLink}
-                previousClassName={styles.reactPaginate__page}
-                previousLinkClassName={styles.reactPaginate__pageLink}
-                nextClassName={styles.reactPaginate__page}
-                nextLinkClassName={styles.reactPaginate__pageLink}
-                breakClassName={styles.reactPaginate__page}
-                breakLinkClassName={styles.reactPaginate__pageLink}
-                activeLinkClassName={styles.reactPaginate__pageLink_active}
               />
 
               <HStack spaceing={8}>
