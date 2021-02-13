@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { usersUrl } from '../../constants'
 import { MainHeader } from '../Layout/MainHeader'
-import { MainContentArea } from '../Layout/MainContentArea'
 import { MainHeading } from '../shared/Heading'
 import { UserCreateForm } from './UserCreateForm'
 import { postData } from '../../functions'
@@ -46,7 +45,7 @@ export function UserCreate() {
         <MainHeading>Add</MainHeading>
       </MainHeader>
 
-      <MainContentArea>
+      <div>
         <UserCreateForm
           onSubmit={handleSubmit}
           onChange={handleChange}
@@ -54,7 +53,7 @@ export function UserCreate() {
           isSubmitting={isSubmitting}
           submitButtonText="Add"
         />
-      </MainContentArea>
+      </div>
     </>
   )
 }

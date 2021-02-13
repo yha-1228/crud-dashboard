@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { usersUrl } from '../../constants'
 import { MainHeader } from '../Layout/MainHeader'
-import { MainContentArea } from '../Layout/MainContentArea'
 import { MainHeading } from '../shared/Heading'
 import { UserEditForm } from './UserEditForm'
 import { deleteData, getData, putData } from '../../functions'
@@ -65,7 +64,7 @@ export function UserEdit({ id }: { id: string }) {
         <MainHeading>Edit</MainHeading>
       </MainHeader>
 
-      <MainContentArea>
+      <div>
         <UserEditForm
           onSubmit={handleSubmit}
           onChange={handleChange}
@@ -76,7 +75,7 @@ export function UserEdit({ id }: { id: string }) {
           deleteButtonText="Delete"
           onDeleteClick={handleDelete}
         />
-      </MainContentArea>
+      </div>
     </>
   )
 }
