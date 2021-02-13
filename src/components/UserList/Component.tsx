@@ -1,6 +1,4 @@
 import {
-  faArrowDown,
-  faArrowUp,
   faChevronLeft,
   faChevronRight,
   faEdit,
@@ -37,11 +35,8 @@ type Props = {
 export function Component(props: Props) {
   const {
     users,
-    totalCount,
     isLoaded,
     pageCount,
-    currentPageIndex,
-    offset,
     limit,
     onDeleteClick,
     onPageChange,
@@ -133,7 +128,7 @@ export function Component(props: Props) {
             >
               <ReactPaginate
                 // logics
-                forcePage={currentPageIndex}
+                // forcePage={currentPageIndex}
                 pageCount={pageCount}
                 onPageChange={onPageChange}
                 marginPagesDisplayed={2}

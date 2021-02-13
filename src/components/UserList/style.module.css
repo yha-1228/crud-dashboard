@@ -17,7 +17,6 @@
   color: var(--color-gray-400);
   border-radius: 9999px;
   outline: none;
-  transition: background-color 0.1s ease-out;
 }
 
 .reactPaginate__pageLink:hover {
