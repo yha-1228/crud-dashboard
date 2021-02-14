@@ -44,7 +44,7 @@ export default function Footer(props: FooterProps) {
       <Paginate pageCount={pageCount} onPageChange={onPageChange} />
 
       <HStack spaceing={8}>
-        <Box display="inline-block" pr="8px" fontSize="12px" color="var(--color-gray-500)">
+        <Box display="inline-block" className={classes.smallText}>
           Rows per page:
         </Box>
         <Box display="inline-block">
