@@ -73,7 +73,7 @@ export function UserList() {
   }, [offset, limit])
 
   return (
-    <>
+    <div>
       <Header isLoaded={isLoaded} />
       <UserTable
         isLoaded={isLoaded}
@@ -90,6 +90,6 @@ export function UserList() {
         onPageChange={onPageChange}
         onLimitChange={onLimitChange}
       />
-    </>
+    </div>
   )
 }
