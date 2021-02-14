@@ -31,7 +31,6 @@ export function UserList() {
         return res.json()
       })
       .then(async (result) => {
-        await sleep(1000)
         setIsLoaded(true)
         setUsers(result.map(mapUsersDataFromApi))
       })
@@ -57,8 +56,6 @@ export function UserList() {
     const { selected } = data
     setCurrentPageIndex(selected)
     setOffset(Math.ceil(selected * limit))
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    document.getElementById('table-box')?.scrollTo(0, 0)
   }
 
   const onLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -69,6 +66,7 @@ export function UserList() {
 
   useEffect(() => {
     loadUsersFromServer({ offset, limit })
+    document.getElementById('table-box')?.scrollTo(0, 0)
   }, [offset, limit])
 
   return (
