@@ -7,7 +7,7 @@ export function ConfigsPage() {
   return (
     <Layout title="Configs">
       <MainHeader>
-        <MainHeading>Configs</MainHeading>
+        <MainHeading>Page01</MainHeading>
       </MainHeader>
     </Layout>
   )
