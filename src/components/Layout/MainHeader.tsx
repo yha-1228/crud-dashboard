@@ -10,7 +10,6 @@ export function MainHeader({ children }: { children: React.ReactNode }) {
       height="64px"
       pr="32px"
       pl="32px"
-      bgcolor="var(--color-gray-50)"
       borderBottom="1px solid var(--color-gray-200)"
     >
       {children}
