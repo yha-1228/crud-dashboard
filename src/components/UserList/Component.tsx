@@ -51,6 +51,7 @@ export function Component(props: Props) {
           height="calc(100vh - 64px - 64px)"
           border="2px solid black"
           overflow="auto"
+          id="table-box"
         >
           <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
             <Table>

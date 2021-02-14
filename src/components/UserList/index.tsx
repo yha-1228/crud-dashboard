@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import UsersAPI from '../../api/UsersAPI'
 import { sleep } from '../../functions'
 import { Users } from '../../types'
@@ -13,6 +13,7 @@ export function UserList() {
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(0)
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(20)
+  const tableWrapper = useRef(null)
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     const params = {
@@ -57,6 +58,8 @@ export function UserList() {
     const { selected } = data
     setCurrentPageIndex(selected)
     setOffset(Math.ceil(selected * limit))
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    document.getElementById('table-box')?.scrollTo(0, 0)
   }
 
   const onLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
