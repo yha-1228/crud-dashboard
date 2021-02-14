@@ -9,10 +9,8 @@ export function TableContainer({
     <div
       className={css`
         & {
-          overflow: hidden;
           background-color: white;
           border: 1px solid var(--color-gray-200);
-          border-radius: 5px;
           box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
         }
       `}
