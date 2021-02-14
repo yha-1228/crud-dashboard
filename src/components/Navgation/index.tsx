@@ -80,16 +80,12 @@ export function Navgation() {
               to={navItem.to}
               exact={navItem.exact}
             >
-              {navItem.icon ? (
-                <div>
-                  <Box display="inline-block" width="32px">
-                    {navItem.icon}
-                  </Box>
-                  <Box display="inline-block">{navItem.title}</Box>
-                </div>
-              ) : (
-                <div>{navItem.title}</div>
-              )}
+              <div>
+                <Box display="inline-block" width="32px">
+                  {navItem.icon}
+                </Box>
+                <Box display="inline-block">{navItem.title}</Box>
+              </div>
             </NavLink>
           </NavItem>
         ))}
