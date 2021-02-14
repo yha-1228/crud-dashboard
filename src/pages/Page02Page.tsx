@@ -5,7 +5,7 @@ import { MainHeading } from '../components/shared/Heading'
 
 export function Page02Page() {
   return (
-    <Layout title="Home">
+    <Layout title="Page02">
       <MainHeader>
         <MainHeading>Page02</MainHeading>
       </MainHeader>

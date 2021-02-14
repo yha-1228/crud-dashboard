@@ -13,11 +13,11 @@ function TwoColumnWrapper({ children }: { children: React.ReactNode }) {
   return <div className={css({ display: 'flex', height: '100vh' })}>{children}</div>
 }
 
-export function Layout({ title, children }: { title: string; children: React.ReactNode }) {
+export function Layout({ title, children }: { title?: string; children: React.ReactNode }) {
   return (
     <>
       <Helmet>
-        <title>{`${siteConfig.title} - ${title}`}</title>
+        <title>{!title ? siteConfig.title : `${siteConfig.title} - ${title}`}</title>
       </Helmet>
 
       <TwoColumnWrapper>
