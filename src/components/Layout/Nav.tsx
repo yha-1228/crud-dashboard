@@ -40,7 +40,7 @@ const navItems = [
 
 function NavItem({ children }: { children: React.ReactNode }) {
   return (
-    <Box component="li" mr="-24px" ml="-24px" lineHeight="40px">
+    <Box component="li" mx="-24px" lineHeight="40px">
       {children}
     </Box>
   )
