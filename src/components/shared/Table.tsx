@@ -10,7 +10,6 @@ export function TableContainer({
       className={css`
         & {
           background-color: white;
-          border: 1px solid var(--color-gray-200);
         }
       `}
       {...other}

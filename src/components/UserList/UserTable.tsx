@@ -31,6 +31,7 @@ export default function UserTable(props: UserTableProps) {
         display={isLoaded ? 'block' : 'none'}
         height={`calc(100vh - ${heights.header}px - ${heights.footer}px)`}
         overflow="auto"
+        className="no-bounce-scroll"
       >
         <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
           <Table>

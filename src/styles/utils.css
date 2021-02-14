@@ -73,3 +73,7 @@
 .hidden {
   display: none;
 }
+
+.no-bounce-scroll {
+  overscroll-behavior-y: none;
+}
