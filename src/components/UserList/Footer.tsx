@@ -6,14 +6,32 @@ import { Paginate } from '../shared/Paginate'
 
 type FooterProps = {
   isLoaded: boolean
+  totalCount: number
   pageCount: number
+  currentPageIndex: number
   limit: number
   onPageChange: (data: any) => void
   onLimitChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 export default function Footer(props: FooterProps) {
-  const { isLoaded, pageCount, limit, onPageChange, onLimitChange } = props
+  const {
+    isLoaded,
+    totalCount,
+    pageCount,
+    currentPageIndex,
+    limit,
+    onPageChange,
+    onLimitChange,
+  } = props
+
+  const classes = {
+    smallText: css({
+      fontSize: 14,
+      color: 'var(--color-gray-500)',
+      cursor: 'pointer',
+    }),
+  }
 
   return (
     <Box
@@ -31,17 +49,7 @@ export default function Footer(props: FooterProps) {
           Rows per page:
         </Box>
         <Box display="inline-block">
-          <select
-            className={css`
-              & {
-                font-size: 12px;
-                color: var(--color-gray-500);
-                cursor: pointer;
-              }
-            `}
-            value={limit}
-            onChange={onLimitChange}
-          >
+          <select className={classes.smallText} value={limit} onChange={onLimitChange}>
             {[10, 20, 30, 50, 100].map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -50,6 +58,10 @@ export default function Footer(props: FooterProps) {
           </select>
         </Box>
       </HStack>
+
+      <Box className={classes.smallText}>
+        {currentPageIndex + 1 * limit}-{(currentPageIndex + 1) * limit} of {totalCount}
+      </Box>
     </Box>
   )
 }

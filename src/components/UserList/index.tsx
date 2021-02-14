@@ -83,7 +83,9 @@ export function UserList() {
       />
       <Footer
         isLoaded={isLoaded}
+        totalCount={totalCount}
         pageCount={pageCount}
+        currentPageIndex={currentPageIndex}
         limit={limit}
         onPageChange={onPageChange}
         onLimitChange={onLimitChange}
