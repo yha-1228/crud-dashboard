@@ -17,7 +17,7 @@ export function Layout({ title, children }: { title: string; children: React.Rea
   return (
     <>
       <Helmet>
-        <title>{title}</title>
+        <title>{`${siteConfig.title} - ${title}`}</title>
       </Helmet>
 
       <TwoColumnWrapper>
