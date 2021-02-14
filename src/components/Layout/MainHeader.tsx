@@ -11,7 +11,6 @@ export function MainHeader({ children }: { children: React.ReactNode }) {
       pr="32px"
       pl="32px"
       bgcolor="var(--color-gray-50)"
-      borderBottom="1px solid var(--color-gray-100)"
     >
       {children}
     </Box>
