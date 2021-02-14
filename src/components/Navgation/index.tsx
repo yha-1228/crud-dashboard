@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faFileInvoice, faHome, faSlidersH, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faList } from '@fortawesome/free-solid-svg-icons'
 import Box from '@material-ui/core/Box'
 import { css } from '@emotion/css'
 
@@ -13,28 +13,28 @@ const navItems = [
     exact: true,
   },
   {
-    icon: <FontAwesomeIcon icon={faUser} />,
+    icon: <FontAwesomeIcon icon={faList} />,
     title: 'Users',
     to: '/users',
     exact: false,
   },
   {
-    icon: <FontAwesomeIcon icon={faFileInvoice} />,
-    title: 'Invoices',
-    to: '/invoices',
-    exact: true,
+    icon: <FontAwesomeIcon icon={faList} />,
+    title: 'Page01',
+    to: '/page01',
+    exact: false,
   },
   {
-    icon: <FontAwesomeIcon icon={faSlidersH} />,
-    title: 'Configs',
-    to: '/configs',
-    exact: true,
+    icon: <FontAwesomeIcon icon={faList} />,
+    title: 'Page02',
+    to: '/page02',
+    exact: false,
   },
   {
-    icon: <FontAwesomeIcon icon={faCog} />,
-    title: 'Site setting',
-    to: '/site-setting',
-    exact: true,
+    icon: <FontAwesomeIcon icon={faList} />,
+    title: 'Page03',
+    to: '/page03',
+    exact: false,
   },
 ]
 
@@ -81,7 +81,7 @@ export function Navgation() {
               exact={navItem.exact}
             >
               <div>
-                <Box display="inline-block" width="32px">
+                <Box display="inline-block" width="32px" border="1px solid lime">
                   {navItem.icon}
                 </Box>
                 <Box display="inline-block">{navItem.title}</Box>
