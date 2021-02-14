@@ -7,7 +7,7 @@ export function InvoicesPage() {
   return (
     <Layout title="Invoices">
       <MainHeader>
-        <MainHeading>Invoices page</MainHeading>
+        <MainHeading>Invoices</MainHeading>
       </MainHeader>
     </Layout>
   )
