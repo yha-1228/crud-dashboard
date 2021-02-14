@@ -1,8 +1,8 @@
 import React from 'react'
+import Box from '@material-ui/core/Box'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faList } from '@fortawesome/free-solid-svg-icons'
-import Box from '@material-ui/core/Box'
 import { css } from '@emotion/css'
 
 const navItems = [
