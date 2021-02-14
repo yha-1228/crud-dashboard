@@ -60,7 +60,8 @@ export default function Footer(props: FooterProps) {
       </HStack>
 
       <Box className={classes.smallText}>
-        {currentPageIndex + 1 * limit}-{(currentPageIndex + 1) * limit} of {totalCount}
+        {currentPageIndex * limit + 1}-{Math.min((currentPageIndex + 1) * limit, totalCount)} of{' '}
+        {totalCount}
       </Box>
     </Box>
   )
