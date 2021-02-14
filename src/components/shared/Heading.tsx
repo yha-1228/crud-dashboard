@@ -11,15 +11,15 @@ export function MainHeading({ children, ...other }: MainHeadingProps) {
   )
 }
 
-type SidebarHeadingProps = ComponentPropsWithoutRef<'h2'> & { children: React.ReactNode }
+// type SidebarHeadingProps = ComponentPropsWithoutRef<'h2'> & { children: React.ReactNode }
 
-export function SidebarHeading({ children, ...other }: SidebarHeadingProps) {
-  return (
-    <h2
-      className={css({ margin: 0, padding: 0, fontSize: 24, fontWeight: 'bold', color: 'white' })}
-      {...other}
-    >
-      {children}
-    </h2>
-  )
-}
+// export function SidebarHeading({ children, ...other }: SidebarHeadingProps) {
+//   return (
+//     <h2
+//       className={css({ margin: 0, padding: 0, fontSize: 24, fontWeight: 'bold', color: 'white' })}
+//       {...other}
+//     >
+//       {children}
+//     </h2>
+//   )
+// }
