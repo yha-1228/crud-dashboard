@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import {
   faCog,
   faFileInvoice,
@@ -7,7 +9,7 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons'
 
-const navItems = [
+const navItemsNew = [
   {
     icon: <FontAwesomeIcon icon={faHome} />,
     title: 'Home',
@@ -39,5 +41,3 @@ const navItems = [
     exact: false,
   },
 ]
-
-export default navItems
