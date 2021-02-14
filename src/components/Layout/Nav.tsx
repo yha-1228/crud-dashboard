@@ -56,10 +56,10 @@ export function Navgation() {
               className={css`
                 & {
                   display: block;
-                  padding-left: calc(24px - 4px);
+                  padding-left: calc(24px - 2px);
                   color: white;
                   text-decoration: none;
-                  border-left: 4px solid transparent;
+                  border-left: 2px solid transparent;
 
                   &:hover {
                     margin-right: -10px;
@@ -70,10 +70,10 @@ export function Navgation() {
               activeClassName={css`
                 & {
                   font-weight: bold;
-                  border-left: 4px solid white;
+                  border-left: 2px solid white;
                   &:hover {
                     background-color: var(--color-primary-dark);
-                    border-left: 4px solid white;
+                    border-left: 2px solid white;
                   }
                 }
               `}
@@ -81,7 +81,7 @@ export function Navgation() {
               exact={navItem.exact}
             >
               <div>
-                <Box display="inline-block" width="32px" border="1px solid lime">
+                <Box display="inline-block" width="32px">
                   {navItem.icon}
                 </Box>
                 <Box display="inline-block">{navItem.title}</Box>
