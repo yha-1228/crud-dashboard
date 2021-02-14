@@ -3,7 +3,7 @@ import UsersAPI from '../../api/UsersAPI'
 import { Users } from '../../types'
 import { mapUsersDataFromApi } from './functions'
 import Header from './Header'
-import UserTable from './UserTable'
+import UserTable, { UserTable02 } from './UserTable'
 import Footer from './Footer'
 
 export function UserList() {
@@ -68,13 +68,18 @@ export function UserList() {
 
   useEffect(() => {
     loadUsersFromServer({ offset, limit })
-    // document.getElementById('table-box')?.scrollTo(0, 0)
+    userTableRef.current?.scrollTo(0, 0)
   }, [offset, limit])
 
   return (
     <>
       <Header isLoaded={isLoaded} />
-      <UserTable isLoaded={isLoaded} users={users} onDeleteClick={onDeleteClick} />
+      <UserTable02
+        isLoaded={isLoaded}
+        users={users}
+        onDeleteClick={onDeleteClick}
+        ref={userTableRef}
+      />
       <Footer
         isLoaded={isLoaded}
         pageCount={pageCount}

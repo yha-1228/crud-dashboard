@@ -18,7 +18,7 @@ const heights = {
   footer: 64,
 }
 
-export const UserTableNew = React.forwardRef<HTMLDivElement, UserTableProps>((props, ref) => {
+export const UserTable02 = React.forwardRef<HTMLDivElement, UserTableProps>((props, ref) => {
   const { users, isLoaded, onDeleteClick } = props
 
   return (
