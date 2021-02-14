@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import UsersAPI from '../../api/UsersAPI'
-import { sleep } from '../../functions'
 import { Users } from '../../types'
-import { Component } from './Component'
 import { mapUsersDataFromApi } from './functions'
+import Header from './Header'
+import UserTable from './UserTable'
+import Footer from './Footer'
 
 export function UserList() {
   const [users, setUsers] = useState<Users>([])
@@ -13,6 +14,7 @@ export function UserList() {
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(0)
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(20)
+  const userTableRef = useRef<HTMLDivElement>(null)
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     const params = {
@@ -66,21 +68,20 @@ export function UserList() {
 
   useEffect(() => {
     loadUsersFromServer({ offset, limit })
-    document.getElementById('table-box')?.scrollTo(0, 0)
+    // document.getElementById('table-box')?.scrollTo(0, 0)
   }, [offset, limit])
 
   return (
-    <Component
-      users={users}
-      isLoaded={isLoaded}
-      totalCount={totalCount}
-      pageCount={pageCount}
-      currentPageIndex={currentPageIndex}
-      offset={offset}
-      limit={limit}
-      onDeleteClick={onDeleteClick}
-      onPageChange={onPageChange}
-      onLimitChange={onLimitChange}
-    />
+    <>
+      <Header isLoaded={isLoaded} />
+      <UserTable isLoaded={isLoaded} users={users} onDeleteClick={onDeleteClick} />
+      <Footer
+        isLoaded={isLoaded}
+        pageCount={pageCount}
+        limit={limit}
+        onPageChange={onPageChange}
+        onLimitChange={onLimitChange}
+      />
+    </>
   )
 }
