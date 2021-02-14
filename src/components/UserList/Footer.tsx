@@ -29,7 +29,6 @@ export default function Footer(props: FooterProps) {
     smallText: css({
       fontSize: 14,
       color: 'var(--color-gray-500)',
-      cursor: 'pointer',
     }),
   }
 
