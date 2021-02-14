@@ -6,6 +6,7 @@ import { Button, LinkButton } from '../shared/Button'
 import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table'
 import Box from '@material-ui/core/Box'
 import { Spinner } from '../shared/Spinner'
+import { css } from '@emotion/css'
 
 type UserTableProps = {
   isLoaded: boolean
@@ -29,62 +30,62 @@ export const UserTable02 = React.forwardRef<HTMLDivElement, UserTableProps>((pro
         </Box>
       )}
 
-      <div ref={ref}>
-        <Box
-          display={isLoaded ? 'block' : 'none'}
-          height={`calc(100vh - ${heights.header}px - ${heights.footer}px)`}
-          overflow="auto"
-          className="no-bounce-scroll"
-        >
-          <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
-            <Table>
-              <Thead>
-                <tr>
-                  <Th align="left" scope="col">
-                    ID
-                  </Th>
-                  <Th align="left" scope="col" data-header="username">
-                    Username
-                  </Th>
-                  <Th align="left" scope="col" data-header="email">
-                    Email
-                  </Th>
-                  <Th align="left" scope="col"></Th>
-                  <Th align="left" scope="col"></Th>
-                </tr>
-              </Thead>
+      <div
+        className={css({
+          display: isLoaded ? 'block' : 'none',
+          height: `calc(100vh - ${heights.header}px - ${heights.footer}px)`,
+          overflow: 'auto',
+        })}
+        ref={ref}
+      >
+        <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
+          <Table>
+            <Thead>
+              <tr>
+                <Th align="left" scope="col">
+                  ID
+                </Th>
+                <Th align="left" scope="col" data-header="username">
+                  Username
+                </Th>
+                <Th align="left" scope="col" data-header="email">
+                  Email
+                </Th>
+                <Th align="left" scope="col"></Th>
+                <Th align="left" scope="col"></Th>
+              </tr>
+            </Thead>
 
-              <Tbody>
-                {users.map((user) => (
-                  <tr key={user.id}>
-                    <Td>{user.id}</Td>
-                    <Td>{user.username}</Td>
-                    <Td>{user.email}</Td>
-                    <Td>
-                      <LinkButton size="small" to={`/users/${user.id}`}>
-                        <FontAwesomeIcon icon={faEdit} />
-                        &nbsp; &nbsp; Edit
-                      </LinkButton>
-                    </Td>
-                    <Td>
-                      <Button
-                        size="small"
-                        type="button"
-                        data-id={user.id}
-                        data-username={user.username}
-                        onClick={onDeleteClick}
-                        disabled={!isLoaded}
-                      >
-                        <FontAwesomeIcon icon={faTrash} />
-                        &nbsp; &nbsp; Delete
-                      </Button>
-                    </Td>
-                  </tr>
-                ))}
-              </Tbody>
-            </Table>
-          </TableContainer>
-        </Box>
+            <Tbody>
+              {users.map((user) => (
+                <tr key={user.id}>
+                  <Td>{user.id}</Td>
+                  <Td>{user.username}</Td>
+                  <Td>{user.email}</Td>
+                  <Td>
+                    <LinkButton size="small" to={`/users/${user.id}`}>
+                      <FontAwesomeIcon icon={faEdit} />
+                      &nbsp; &nbsp; Edit
+                    </LinkButton>
+                  </Td>
+                  <Td>
+                    <Button
+                      size="small"
+                      type="button"
+                      data-id={user.id}
+                      data-username={user.username}
+                      onClick={onDeleteClick}
+                      disabled={!isLoaded}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                      &nbsp; &nbsp; Delete
+                    </Button>
+                  </Td>
+                </tr>
+              ))}
+            </Tbody>
+          </Table>
+        </TableContainer>
       </div>
     </>
   )

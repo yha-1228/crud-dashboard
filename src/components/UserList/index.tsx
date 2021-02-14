@@ -67,8 +67,10 @@ export function UserList() {
   }
 
   useEffect(() => {
+    console.log('offset, limit updated!')
     loadUsersFromServer({ offset, limit })
-    userTableRef.current?.scrollTo(0, 0)
+    const userTableElement = userTableRef.current as HTMLDivElement
+    userTableElement.scrollTo(0, 0)
   }, [offset, limit])
 
   return (
