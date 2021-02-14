@@ -3,7 +3,7 @@ import UsersAPI from '../../api/UsersAPI'
 import { Users } from '../../types'
 import { mapUsersDataFromApi } from './functions'
 import Header from './Header'
-import UserTable, { UserTable02 } from './UserTable'
+import UserTable from './UserTable'
 import Footer from './Footer'
 
 export function UserList() {
@@ -76,7 +76,7 @@ export function UserList() {
   return (
     <>
       <Header isLoaded={isLoaded} />
-      <UserTable02
+      <UserTable
         isLoaded={isLoaded}
         users={users}
         onDeleteClick={onDeleteClick}
