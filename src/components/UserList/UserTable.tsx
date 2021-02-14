@@ -23,9 +23,11 @@ export default function UserTable(props: UserTableProps) {
 
   return (
     <>
-      <Box display={isLoaded ? 'none' : 'block'} pt="72px" textAlign="center">
-        <Spinner />
-      </Box>
+      {!isLoaded && (
+        <Box pt="72px" textAlign="center">
+          <Spinner />
+        </Box>
+      )}
 
       <Box
         display={isLoaded ? 'block' : 'none'}
