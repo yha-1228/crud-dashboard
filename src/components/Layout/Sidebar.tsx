@@ -1,7 +1,7 @@
 import { css } from '@emotion/css'
 import React from 'react'
 
-export function Sidebar({ children }: { children?: React.ReactNode }) {
+export default function Sidebar({ children }: { children?: React.ReactNode }) {
   return (
     <aside
       className={css({
