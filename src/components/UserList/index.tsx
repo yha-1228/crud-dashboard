@@ -42,7 +42,7 @@ export function UserList() {
       })
   }
 
-  const onDeleteClick = (event: React.MouseEvent<any>) => {
+  const handleDeleteClick = (event: React.MouseEvent<any>) => {
     const { id, username } = event.currentTarget.dataset
 
     const isConfirm = window.confirm(`Delete ${username}?`)
@@ -50,18 +50,18 @@ export function UserList() {
 
     setIsLoaded(false)
 
-    UserAPI.deleteBy(id).then(() => {
+    UserAPI.delete(id).then(() => {
       loadUsersFromServer({ offset, limit })
     })
   }
 
-  const onPageChange = (data: { selected: number }) => {
+  const handlePageChange = (data: { selected: number }) => {
     const { selected } = data
     setCurrentPageIndex(selected)
     setOffset(Math.ceil(selected * limit))
   }
 
-  const onLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentPageIndex(0)
     setOffset(0)
     setLimit(Number(event.target.value))
@@ -79,7 +79,7 @@ export function UserList() {
       <UserTable
         isLoaded={isLoaded}
         users={users}
-        onDeleteClick={onDeleteClick}
+        onDeleteClick={handleDeleteClick}
         ref={userTableRef}
       />
       <Footer
@@ -88,8 +88,8 @@ export function UserList() {
         pageCount={pageCount}
         currentPageIndex={currentPageIndex}
         limit={limit}
-        onPageChange={onPageChange}
-        onLimitChange={onLimitChange}
+        onPageChange={handlePageChange}
+        onLimitChange={handleLimitChange}
       />
     </div>
   )

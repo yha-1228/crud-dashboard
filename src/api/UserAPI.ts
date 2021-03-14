@@ -10,7 +10,7 @@ export default class UserAPI {
     return fetch(usersUrl)
   }
 
-  static deleteBy(id: number) {
+  static delete(id: number) {
     return fetch(`${usersUrl}/${id}`, { method: 'DELETE' })
   }
 }
