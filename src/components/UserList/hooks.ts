@@ -3,6 +3,9 @@ import UserAPI from '../../api/UserAPI'
 import { Users } from '../../types'
 import { mapUsersDataFromApi } from './functions'
 
+/**
+ * 不使用
+ */
 export function useUsers({ offset, limit }: { offset: number; limit: number }) {
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
