@@ -1,18 +1,16 @@
-import { usersUrl } from '../constants'
+const usersUrl = 'http://localhost:3001/users'
 
-const UserAPI = {
-  get: (params?: { [key: string]: string }) => {
+export default class UserAPI {
+  static get(params?: { [key: string]: string }) {
     if (params) {
       const urlSearchParams = new URLSearchParams(params)
       return fetch(`${usersUrl}?${urlSearchParams}`)
     }
 
     return fetch(usersUrl)
-  },
+  }
 
-  deleteBy: (id: number) => {
+  static deleteBy(id: number) {
     return fetch(`${usersUrl}/${id}`, { method: 'DELETE' })
-  },
+  }
 }
-
-export default UserAPI

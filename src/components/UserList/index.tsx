@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import UserAPI from '../../api/UsersAPI'
+import UserAPI from '../../api/UserAPI'
 import { Users } from '../../types'
 import { mapUsersDataFromApi } from './functions'
 import Header from './Header'
