@@ -1,4 +1,3 @@
-import React from 'react'
 import Box from '@material-ui/core/Box'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,7 +19,7 @@ export default function Header(props: HeaderProps) {
       <Box display={isLoaded ? 'block' : 'none'}>
         <LinkButton variant="primary" to="/users/create">
           <FontAwesomeIcon icon={faPlus} />
-          &nbsp; &nbsp; Add
+          &nbsp;&nbsp;New
         </LinkButton>
       </Box>
     </MainHeader>
