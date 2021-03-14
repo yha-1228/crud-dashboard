@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import UserAPI from '../../api/UserAPI'
 import { Users } from '../../types'
-// import { mapUsersDataFromApi } from './functions'
 import Header from './Header'
 import UserTable from './UserTable'
 import Footer from './Footer'
@@ -23,11 +22,9 @@ export function UserList() {
       _limit: limit.toString(),
     }
 
-    UserAPI.get(params)
+    UserAPI.getUsersRequest(params)
       .then((res) => {
-        if (!res.ok) {
-          throw new Error(`${res.status} ${res.statusText}`)
-        }
+        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
         const totalCount = Number(res.headers.get('X-Total-Count'))
         setTotalCount(totalCount)
         setPageCount(Math.ceil(totalCount / limit))
@@ -50,9 +47,17 @@ export function UserList() {
 
     setIsLoaded(false)
 
-    UserAPI.delete(id).then(() => {
-      loadUsersFromServer({ offset, limit })
-    })
+    UserAPI.deleteUserRequest(id)
+      .then((res) => {
+        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
+        return res.json()
+      })
+      .then(() => {
+        loadUsersFromServer({ offset, limit })
+      })
+      .catch((error) => {
+        console.log('error :>> ', error.message)
+      })
   }
 
   const handlePageChange = (data: { selected: number }) => {
