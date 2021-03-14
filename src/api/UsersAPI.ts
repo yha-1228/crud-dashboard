@@ -1,6 +1,6 @@
 import { usersUrl } from '../constants'
 
-const UsersAPI = {
+const UserAPI = {
   get: (params?: { [key: string]: string }) => {
     if (params) {
       const urlSearchParams = new URLSearchParams(params)
@@ -15,4 +15,4 @@ const UsersAPI = {
   },
 }
 
-export default UsersAPI
+export default UserAPI

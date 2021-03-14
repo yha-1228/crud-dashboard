@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import UsersAPI from '../../api/UsersAPI'
+import UserAPI from '../../api/UsersAPI'
 import { Users } from '../../types'
 import { mapUsersDataFromApi } from './functions'
 import Header from './Header'
@@ -22,7 +22,7 @@ export function UserList() {
       _limit: limit.toString(),
     }
 
-    UsersAPI.get(params)
+    UserAPI.get(params)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`${res.status} ${res.statusText}`)
@@ -49,7 +49,7 @@ export function UserList() {
 
     setIsLoaded(false)
 
-    UsersAPI.deleteBy(id).then(() => {
+    UserAPI.deleteBy(id).then(() => {
       loadUsersFromServer({ offset, limit })
     })
   }
