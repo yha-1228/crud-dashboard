@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import UserAPI from '../../api/UserAPI'
 import { Users } from '../../types'
-import { mapUsersDataFromApi } from './functions'
+// import { mapUsersDataFromApi } from './functions'
 import Header from './Header'
 import UserTable from './UserTable'
 import Footer from './Footer'
+import { mapUsersDataFromApi } from './functions'
 
 export function UserList() {
   const [users, setUsers] = useState<Users>([])
