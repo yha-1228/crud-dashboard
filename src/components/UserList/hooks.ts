@@ -10,10 +10,7 @@ export function useUsers({ offset, limit }: { offset: number; limit: number }) {
   const [pageCount, setPageCount] = useState<number>(0)
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
-    const params = {
-      _start: offset.toString(),
-      _limit: limit.toString(),
-    }
+    const params = { _start: String(offset), _limit: String(limit) }
 
     UserAPI.getUsersRequest(params)
       .then((res) => {
