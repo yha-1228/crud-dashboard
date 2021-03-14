@@ -22,7 +22,7 @@ export function UserList() {
       _limit: limit.toString(),
     }
 
-    UserAPI.getUsersRequest(params)
+    UserAPI.fetchUsersRequestOfGet(params)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
         const totalCount = Number(res.headers.get('X-Total-Count'))
@@ -47,7 +47,7 @@ export function UserList() {
 
     setIsLoaded(false)
 
-    UserAPI.deleteUserRequest(id)
+    UserAPI.fetchUsersRequestOfDelete(id)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
         return res.json()

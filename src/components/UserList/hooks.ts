@@ -16,7 +16,7 @@ export function useUsers({ offset, limit }: { offset: number; limit: number }) {
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     const params = { _start: String(offset), _limit: String(limit) }
 
-    UserAPI.getUsersRequest(params)
+    UserAPI.fetchUsersRequestOfGet(params)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
         const totalCount = Number(res.headers.get('X-Total-Count'))

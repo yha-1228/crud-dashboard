@@ -1,7 +1,7 @@
 const usersUrl = 'http://localhost:3001/users'
 
 export default class UserAPI {
-  static getUsersRequest(params?: { [key: string]: string }) {
+  static fetchUsersRequestOfGet(params?: { [key: string]: string }) {
     if (params) {
       const urlSearchParams = new URLSearchParams(params)
       return fetch(`${usersUrl}?${urlSearchParams}`)
@@ -10,7 +10,7 @@ export default class UserAPI {
     return fetch(usersUrl)
   }
 
-  static deleteUserRequest(id: number) {
+  static fetchUsersRequestOfDelete(id: number) {
     return fetch(`${usersUrl}/${id}`, { method: 'DELETE' })
   }
 }
