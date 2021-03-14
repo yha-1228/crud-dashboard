@@ -20,7 +20,7 @@ export function useUsers({ offset, limit }: { offset: number; limit: number }) {
         setPageCount(Math.ceil(totalCount / limit))
         return res.json()
       })
-      .then(async (result) => {
+      .then((result) => {
         setIsLoaded(true)
         setUsers(result.map(mapUsersDataFromApi))
       })
