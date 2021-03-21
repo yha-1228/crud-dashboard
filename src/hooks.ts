@@ -1,14 +1,15 @@
-import { useCallback, useRef } from 'react'
+import { useRef } from 'react'
 
-export function useScrollToTop() {
-  const ref = useRef<HTMLDivElement>(null)
+export function useScroll<T extends HTMLElement>() {
+  const ref = useRef<T>(null)
 
-  const scrollToTop = () => {
-    const element = ref.current as HTMLDivElement
-    element.scrollTo(0, 0)
+  const scroll = (options?: ScrollToOptions | undefined) => {
+    const element = ref.current as T
+    element.scroll(options)
   }
 
-  // const st = useCallback(())
-
-  return { ref, scrollToTop }
+  return {
+    ref,
+    scroll,
+  }
 }

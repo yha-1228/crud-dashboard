@@ -5,10 +5,10 @@ import Header from './Header'
 import UserTable from './UserTable'
 import Footer from './Footer'
 import { mapUsersDataFromApi } from './functions'
-import { useScrollToTop } from '../../hooks'
+import { useScroll } from '../../hooks'
 
 export function UserList() {
-  const { ref, scrollToTop } = useScrollToTop()
+  const { ref, scroll } = useScroll<HTMLDivElement>()
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
@@ -65,7 +65,7 @@ export function UserList() {
     const { selected } = data
     setCurrentPageIndex(selected)
     setOffset(Math.ceil(selected * limit))
-    scrollToTop()
+    scroll({ top: 0, left: 0 })
   }
 
   const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
