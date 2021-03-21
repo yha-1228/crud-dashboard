@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import UserAPI from '../../api/UserAPI'
 import { Users } from '../../types'
 import Header from './Header'
 import UserTable from './UserTable'
 import Footer from './Footer'
 import { mapUsersDataFromApi } from './functions'
+import { useScrollToTop } from '../../hooks'
 
 export function UserList() {
+  const { ref, scrollToTop } = useScrollToTop()
   const [users, setUsers] = useState<Users>([])
   const [totalCount, setTotalCount] = useState<number>(0)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
@@ -14,7 +16,6 @@ export function UserList() {
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(0)
   const [offset, setOffset] = useState<number>(0)
   const [limit, setLimit] = useState<number>(20)
-  const userTableRef = useRef<HTMLDivElement>(null)
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     const params = {
@@ -22,7 +23,7 @@ export function UserList() {
       _limit: limit.toString(),
     }
 
-    UserAPI.getUsersRequest(params)
+    UserAPI.fetchUsersRequestOfGet(params)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
         const totalCount = Number(res.headers.get('X-Total-Count'))
@@ -47,7 +48,7 @@ export function UserList() {
 
     setIsLoaded(false)
 
-    UserAPI.deleteUserRequest(id)
+    UserAPI.fetchUsersRequestOfDelete(id)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
         return res.json()
@@ -64,6 +65,7 @@ export function UserList() {
     const { selected } = data
     setCurrentPageIndex(selected)
     setOffset(Math.ceil(selected * limit))
+    scrollToTop()
   }
 
   const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -74,19 +76,12 @@ export function UserList() {
 
   useEffect(() => {
     loadUsersFromServer({ offset, limit })
-    const userTableElement = userTableRef.current as HTMLDivElement
-    userTableElement.scrollTo(0, 0)
   }, [offset, limit])
 
   return (
     <div>
       <Header isLoaded={isLoaded} />
-      <UserTable
-        isLoaded={isLoaded}
-        users={users}
-        onDeleteClick={handleDeleteClick}
-        ref={userTableRef}
-      />
+      <UserTable isLoaded={isLoaded} users={users} onDeleteClick={handleDeleteClick} ref={ref} />
       <Footer
         isLoaded={isLoaded}
         totalCount={totalCount}
