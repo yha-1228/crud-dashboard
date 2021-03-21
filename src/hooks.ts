@@ -3,9 +3,17 @@ import { useRef } from 'react'
 export function useScroll<T extends HTMLElement>() {
   const ref = useRef<T>(null)
 
-  const scroll = (options?: ScrollToOptions | undefined) => {
+  const scroll = ({
+    top,
+    left,
+    behavior,
+  }: {
+    top?: number
+    left?: number
+    behavior?: 'smooth' | 'auto'
+  }) => {
     const element = ref.current as T
-    element.scroll(options)
+    element.scroll({ top, left, behavior })
   }
 
   return {
