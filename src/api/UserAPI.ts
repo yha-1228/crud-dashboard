@@ -20,8 +20,6 @@ export default class UserAPI {
       params,
     })
 
-    console.log(response)
-
     return {
       data: response.data,
       totalCount: Number(response.headers['x-total-count']),
