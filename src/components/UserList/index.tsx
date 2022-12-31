@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import UserAPI from '../../api/UserAPI'
-import { Users } from '../../types'
 import Header from './Header'
 import UserTable from './UserTable'
 import Footer from './Footer'
 import { mapUsersDataFromApi } from './functions'
 import { useScroll } from '../../hooks'
+import { User } from '../../types'
 
 export function UserList() {
   const { ref, scroll } = useScroll<HTMLDivElement>()
-  const [users, setUsers] = useState<Users>([])
-  const [totalCount, setTotalCount] = useState<number>(0)
-  const [isLoaded, setIsLoaded] = useState<boolean>(false)
-  const [pageCount, setPageCount] = useState<number>(0)
-  const [currentPageIndex, setCurrentPageIndex] = useState<number>(0)
-  const [offset, setOffset] = useState<number>(0)
-  const [limit, setLimit] = useState<number>(20)
+  const [users, setUsers] = useState<User[]>([])
+  const [totalCount, setTotalCount] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [pageCount, setPageCount] = useState(0)
+  const [currentPageIndex, setCurrentPageIndex] = useState(0)
+  const [offset, setOffset] = useState(0)
+  const [limit, setLimit] = useState(20)
 
   const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
     const params = {

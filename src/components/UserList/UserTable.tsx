@@ -1,16 +1,16 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { Users } from '../../types'
 import { Button, LinkButton } from '../shared/Button'
 import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table'
 import Box from '@material-ui/core/Box'
 import { Spinner } from '../shared/Spinner'
 import { css } from '@emotion/css'
+import { User } from '../../types'
 
 type UserTableProps = {
   isLoaded: boolean
-  users: Users
+  users: User[]
   onDeleteClick: (event: React.MouseEvent<any>) => void
 }
 

@@ -6,5 +6,3 @@ export type User = {
   country: string
   createdAt: string
 }
-
-export type Users = User[]
