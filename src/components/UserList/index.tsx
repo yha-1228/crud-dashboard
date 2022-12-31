@@ -1,44 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import UserAPI from '../../api/UserAPI'
 import Header from './Header'
 import UserTable from './UserTable'
 import Footer from './Footer'
-import { mapUsersDataFromApi } from './functions'
-import { useScroll } from '../../hooks'
-import { User } from '../../types'
+import { useScroll } from '../../hooks/use-scroll'
+import { useUsers } from '../../hooks/use-users'
+
+const calcPageCount = (totalCount: number, limit: number) => {
+  return Math.ceil(totalCount / limit)
+}
 
 export function UserList() {
   const { ref, scroll } = useScroll<HTMLDivElement>()
-  const [users, setUsers] = useState<User[]>([])
-  const [totalCount, setTotalCount] = useState(0)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [pageCount, setPageCount] = useState(0)
+
+  const [userGetParams, setUserGetParams] = useState({ _start: '0', _limit: '20' })
+  const { data: users, totalCount, isLoaded, refetch } = useUsers(userGetParams)
+
   const [currentPageIndex, setCurrentPageIndex] = useState(0)
-  const [offset, setOffset] = useState(0)
-  const [limit, setLimit] = useState(20)
-
-  const loadUsersFromServer = ({ offset, limit }: { offset: number; limit: number }) => {
-    const params = {
-      _start: offset.toString(),
-      _limit: limit.toString(),
-    }
-
-    UserAPI.fetchUsersRequestOfGet(params)
-      .then((res) => {
-        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
-        const totalCount = Number(res.headers.get('X-Total-Count'))
-        setTotalCount(totalCount)
-        setPageCount(Math.ceil(totalCount / limit))
-        return res.json()
-      })
-      .then(async (result) => {
-        setIsLoaded(true)
-        setUsers(result.map(mapUsersDataFromApi))
-      })
-      .catch((error) => {
-        console.log('error :>> ', error.message)
-      })
-  }
 
   const handleDeleteClick = (event: React.MouseEvent<any>) => {
     const { id, username } = event.currentTarget.dataset
@@ -46,15 +24,13 @@ export function UserList() {
     const isConfirm = window.confirm(`Delete ${username}?`)
     if (!isConfirm) return
 
-    setIsLoaded(false)
-
     UserAPI.fetchUsersRequestOfDelete(id)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
         return res.json()
       })
       .then(() => {
-        loadUsersFromServer({ offset, limit })
+        refetch()
       })
       .catch((error) => {
         console.log('error :>> ', error.message)
@@ -63,20 +39,21 @@ export function UserList() {
 
   const handlePageChange = (data: { selected: number }) => {
     const { selected } = data
+
     setCurrentPageIndex(selected)
-    setOffset(Math.ceil(selected * limit))
+
+    setUserGetParams((prev) => ({
+      ...prev,
+      _start: Math.ceil(selected * Number(userGetParams._limit)).toString(),
+    }))
+
     scroll({ top: 0, left: 0 })
   }
 
   const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentPageIndex(0)
-    setOffset(0)
-    setLimit(Number(event.target.value))
+    setUserGetParams({ _start: '0', _limit: event.target.value })
   }
-
-  useEffect(() => {
-    loadUsersFromServer({ offset, limit })
-  }, [offset, limit])
 
   return (
     <div>
@@ -85,9 +62,9 @@ export function UserList() {
       <Footer
         isLoaded={isLoaded}
         totalCount={totalCount}
-        pageCount={pageCount}
+        pageCount={calcPageCount(totalCount, Number(userGetParams._limit))}
         currentPageIndex={currentPageIndex}
-        limit={limit}
+        limit={Number(userGetParams._limit)}
         onPageChange={handlePageChange}
         onLimitChange={handleLimitChange}
       />

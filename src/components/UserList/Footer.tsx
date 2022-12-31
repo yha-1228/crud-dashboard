@@ -15,15 +15,8 @@ type FooterProps = {
 }
 
 export default function Footer(props: FooterProps) {
-  const {
-    isLoaded,
-    totalCount,
-    pageCount,
-    currentPageIndex,
-    limit,
-    onPageChange,
-    onLimitChange,
-  } = props
+  const { isLoaded, totalCount, pageCount, currentPageIndex, limit, onPageChange, onLimitChange } =
+    props
 
   const classes = {
     smallText: css({
@@ -41,7 +34,7 @@ export default function Footer(props: FooterProps) {
       px="32px"
       bgcolor="var(--color-gray-100)"
     >
-      <Paginate pageCount={pageCount} onPageChange={onPageChange} />
+      <Paginate pageCount={pageCount} forcePage={currentPageIndex} onPageChange={onPageChange} />
 
       <HStack spaceing={8}>
         <Box display="inline-block" className={classes.smallText}>
