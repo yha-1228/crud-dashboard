@@ -5,18 +5,16 @@ import { HStack } from '../shared/Stack'
 import { Paginate } from '../shared/Paginate'
 
 type FooterProps = {
-  isLoaded: boolean
   totalCount: number
   pageCount: number
   currentPageIndex: number
   limit: number
-  onPageChange: (data: any) => void
+  onPageChange: React.ComponentProps<typeof Paginate>['onPageChange']
   onLimitChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 export default function Footer(props: FooterProps) {
-  const { isLoaded, totalCount, pageCount, currentPageIndex, limit, onPageChange, onLimitChange } =
-    props
+  const { totalCount, pageCount, currentPageIndex, limit, onPageChange, onLimitChange } = props
 
   const classes = {
     smallText: css({
@@ -27,7 +25,7 @@ export default function Footer(props: FooterProps) {
 
   return (
     <Box
-      display={isLoaded ? 'flex' : 'none'}
+      display={'flex'}
       justifyContent="space-between"
       alignItems="center"
       height="64px"

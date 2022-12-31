@@ -11,7 +11,7 @@ import { User } from '../../types'
 type UserTableProps = {
   isLoaded: boolean
   users: User[]
-  onDeleteClick: (event: React.MouseEvent<any>) => void
+  onDeleteClick: React.ComponentProps<'button'>['onClick']
 }
 
 const heights = {
