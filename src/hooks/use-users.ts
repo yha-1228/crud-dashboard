@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import UserAPI, { UserGetParams } from '../api/UserAPI'
-import { mapUsersDataFromApi } from '../components/UserList/utils'
 import { User } from '../types'
 
 export function useUsers(params: UserGetParams) {
@@ -12,16 +11,11 @@ export function useUsers(params: UserGetParams) {
   const [fetchCount, setFetchCount] = useState(0)
 
   useEffect(() => {
-    UserAPI.fetchUsersRequestOfGet({ _start: params._start, _limit: params._limit })
-      .then((res) => {
-        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
-        const totalCount = Number(res.headers.get('X-Total-Count'))
-        setTotalCount(totalCount)
-        return res.json()
-      })
-      .then((result) => {
+    UserAPI.findMany({ _start: params._start, _limit: params._limit })
+      .then((response) => {
         setIsLoaded(true)
-        setData(result.map(mapUsersDataFromApi))
+        setData(response.data)
+        setTotalCount(response.totalCount)
       })
       .catch((error) => {
         console.log('error :>> ', error.message)
