@@ -24,11 +24,7 @@ export function UserList() {
     const isConfirm = window.confirm(`Delete ${username}?`)
     if (!isConfirm) return
 
-    UserAPI.fetchUsersRequestOfDelete(id)
-      .then((res) => {
-        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
-        return res.json()
-      })
+    UserAPI.delete(id)
       .then(() => {
         refetch()
       })

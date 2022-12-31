@@ -1,4 +1,7 @@
-const usersUrl = 'http://localhost:3001/users'
+import axios from 'axios'
+import { User } from '../types'
+
+const BASE_URL = 'http://localhost:3001/users'
 
 export type UserGetParams = {
   /**
@@ -12,16 +15,20 @@ export type UserGetParams = {
 }
 
 export default class UserAPI {
-  static fetchUsersRequestOfGet(params?: UserGetParams) {
-    if (params) {
-      const urlSearchParams = new URLSearchParams(params)
-      return fetch(`${usersUrl}?${urlSearchParams}`)
-    }
+  static async findMany(params: UserGetParams) {
+    const response = await axios.get<User[]>(`${BASE_URL}`, {
+      params,
+    })
 
-    return fetch(usersUrl)
+    console.log(response)
+
+    return {
+      data: response.data,
+      totalCount: Number(response.headers['x-total-count']),
+    }
   }
 
-  static fetchUsersRequestOfDelete(id: number) {
-    return fetch(`${usersUrl}/${id}`, { method: 'DELETE' })
+  static delete(id: number) {
+    return axios.delete(`${BASE_URL}/${id}`)
   }
 }
