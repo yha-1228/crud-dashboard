@@ -1,22 +1,20 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import ReactPaginate from 'react-paginate'
+import ReactPaginate, { ReactPaginateProps } from 'react-paginate'
 import styles from './Paginate.module.css'
 
-type Props = {
-  pageCount: number
-  onPageChange: (selectedItem: { selected: number }) => void
-}
+type PaginateProps = Pick<ReactPaginateProps, 'pageCount' | 'forcePage' | 'onPageChange'>
 
-export function Paginate(props: Props) {
-  const { pageCount, onPageChange } = props
+export function Paginate(props: PaginateProps) {
+  const { pageCount, forcePage, onPageChange } = props
 
   return (
     <ReactPaginate
       // logics
       pageCount={pageCount}
       onPageChange={onPageChange}
+      forcePage={forcePage}
       marginPagesDisplayed={2}
       pageRangeDisplayed={4}
       // labels
