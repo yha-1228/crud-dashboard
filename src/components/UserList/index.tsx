@@ -57,17 +57,18 @@ export function UserList() {
 
   return (
     <div>
-      <Header isLoaded={isLoaded} />
+      <Header />
       <UserTable isLoaded={isLoaded} users={users} onDeleteClick={handleDeleteClick} ref={ref} />
-      <Footer
-        isLoaded={isLoaded}
-        totalCount={totalCount}
-        pageCount={calcPageCount(totalCount, Number(userGetParams._limit))}
-        currentPageIndex={currentPageIndex}
-        limit={Number(userGetParams._limit)}
-        onPageChange={handlePageChange}
-        onLimitChange={handleLimitChange}
-      />
+      {isLoaded && (
+        <Footer
+          totalCount={totalCount}
+          pageCount={calcPageCount(totalCount, Number(userGetParams._limit))}
+          currentPageIndex={currentPageIndex}
+          limit={Number(userGetParams._limit)}
+          onPageChange={handlePageChange}
+          onLimitChange={handleLimitChange}
+        />
+      )}
     </div>
   )
 }

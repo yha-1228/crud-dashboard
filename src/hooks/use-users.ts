@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import UserAPI, { UserGetParams } from '../api/UserAPI'
-import { mapUsersDataFromApi } from '../components/UserList/functions'
+import { mapUsersDataFromApi } from '../components/UserList/utils'
 import { User } from '../types'
 
 export function useUsers(params: UserGetParams) {
