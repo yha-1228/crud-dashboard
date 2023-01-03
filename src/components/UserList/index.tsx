@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import UserAPI from '../../api/UserAPI'
 import Header from './Header'
 import UserTable from './UserTable'
 import Footer from './Footer'
 import { useScroll } from '../../hooks/use-scroll'
 import { useUsers } from '../../hooks/use-users'
+import { useDeleteUser } from '../../hooks/use-delete-user'
 
 const calcPageCount = (totalCount: number, limit: number) => {
   return Math.ceil(totalCount / limit)
@@ -16,6 +16,10 @@ export function UserList() {
   const [userGetParams, setUserGetParams] = useState({ _start: '0', _limit: '20' })
   const { data: users, totalCount, isLoaded, refetch } = useUsers(userGetParams)
 
+  const deleteUserHook = useDeleteUser({
+    onSuccess: () => refetch(),
+  })
+
   const [currentPageIndex, setCurrentPageIndex] = useState(0)
 
   const handleDeleteClick = (event: React.MouseEvent<any>) => {
@@ -24,13 +28,7 @@ export function UserList() {
     const isConfirm = window.confirm(`Delete ${username}?`)
     if (!isConfirm) return
 
-    UserAPI.delete(id)
-      .then(() => {
-        refetch()
-      })
-      .catch((error) => {
-        console.log('error :>> ', error.message)
-      })
+    deleteUserHook.mutate(id)
   }
 
   const handlePageChange = (data: { selected: number }) => {
