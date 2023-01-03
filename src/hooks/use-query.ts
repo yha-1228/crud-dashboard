@@ -67,20 +67,31 @@ export function useQuery<T extends any = any>(fetcher: Fetcher<T>, deps: Depende
   const [fetchCount, setFetchCount] = useState(0)
 
   useEffect(() => {
+    let ignore = false
+
     fetcherRef
       .current()
       .then((response) => {
-        dispatch({
-          type: 'done',
-          payload: { data: response.data, totalCount: response.totalCount },
-        })
+        if (!ignore) {
+          dispatch({
+            type: 'done',
+            payload: { data: response.data, totalCount: response.totalCount },
+          })
+        }
       })
       .catch((error) => {
-        dispatch({
-          type: 'error',
-          error,
-        })
+        if (!ignore) {
+          dispatch({
+            type: 'error',
+            error,
+          })
+        }
       })
+
+    return () => {
+      ignore = true
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchCount, ...deps])
 
