@@ -8,8 +8,8 @@ import { css } from '@emotion/css'
 import { User } from '../../types'
 
 type UserTableProps = {
-  isLoaded: boolean
-  users: User[]
+  isLoading: boolean
+  users: User[] | undefined
   onDeleteClick: React.ComponentProps<'button'>['onClick']
 }
 
@@ -19,11 +19,11 @@ const heights = {
 }
 
 const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>((props, ref) => {
-  const { users, isLoaded, onDeleteClick } = props
+  const { users, isLoading, onDeleteClick } = props
 
   return (
     <>
-      {!isLoaded && (
+      {isLoading && (
         // TODO: Do not use spinner
         <div className={css({ paddingTop: 72, textAlign: 'center' })}>
           <Spinner />
@@ -32,7 +32,7 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>((props, ref) 
 
       <div
         className={css({
-          display: isLoaded ? 'block' : 'none',
+          display: !isLoading ? 'block' : 'none',
           height: `calc(100vh - ${heights.header}px - ${heights.footer}px)`,
           overflow: 'auto',
         })}
@@ -57,7 +57,7 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>((props, ref) 
             </Thead>
 
             <Tbody>
-              {users.map((user) => (
+              {users?.map((user) => (
                 <tr key={user.id}>
                   <Td>{user.id}</Td>
                   <Td>{user.username}</Td>
@@ -75,7 +75,7 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>((props, ref) 
                       data-id={user.id}
                       data-username={user.username}
                       onClick={onDeleteClick}
-                      disabled={!isLoaded}
+                      disabled={!isLoading}
                     >
                       <FontAwesomeIcon icon={faTrash} />
                       &nbsp; &nbsp; Delete

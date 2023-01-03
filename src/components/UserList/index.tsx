@@ -14,7 +14,7 @@ export function UserList() {
   const { ref, scroll } = useScroll<HTMLDivElement>()
 
   const [userGetParams, setUserGetParams] = useState({ _start: '0', _limit: '20' })
-  const { data: users, totalCount, isLoaded, refetch } = useUsers(userGetParams)
+  const { data: users, totalCount, isLoading, refetch } = useUsers(userGetParams)
 
   const deleteUserHook = useDeleteUser({
     onSuccess: () => refetch(),
@@ -52,8 +52,8 @@ export function UserList() {
   return (
     <div>
       <Header />
-      <UserTable isLoaded={isLoaded} users={users} onDeleteClick={handleDeleteClick} ref={ref} />
-      {isLoaded && (
+      <UserTable isLoading={isLoading} users={users} onDeleteClick={handleDeleteClick} ref={ref} />
+      {!isLoading && (
         <Footer
           totalCount={totalCount}
           pageCount={calcPageCount(totalCount, Number(userGetParams._limit))}
