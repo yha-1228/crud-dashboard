@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Button, LinkButton } from '../shared/Button'
 import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table'
-import Box from '@material-ui/core/Box'
 import { Spinner } from '../shared/Spinner'
 import { css } from '@emotion/css'
 import { User } from '../../types'
@@ -25,9 +24,10 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>((props, ref) 
   return (
     <>
       {!isLoaded && (
-        <Box pt="72px" textAlign="center">
+        // TODO: Do not use spinner
+        <div className={css({ paddingTop: 72, textAlign: 'center' })}>
           <Spinner />
-        </Box>
+        </div>
       )}
 
       <div
