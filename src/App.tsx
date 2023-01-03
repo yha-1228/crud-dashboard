@@ -5,7 +5,6 @@ import { HelmetProvider } from 'react-helmet-async'
 import './styles/colors.css'
 import './styles/normalize.css'
 import './styles/base.css'
-import './styles/utils.css'
 
 // Pages
 import { HomePage } from './pages/HomePage'

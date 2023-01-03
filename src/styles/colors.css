@@ -9,10 +9,8 @@
   --color-gray-700: #374151;
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
-  --color-primary-lighter: #dfe3f8;
-  --color-primary-light: #3496ff;
-  --color-primary: #027afe;
-  --color-primary-dark: #005cbe;
-  --color-warning: #ff5e52;
-  --color-warning-dark: #e04237;
+  --color-primary-lighter: #e0e7ff;
+  --color-primary-light: #818cf8;
+  --color-primary: #6366f1;
+  --color-primary-dark: #4f46e5;
 }
