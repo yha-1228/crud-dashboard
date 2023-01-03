@@ -1,12 +1,8 @@
-
 import { HelmetProvider } from 'react-helmet-async';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-// global styles
-import './styles/vars.css';
-import './styles/normalize.css';
-import './styles/base.css';
+import './styles/global.scss';
 
 // external css
 import 'react-loading-skeleton/dist/skeleton.css';
