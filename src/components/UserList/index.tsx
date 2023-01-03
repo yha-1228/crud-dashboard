@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Header from './Header'
 import UserTable from './UserTable'
 import Footer from './Footer'
-import { useScroll } from '../../hooks/use-scroll'
 import { useUsers } from '../../hooks/use-users'
 import { useDeleteUser } from '../../hooks/use-delete-user'
 
@@ -11,7 +10,7 @@ const calcPageCount = (totalCount: number, limit: number) => {
 }
 
 export function UserList() {
-  const { ref, scroll } = useScroll<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement>(null)
 
   const [userGetParams, setUserGetParams] = useState({ _start: '0', _limit: '20' })
   const { data: users, totalCount, isLoading, refetch } = useUsers(userGetParams)
@@ -41,7 +40,7 @@ export function UserList() {
       _start: Math.ceil(selected * Number(userGetParams._limit)).toString(),
     }))
 
-    scroll({ top: 0, left: 0 })
+    ref.current?.scroll({ top: 0, left: 0 })
   }
 
   const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
