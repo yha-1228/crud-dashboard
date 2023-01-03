@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faList } from '@fortawesome/free-solid-svg-icons';
 import { css } from '@emotion/css';
+import { faHome, faList } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavLink } from 'react-router-dom';
 
 const navItems = [
   {

@@ -1,10 +1,10 @@
+import { css } from '@emotion/css';
 import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
-import { css } from '@emotion/css';
 
 type PaginateProps = Pick<
   ReactPaginateProps,

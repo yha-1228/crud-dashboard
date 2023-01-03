@@ -1,14 +1,14 @@
+import React from 'react';
+import { css } from '@emotion/css';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Skeleton from 'react-loading-skeleton';
-import React from 'react';
-import { Button, LinkButton } from '../shared/Button';
-import { Table, Tbody, Td, Thead, Th } from '../shared/Table';
-import { Spinner } from '../shared/Spinner';
-import { css } from '@emotion/css';
 import { User } from '../../types';
 import { range } from '../../utils/range';
 import { styledDivFactory } from '../../utils/styled';
+import { Button, LinkButton } from '../shared/Button';
+import { Spinner } from '../shared/Spinner';
+import { Table, Tbody, Td, Thead, Th } from '../shared/Table';
 
 type UserTableProps = {
   isLoading: boolean;
@@ -133,5 +133,7 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
     );
   }
 );
+
+UserTable.displayName = 'UserTable';
 
 export default UserTable;

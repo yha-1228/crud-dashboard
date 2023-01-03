@@ -1,8 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Navgation } from './Nav';
-import siteConfig from '../../siteConfig';
 import { css } from '@emotion/css';
+import { Helmet } from 'react-helmet-async';
+import siteConfig from '../../siteConfig';
+import { Navgation } from './Nav';
 
 export function Layout({
   title,

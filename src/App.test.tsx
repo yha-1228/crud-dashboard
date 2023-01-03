@@ -1,4 +1,4 @@
-import React from 'react';
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
