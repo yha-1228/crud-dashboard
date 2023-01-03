@@ -9,6 +9,8 @@ type BaseButtonProps = {
 };
 
 const createStyle = (props: BaseButtonProps) => {
+  const { size, variant } = props;
+
   return css({
     display: 'inline-block',
     lineHeight: 1.5,
@@ -23,18 +25,18 @@ const createStyle = (props: BaseButtonProps) => {
       'color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out',
 
     // size
-    ...(props.size === 'small' && {
+    ...(size === 'small' && {
       padding: '0.2rem 0.5rem',
       fontSize: 14,
     }),
 
-    ...(props.size === 'medium' && {
+    ...(size === 'medium' && {
       padding: '0.375rem 0.75rem',
       fontSize: '1rem',
     }),
 
     // variant
-    ...(props.variant === 'natural' && {
+    ...(variant === 'natural' && {
       color: 'var(--color-gray-600)',
       backgroundColor: 'var(--color-gray-200)',
       '&:hover': {
@@ -45,7 +47,7 @@ const createStyle = (props: BaseButtonProps) => {
       },
     }),
 
-    ...(props.variant === 'primary' && {
+    ...(variant === 'primary' && {
       color: 'white',
       backgroundColor: 'var(--color-primary)',
       '&:hover': {

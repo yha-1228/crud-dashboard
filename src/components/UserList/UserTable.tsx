@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Skeleton from 'react-loading-skeleton';
 import React from 'react';
 import { Button, LinkButton } from '../shared/Button';
-import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table';
+import { Table, Tbody, Td, Thead, Th } from '../shared/Table';
 import { Spinner } from '../shared/Spinner';
 import { css } from '@emotion/css';
 import { User } from '../../types';
@@ -47,7 +47,13 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
           })}
           ref={ref}
         >
-          <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
+          <div
+            className={css({
+              backgroundColor: 'white',
+              paddingLeft: 32,
+              paddingRight: 32,
+            })}
+          >
             <Table>
               <Thead>
                 <tr
@@ -113,7 +119,7 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
                 ))}
               </Tbody>
             </Table>
-          </TableContainer>
+          </div>
         </div>
 
         {!isLoading && isFetching && (

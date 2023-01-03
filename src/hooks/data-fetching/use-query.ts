@@ -52,6 +52,15 @@ const reducer = <T>(state: State<T>, action: Action<T>): State<T> => {
 
 type Fetcher<T> = () => Promise<{ data: T; totalCount: number }>;
 
+const stateToHookValue = <T>(
+  state: State<T>,
+  refetch: () => void
+): UseQueryHook<T> => ({
+  ...state,
+  isLoading: !state.data && !state.error,
+  refetch,
+});
+
 export type UseQueryProps<T extends any = any> = {
   fetcher: Fetcher<T>;
   deps: DependencyList;
@@ -112,9 +121,5 @@ export function useQuery<T>(props: UseQueryProps<T>) {
     setFetchCount((prev) => prev + 1);
   }, []);
 
-  return {
-    ...state,
-    isLoading: !state.data && !state.error,
-    refetch,
-  } as UseQueryHook<T>;
+  return stateToHookValue(state, refetch);
 }

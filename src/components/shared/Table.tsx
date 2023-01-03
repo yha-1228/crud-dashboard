@@ -1,64 +1,43 @@
 import React from 'react';
 import { css } from '@emotion/css';
+import { cn } from '../../utils/cn';
 
-export function TableContainer({
-  children,
+export function Table({
+  className,
   ...other
-}: JSX.IntrinsicElements['table'] & { children: React.ReactNode }) {
-  return (
-    <div
-      className={css`
-        & {
-          background-color: white;
-        }
-      `}
-      {...other}
-    >
-      {children}
-    </div>
-  );
+}: React.ComponentPropsWithoutRef<'table'>) {
+  return <table className={cn(css({ width: '100%' }), className)} {...other} />;
 }
 
-export function Table({ ...other }: JSX.IntrinsicElements['table']) {
-  return (
-    <table
-      className={css`
-        & {
-          width: 100%;
-          border-collapse: collapse;
-        }
-      `}
-      {...other}
-    />
-  );
-}
-
-export function Thead({ ...other }: JSX.IntrinsicElements['thead']) {
+export function Thead({
+  className,
+  ...other
+}: React.ComponentPropsWithoutRef<'thead'>) {
   return (
     <thead
-      className={css`
-        & {
-          border-bottom: 1px solid var(--color-gray-100);
-        }
-      `}
+      className={cn(
+        css({ borderBottom: '1px solid var(--color-gray-100)' }),
+        className
+      )}
       {...other}
     />
   );
 }
 
-export function Tbody({ ...other }: JSX.IntrinsicElements['tbody']) {
+export function Tbody({
+  className,
+  ...other
+}: React.ComponentPropsWithoutRef<'tbody'>) {
   return (
     <tbody
-      className={css`
-        & {
-          & > * {
-            border-bottom: 1px solid var(--color-gray-100);
-          }
-          & > *:last-child {
-            border-bottom: none;
-          }
-        }
-      `}
+      className={cn(
+        css({
+          '& > * + *': {
+            borderTop: '1px solid var(--color-gray-100)',
+          },
+        }),
+        className
+      )}
       {...other}
     />
   );
@@ -66,12 +45,15 @@ export function Tbody({ ...other }: JSX.IntrinsicElements['tbody']) {
 
 export function Th({
   align,
+  className,
   ...other
-}: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
+}: React.ComponentPropsWithoutRef<'th'> & {
+  align?: 'left' | 'center' | 'right';
+}) {
   return (
     <th
-      className={css`
-        & {
+      className={cn(
+        css`
           padding: 10px 24px;
           font-size: 14px;
           color: var(--color-gray-400);
@@ -82,8 +64,9 @@ export function Th({
           &:hover {
             color: var(--color-primary);
           }
-        }
-      `}
+        `,
+        className
+      )}
       {...other}
     />
   );
@@ -91,18 +74,22 @@ export function Th({
 
 export function Td({
   align,
+  className,
   ...other
-}: JSX.IntrinsicElements['th'] & { align?: 'left' | 'center' | 'right' }) {
+}: React.ComponentPropsWithoutRef<'th'> & {
+  align?: 'left' | 'center' | 'right';
+}) {
   return (
     <td
-      className={css`
-        & {
+      className={cn(
+        css`
           padding: 10px 24px;
           font-size: 14px;
           white-space: nowrap;
           text-align: ${align};
-        }
-      `}
+        `,
+        className
+      )}
       {...other}
     />
   );

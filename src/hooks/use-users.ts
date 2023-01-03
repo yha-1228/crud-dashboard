@@ -1,5 +1,5 @@
 import UserAPI, { UserFindManyParams } from '../api/UserAPI';
-import { UseQueryProps, useQuery } from './use-query';
+import { UseQueryProps, useQuery } from './data-fetching/use-query';
 
 export function useUsers(
   params: UserFindManyParams,
