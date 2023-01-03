@@ -1,4 +1,5 @@
-import { useState, useEffect, useReducer, useRef, DependencyList, Reducer } from 'react'
+import { useState, useEffect, useReducer, DependencyList, Reducer } from 'react'
+import { useRefState } from './use-ref-state'
 
 type State<T extends any = any> = {
   data: T | undefined
@@ -45,11 +46,7 @@ const reducer = <T>(state: State<T>, action: Action<T>): State<T> => {
 type Fetcher<T> = () => Promise<{ data: T; totalCount: number }>
 
 export function useQuery<T>(fetcher: Fetcher<T>, deps: DependencyList) {
-  const fetcherRef = useRef(fetcher)
-
-  useEffect(() => {
-    fetcherRef.current = fetcher
-  }, [fetcher])
+  const fetcherRefValue = useRefState(fetcher)
 
   const [state, dispatch] = useReducer<Reducer<State<T>, Action<T>>>(reducer, {
     data: undefined,
@@ -63,8 +60,7 @@ export function useQuery<T>(fetcher: Fetcher<T>, deps: DependencyList) {
   useEffect(() => {
     let ignore = false
 
-    fetcherRef
-      .current()
+    fetcherRefValue()
       .then((response) => {
         if (!ignore) {
           dispatch({
