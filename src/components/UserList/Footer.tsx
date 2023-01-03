@@ -1,5 +1,4 @@
 import React from 'react'
-import Box from '@material-ui/core/Box'
 import { css } from '@emotion/css'
 import { HStack } from '../shared/Stack'
 import { Paginate } from '../shared/Paginate'
@@ -16,43 +15,58 @@ type FooterProps = {
 export default function Footer(props: FooterProps) {
   const { totalCount, pageCount, currentPageIndex, limit, onPageChange, onLimitChange } = props
 
-  const classes = {
-    smallText: css({
-      fontSize: 14,
-      color: 'var(--color-gray-500)',
-    }),
-  }
-
   return (
-    <Box
-      display={'flex'}
-      justifyContent="space-between"
-      alignItems="center"
-      height="64px"
-      px="32px"
-      bgcolor="var(--color-gray-100)"
+    <div
+      className={css({
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        height: 64,
+        paddingLeft: 32,
+        paddingRight: 32,
+        backgroundColor: 'var(--color-gray-100)',
+      })}
     >
       <Paginate pageCount={pageCount} forcePage={currentPageIndex} onPageChange={onPageChange} />
 
       <HStack spaceing={8}>
-        <Box display="inline-block" className={classes.smallText}>
+        <div
+          className={css({
+            display: 'inline-block',
+            fontSize: 14,
+            color: 'var(--color-gray-500)',
+          })}
+        >
           Rows per page:
-        </Box>
-        <Box display="inline-block">
-          <select className={classes.smallText} value={limit} onChange={onLimitChange}>
+        </div>
+
+        <div className={css({ display: 'inline-block' })}>
+          <select
+            className={css({
+              fontSize: 14,
+              color: 'var(--color-gray-500)',
+            })}
+            value={limit}
+            onChange={onLimitChange}
+          >
             {[10, 20, 30, 50, 100].map((value) => (
               <option key={value} value={value}>
                 {value}
               </option>
             ))}
           </select>
-        </Box>
+        </div>
       </HStack>
 
-      <Box className={classes.smallText}>
+      <div
+        className={css({
+          fontSize: 14,
+          color: 'var(--color-gray-500)',
+        })}
+      >
         {currentPageIndex * limit + 1}-{Math.min((currentPageIndex + 1) * limit, totalCount)} of{' '}
         {totalCount}
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }

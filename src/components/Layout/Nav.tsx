@@ -1,5 +1,3 @@
-import React from 'react'
-import Box from '@material-ui/core/Box'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faList } from '@fortawesome/free-solid-svg-icons'
@@ -38,56 +36,49 @@ const navItems = [
   },
 ]
 
-function NavItem({ children }: { children: React.ReactNode }) {
-  return (
-    <Box component="li" mx="-24px" lineHeight="40px">
-      {children}
-    </Box>
-  )
-}
-
 export function Navgation() {
   return (
     <nav>
       <ul>
-        {navItems.map((navItem, i) => (
-          <NavItem key={i}>
+        {navItems.map((navItem) => (
+          <li
+            className={css({
+              marginLeft: -24,
+              marginRight: -24,
+              lineHeight: '40px',
+            })}
+            key={navItem.title}
+          >
             <NavLink
               className={css`
-                & {
-                  display: block;
-                  padding-left: calc(24px - 2px);
-                  color: white;
-                  text-decoration: none;
-                  border-left: 2px solid transparent;
+                display: block;
+                padding-left: calc(24px - 2px);
+                color: white;
+                text-decoration: none;
+                border-left: 2px solid transparent;
 
-                  &:hover {
-                    margin-right: -10px;
-                    background-color: var(--color-primary-dark);
-                  }
+                &:hover {
+                  margin-right: -10px;
+                  background-color: var(--color-primary-dark);
                 }
               `}
               activeClassName={css`
-                & {
-                  font-weight: bold;
+                font-weight: bold;
+                border-left: 2px solid white;
+                &:hover {
+                  background-color: var(--color-primary-dark);
                   border-left: 2px solid white;
-                  &:hover {
-                    background-color: var(--color-primary-dark);
-                    border-left: 2px solid white;
-                  }
                 }
               `}
               to={navItem.to}
               exact={navItem.exact}
             >
               <div>
-                <Box display="inline-block" width="32px">
-                  {navItem.icon}
-                </Box>
-                <Box display="inline-block">{navItem.title}</Box>
+                <div className={css({ display: 'inline-block', width: 32 })}>{navItem.icon}</div>
+                <div className={css({ display: 'inline-block' })}>{navItem.title}</div>
               </div>
             </NavLink>
-          </NavItem>
+          </li>
         ))}
       </ul>
     </nav>
