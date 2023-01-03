@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { User } from '../types';
+import { sleep } from '../utils/sleep';
 
 const BASE_URL = 'http://localhost:3001/users';
 
-export type UserGetParams = {
+export type UserFindManyParams = {
   /**
    * offset
    */
@@ -15,10 +16,13 @@ export type UserGetParams = {
 };
 
 export default class UserAPI {
-  static async findMany(params: UserGetParams) {
-    const response = await axios.get<User[]>(`${BASE_URL}`, {
+  static async findMany(params: UserFindManyParams) {
+    const response = await axios.get<User[]>(BASE_URL, {
       params,
     });
+
+    // fake loading
+    await sleep(500);
 
     return {
       data: response.data,

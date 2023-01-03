@@ -9,16 +9,20 @@ import { calcOffset, calcPageCount } from './utils';
 export function UserList() {
   const ref = useRef<HTMLDivElement>(null);
 
-  const [userGetParams, setUserGetParams] = useState({
+  const [usersGetParams, setUsersGetParams] = useState({
     _start: '0',
     _limit: '20',
   });
+
   const {
     data: users,
     totalCount,
     isLoading,
+    isFetching,
     refetch,
-  } = useUsers(userGetParams);
+  } = useUsers(usersGetParams, () => {
+    ref.current?.scroll({ top: 0, left: 0, behavior: 'smooth' });
+  });
 
   const deleteUserHook = useDeleteUser({
     onSuccess: () => refetch(),
@@ -29,8 +33,8 @@ export function UserList() {
   const handleDeleteClick = (event: React.MouseEvent<any>) => {
     const { id, username } = event.currentTarget.dataset;
 
-    const isConfirm = window.confirm(`Delete ${username}?`);
-    if (!isConfirm) return;
+    const confirmed = window.confirm(`Delete ${username}?`);
+    if (!confirmed) return;
 
     deleteUserHook.mutate(id);
   };
@@ -38,17 +42,15 @@ export function UserList() {
   const handlePageChange = (selectedPageIndex: number) => {
     setPageIndex(selectedPageIndex);
 
-    setUserGetParams((prev) => ({
+    setUsersGetParams((prev) => ({
       ...prev,
       _start: calcOffset(selectedPageIndex, prev._limit).toString(),
     }));
-
-    ref.current?.scroll({ top: 0, left: 0 });
   };
 
   const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setPageIndex(0);
-    setUserGetParams({ _start: '0', _limit: event.target.value });
+    setUsersGetParams({ _start: '0', _limit: event.target.value });
   };
 
   return (
@@ -56,20 +58,20 @@ export function UserList() {
       <Header />
       <UserTable
         isLoading={isLoading}
+        isFetching={isFetching}
         users={users}
         onDeleteClick={handleDeleteClick}
         ref={ref}
       />
-      {!isLoading && (
-        <Footer
-          totalCount={totalCount}
-          pageCount={calcPageCount(totalCount, userGetParams._limit)}
-          pageIndex={pageIndex}
-          limit={Number(userGetParams._limit)}
-          onPageChange={handlePageChange}
-          onLimitChange={handleLimitChange}
-        />
-      )}
+      <Footer
+        isLoading={isLoading}
+        totalCount={totalCount}
+        pageCount={calcPageCount(totalCount, usersGetParams._limit)}
+        pageIndex={pageIndex}
+        limit={Number(usersGetParams._limit)}
+        onPageChange={handlePageChange}
+        onLimitChange={handleLimitChange}
+      />
     </div>
   );
 }

@@ -52,7 +52,15 @@ const reducer = <T>(state: State<T>, action: Action<T>): State<T> => {
 
 type Fetcher<T> = () => Promise<{ data: T; totalCount: number }>;
 
-export function useQuery<T>(fetcher: Fetcher<T>, deps: DependencyList) {
+export type UseQueryProps<T extends any = any> = {
+  fetcher: Fetcher<T>;
+  deps: DependencyList;
+  onSuccess?: () => void;
+};
+
+export function useQuery<T>(props: UseQueryProps<T>) {
+  const { fetcher, deps, onSuccess } = props;
+
   const fetcherRef = useRef<Fetcher<T>>(fetcher);
 
   useEffect(() => {
@@ -78,6 +86,7 @@ export function useQuery<T>(fetcher: Fetcher<T>, deps: DependencyList) {
         const { data, totalCount } = await fetcherRef.current();
         if (!ignore) {
           dispatch({ type: 'done', payload: { data, totalCount } });
+          onSuccess?.();
         }
       } catch (error) {
         if (error instanceof Error) {

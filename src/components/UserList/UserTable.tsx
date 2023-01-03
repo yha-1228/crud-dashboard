@@ -1,14 +1,18 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Skeleton from 'react-loading-skeleton';
 import React from 'react';
 import { Button, LinkButton } from '../shared/Button';
 import { Table, Tbody, Td, Thead, Th, TableContainer } from '../shared/Table';
 import { Spinner } from '../shared/Spinner';
 import { css } from '@emotion/css';
 import { User } from '../../types';
+import { range } from '../../utils/range';
+import { styledDivFactory } from '../../utils/styled';
 
 type UserTableProps = {
   isLoading: boolean;
+  isFetching: boolean;
   users: User[] | undefined;
   onDeleteClick: React.ComponentProps<'button'>['onClick'];
 };
@@ -18,31 +22,39 @@ const heights = {
   footer: 64,
 };
 
+const Overlay = styledDivFactory(
+  css({
+    position: 'absolute',
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+  }),
+  { displayName: 'Overlay' }
+);
+
 const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
   (props, ref) => {
-    const { users, isLoading, onDeleteClick } = props;
+    const { users, isLoading, isFetching, onDeleteClick } = props;
 
     return (
-      <>
-        {isLoading && (
-          // TODO: Do not use spinner
-          <div className={css({ paddingTop: 72, textAlign: 'center' })}>
-            <Spinner />
-          </div>
-        )}
-
+      <div className={css({ position: 'relative' })}>
         <div
           className={css({
-            display: !isLoading ? 'block' : 'none',
             height: `calc(100vh - ${heights.header}px - ${heights.footer}px)`,
-            overflow: 'auto',
+            overflow: isLoading ? 'hidden' : 'auto',
           })}
           ref={ref}
         >
           <TableContainer style={{ paddingLeft: 32, paddingRight: 32 }}>
             <Table>
               <Thead>
-                <tr>
+                <tr
+                  className={css({
+                    visibility: isLoading ? 'hidden' : 'visible',
+                  })}
+                >
                   <Th align="left" scope="col">
                     ID
                   </Th>
@@ -56,8 +68,23 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
                   <Th align="left" scope="col"></Th>
                 </tr>
               </Thead>
-
               <Tbody>
+                {isLoading &&
+                  range(60).map((v) => (
+                    <tr key={v}>
+                      <Td>
+                        <Skeleton />
+                      </Td>
+                      <Td>
+                        <Skeleton />
+                      </Td>
+                      <Td>
+                        <Skeleton />
+                      </Td>
+                      <Td></Td>
+                      <Td></Td>
+                    </tr>
+                  ))}
                 {users?.map((user) => (
                   <tr key={user.id}>
                     <Td>{user.id}</Td>
@@ -88,7 +115,15 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
             </Table>
           </TableContainer>
         </div>
-      </>
+
+        {!isLoading && isFetching && (
+          <Overlay>
+            <div className={css({ paddingTop: 96, textAlign: 'center' })}>
+              <Spinner />
+            </div>
+          </Overlay>
+        )}
+      </div>
     );
   }
 );

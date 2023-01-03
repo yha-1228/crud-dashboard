@@ -9,6 +9,7 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   color: var(--color-gray-900);
+  overscroll-behavior-y: none;
 }
 
 button,

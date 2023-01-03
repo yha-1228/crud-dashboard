@@ -1,9 +1,13 @@
-import UserAPI, { UserGetParams } from '../api/UserAPI';
-import { useQuery } from './use-query';
+import UserAPI, { UserFindManyParams } from '../api/UserAPI';
+import { UseQueryProps, useQuery } from './use-query';
 
-export function useUsers(params: UserGetParams) {
-  return useQuery(
-    () => UserAPI.findMany(params),
-    [params._start, params._limit]
-  );
+export function useUsers(
+  params: UserFindManyParams,
+  onSuccess: UseQueryProps['onSuccess']
+) {
+  return useQuery({
+    fetcher: () => UserAPI.findMany(params),
+    deps: [params._start, params._limit],
+    onSuccess,
+  });
 }
