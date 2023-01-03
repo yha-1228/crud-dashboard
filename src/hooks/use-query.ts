@@ -1,12 +1,4 @@
-import { useState, useEffect, useReducer, useRef, DependencyList } from 'react'
-
-type UseQueryHook<T> = {
-  refetch: () => void
-  data: T
-  totalCount: number
-  isLoaded: boolean
-  error: Error | null
-}
+import { useState, useEffect, useReducer, useRef, DependencyList, Reducer } from 'react'
 
 type State<T extends any = any> = {
   data: T
@@ -15,10 +7,14 @@ type State<T extends any = any> = {
   error: Error | null
 }
 
+type UseQueryHook<T> = State<T> & {
+  refetch: () => void
+}
+
 type Action<T> =
   | { type: 'init' }
   | { type: 'done'; payload: { data: T; totalCount: number } }
-  | { type: 'error'; error: Error }
+  | { type: 'error'; payload: Error }
 
 const reducer = <T>(state: State<T>, action: Action<T>): State<T> => {
   if (action.type === 'init') {
@@ -38,7 +34,7 @@ const reducer = <T>(state: State<T>, action: Action<T>): State<T> => {
     return {
       ...state,
       isLoaded: true,
-      error: action.error,
+      error: action.payload,
     }
   }
 
@@ -54,15 +50,14 @@ const initialState: State = {
 
 type Fetcher<T> = () => Promise<{ data: T; totalCount: number }>
 
-export function useQuery<T extends any = any>(fetcher: Fetcher<T>, deps: DependencyList) {
+export function useQuery<T>(fetcher: Fetcher<T>, deps: DependencyList) {
   const fetcherRef = useRef(fetcher)
 
   useEffect(() => {
     fetcherRef.current = fetcher
   }, [fetcher])
 
-  const [_state, dispatch] = useReducer(reducer, initialState)
-  const state = _state as State<T>
+  const [state, dispatch] = useReducer<Reducer<State<T>, Action<T>>>(reducer, initialState)
 
   const [fetchCount, setFetchCount] = useState(0)
 
@@ -83,7 +78,7 @@ export function useQuery<T extends any = any>(fetcher: Fetcher<T>, deps: Depende
         if (!ignore) {
           dispatch({
             type: 'error',
-            error,
+            payload: error,
           })
         }
       })

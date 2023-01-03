@@ -5,7 +5,7 @@ type State = {
   error: Error | null
 }
 
-type Action = { type: 'init' } | { type: 'done' } | { type: 'error'; error: Error }
+type Action = { type: 'init' } | { type: 'done' } | { type: 'error'; payload: Error }
 
 const reducer = (state: State, action: Action): State => {
   if (action.type === 'init') {
@@ -25,7 +25,7 @@ const reducer = (state: State, action: Action): State => {
   if (action.type === 'error') {
     return {
       isLoading: false,
-      error: action.error,
+      error: action.payload,
     }
   }
 
@@ -65,7 +65,7 @@ export function useMutation(
         onSuccess?.()
       })
       .catch((error) => {
-        dispatch({ type: 'error', error })
+        dispatch({ type: 'error', payload: error })
         onError?.()
       })
   }
