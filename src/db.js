@@ -1,11 +1,11 @@
-const faker = require('faker')
+const faker = require('faker');
 
 module.exports = () => {
-  const size = 887
+  const size = 887;
 
   const db = {
     users: [],
-  }
+  };
 
   for (let index = 1; index <= size; index++) {
     db.users.push({
@@ -16,8 +16,8 @@ module.exports = () => {
       country: faker.address.country(),
       isMember: faker.random.boolean(),
       createdAt: faker.date.past(),
-    })
+    });
   }
 
-  return db
-}
+  return db;
+};

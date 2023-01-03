@@ -1,5 +1,5 @@
-import React from 'react'
-import { css } from '@emotion/css'
+import React from 'react';
+import { css } from '@emotion/css';
 
 export function TableContainer({
   children,
@@ -16,7 +16,7 @@ export function TableContainer({
     >
       {children}
     </div>
-  )
+  );
 }
 
 export function Table({ ...other }: JSX.IntrinsicElements['table']) {
@@ -30,7 +30,7 @@ export function Table({ ...other }: JSX.IntrinsicElements['table']) {
       `}
       {...other}
     />
-  )
+  );
 }
 
 export function Thead({ ...other }: JSX.IntrinsicElements['thead']) {
@@ -43,7 +43,7 @@ export function Thead({ ...other }: JSX.IntrinsicElements['thead']) {
       `}
       {...other}
     />
-  )
+  );
 }
 
 export function Tbody({ ...other }: JSX.IntrinsicElements['tbody']) {
@@ -61,7 +61,7 @@ export function Tbody({ ...other }: JSX.IntrinsicElements['tbody']) {
       `}
       {...other}
     />
-  )
+  );
 }
 
 export function Th({
@@ -86,7 +86,7 @@ export function Th({
       `}
       {...other}
     />
-  )
+  );
 }
 
 export function Td({
@@ -105,5 +105,5 @@ export function Td({
       `}
       {...other}
     />
-  )
+  );
 }

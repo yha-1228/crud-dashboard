@@ -1,23 +1,30 @@
-import React from 'react'
-import { css } from '@emotion/css'
-import { HStack } from '../shared/Stack'
-import { Paginate } from '../shared/Paginate'
+import React from 'react';
+import { css } from '@emotion/css';
+import { HStack } from '../shared/Stack';
+import { Paginate } from '../shared/Paginate';
 
 type FooterProps = {
-  totalCount: number
-  pageCount: number
-  pageIndex: number
-  limit: number
-  onPageChange: (selectedPageIndex: number) => void
-  onLimitChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
-}
+  totalCount: number;
+  pageCount: number;
+  pageIndex: number;
+  limit: number;
+  onPageChange: (selectedPageIndex: number) => void;
+  onLimitChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+};
 
 export default function Footer(props: FooterProps) {
-  const { totalCount, pageCount, pageIndex, limit, onPageChange, onLimitChange } = props
+  const {
+    totalCount,
+    pageCount,
+    pageIndex,
+    limit,
+    onPageChange,
+    onLimitChange,
+  } = props;
 
   const handlePageChange = (selectedItem: { selected: number }) => {
-    onPageChange(selectedItem.selected)
-  }
+    onPageChange(selectedItem.selected);
+  };
 
   return (
     <div
@@ -31,7 +38,11 @@ export default function Footer(props: FooterProps) {
         backgroundColor: 'var(--color-gray-100)',
       })}
     >
-      <Paginate pageCount={pageCount} forcePage={pageIndex} onPageChange={handlePageChange} />
+      <Paginate
+        pageCount={pageCount}
+        forcePage={pageIndex}
+        onPageChange={handlePageChange}
+      />
 
       <HStack space={8}>
         <div
@@ -68,8 +79,9 @@ export default function Footer(props: FooterProps) {
           color: 'var(--color-gray-500)',
         })}
       >
-        {pageIndex * limit + 1}-{Math.min((pageIndex + 1) * limit, totalCount)} of {totalCount}
+        {pageIndex * limit + 1}-{Math.min((pageIndex + 1) * limit, totalCount)}{' '}
+        of {totalCount}
       </div>
     </div>
-  )
+  );
 }

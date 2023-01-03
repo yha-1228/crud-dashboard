@@ -1,9 +1,9 @@
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { AppBar } from '../Layout/AppBar'
-import { LinkButton } from '../shared/Button'
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AppBar } from '../Layout/AppBar';
+import { LinkButton } from '../shared/Button';
 
-type HeaderProps = {}
+type HeaderProps = {};
 
 export default function Header(props: HeaderProps) {
   return (
@@ -15,5 +15,5 @@ export default function Header(props: HeaderProps) {
         </LinkButton>
       </div>
     </AppBar>
-  )
+  );
 }

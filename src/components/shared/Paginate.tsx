@@ -1,20 +1,26 @@
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ReactPaginate, { ReactPaginateProps } from 'react-paginate'
-import { css } from '@emotion/css'
+import {
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
+import { css } from '@emotion/css';
 
-type PaginateProps = Pick<ReactPaginateProps, 'pageCount' | 'forcePage' | 'onPageChange'>
+type PaginateProps = Pick<
+  ReactPaginateProps,
+  'pageCount' | 'forcePage' | 'onPageChange'
+>;
 
 const containerStyle = css({
   padding: 0,
-})
+});
 
 const pageStyle = css({
   display: 'inline-block',
   paddingRight: 6,
   textAlign: 'center',
   cursor: 'pointer',
-})
+});
 
 const pageLinkStyle = css({
   display: 'block',
@@ -27,7 +33,7 @@ const pageLinkStyle = css({
   '&:hover': {
     backgroundColor: 'var(--color-gray-200)',
   },
-})
+});
 
 const activePageLinkStyle = css({
   color: 'white',
@@ -35,10 +41,10 @@ const activePageLinkStyle = css({
   '&:hover': {
     backgroundColor: 'var(--color-primary-dark)',
   },
-})
+});
 
 export function Paginate(props: PaginateProps) {
-  const { pageCount, forcePage, onPageChange } = props
+  const { pageCount, forcePage, onPageChange } = props;
 
   return (
     <ReactPaginate
@@ -63,5 +69,5 @@ export function Paginate(props: PaginateProps) {
       breakLinkClassName={pageLinkStyle}
       activeLinkClassName={activePageLinkStyle}
     />
-  )
+  );
 }

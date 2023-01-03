@@ -28,6 +28,7 @@
     "stylelint": "npx stylelint 'src/**/*.{css,less,sass,scss}'",
     "stylelint:fix": "npx stylelint --fix 'src/**/*.{css,less,sass,scss}'",
     "mock": "npx json-server --no-cors --watch src/db.js --port 3001",
+    "prettier": "npx prettier --write .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -1,5 +1,5 @@
 const siteConfig = {
   title: 'Dashborad',
-}
+};
 
-export default siteConfig
+export default siteConfig;

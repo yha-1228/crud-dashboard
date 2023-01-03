@@ -1,12 +1,12 @@
-import { Link, LinkProps } from 'react-router-dom'
-import { ComponentPropsWithoutRef } from 'react'
-import { css } from '@emotion/css'
-import { cn } from '../../utils/cn'
+import { Link, LinkProps } from 'react-router-dom';
+import { ComponentPropsWithoutRef } from 'react';
+import { css } from '@emotion/css';
+import { cn } from '../../utils/cn';
 
 type BaseButtonProps = {
-  size?: 'small' | 'medium'
-  variant?: 'natural' | 'primary'
-}
+  size?: 'small' | 'medium';
+  variant?: 'natural' | 'primary';
+};
 
 const createStyle = (props: BaseButtonProps) => {
   return css({
@@ -19,7 +19,8 @@ const createStyle = (props: BaseButtonProps) => {
     border: '1px solid transparent',
     borderRadius: '0.25rem',
     outline: 'none',
-    transition: 'color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out',
+    transition:
+      'color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out',
 
     // size
     ...(props.size === 'small' && {
@@ -51,16 +52,26 @@ const createStyle = (props: BaseButtonProps) => {
         backgroundColor: 'var(--color-primary-dark)',
       },
     }),
-  })
+  });
+};
+
+type ButtonProps = ComponentPropsWithoutRef<'button'> & BaseButtonProps;
+
+export function Button({
+  size = 'medium',
+  variant = 'natural',
+  className,
+  ...other
+}: ButtonProps) {
+  return (
+    <button
+      className={cn(createStyle({ size, variant }), className)}
+      {...other}
+    />
+  );
 }
 
-type ButtonProps = ComponentPropsWithoutRef<'button'> & BaseButtonProps
-
-export function Button({ size = 'medium', variant = 'natural', className, ...other }: ButtonProps) {
-  return <button className={cn(createStyle({ size, variant }), className)} {...other} />
-}
-
-type LinkButtonProps = LinkProps & BaseButtonProps
+type LinkButtonProps = LinkProps & BaseButtonProps;
 
 export function LinkButton({
   size = 'medium',
@@ -68,5 +79,10 @@ export function LinkButton({
   className,
   ...other
 }: LinkButtonProps) {
-  return <Link className={cn(createStyle({ size, variant }), className)} {...other} />
+  return (
+    <Link
+      className={cn(createStyle({ size, variant }), className)}
+      {...other}
+    />
+  );
 }

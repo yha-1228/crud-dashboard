@@ -1,5 +1,5 @@
-type ClassInput = string | undefined | null | boolean
+type ClassInput = string | undefined | null | boolean;
 
 export const cn = (...classInputs: ClassInput[]) => {
-  return classInputs.filter(Boolean).join(' ')
-}
+  return classInputs.filter(Boolean).join(' ');
+};

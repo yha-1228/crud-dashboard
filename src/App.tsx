@@ -1,17 +1,17 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 // global styles
-import './styles/colors.css'
-import './styles/normalize.css'
-import './styles/base.css'
+import './styles/colors.css';
+import './styles/normalize.css';
+import './styles/base.css';
 
 // Pages
-import { HomePage } from './pages/HomePage'
-import { UserListPage } from './pages/UserListPage'
-import { Page01Page } from './pages/Page01Page'
-import { Page02Page } from './pages/Page02Page'
-import { Page03Page } from './pages/Page03Page'
+import { HomePage } from './pages/HomePage';
+import { UserListPage } from './pages/UserListPage';
+import { Page01Page } from './pages/Page01Page';
+import { Page02Page } from './pages/Page02Page';
+import { Page03Page } from './pages/Page03Page';
 
 const routes = [
   { path: '/', exact: true, children: <HomePage /> },
@@ -19,7 +19,7 @@ const routes = [
   { path: '/page01', exact: true, children: <Page01Page /> },
   { path: '/page02', exact: true, children: <Page02Page /> },
   { path: '/page03', exact: true, children: <Page03Page /> },
-]
+];
 
 export default function App() {
   return (
@@ -32,5 +32,5 @@ export default function App() {
         </Switch>
       </Router>
     </HelmetProvider>
-  )
+  );
 }

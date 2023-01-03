@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faList } from '@fortawesome/free-solid-svg-icons'
-import { css } from '@emotion/css'
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faList } from '@fortawesome/free-solid-svg-icons';
+import { css } from '@emotion/css';
 
 const navItems = [
   {
@@ -34,7 +34,7 @@ const navItems = [
     to: '/page03',
     exact: false,
   },
-]
+];
 
 export function Navgation() {
   return (
@@ -74,13 +74,17 @@ export function Navgation() {
               exact={navItem.exact}
             >
               <div>
-                <div className={css({ display: 'inline-block', width: 32 })}>{navItem.icon}</div>
-                <div className={css({ display: 'inline-block' })}>{navItem.title}</div>
+                <div className={css({ display: 'inline-block', width: 32 })}>
+                  {navItem.icon}
+                </div>
+                <div className={css({ display: 'inline-block' })}>
+                  {navItem.title}
+                </div>
               </div>
             </NavLink>
           </li>
         ))}
       </ul>
     </nav>
-  )
+  );
 }

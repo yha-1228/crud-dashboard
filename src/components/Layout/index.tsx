@@ -1,14 +1,22 @@
-import React from 'react'
-import { Helmet } from 'react-helmet-async'
-import { Navgation } from './Nav'
-import siteConfig from '../../siteConfig'
-import { css } from '@emotion/css'
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Navgation } from './Nav';
+import siteConfig from '../../siteConfig';
+import { css } from '@emotion/css';
 
-export function Layout({ title, children }: { title?: string; children: React.ReactNode }) {
+export function Layout({
+  title,
+  children,
+}: {
+  title?: string;
+  children: React.ReactNode;
+}) {
   return (
     <>
       <Helmet>
-        <title>{!title ? siteConfig.title : `${siteConfig.title} - ${title}`}</title>
+        <title>
+          {!title ? siteConfig.title : `${siteConfig.title} - ${title}`}
+        </title>
       </Helmet>
 
       <div className={css({ display: 'flex', height: '100vh' })}>
@@ -87,12 +95,16 @@ export function Layout({ title, children }: { title?: string; children: React.Re
           })}
         >
           <div
-            className={css({ width: 'calc(100vw - 240px)', height: '100vh', overflowY: 'auto' })}
+            className={css({
+              width: 'calc(100vw - 240px)',
+              height: '100vh',
+              overflowY: 'auto',
+            })}
           >
             {children}
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
