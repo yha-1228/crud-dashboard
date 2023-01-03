@@ -1,14 +1,10 @@
-import React from 'react'
-import { MainHeader } from '../components/Layout/MainHeader'
+import { AppBar } from '../components/Layout/AppBar'
 import { Layout } from '../components/Layout'
-import { MainHeading } from '../components/shared/Heading'
 
 export function Page01Page() {
   return (
     <Layout title="Page01">
-      <MainHeader>
-        <MainHeading>Page01</MainHeading>
-      </MainHeader>
+      <AppBar title="Page01" />
     </Layout>
   )
 }

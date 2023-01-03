@@ -1,7 +1,13 @@
 import { css } from '@emotion/css'
 import React from 'react'
 
-export function MainHeader({ children }: { children: React.ReactNode }) {
+export function AppBar({
+  title,
+  children,
+}: {
+  title: React.ReactNode
+  children?: React.ReactNode
+}) {
   return (
     <div
       className={css({
@@ -14,6 +20,7 @@ export function MainHeader({ children }: { children: React.ReactNode }) {
         borderBottom: '1px solid var(--color-gray-200)',
       })}
     >
+      <h1 className={css({ margin: 0, padding: 0, fontSize: 24, fontWeight: 'bold' })}>{title}</h1>
       {children}
     </div>
   )

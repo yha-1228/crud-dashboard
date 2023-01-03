@@ -1,22 +1,19 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { MainHeader } from '../Layout/MainHeader'
+import { AppBar } from '../Layout/AppBar'
 import { LinkButton } from '../shared/Button'
-import { MainHeading } from '../shared/Heading'
 
 type HeaderProps = {}
 
 export default function Header(props: HeaderProps) {
   return (
-    <MainHeader>
-      <MainHeading>Users</MainHeading>
-
+    <AppBar title="Users">
       <div>
         <LinkButton variant="primary" to="/users/create">
           <FontAwesomeIcon icon={faPlus} />
           &nbsp;&nbsp;New
         </LinkButton>
       </div>
-    </MainHeader>
+    </AppBar>
   )
 }
