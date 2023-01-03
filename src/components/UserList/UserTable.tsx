@@ -75,7 +75,7 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>((props, ref) 
                       data-id={user.id}
                       data-username={user.username}
                       onClick={onDeleteClick}
-                      disabled={!isLoading}
+                      disabled={isLoading}
                     >
                       <FontAwesomeIcon icon={faTrash} />
                       &nbsp; &nbsp; Delete
