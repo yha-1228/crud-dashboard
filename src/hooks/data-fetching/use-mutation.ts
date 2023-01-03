@@ -1,14 +1,12 @@
 import { useReducer } from 'react';
+import { FSA } from '../../types';
 
 type State = {
   isLoading: boolean;
   error: Error | null;
 };
 
-type Action =
-  | { type: 'init' }
-  | { type: 'done' }
-  | { type: 'error'; payload: Error };
+type Action = FSA<'init'> | FSA<'done'> | FSA<'error', Error>;
 
 const reducer = (state: State, action: Action): State => {
   if (action.type === 'init') {

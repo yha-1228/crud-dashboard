@@ -7,6 +7,7 @@ import {
   useRef,
   useCallback,
 } from 'react';
+import { FSA } from '../../types';
 
 type State<T extends any = any> = {
   data: T | undefined;
@@ -21,9 +22,9 @@ type UseQueryHook<T> = State<T> & {
 };
 
 type Action<T> =
-  | { type: 'init' }
-  | { type: 'done'; payload: { data: T; totalCount: number } }
-  | { type: 'error'; payload: Error };
+  | FSA<'init'>
+  | FSA<'done', { data: T; totalCount: number }>
+  | FSA<'error', Error>;
 
 const reducer = <T>(state: State<T>, action: Action<T>): State<T> => {
   switch (action.type) {
