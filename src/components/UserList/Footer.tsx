@@ -29,7 +29,7 @@ export default function Footer(props: FooterProps) {
     >
       <Paginate pageCount={pageCount} forcePage={currentPageIndex} onPageChange={onPageChange} />
 
-      <HStack spaceing={8}>
+      <HStack space={8}>
         <div
           className={css({
             display: 'inline-block',

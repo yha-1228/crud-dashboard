@@ -1,41 +1,38 @@
 import { css } from '@emotion/css'
+import React from 'react'
 
-type StackProps = {
-  direction?: 'vertical' | 'horizontal'
-  spaceing: number
-  children: React.ReactNode[]
+type StackProps = React.ComponentPropsWithoutRef<'div'> & {
+  space: number
 }
 
-export function VStack({ spaceing, children }: StackProps) {
+export const VStack = React.forwardRef<HTMLDivElement, StackProps>(({ space, ...rest }, ref) => {
   return (
     <div
       className={css({
-        '& > *': {
-          marginBottom: `${spaceing}px`,
-        },
-        '& > *:last-child': {
-          marginBottom: 0,
+        '& > * + *': {
+          marginTop: `${space}px`,
         },
       })}
-    >
-      {children}
-    </div>
+      ref={ref}
+      {...rest}
+    />
   )
-}
+})
 
-export function HStack({ spaceing, children }: StackProps) {
+VStack.displayName = 'VStack'
+
+export const HStack = React.forwardRef<HTMLDivElement, StackProps>(({ space, ...rest }, ref) => {
   return (
     <div
       className={css({
-        '& > *': {
-          marginRight: `${spaceing}px`,
-        },
-        '& > *:last-child': {
-          marginRight: 0,
+        '& > * + *': {
+          marginLeft: `${space}px`,
         },
       })}
-    >
-      {children}
-    </div>
+      ref={ref}
+      {...rest}
+    />
   )
-}
+})
+
+HStack.displayName = 'HStack'
