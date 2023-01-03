@@ -70,8 +70,8 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
                   <Th align="left" scope="col" data-header="email">
                     Email
                   </Th>
-                  <Th align="left" scope="col"></Th>
-                  <Th align="left" scope="col"></Th>
+                  <Th align="left" scope="col" />
+                  <Th align="left" scope="col" />
                 </tr>
               </Thead>
               <Tbody>
@@ -87,8 +87,8 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
                       <Td>
                         <Skeleton />
                       </Td>
-                      <Td></Td>
-                      <Td></Td>
+                      <Td />
+                      <Td />
                     </tr>
                   ))}
                 {users?.map((user) => (
