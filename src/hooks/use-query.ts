@@ -1,5 +1,13 @@
 import { useState, useEffect, useReducer, useRef, DependencyList } from 'react'
 
+type UseQueryHook<T> = {
+  refetch: () => void
+  data: T
+  totalCount: number
+  isLoaded: boolean
+  error: Error | null
+}
+
 type State<T extends any = any> = {
   data: T
   totalCount: number
@@ -83,5 +91,5 @@ export function useQuery<T extends any = any>(fetcher: Fetcher<T>, deps: Depende
   return {
     ...state,
     refetch,
-  }
+  } as UseQueryHook<T>
 }
