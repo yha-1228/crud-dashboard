@@ -4,10 +4,7 @@ import UserTable from './UserTable'
 import Footer from './Footer'
 import { useUsers } from '../../hooks/use-users'
 import { useDeleteUser } from '../../hooks/use-delete-user'
-
-const calcPageCount = (totalCount: number, limit: number) => {
-  return Math.ceil(totalCount / limit)
-}
+import { calcOffset, calcPageCount } from './utils'
 
 export function UserList() {
   const ref = useRef<HTMLDivElement>(null)
@@ -19,7 +16,7 @@ export function UserList() {
     onSuccess: () => refetch(),
   })
 
-  const [currentPageIndex, setCurrentPageIndex] = useState(0)
+  const [pageIndex, setPageIndex] = useState(0)
 
   const handleDeleteClick = (event: React.MouseEvent<any>) => {
     const { id, username } = event.currentTarget.dataset
@@ -30,21 +27,19 @@ export function UserList() {
     deleteUserHook.mutate(id)
   }
 
-  const handlePageChange = (data: { selected: number }) => {
-    const { selected } = data
-
-    setCurrentPageIndex(selected)
+  const handlePageChange = (selectedPageIndex: number) => {
+    setPageIndex(selectedPageIndex)
 
     setUserGetParams((prev) => ({
       ...prev,
-      _start: Math.ceil(selected * Number(userGetParams._limit)).toString(),
+      _start: calcOffset(selectedPageIndex, prev._limit).toString(),
     }))
 
     ref.current?.scroll({ top: 0, left: 0 })
   }
 
   const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setCurrentPageIndex(0)
+    setPageIndex(0)
     setUserGetParams({ _start: '0', _limit: event.target.value })
   }
 
@@ -55,8 +50,8 @@ export function UserList() {
       {!isLoading && (
         <Footer
           totalCount={totalCount}
-          pageCount={calcPageCount(totalCount, Number(userGetParams._limit))}
-          currentPageIndex={currentPageIndex}
+          pageCount={calcPageCount(totalCount, userGetParams._limit)}
+          pageIndex={pageIndex}
           limit={Number(userGetParams._limit)}
           onPageChange={handlePageChange}
           onLimitChange={handleLimitChange}

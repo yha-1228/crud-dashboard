@@ -1,5 +1,12 @@
-import { useState, useEffect, useReducer, DependencyList, Reducer } from 'react'
-import { useRefState } from './use-ref-state'
+import {
+  useState,
+  useEffect,
+  useReducer,
+  DependencyList,
+  Reducer,
+  useRef,
+  useCallback,
+} from 'react'
 
 type State<T extends any = any> = {
   data: T | undefined
@@ -19,34 +26,38 @@ type Action<T> =
   | { type: 'error'; payload: Error }
 
 const reducer = <T>(state: State<T>, action: Action<T>): State<T> => {
-  if (action.type === 'init') {
-    return { ...state, isFetching: true }
-  }
+  switch (action.type) {
+    case 'init':
+      return { ...state, isFetching: true }
 
-  if (action.type === 'done') {
-    return {
-      data: action.payload.data,
-      isFetching: false,
-      totalCount: action.payload.totalCount,
-      error: null,
-    }
-  }
+    case 'done':
+      return {
+        data: action.payload.data,
+        isFetching: false,
+        totalCount: action.payload.totalCount,
+        error: null,
+      }
 
-  if (action.type === 'error') {
-    return {
-      ...state,
-      isFetching: false,
-      error: action.payload,
-    }
-  }
+    case 'error':
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload,
+      }
 
-  return state
+    default:
+      return state
+  }
 }
 
 type Fetcher<T> = () => Promise<{ data: T; totalCount: number }>
 
 export function useQuery<T>(fetcher: Fetcher<T>, deps: DependencyList) {
-  const fetcherRefValue = useRefState(fetcher)
+  const fetcherRef = useRef<Fetcher<T>>(fetcher)
+
+  useEffect(() => {
+    fetcherRef.current = fetcher
+  }, [fetcher])
 
   const [state, dispatch] = useReducer<Reducer<State<T>, Action<T>>>(reducer, {
     data: undefined,
@@ -60,23 +71,26 @@ export function useQuery<T>(fetcher: Fetcher<T>, deps: DependencyList) {
   useEffect(() => {
     let ignore = false
 
-    fetcherRefValue()
-      .then((response) => {
+    const loadData = async () => {
+      dispatch({ type: 'init' })
+
+      try {
+        const { data, totalCount } = await fetcherRef.current()
         if (!ignore) {
-          dispatch({
-            type: 'done',
-            payload: { data: response.data, totalCount: response.totalCount },
-          })
+          dispatch({ type: 'done', payload: { data, totalCount } })
         }
-      })
-      .catch((error) => {
-        if (!ignore) {
-          dispatch({
-            type: 'error',
-            payload: error,
-          })
+      } catch (error) {
+        if (error instanceof Error) {
+          if (!ignore) {
+            dispatch({ type: 'error', payload: error })
+          }
+        } else {
+          throw error
         }
-      })
+      }
+    }
+
+    loadData()
 
     return () => {
       ignore = true
@@ -85,9 +99,9 @@ export function useQuery<T>(fetcher: Fetcher<T>, deps: DependencyList) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchCount, ...deps])
 
-  const refetch = () => {
+  const refetch = useCallback(() => {
     setFetchCount((prev) => prev + 1)
-  }
+  }, [])
 
   return {
     ...state,

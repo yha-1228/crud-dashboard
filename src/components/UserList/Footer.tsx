@@ -6,14 +6,18 @@ import { Paginate } from '../shared/Paginate'
 type FooterProps = {
   totalCount: number
   pageCount: number
-  currentPageIndex: number
+  pageIndex: number
   limit: number
-  onPageChange: React.ComponentProps<typeof Paginate>['onPageChange']
+  onPageChange: (selectedPageIndex: number) => void
   onLimitChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 export default function Footer(props: FooterProps) {
-  const { totalCount, pageCount, currentPageIndex, limit, onPageChange, onLimitChange } = props
+  const { totalCount, pageCount, pageIndex, limit, onPageChange, onLimitChange } = props
+
+  const handlePageChange = (selectedItem: { selected: number }) => {
+    onPageChange(selectedItem.selected)
+  }
 
   return (
     <div
@@ -27,7 +31,7 @@ export default function Footer(props: FooterProps) {
         backgroundColor: 'var(--color-gray-100)',
       })}
     >
-      <Paginate pageCount={pageCount} forcePage={currentPageIndex} onPageChange={onPageChange} />
+      <Paginate pageCount={pageCount} forcePage={pageIndex} onPageChange={handlePageChange} />
 
       <HStack space={8}>
         <div
@@ -64,8 +68,7 @@ export default function Footer(props: FooterProps) {
           color: 'var(--color-gray-500)',
         })}
       >
-        {currentPageIndex * limit + 1}-{Math.min((currentPageIndex + 1) * limit, totalCount)} of{' '}
-        {totalCount}
+        {pageIndex * limit + 1}-{Math.min((pageIndex + 1) * limit, totalCount)} of {totalCount}
       </div>
     </div>
   )
