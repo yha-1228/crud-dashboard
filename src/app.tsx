@@ -1,12 +1,7 @@
+import './styles/global.scss';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-import './styles/global.scss';
-
-// external css
-import 'react-loading-skeleton/dist/skeleton.css';
-
-// Pages
 import { HomePage } from './pages/home-page';
 import { Page01Page } from './pages/page-01-page';
 import { Page02Page } from './pages/page-02-page';
@@ -22,7 +17,7 @@ const routes = [
   { path: '/page03', exact: true, children: <Page03Page /> },
 ];
 
-export default function App() {
+export function App() {
   return (
     <SkeletonTheme
       baseColor={cssProp('color-gray-100')}

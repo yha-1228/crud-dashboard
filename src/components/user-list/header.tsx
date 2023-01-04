@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AppBar } from '../shared/app-bar';
 import { LinkButton } from '../shared/button';
 
-export default function Header() {
+export function Header() {
   return (
     <AppBar title="Users">
       <div>

@@ -15,7 +15,7 @@ type FooterProps = {
 
 const LIMITS = [10, 20, 30, 50, 100];
 
-export default function Footer(props: FooterProps) {
+export function Footer(props: FooterProps) {
   const {
     isLoading,
     totalCount,

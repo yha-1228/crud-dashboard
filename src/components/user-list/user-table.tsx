@@ -31,7 +31,7 @@ const Overlay = styled.div('Overlay', {
   height: '100%',
 });
 
-const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
+export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
   (props, ref) => {
     const { users, isLoading, isFetching, onDeleteClick } = props;
 
@@ -132,5 +132,3 @@ const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
 );
 
 UserTable.displayName = 'UserTable';
-
-export default UserTable;

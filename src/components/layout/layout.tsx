@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/css';
 import { useTitle } from '../../hooks/use-title';
-import siteConfig from '../../siteConfig';
+import { siteConfig } from '../../siteConfig';
 import { Nav } from './nav';
 
 export function Layout({
