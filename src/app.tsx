@@ -1,4 +1,3 @@
-import { HelmetProvider } from 'react-helmet-async';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -25,19 +24,17 @@ const routes = [
 
 export default function App() {
   return (
-    <HelmetProvider>
-      <SkeletonTheme
-        baseColor={cssProp('color-gray-100')}
-        highlightColor={cssProp('color-gray-50')}
-      >
-        <Router>
-          <Switch>
-            {routes.map((route, i) => (
-              <Route key={i} {...route} />
-            ))}
-          </Switch>
-        </Router>
-      </SkeletonTheme>
-    </HelmetProvider>
+    <SkeletonTheme
+      baseColor={cssProp('color-gray-100')}
+      highlightColor={cssProp('color-gray-50')}
+    >
+      <Router>
+        <Switch>
+          {routes.map((route, i) => (
+            <Route key={i} {...route} />
+          ))}
+        </Switch>
+      </Router>
+    </SkeletonTheme>
   );
 }
