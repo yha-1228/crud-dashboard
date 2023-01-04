@@ -36,6 +36,9 @@ const navItems = [
   },
 ];
 
+const MARKER_WIDTH = 2;
+const MARKER_COLOR: React.CSSProperties['color'] = 'white';
+
 export function Nav() {
   return (
     <nav>
@@ -50,36 +53,32 @@ export function Nav() {
             key={navItem.title}
           >
             <NavLink
-              className={css`
-                display: block;
-                padding-left: calc(24px - 2px);
-                color: white;
-                text-decoration: none;
-                border-left: 2px solid transparent;
-
-                &:hover {
-                  margin-right: -10px;
-                  background-color: var(--color-primary-dark);
-                }
-              `}
-              activeClassName={css`
-                font-weight: bold;
-                border-left: 2px solid white;
-                &:hover {
-                  background-color: var(--color-primary-dark);
-                  border-left: 2px solid white;
-                }
-              `}
+              className={css({
+                display: 'block',
+                paddingLeft: 24 - MARKER_WIDTH,
+                color: 'white',
+                textDecoration: 'none',
+                borderLeft: `${MARKER_WIDTH}px solid transparent`,
+                '&:hover': {
+                  marginRight: -10,
+                  backgroundColor: 'var(--color-primary-dark)',
+                },
+              })}
+              activeClassName={css({
+                fontWeight: 'bold',
+                borderLeft: `${MARKER_WIDTH}px solid ${MARKER_COLOR}`,
+                '&:hover': {
+                  backgroundColor: 'var(--color-primary-dark)',
+                },
+              })}
               to={navItem.to}
               exact={navItem.exact}
             >
-              <div>
-                <div className={css({ display: 'inline-block', width: 32 })}>
-                  {navItem.icon}
-                </div>
-                <div className={css({ display: 'inline-block' })}>
-                  {navItem.title}
-                </div>
+              <div className={css({ display: 'inline-block', width: 32 })}>
+                {navItem.icon}
+              </div>
+              <div className={css({ display: 'inline-block' })}>
+                {navItem.title}
               </div>
             </NavLink>
           </li>
