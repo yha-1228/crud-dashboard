@@ -13,6 +13,8 @@ type FooterProps = {
   onLimitChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
+const LIMITS = [10, 20, 30, 50, 100];
+
 export default function Footer(props: FooterProps) {
   const {
     isLoading,
@@ -47,44 +49,39 @@ export default function Footer(props: FooterProps) {
             forcePage={pageIndex}
             onPageChange={handlePageChange}
           />
-          <HStack space={8}>
-            <div
-              className={css({
-                display: 'inline-block',
-                fontSize: 14,
-                color: 'var(--color-gray-500)',
-              })}
-            >
-              Rows per page:
-            </div>
 
-            <div className={css({ display: 'inline-block' })}>
-              <select
-                className={css({
-                  fontSize: 14,
-                  color: 'var(--color-gray-500)',
-                })}
-                value={limit}
-                onChange={onLimitChange}
-              >
-                {[10, 20, 30, 50, 100].map((value) => (
-                  <option key={value} value={value}>
-                    {value}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </HStack>
-
-          <div
+          <HStack
+            space={24}
             className={css({
+              display: 'flex',
+              alignItems: 'center',
               fontSize: 14,
               color: 'var(--color-gray-500)',
             })}
           >
-            {pageIndex * limit + 1}-
-            {Math.min((pageIndex + 1) * limit, totalCount)} of {totalCount}
-          </div>
+            <HStack space={8}>
+              <span
+                className={css({
+                  display: 'inline-block',
+                })}
+              >
+                Rows per page:
+              </span>
+
+              <select value={limit} onChange={onLimitChange}>
+                {LIMITS.map((limit) => (
+                  <option key={limit} value={limit}>
+                    {limit}
+                  </option>
+                ))}
+              </select>
+            </HStack>
+
+            <div>
+              {pageIndex * limit + 1}-
+              {Math.min((pageIndex + 1) * limit, totalCount)} of {totalCount}
+            </div>
+          </HStack>
         </>
       )}
     </div>
