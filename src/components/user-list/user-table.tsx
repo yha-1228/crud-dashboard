@@ -6,9 +6,9 @@ import Skeleton from 'react-loading-skeleton';
 import { User } from '../../types';
 import { range } from '../../utils/range';
 import { styledDivFactory } from '../../utils/styled';
-import { Button, LinkButton } from '../shared/Button';
-import { Spinner } from '../shared/Spinner';
-import { Table, Tbody, Td, Thead, Th } from '../shared/Table';
+import { Button, LinkButton } from '../shared/button';
+import { Spinner } from '../shared/spinner';
+import { Table, Tbody, Td, Thead, Th } from '../shared/table';
 
 type UserTableProps = {
   isLoading: boolean;

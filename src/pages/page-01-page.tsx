@@ -1,5 +1,5 @@
-import { Layout } from '../components/Layout';
-import { AppBar } from '../components/shared/AppBar';
+import { Layout } from '../components/layout';
+import { AppBar } from '../components/shared/app-bar';
 
 export function Page01Page() {
   return (

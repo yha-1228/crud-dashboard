@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { useDeleteUser } from '../../hooks/use-delete-user';
 import { useUsers } from '../../hooks/use-users';
-import Footer from './Footer';
-import Header from './Header';
-import UserTable from './UserTable';
+import Footer from './footer';
+import Header from './header';
+import UserTable from './user-table';
 import { calcOffset, calcPageCount } from './utils';
 
 export function UserList() {

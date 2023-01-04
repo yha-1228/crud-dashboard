@@ -1,6 +1,6 @@
 import React from 'react';
-import { Layout } from '../components/Layout';
-import { UserList } from '../components/UserList';
+import { Layout } from '../components/layout';
+import { UserList } from '../components/user-list';
 
 export function UserListPage() {
   return (

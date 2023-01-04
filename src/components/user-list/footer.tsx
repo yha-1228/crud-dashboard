@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/css';
-import { Paginate } from '../shared/Paginate';
-import { HStack } from '../shared/Stack';
+import { Paginate } from '../shared/paginate';
+import { HStack } from '../shared/stack';
 
 type FooterProps = {
   isLoading: boolean;

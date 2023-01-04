@@ -15,7 +15,7 @@ export type UserFindManyParams = {
   _limit: string;
 };
 
-export default class UserAPI {
+export class UserAPI {
   static async findMany(params: UserFindManyParams) {
     const response = await axios.get<User[]>(BASE_URL, {
       params,

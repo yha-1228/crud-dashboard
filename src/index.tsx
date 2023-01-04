@@ -1,6 +1,6 @@
 // @ts-ignore
 import { createRoot } from 'react-dom/client';
-import App from './App';
+import App from './app';
 import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root');

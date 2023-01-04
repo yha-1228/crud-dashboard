@@ -1,4 +1,4 @@
-import UserAPI from '../api/UserAPI';
+import { UserAPI } from '../api/fetchers';
 import { Callbacks, useMutation } from './data-fetching/use-mutation';
 
 export function useDeleteUser(callbacks: Callbacks) {
