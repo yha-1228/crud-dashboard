@@ -1,9 +1,5 @@
 import { ClassNames, css } from '@emotion/react';
-import {
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
 
 type PaginateProps = Pick<
@@ -57,8 +53,8 @@ export function Paginate(props: PaginateProps) {
           marginPagesDisplayed={2}
           pageRangeDisplayed={4}
           // labels
-          previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
-          nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
+          previousLabel={<FaChevronLeft />}
+          nextLabel={<FaChevronRight />}
           // styles
           containerClassName={css(containerStyle)}
           pageClassName={css(pageStyle)}

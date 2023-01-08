@@ -1,31 +1,30 @@
 import { css } from '@emotion/react';
-import { faHome, faList } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaHome, FaList } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 
 const navItems = [
   {
-    icon: <FontAwesomeIcon icon={faHome} />,
+    icon: <FaHome />,
     title: 'Home',
     to: '/',
   },
   {
-    icon: <FontAwesomeIcon icon={faList} />,
+    icon: <FaList />,
     title: 'Users',
     to: '/users',
   },
   {
-    icon: <FontAwesomeIcon icon={faList} />,
+    icon: <FaList />,
     title: 'Page01',
     to: '/page01',
   },
   {
-    icon: <FontAwesomeIcon icon={faList} />,
+    icon: <FaList />,
     title: 'Page02',
     to: '/page02',
   },
   {
-    icon: <FontAwesomeIcon icon={faList} />,
+    icon: <FaList />,
     title: 'Page03',
     to: '/page03',
   },
@@ -35,7 +34,8 @@ const MARKER_WIDTH = 2;
 const MARKER_COLOR: React.CSSProperties['color'] = 'white';
 
 const navLinkStyle = css({
-  display: 'block',
+  display: 'flex',
+  alignItems: 'center',
   paddingLeft: 24 - MARKER_WIDTH,
   color: 'white',
   textDecoration: 'none',
@@ -77,7 +77,9 @@ export function Nav() {
                   : navLinkStyle
               }
             >
-              <div css={css({ display: 'inline-block', width: 32 })}>
+              <div
+                css={css({ display: 'flex', alignItems: 'center', width: 32 })}
+              >
                 {navItem.icon}
               </div>
               <div css={css({ display: 'inline-block' })}>{navItem.title}</div>

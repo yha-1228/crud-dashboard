@@ -1,8 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import Skeleton from 'react-loading-skeleton';
 import { User } from '../../types';
 import { range } from '../../utils/range';
@@ -95,7 +94,7 @@ export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
                     <Td>{user.email}</Td>
                     <Td>
                       <LinkButton size="small" to={`/users/${user.id}`}>
-                        <FontAwesomeIcon icon={faEdit} />
+                        <FaEdit />
                         &nbsp; &nbsp; Edit
                       </LinkButton>
                     </Td>
@@ -108,7 +107,7 @@ export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
                         onClick={onDeleteClick}
                         disabled={isLoading}
                       >
-                        <FontAwesomeIcon icon={faTrash} />
+                        <FaTrash />
                         &nbsp; &nbsp; Delete
                       </Button>
                     </Td>

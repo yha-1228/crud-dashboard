@@ -1,5 +1,4 @@
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaPlus } from 'react-icons/fa';
 import { AppBar } from '../shared/app-bar';
 import { LinkButton } from '../shared/button';
 
@@ -8,7 +7,7 @@ export function Header() {
     <AppBar title="Users">
       <div>
         <LinkButton variant="primary" to="/users/create">
-          <FontAwesomeIcon icon={faPlus} />
+          <FaPlus />
           &nbsp;&nbsp;New
         </LinkButton>
       </div>

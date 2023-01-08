@@ -11,7 +11,8 @@ const createStyle = (props: BaseButtonProps) => {
   const { size, variant } = props;
 
   return css({
-    display: 'inline-block',
+    display: 'inline-flex',
+    alignItems: 'center',
     lineHeight: 1.5,
     color: 'var(--color-gray-600)',
     textDecoration: 'none',
