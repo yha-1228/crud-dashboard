@@ -28,6 +28,7 @@
     "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.5",
     "@types/faker": "^6.6.9",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
