@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
 import { useTitle } from '../../hooks/use-title';
 import { siteConfig } from '../../siteConfig';
 import { Nav } from './nav';
@@ -14,9 +14,9 @@ export function Layout({
   useTitle(!title ? siteConfig.title : `${siteConfig.title} - ${title}`);
 
   return (
-    <div className={css({ display: 'flex', height: '100vh' })}>
+    <div css={css({ display: 'flex', height: '100vh' })}>
       <aside
-        className={css({
+        css={css({
           flexGrow: 0,
           flexShrink: 0,
           width: 240,
@@ -25,7 +25,7 @@ export function Layout({
         })}
       >
         <div
-          className={css({
+          css={css({
             display: 'flex',
             alignItems: 'center',
             height: 64,
@@ -35,7 +35,7 @@ export function Layout({
           })}
         >
           <h2
-            className={css({
+            css={css({
               margin: 0,
               padding: 0,
               fontSize: 24,
@@ -48,7 +48,7 @@ export function Layout({
         </div>
 
         <div
-          className={css`
+          css={css`
             height: calc(100vh - 64px);
             padding-top: 24px;
             padding-right: 24px;
@@ -83,14 +83,14 @@ export function Layout({
       </aside>
 
       <div
-        className={css({
+        css={css({
           flexGrow: 1,
           flexShrink: 1,
           backgroundColor: 'var(--color-gray-50)',
         })}
       >
         <div
-          className={css({
+          css={css({
             width: 'calc(100vw - 240px)',
             height: '100vh',
             overflowY: 'auto',

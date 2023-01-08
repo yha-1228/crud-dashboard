@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
 
 export function AppBar({
   title,
@@ -10,7 +10,7 @@ export function AppBar({
 }) {
   return (
     <div
-      className={css({
+      css={css({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -21,7 +21,7 @@ export function AppBar({
       })}
     >
       <h1
-        className={css({
+        css={css({
           margin: 0,
           padding: 0,
           fontSize: 24,

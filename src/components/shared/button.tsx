@@ -1,7 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
 import { Link, LinkProps } from 'react-router-dom';
-import { cn } from '../../utils/cn';
 
 type BaseButtonProps = {
   size?: 'small' | 'medium';
@@ -62,15 +61,9 @@ type ButtonProps = ComponentPropsWithoutRef<'button'> & BaseButtonProps;
 export function Button({
   size = 'medium',
   variant = 'natural',
-  className,
   ...other
 }: ButtonProps) {
-  return (
-    <button
-      className={cn(createStyle({ size, variant }), className)}
-      {...other}
-    />
-  );
+  return <button css={createStyle({ size, variant })} {...other} />;
 }
 
 type LinkButtonProps = LinkProps & BaseButtonProps;
@@ -78,13 +71,7 @@ type LinkButtonProps = LinkProps & BaseButtonProps;
 export function LinkButton({
   size = 'medium',
   variant = 'natural',
-  className,
   ...other
 }: LinkButtonProps) {
-  return (
-    <Link
-      className={cn(createStyle({ size, variant }), className)}
-      {...other}
-    />
-  );
+  return <Link css={createStyle({ size, variant })} {...other} />;
 }

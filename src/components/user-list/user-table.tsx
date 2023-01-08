@@ -1,11 +1,11 @@
 import React from 'react';
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Skeleton from 'react-loading-skeleton';
 import { User } from '../../types';
 import { range } from '../../utils/range';
-import { styled } from '../../utils/styled';
 import { Button, LinkButton } from '../shared/button';
 import { Spinner } from '../shared/spinner';
 import { Table, Tbody, Td, Thead, Th } from '../shared/table';
@@ -22,7 +22,7 @@ const heights = {
   footer: 64,
 };
 
-const Overlay = styled.div('Overlay', {
+const Overlay = styled.div({
   position: 'absolute',
   backgroundColor: 'rgba(255,255,255,0.7)',
   top: 0,
@@ -36,16 +36,16 @@ export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
     const { users, isLoading, isFetching, onDeleteClick } = props;
 
     return (
-      <div className={css({ position: 'relative' })}>
+      <div css={css({ position: 'relative' })}>
         <div
-          className={css({
+          css={css({
             height: `calc(100vh - ${heights.header}px - ${heights.footer}px)`,
             overflow: isLoading ? 'hidden' : 'auto',
           })}
           ref={ref}
         >
           <div
-            className={css({
+            css={css({
               backgroundColor: 'white',
               paddingLeft: 32,
               paddingRight: 32,
@@ -54,7 +54,7 @@ export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
             <Table>
               <Thead>
                 <tr
-                  className={css({
+                  css={css({
                     visibility: isLoading ? 'hidden' : 'visible',
                   })}
                 >
@@ -121,7 +121,7 @@ export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
 
         {!isLoading && isFetching && (
           <Overlay>
-            <div className={css({ paddingTop: 96, textAlign: 'center' })}>
+            <div css={css({ paddingTop: 96, textAlign: 'center' })}>
               <Spinner />
             </div>
           </Overlay>

@@ -1,18 +1,15 @@
 import React from 'react';
-import { css } from '@emotion/css';
-import { cn } from '../../utils/cn';
+import { css } from '@emotion/react';
 
 type StackProps = React.ComponentPropsWithoutRef<'div'> & {
   space: number;
 };
 
 export const VStack = React.forwardRef<HTMLDivElement, StackProps>(
-  ({ space, className, ...rest }, ref) => {
+  ({ space, ...rest }, ref) => {
     return (
       <div
-        className={cn(
-          css({ '& > * + *': { marginTop: `${space}px` } }, className)
-        )}
+        css={css({ '& > * + *': { marginTop: `${space}px` } })}
         ref={ref}
         {...rest}
       />
@@ -23,12 +20,10 @@ export const VStack = React.forwardRef<HTMLDivElement, StackProps>(
 VStack.displayName = 'VStack';
 
 export const HStack = React.forwardRef<HTMLDivElement, StackProps>(
-  ({ space, className, ...rest }, ref) => {
+  ({ space, ...rest }, ref) => {
     return (
       <div
-        className={cn(
-          css({ '& > * + *': { marginLeft: `${space}px` } }, className)
-        )}
+        css={css({ '& > * + *': { marginLeft: `${space}px` } })}
         ref={ref}
         {...rest}
       />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
 import { Paginate } from '../shared/paginate';
 import { HStack } from '../shared/stack';
 
@@ -32,7 +32,7 @@ export function Footer(props: FooterProps) {
 
   return (
     <div
-      className={css({
+      css={css({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -52,7 +52,7 @@ export function Footer(props: FooterProps) {
 
           <HStack
             space={24}
-            className={css({
+            css={css({
               display: 'flex',
               alignItems: 'center',
               fontSize: 14,
@@ -61,7 +61,7 @@ export function Footer(props: FooterProps) {
           >
             <HStack space={8}>
               <span
-                className={css({
+                css={css({
                   display: 'inline-block',
                 })}
               >
