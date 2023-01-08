@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { FSA } from '../../types';
 
-type State<T extends unknown = unknown> = {
+type State<T = unknown> = {
   data: T | undefined;
   isFetching: boolean;
   totalCount: number;
@@ -62,7 +62,7 @@ const stateToHookValue = <T>(
   refetch,
 });
 
-export type UseQueryProps<T extends unknown = unknown> = {
+export type UseQueryProps<T = unknown> = {
   fetcher: Fetcher<T>;
   deps: DependencyList;
   onSuccess?: () => void;
