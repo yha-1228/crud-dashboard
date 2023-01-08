@@ -1,4 +1,4 @@
-import { css } from '@emotion/css';
+import { ClassNames, css } from '@emotion/react';
 import {
   faChevronLeft,
   faChevronRight,
@@ -47,27 +47,31 @@ export function Paginate(props: PaginateProps) {
   const { pageCount, forcePage, onPageChange } = props;
 
   return (
-    <ReactPaginate
-      // logics
-      pageCount={pageCount}
-      onPageChange={onPageChange}
-      forcePage={forcePage}
-      marginPagesDisplayed={2}
-      pageRangeDisplayed={4}
-      // labels
-      previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
-      nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
-      // styles
-      containerClassName={containerStyle}
-      pageClassName={pageStyle}
-      pageLinkClassName={pageLinkStyle}
-      previousClassName={pageStyle}
-      previousLinkClassName={pageLinkStyle}
-      nextClassName={pageStyle}
-      nextLinkClassName={pageLinkStyle}
-      breakClassName={pageStyle}
-      breakLinkClassName={pageLinkStyle}
-      activeLinkClassName={activePageLinkStyle}
-    />
+    <ClassNames>
+      {({ css }) => (
+        <ReactPaginate
+          // logics
+          pageCount={pageCount}
+          onPageChange={onPageChange}
+          forcePage={forcePage}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={4}
+          // labels
+          previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
+          nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
+          // styles
+          containerClassName={css(containerStyle)}
+          pageClassName={css(pageStyle)}
+          pageLinkClassName={css(pageLinkStyle)}
+          previousClassName={css(pageStyle)}
+          previousLinkClassName={css(pageLinkStyle)}
+          nextClassName={css(pageStyle)}
+          nextLinkClassName={css(pageLinkStyle)}
+          breakClassName={css(pageStyle)}
+          breakLinkClassName={css(pageLinkStyle)}
+          activeLinkClassName={css(activePageLinkStyle)}
+        />
+      )}
+    </ClassNames>
   );
 }

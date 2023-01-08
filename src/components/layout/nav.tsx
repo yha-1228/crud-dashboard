@@ -1,7 +1,7 @@
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
 import { faHome, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const navItems = [
   {
@@ -55,32 +55,33 @@ const activeNavLinkStyle = css(navLinkStyle, {
 });
 
 export function Nav() {
+  const location = useLocation();
+
   return (
     <nav>
       <ul>
         {navItems.map((navItem) => (
           <li
-            className={css({
+            css={css({
               marginLeft: -24,
               marginRight: -24,
               lineHeight: '40px',
             })}
             key={navItem.title}
           >
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? activeNavLinkStyle : navLinkStyle
-              }
+            <Link
               to={navItem.to}
-              end={navItem.to === '/'}
+              css={
+                navItem.to === location.pathname
+                  ? activeNavLinkStyle
+                  : navLinkStyle
+              }
             >
-              <div className={css({ display: 'inline-block', width: 32 })}>
+              <div css={css({ display: 'inline-block', width: 32 })}>
                 {navItem.icon}
               </div>
-              <div className={css({ display: 'inline-block' })}>
-                {navItem.title}
-              </div>
-            </NavLink>
+              <div css={css({ display: 'inline-block' })}>{navItem.title}</div>
+            </Link>
           </li>
         ))}
       </ul>

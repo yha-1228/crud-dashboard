@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({ jsxImportSource: '@emotion/react' })],
   server: {
     port: 3000,
   },
