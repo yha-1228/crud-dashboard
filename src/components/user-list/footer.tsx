@@ -52,7 +52,7 @@ export function Footer(props: FooterProps) {
           />
 
           <HStack
-            space={24}
+            space="24px"
             css={css({
               display: 'flex',
               alignItems: 'center',
@@ -60,7 +60,7 @@ export function Footer(props: FooterProps) {
               color: getTheme('color', 'gray-500'),
             })}
           >
-            <HStack space={8}>
+            <HStack space="8px">
               <span
                 css={css({
                   display: 'inline-block',
