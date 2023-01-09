@@ -19,7 +19,11 @@
   },
   "plugins": ["react", "@typescript-eslint", "import"],
   "rules": {
+    "dot-notation": "warn",
     "react/react-in-jsx-scope": "off",
+    "react/jsx-curly-brace-presence": "error",
+    "react/jsx-boolean-value": "error",
+    "react/self-closing-comp": "error",
     "react/prop-types": "off",
     "react/no-unknown-property": ["error", { "ignore": ["css"] }],
     "no-duplicate-imports": "warn",
