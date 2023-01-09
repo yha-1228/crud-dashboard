@@ -1,3 +1,5 @@
+import 'react-loading-skeleton/dist/skeleton.css';
+
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage } from './pages/home-page';
