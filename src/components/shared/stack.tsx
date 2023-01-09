@@ -9,7 +9,8 @@ export const VStack = React.forwardRef<HTMLDivElement, StackProps>(
   ({ space, ...rest }, ref) => {
     return (
       <div
-        css={css({ '& > * + *': { marginTop: `${space}px` } })}
+        style={{ '--space': `${space}px` } as React.CSSProperties}
+        css={css({ '& > * + *': { marginTop: `var(--space)` } })}
         ref={ref}
         {...rest}
       />
@@ -23,7 +24,8 @@ export const HStack = React.forwardRef<HTMLDivElement, StackProps>(
   ({ space, ...rest }, ref) => {
     return (
       <div
-        css={css({ '& > * + *': { marginLeft: `${space}px` } })}
+        style={{ '--space': `${space}px` } as React.CSSProperties}
+        css={css({ '& > * + *': { marginLeft: `var(--space)` } })}
         ref={ref}
         {...rest}
       />
