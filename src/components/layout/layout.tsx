@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 import { useTitle } from '../../hooks/use-title';
 import { siteConfig } from '../../siteConfig';
+import { getTheme } from '../../styles/utils';
 import { Nav } from './nav';
 
 export function Layout({
@@ -21,7 +22,7 @@ export function Layout({
           flexShrink: 0,
           width: 240,
           height: '100vh',
-          backgroundColor: 'var(--color-primary)',
+          backgroundColor: getTheme('color', 'primary'),
         })}
       >
         <div
@@ -31,7 +32,7 @@ export function Layout({
             height: 64,
             paddingRight: 24,
             paddingLeft: 24,
-            backgroundColor: 'var(--color-primary-dark)',
+            backgroundColor: getTheme('color', 'primary-dark'),
           })}
         >
           <h2
@@ -86,7 +87,7 @@ export function Layout({
         css={css({
           flexGrow: 1,
           flexShrink: 1,
-          backgroundColor: 'var(--color-gray-50)',
+          backgroundColor: getTheme('color', 'gray-50'),
         })}
       >
         <div

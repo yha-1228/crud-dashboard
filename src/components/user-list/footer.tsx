@@ -1,5 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/react';
+import { getTheme } from '../../styles/utils';
 import { Paginate } from '../shared/paginate';
 import { HStack } from '../shared/stack';
 
@@ -39,7 +40,7 @@ export function Footer(props: FooterProps) {
         height: 64,
         paddingLeft: 32,
         paddingRight: 32,
-        backgroundColor: 'var(--color-gray-100)',
+        backgroundColor: getTheme('color', 'gray-100'),
       })}
     >
       {!isLoading && (
@@ -56,7 +57,7 @@ export function Footer(props: FooterProps) {
               display: 'flex',
               alignItems: 'center',
               fontSize: 14,
-              color: 'var(--color-gray-500)',
+              color: getTheme('color', 'gray-500'),
             })}
           >
             <HStack space={8}>

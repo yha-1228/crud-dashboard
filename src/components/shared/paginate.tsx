@@ -1,6 +1,7 @@
 import { ClassNames, css } from '@emotion/react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
+import { getTheme } from '../../styles/utils';
 
 type PaginateProps = Pick<
   ReactPaginateProps,
@@ -23,19 +24,19 @@ const pageLinkStyle = css({
   width: 32,
   fontWeight: 'bold',
   lineHeight: '32px',
-  color: 'var(--color-gray-400)',
+  color: getTheme('color', 'gray-400'),
   borderRadius: 9999,
   outline: 'none',
   '&:hover': {
-    backgroundColor: 'var(--color-gray-200)',
+    backgroundColor: getTheme('color', 'gray-200'),
   },
 });
 
 const activePageLinkStyle = css({
   color: 'white',
-  backgroundColor: 'var(--color-primary)',
+  backgroundColor: getTheme('color', 'primary'),
   '&:hover': {
-    backgroundColor: 'var(--color-primary-dark)',
+    backgroundColor: getTheme('color', 'primary-dark'),
   },
 });
 

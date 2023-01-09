@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { FaHome, FaList } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
+import { getTheme } from '../../styles/utils';
 
 const navItems = [
   {
@@ -42,7 +43,7 @@ const navLinkStyle = css({
   borderLeft: `${MARKER_WIDTH}px solid transparent`,
   '&:hover': {
     marginRight: -10,
-    backgroundColor: 'var(--color-primary-dark)',
+    backgroundColor: getTheme('color', 'primary-dark'),
   },
 });
 
@@ -50,7 +51,7 @@ const activeNavLinkStyle = css(navLinkStyle, {
   fontWeight: 'bold',
   borderLeft: `${MARKER_WIDTH}px solid ${MARKER_COLOR}`,
   '&:hover': {
-    backgroundColor: 'var(--color-primary-dark)',
+    backgroundColor: getTheme('color', 'primary-dark'),
   },
 });
 
