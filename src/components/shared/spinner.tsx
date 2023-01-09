@@ -6,7 +6,7 @@ export function Spinner() {
     <CircularProgress
       size={35}
       thickness={4}
-      sx={{ color: getTheme('color', 'primary') }}
+      sx={{ color: getTheme('--color-primary') }}
     />
   );
 }

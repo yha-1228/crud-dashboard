@@ -1,14 +1,14 @@
 import { Global } from '@emotion/react';
-import { base } from './_base';
-import { normalize } from './_normalize';
-import { vars } from './_vars';
+import { baseStyle } from './_base';
+import { normalizeStyle } from './_normalize';
+import { themeStyle } from './_theme';
 
 export function GlobalStyle() {
   return (
     <>
-      <Global styles={normalize} />
-      <Global styles={vars} />
-      <Global styles={base} />
+      <Global styles={normalizeStyle} />
+      <Global styles={themeStyle} />
+      <Global styles={baseStyle} />
     </>
   );
 }

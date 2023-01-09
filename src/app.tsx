@@ -22,8 +22,8 @@ export function App() {
       <GlobalStyle />
 
       <SkeletonTheme
-        baseColor={getTheme('color', 'gray-100')}
-        highlightColor={getTheme('color', 'gray-50')}
+        baseColor={getTheme('--color-gray-100')}
+        highlightColor={getTheme('--color-gray-50')}
       >
         <RouterProvider router={router} />
       </SkeletonTheme>

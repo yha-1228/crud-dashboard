@@ -43,7 +43,7 @@ const navLinkStyle = css({
   borderLeft: `${MARKER_WIDTH}px solid transparent`,
   '&:hover': {
     marginRight: -10,
-    backgroundColor: getTheme('color', 'primary-dark'),
+    backgroundColor: getTheme('--color-primary-dark'),
   },
 });
 
@@ -51,7 +51,7 @@ const activeNavLinkStyle = css(navLinkStyle, {
   fontWeight: 'bold',
   borderLeft: `${MARKER_WIDTH}px solid ${MARKER_COLOR}`,
   '&:hover': {
-    backgroundColor: getTheme('color', 'primary-dark'),
+    backgroundColor: getTheme('--color-primary-dark'),
   },
 });
 

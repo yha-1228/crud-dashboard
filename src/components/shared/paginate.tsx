@@ -24,19 +24,19 @@ const pageLinkStyle = css({
   width: 32,
   fontWeight: 'bold',
   lineHeight: '32px',
-  color: getTheme('color', 'gray-400'),
+  color: getTheme('--color-gray-400'),
   borderRadius: 9999,
   outline: 'none',
   '&:hover': {
-    backgroundColor: getTheme('color', 'gray-200'),
+    backgroundColor: getTheme('--color-gray-200'),
   },
 });
 
 const activePageLinkStyle = css({
   color: 'white',
-  backgroundColor: getTheme('color', 'primary'),
+  backgroundColor: getTheme('--color-primary'),
   '&:hover': {
-    backgroundColor: getTheme('color', 'primary-dark'),
+    backgroundColor: getTheme('--color-primary-dark'),
   },
 });
 

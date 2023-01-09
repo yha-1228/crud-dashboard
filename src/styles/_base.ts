@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export const base = css`
+export const baseStyle = css`
   *,
   *::before,
   *::after {

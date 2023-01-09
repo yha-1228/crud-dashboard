@@ -15,10 +15,10 @@ const createStyle = (props: BaseButtonProps) => {
     display: 'inline-flex',
     alignItems: 'center',
     lineHeight: 1.5,
-    color: getTheme('color', 'gray-600'),
+    color: getTheme('--color-gray-600'),
     textDecoration: 'none',
     cursor: 'pointer',
-    backgroundColor: getTheme('color', 'gray-200'),
+    backgroundColor: getTheme('--color-gray-200'),
     border: '1px solid transparent',
     borderRadius: '0.25rem',
     outline: 'none',
@@ -38,10 +38,10 @@ const createStyle = (props: BaseButtonProps) => {
 
     // variant
     ...(variant === 'natural' && {
-      color: getTheme('color', 'gray-600'),
-      backgroundColor: getTheme('color', 'gray-200'),
+      color: getTheme('--color-gray-600'),
+      backgroundColor: getTheme('--color-gray-200'),
       '&:hover': {
-        backgroundColor: getTheme('color', 'gray-300'),
+        backgroundColor: getTheme('--color-gray-300'),
       },
       '&:active, &:focus': {
         boxShadow: 'box-shadow: 0 0 0 2px var(--color-gray-900)',
@@ -50,9 +50,9 @@ const createStyle = (props: BaseButtonProps) => {
 
     ...(variant === 'primary' && {
       color: 'white',
-      backgroundColor: getTheme('color', 'primary'),
+      backgroundColor: getTheme('--color-primary'),
       '&:hover': {
-        backgroundColor: getTheme('color', 'primary-dark'),
+        backgroundColor: getTheme('--color-primary-dark'),
       },
     }),
   });
