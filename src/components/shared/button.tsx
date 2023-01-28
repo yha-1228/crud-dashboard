@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from 'react';
+import React from 'react';
 import { css } from '@emotion/react';
 import { Link, LinkProps } from 'react-router-dom';
 import { getTheme } from '../../styles/utils';
@@ -58,22 +58,30 @@ const createStyle = (props: BaseButtonProps) => {
   });
 };
 
-type ButtonProps = ComponentPropsWithoutRef<'button'> & BaseButtonProps;
+// ---
 
-export function Button({
-  size = 'medium',
-  variant = 'natural',
-  ...other
-}: ButtonProps) {
-  return <button css={createStyle({ size, variant })} {...other} />;
-}
+type ButtonProps = React.ComponentPropsWithRef<'button'> & BaseButtonProps;
+
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    const { size = 'medium', variant = 'natural', ...other } = props;
+
+    return <button css={createStyle({ size, variant })} {...other} ref={ref} />;
+  }
+);
+
+Button.displayName = 'Button';
+
+// ---
 
 type LinkButtonProps = LinkProps & BaseButtonProps;
 
-export function LinkButton({
-  size = 'medium',
-  variant = 'natural',
-  ...other
-}: LinkButtonProps) {
-  return <Link css={createStyle({ size, variant })} {...other} />;
-}
+export const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
+  (props, ref) => {
+    const { size = 'medium', variant = 'natural', ...other } = props;
+
+    return <Link css={createStyle({ size, variant })} {...other} ref={ref} />;
+  }
+);
+
+LinkButton.displayName = 'LinkButton';
