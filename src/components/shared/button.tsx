@@ -44,7 +44,7 @@ const createStyle = (props: BaseButtonProps) => {
         backgroundColor: getTheme('--color-gray-300'),
       },
       '&:active, &:focus': {
-        boxShadow: 'box-shadow: 0 0 0 2px var(--color-gray-900)',
+        boxShadow: `box-shadow: 0 0 0 2px ${getTheme('--color-gray-900')}`,
       },
     }),
 

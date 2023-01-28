@@ -1,5 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/react';
+import { getTheme } from '../../styles/utils';
 
 export function Table({ ...other }: React.ComponentPropsWithoutRef<'table'>) {
   return <table css={css({ width: '100%' })} {...other} />;
@@ -8,7 +9,7 @@ export function Table({ ...other }: React.ComponentPropsWithoutRef<'table'>) {
 export function Thead({ ...other }: React.ComponentPropsWithoutRef<'thead'>) {
   return (
     <thead
-      css={css({ borderBottom: '1px solid var(--color-gray-100)' })}
+      css={css({ borderBottom: `1px solid ${getTheme('--color-gray-100')}` })}
       {...other}
     />
   );
@@ -19,7 +20,7 @@ export function Tbody({ ...other }: React.ComponentPropsWithoutRef<'tbody'>) {
     <tbody
       css={css({
         '& > * + *': {
-          borderTop: '1px solid var(--color-gray-100)',
+          borderTop: `1px solid ${getTheme('--color-gray-100')}`,
         },
       })}
       {...other}
@@ -38,13 +39,13 @@ export function Th({
       css={css`
         padding: 10px 24px;
         font-size: 14px;
-        color: var(--color-gray-400);
+        color: ${getTheme('--color-gray-400')};
         white-space: nowrap;
         cursor: pointer;
         transition: color 0.2s ease-out;
         text-align: ${align};
         &:hover {
-          color: var(--color-primary);
+          color: ${getTheme('--color-gray-900')};
         }
       `}
       {...other}

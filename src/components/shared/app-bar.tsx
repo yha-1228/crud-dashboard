@@ -17,7 +17,7 @@ export function AppBar({
         height: 64,
         paddingRight: 32,
         paddingLeft: 32,
-        borderBottom: '1px solid var(--color-gray-200)',
+        borderBottom: '1px solid color-gray-200)',
       })}
     >
       <h1
