@@ -55,7 +55,7 @@ type Fetcher<T> = () => Promise<{ data: T; totalCount: number }>;
 
 const stateToHookValue = <T>(
   state: State<T>,
-  refetch: () => void
+  refetch: () => void,
 ): UseQueryHook<T> => ({
   ...state,
   isLoading: !state.data && !state.error,

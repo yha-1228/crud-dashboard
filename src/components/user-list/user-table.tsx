@@ -127,7 +127,7 @@ export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 UserTable.displayName = 'UserTable';

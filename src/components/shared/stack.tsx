@@ -16,7 +16,7 @@ export const VStack = React.forwardRef<HTMLDivElement, StackProps>(
         {...rest}
       />
     );
-  }
+  },
 );
 
 VStack.displayName = 'VStack';
@@ -32,7 +32,7 @@ export const HStack = React.forwardRef<HTMLDivElement, StackProps>(
         {...rest}
       />
     );
-  }
+  },
 );
 
 HStack.displayName = 'HStack';

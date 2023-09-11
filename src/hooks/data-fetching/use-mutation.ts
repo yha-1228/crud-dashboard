@@ -53,7 +53,7 @@ type UseMutationHook = {
 
 export function useMutation(
   mutateFn: MutateFn,
-  { onSuccess, onError }: Callbacks
+  { onSuccess, onError }: Callbacks,
 ): UseMutationHook {
   const [state, dispatch] = useReducer(reducer, initialState);
 

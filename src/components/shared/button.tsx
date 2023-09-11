@@ -67,7 +67,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const { size = 'medium', variant = 'natural', ...other } = props;
 
     return <button css={createStyle({ size, variant })} {...other} ref={ref} />;
-  }
+  },
 );
 
 Button.displayName = 'Button';
@@ -81,7 +81,7 @@ export const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
     const { size = 'medium', variant = 'natural', ...other } = props;
 
     return <Link css={createStyle({ size, variant })} {...other} ref={ref} />;
-  }
+  },
 );
 
 LinkButton.displayName = 'LinkButton';

@@ -3,7 +3,7 @@ import { UseQueryProps, useQuery } from './data-fetching/use-query';
 
 export function useUsers(
   params: UserFindManyParams,
-  onSuccess: UseQueryProps['onSuccess']
+  onSuccess: UseQueryProps['onSuccess'],
 ) {
   return useQuery({
     fetcher: () => UserAPI.findMany(params),
