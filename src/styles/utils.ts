@@ -1,3 +1,3 @@
-import { theme } from './_theme';
+import type { theme } from './_theme';
 
 export const getTheme = (key: keyof typeof theme) => `var(${key})`;

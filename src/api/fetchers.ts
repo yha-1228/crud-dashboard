@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { User } from '../types';
 import { sleep } from '../utils/sleep';
+import type { User } from '../types';
 
 const BASE_URL = 'http://localhost:3001/users';
 

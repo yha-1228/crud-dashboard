@@ -1,7 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import { Link, LinkProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getTheme } from '../../styles/utils';
+import type { LinkProps } from 'react-router-dom';
 
 type BaseButtonProps = {
   size?: 'small' | 'medium';

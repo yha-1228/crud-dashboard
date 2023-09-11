@@ -1,13 +1,14 @@
+import type {
+  DependencyList,
+  Reducer} from 'react';
 import {
   useState,
   useEffect,
   useReducer,
-  DependencyList,
-  Reducer,
   useRef,
   useCallback,
 } from 'react';
-import { FSA } from '../../types';
+import type { FSA } from '../../types';
 
 type State<T = unknown> = {
   data: T | undefined;

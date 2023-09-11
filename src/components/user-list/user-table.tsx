@@ -3,11 +3,11 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import Skeleton from 'react-loading-skeleton';
-import { User } from '../../types';
 import { range } from '../../utils/range';
 import { Button, LinkButton } from '../shared/button';
 import { Spinner } from '../shared/spinner';
 import { Table, Tbody, Td, Thead, Th } from '../shared/table';
+import type { User } from '../../types';
 
 type UserTableProps = {
   isLoading: boolean;

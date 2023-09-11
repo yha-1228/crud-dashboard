@@ -1,7 +1,8 @@
 import { ClassNames, css } from '@emotion/react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
+import ReactPaginate from 'react-paginate';
 import { getTheme } from '../../styles/utils';
+import type { ReactPaginateProps } from 'react-paginate';
 
 type PaginateProps = Pick<
   ReactPaginateProps,

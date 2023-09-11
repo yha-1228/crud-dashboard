@@ -30,7 +30,7 @@ export function UserList() {
 
   const [pageIndex, setPageIndex] = useState(0);
 
-  const handleDeleteClick = (event: React.MouseEvent<any>) => {
+  const handleDeleteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { id, username } = event.currentTarget.dataset;
 
     const confirmed = window.confirm(`Delete ${username}?`);

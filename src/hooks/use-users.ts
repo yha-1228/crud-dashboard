@@ -1,5 +1,7 @@
-import { UserAPI, UserFindManyParams } from '../api/fetchers';
-import { UseQueryProps, useQuery } from './data-fetching/use-query';
+import { UserAPI } from '../api/fetchers';
+import { useQuery } from './data-fetching/use-query';
+import type { UserFindManyParams } from '../api/fetchers';
+import type { UseQueryProps } from './data-fetching/use-query';
 
 export function useUsers(
   params: UserFindManyParams,

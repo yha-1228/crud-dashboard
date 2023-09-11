@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { FSA } from '../../types';
+import type { FSA } from '../../types';
 
 type State = {
   isLoading: boolean;
