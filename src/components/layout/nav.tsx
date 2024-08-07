@@ -14,21 +14,6 @@ const navItems = [
     title: 'Users',
     to: '/users',
   },
-  {
-    icon: <FaList />,
-    title: 'Page01',
-    to: '/page01',
-  },
-  {
-    icon: <FaList />,
-    title: 'Page02',
-    to: '/page02',
-  },
-  {
-    icon: <FaList />,
-    title: 'Page03',
-    to: '/page03',
-  },
 ];
 
 const MARKER_WIDTH = 2;

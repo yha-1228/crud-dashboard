@@ -1,10 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { FaEdit, FaTrash } from 'react-icons/fa';
 import Skeleton from 'react-loading-skeleton';
 import { range } from '../../utils/range';
-import { Button, LinkButton } from '../shared/button';
 import { Spinner } from '../shared/spinner';
 import { Table, Tbody, Td, Thead, Th } from '../shared/table';
 import type { User } from '../../types';
@@ -13,7 +11,6 @@ type UserTableProps = {
   isLoading: boolean;
   isFetching: boolean;
   users: User[] | undefined;
-  onDeleteClick: React.ComponentProps<'button'>['onClick'];
 };
 
 const heights = {
@@ -32,7 +29,7 @@ const Overlay = styled.div({
 
 export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
   (props, ref) => {
-    const { users, isLoading, isFetching, onDeleteClick } = props;
+    const { users, isLoading, isFetching } = props;
 
     return (
       <div css={css({ position: 'relative' })}>
@@ -66,8 +63,6 @@ export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
                   <Th align="left" scope="col" data-header="email">
                     Email
                   </Th>
-                  <Th align="left" scope="col" />
-                  <Th align="left" scope="col" />
                 </tr>
               </Thead>
               <Tbody>
@@ -83,8 +78,6 @@ export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
                       <Td>
                         <Skeleton />
                       </Td>
-                      <Td />
-                      <Td />
                     </tr>
                   ))}
                 {users?.map((user) => (
@@ -92,25 +85,6 @@ export const UserTable = React.forwardRef<HTMLDivElement, UserTableProps>(
                     <Td>{user.id}</Td>
                     <Td>{user.username}</Td>
                     <Td>{user.email}</Td>
-                    <Td>
-                      <LinkButton size="small" to={`/users/${user.id}`}>
-                        <FaEdit />
-                        &nbsp; &nbsp; Edit
-                      </LinkButton>
-                    </Td>
-                    <Td>
-                      <Button
-                        size="small"
-                        type="button"
-                        data-id={user.id}
-                        data-username={user.username}
-                        onClick={onDeleteClick}
-                        disabled={isLoading}
-                      >
-                        <FaTrash />
-                        &nbsp; &nbsp; Delete
-                      </Button>
-                    </Td>
                   </tr>
                 ))}
               </Tbody>

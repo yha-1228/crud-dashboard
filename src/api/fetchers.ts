@@ -29,8 +29,4 @@ export class UserAPI {
       totalCount: Number(response.headers['x-total-count']),
     };
   }
-
-  static delete(id: number) {
-    return axios.delete(`${BASE_URL}/${id}`);
-  }
 }

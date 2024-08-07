@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { useDeleteUser } from '../../hooks/use-delete-user';
 import { useUsers } from '../../hooks/use-users';
 import { Footer } from './footer';
 import { Header } from './header';
@@ -19,25 +18,11 @@ export function UserList() {
     totalCount,
     isLoading,
     isFetching,
-    refetch,
   } = useUsers(usersGetParams, () => {
     ref.current?.scroll({ top: 0, left: 0, behavior: 'smooth' });
   });
 
-  const deleteUserHook = useDeleteUser({
-    onSuccess: () => refetch(),
-  });
-
   const [pageIndex, setPageIndex] = useState(0);
-
-  const handleDeleteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const { id, username } = event.currentTarget.dataset;
-
-    const confirmed = window.confirm(`Delete ${username}?`);
-    if (!confirmed) return;
-
-    deleteUserHook.mutate(id);
-  };
 
   const handlePageChange = (selectedPageIndex: number) => {
     setPageIndex(selectedPageIndex);
@@ -60,7 +45,6 @@ export function UserList() {
         isLoading={isLoading}
         isFetching={isFetching}
         users={users}
-        onDeleteClick={handleDeleteClick}
         ref={ref}
       />
       <Footer
